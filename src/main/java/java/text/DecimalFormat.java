@@ -130,6 +130,11 @@ public class DecimalFormat extends NumberFormat {
         }
     }
 
+    // TODO: Might need to make this better. Stubbing for now.
+    public Number parse(String source, ParsePosition pos) throws java.text.ParseException {
+    	return parse(source);
+    }
+
     public void setDecimalFormatSymbols(DecimalFormatSymbols newSymbols) {
         this.symbols = newSymbols;
         // Invalidate the jsweetNumberFormat instance as symbols might affect formatting
