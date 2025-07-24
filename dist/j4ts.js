@@ -4396,31 +4396,12 @@ var java;
             function AbstractCollection() {
             }
             /* Default method injected from java.util.Collection */
-            AbstractCollection.prototype.stream = function () {
-                return (new javaemul.internal.stream.StreamHelper(this));
-            };
-            /* Default method injected from java.lang.Iterable */
-            AbstractCollection.prototype.forEach = function (action) {
-                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
-                var _loop_2 = function (index) {
-                    var t = index.next();
-                    {
-                        (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
-                    }
-                };
-                for (var index = this.iterator(); index.hasNext();) {
-                    _loop_2(index);
-                }
-            };
-            /* Default method injected from java.util.Collection */
             AbstractCollection.prototype.removeIf = function (filter) {
                 javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
                 } return function (arg0) { return (funcInst['test'] ? funcInst['test'] : funcInst).call(funcInst, arg0); }; })(filter)));
                 var removed = false;
-                var _loop_3 = function (it) {
+                var _loop_2 = function (it) {
                     {
                         if ((function (target) { return (typeof target === 'function') ? target(it.next()) : target.test(it.next()); })(filter)) {
                             it.remove();
@@ -4430,9 +4411,28 @@ var java;
                     ;
                 };
                 for (var it = this.iterator(); it.hasNext();) {
-                    _loop_3(it);
+                    _loop_2(it);
                 }
                 return removed;
+            };
+            /* Default method injected from java.lang.Iterable */
+            AbstractCollection.prototype.forEach = function (action) {
+                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
+                var _loop_3 = function (index) {
+                    var t = index.next();
+                    {
+                        (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
+                    }
+                };
+                for (var index = this.iterator(); index.hasNext();) {
+                    _loop_3(index);
+                }
+            };
+            /* Default method injected from java.util.Collection */
+            AbstractCollection.prototype.stream = function () {
+                return (new javaemul.internal.stream.StreamHelper(this));
             };
             /* Default method injected from java.util.Collection */
             AbstractCollection.prototype.parallelStream = function () {
@@ -6820,6 +6820,18 @@ var java;
         util.OptionalInt = OptionalInt;
         OptionalInt["__class"] = "java.util.OptionalInt";
     })(util = java.util || (java.util = {}));
+})(java || (java = {}));
+(function (java) {
+    var math;
+    (function (math) {
+        var BigInteger = /** @class */ (function () {
+            function BigInteger() {
+            }
+            return BigInteger;
+        }());
+        math.BigInteger = BigInteger;
+        BigInteger["__class"] = "java.math.BigInteger";
+    })(math = java.math || (java.math = {}));
 })(java || (java = {}));
 (function (java) {
     var beans;
@@ -19097,11 +19109,6 @@ var javaemul;
             function AbstractMap() {
             }
             /* Default method injected from java.util.Map */
-            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             AbstractMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -19130,6 +19137,11 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_5(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             AbstractMap.prototype.putIfAbsent = function (key, value) {
@@ -24779,31 +24791,12 @@ var javaemul;
                     this.coll = coll;
                 }
                 /* Default method injected from java.util.Collection */
-                UnmodifiableCollection.prototype.stream = function () {
-                    return (new javaemul.internal.stream.StreamHelper(this));
-                };
-                /* Default method injected from java.lang.Iterable */
-                UnmodifiableCollection.prototype.forEach = function (action) {
-                    javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                        return funcInst;
-                    } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
-                    var _loop_6 = function (index) {
-                        var t = index.next();
-                        {
-                            (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
-                        }
-                    };
-                    for (var index = this.iterator(); index.hasNext();) {
-                        _loop_6(index);
-                    }
-                };
-                /* Default method injected from java.util.Collection */
                 UnmodifiableCollection.prototype.removeIf = function (filter) {
                     javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                         return funcInst;
                     } return function (arg0) { return (funcInst['test'] ? funcInst['test'] : funcInst).call(funcInst, arg0); }; })(filter)));
                     var removed = false;
-                    var _loop_7 = function (it) {
+                    var _loop_6 = function (it) {
                         {
                             if ((function (target) { return (typeof target === 'function') ? target(it.next()) : target.test(it.next()); })(filter)) {
                                 it.remove();
@@ -24813,9 +24806,28 @@ var javaemul;
                         ;
                     };
                     for (var it = this.iterator(); it.hasNext();) {
-                        _loop_7(it);
+                        _loop_6(it);
                     }
                     return removed;
+                };
+                /* Default method injected from java.lang.Iterable */
+                UnmodifiableCollection.prototype.forEach = function (action) {
+                    javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                        return funcInst;
+                    } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
+                    var _loop_7 = function (index) {
+                        var t = index.next();
+                        {
+                            (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
+                        }
+                    };
+                    for (var index = this.iterator(); index.hasNext();) {
+                        _loop_7(index);
+                    }
+                };
+                /* Default method injected from java.util.Collection */
+                UnmodifiableCollection.prototype.stream = function () {
+                    return (new javaemul.internal.stream.StreamHelper(this));
                 };
                 /* Default method injected from java.util.Collection */
                 UnmodifiableCollection.prototype.parallelStream = function () {
@@ -25293,11 +25305,6 @@ var javaemul;
                     this.map = map;
                 }
                 /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
-                    var v;
-                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-                };
-                /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.replaceAll = function (__function) {
                     java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                         return funcInst;
@@ -25326,6 +25333,11 @@ var javaemul;
                     for (var index = this.entrySet().iterator(); index.hasNext();) {
                         _loop_8(index);
                     }
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
+                    var v;
+                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
                 };
                 /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.putIfAbsent = function (key, value) {
@@ -27072,6 +27084,45 @@ var javaemul;
                     throw new Error('invalid overload');
                 return _this;
             }
+            /* Default method injected from java.util.Collection */
+            LinkedList.prototype.removeIf = function (filter) {
+                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (arg0) { return (funcInst['test'] ? funcInst['test'] : funcInst).call(funcInst, arg0); }; })(filter)));
+                var removed = false;
+                var _loop_9 = function (it) {
+                    {
+                        if ((function (target) { return (typeof target === 'function') ? target(it.next()) : target.test(it.next()); })(filter)) {
+                            it.remove();
+                            removed = true;
+                        }
+                    }
+                    ;
+                };
+                for (var it = this.iterator(); it.hasNext();) {
+                    _loop_9(it);
+                }
+                return removed;
+            };
+            /* Default method injected from java.lang.Iterable */
+            LinkedList.prototype.forEach = function (action) {
+                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
+                var _loop_10 = function (index) {
+                    var t = index.next();
+                    {
+                        (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
+                    }
+                };
+                for (var index = this.iterator(); index.hasNext();) {
+                    _loop_10(index);
+                }
+            };
+            /* Default method injected from java.util.Collection */
+            LinkedList.prototype.stream = function () {
+                return (new javaemul.internal.stream.StreamHelper(this));
+            };
             /* Default method injected from java.util.List */
             LinkedList.prototype.sort = function (c) {
                 var a = this.toArray();
@@ -27088,45 +27139,6 @@ var javaemul;
                         i.set(e);
                     }
                 }
-            };
-            /* Default method injected from java.util.Collection */
-            LinkedList.prototype.stream = function () {
-                return (new javaemul.internal.stream.StreamHelper(this));
-            };
-            /* Default method injected from java.lang.Iterable */
-            LinkedList.prototype.forEach = function (action) {
-                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (arg0) { return (funcInst['accept'] ? funcInst['accept'] : funcInst).call(funcInst, arg0); }; })(action)));
-                var _loop_9 = function (index) {
-                    var t = index.next();
-                    {
-                        (function (target) { return (typeof target === 'function') ? target(t) : target.accept(t); })(action);
-                    }
-                };
-                for (var index = this.iterator(); index.hasNext();) {
-                    _loop_9(index);
-                }
-            };
-            /* Default method injected from java.util.Collection */
-            LinkedList.prototype.removeIf = function (filter) {
-                javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (arg0) { return (funcInst['test'] ? funcInst['test'] : funcInst).call(funcInst, arg0); }; })(filter)));
-                var removed = false;
-                var _loop_10 = function (it) {
-                    {
-                        if ((function (target) { return (typeof target === 'function') ? target(it.next()) : target.test(it.next()); })(filter)) {
-                            it.remove();
-                            removed = true;
-                        }
-                    }
-                    ;
-                };
-                for (var it = this.iterator(); it.hasNext();) {
-                    _loop_10(it);
-                }
-                return removed;
             };
             /* Default method injected from java.util.Collection */
             LinkedList.prototype.parallelStream = function () {
@@ -29688,11 +29700,6 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -29721,6 +29728,11 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_11(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.putIfAbsent = function (key, value) {
@@ -30445,11 +30457,6 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -30478,6 +30485,11 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_12(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.putIfAbsent = function (key, value) {

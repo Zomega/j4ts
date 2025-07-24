@@ -1936,9 +1936,9 @@ declare namespace java.util {
      * @class
      */
     abstract class AbstractCollection<E> implements java.util.Collection<E> {
-        stream(): java.util.stream.Stream<any>;
-        forEach(action: (p1: any) => void): void;
         removeIf(filter: (p1: any) => boolean): boolean;
+        forEach(action: (p1: any) => void): void;
+        stream(): java.util.stream.Stream<any>;
         parallelStream(): java.util.stream.Stream<any>;
         constructor();
         /**
@@ -3397,6 +3397,10 @@ declare namespace java.util {
          * @return {string}
          */
         toString(): string;
+    }
+}
+declare namespace java.math {
+    class BigInteger {
     }
 }
 declare namespace java.beans {
@@ -7468,8 +7472,8 @@ declare namespace java.util {
      * @class
      */
     abstract class AbstractMap<K, V> implements java.util.Map<K, V> {
-        getOrDefault(key: any, defaultValue: any): any;
         replaceAll(__function: (p1: any, p2: any) => any): void;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
@@ -9259,9 +9263,9 @@ declare namespace java.util {
             size(): number;
         }
         class UnmodifiableCollection<T> implements java.util.Collection<T> {
-            stream(): java.util.stream.Stream<any>;
-            forEach(action: (p1: any) => void): void;
             removeIf(filter: (p1: any) => boolean): boolean;
+            forEach(action: (p1: any) => void): void;
+            stream(): java.util.stream.Stream<any>;
             parallelStream(): java.util.stream.Stream<any>;
             coll: java.util.Collection<any>;
             constructor(coll: java.util.Collection<any>);
@@ -9499,8 +9503,8 @@ declare namespace java.util {
             constructor(list: java.util.List<any>);
         }
         class UnmodifiableMap<K, V> implements java.util.Map<K, V> {
-            getOrDefault(key: any, defaultValue: any): any;
             replaceAll(__function: (p1: any, p2: any) => any): void;
+            getOrDefault(key: any, defaultValue: any): any;
             putIfAbsent(key: any, value: any): any;
             computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
             merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
@@ -10526,10 +10530,10 @@ declare namespace java.util {
      * @extends java.util.AbstractSequentialList
      */
     class LinkedList<E> extends java.util.AbstractSequentialList<E> implements java.lang.Cloneable, java.util.List<E>, java.util.Deque<E>, java.io.Serializable {
-        sort(c: java.util.Comparator<any>): void;
-        stream(): java.util.stream.Stream<any>;
-        forEach(action: (p1: any) => void): void;
         removeIf(filter: (p1: any) => boolean): boolean;
+        forEach(action: (p1: any) => void): void;
+        stream(): java.util.stream.Stream<any>;
+        sort(c: java.util.Comparator<any>): void;
         parallelStream(): java.util.stream.Stream<any>;
         /**
          * Ensures that RPC will consider type parameter E to be exposed. It will be
@@ -11477,8 +11481,8 @@ declare namespace java.util {
      * @extends java.util.AbstractHashMap
      */
     class IdentityHashMap<K, V> extends java.util.AbstractHashMap<K, V> implements java.util.Map<K, V>, java.lang.Cloneable, java.io.Serializable {
-        getOrDefault(key: any, defaultValue: any): any;
         replaceAll(__function: (p1: any, p2: any) => any): void;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
@@ -11697,8 +11701,8 @@ declare namespace java.util {
      * @extends java.util.HashMap
      */
     class LinkedHashMap<K, V> extends java.util.HashMap<K, V> implements java.util.Map<K, V> {
-        getOrDefault(key: any, defaultValue: any): any;
         replaceAll(__function: (p1: any, p2: any) => any): void;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
