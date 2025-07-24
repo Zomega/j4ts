@@ -749,11 +749,15 @@ declare namespace java.text {
     }
 }
 declare namespace java.text {
-    class DecimalFormat {
-    }
-}
-declare namespace java.text {
     class NumberFormat {
+        static getInstance(): NumberFormat;
+        maximumFractionDigits: number;
+        minimumFractionDigits: number;
+        jsweetNumberFormat: Intl.NumberFormat;
+        setMaximumFractionDigits(newValue: number): void;
+        setMinimumFractionDigits(newValue: number): void;
+        format(number: number): string;
+        constructor();
     }
 }
 declare namespace java.text {
@@ -850,6 +854,8 @@ declare namespace java.text {
 }
 declare namespace java.text {
     class DecimalFormatSymbols {
+        getDecimalSeparator(): string;
+        getGroupingSeparator(): string;
     }
 }
 declare namespace java.io {
@@ -1930,10 +1936,10 @@ declare namespace java.util {
      * @class
      */
     abstract class AbstractCollection<E> implements java.util.Collection<E> {
+        parallelStream(): java.util.stream.Stream<any>;
         stream(): java.util.stream.Stream<any>;
         forEach(action: (p1: any) => void): void;
         removeIf(filter: (p1: any) => boolean): boolean;
-        parallelStream(): java.util.stream.Stream<any>;
         constructor();
         /**
          *
@@ -4657,6 +4663,25 @@ declare namespace java.nio {
         static wrap(array?: any, offset?: any, length?: any): ByteBuffer;
         static wrap$def_js_ArrayBuffer(array: ArrayBuffer): ByteBuffer;
         static wrap$def_js_ArrayBuffer$int$double(array: ArrayBuffer, offset: number, length: number): ByteBuffer;
+    }
+}
+declare namespace java.text {
+    class DecimalFormat extends java.text.NumberFormat {
+        pattern: string;
+        symbols: java.text.DecimalFormatSymbols;
+        minimumIntegerDigits: number;
+        useGrouping: boolean;
+        constructor(pattern?: any, symbols?: any);
+        applyPattern(pattern: string): void;
+        /**
+         *
+         * @param {number} number
+         * @return {string}
+         */
+        format(number: number): string;
+        parse(source: string): number;
+        setDecimalFormatSymbols(newSymbols: java.text.DecimalFormatSymbols): void;
+        getDecimalFormatSymbols(): java.text.DecimalFormatSymbols;
     }
 }
 declare namespace java.io {
@@ -7441,11 +7466,11 @@ declare namespace java.util {
      * @class
      */
     abstract class AbstractMap<K, V> implements java.util.Map<K, V> {
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
-        putIfAbsent(key: any, value: any): any;
         getOrDefault(key: any, defaultValue: any): any;
-        replaceAll(__function: (p1: any, p2: any) => any): void;
+        putIfAbsent(key: any, value: any): any;
         constructor();
         /**
          *
@@ -9232,10 +9257,10 @@ declare namespace java.util {
             size(): number;
         }
         class UnmodifiableCollection<T> implements java.util.Collection<T> {
+            parallelStream(): java.util.stream.Stream<any>;
             stream(): java.util.stream.Stream<any>;
             forEach(action: (p1: any) => void): void;
             removeIf(filter: (p1: any) => boolean): boolean;
-            parallelStream(): java.util.stream.Stream<any>;
             coll: java.util.Collection<any>;
             constructor(coll: java.util.Collection<any>);
             /**
@@ -9472,11 +9497,11 @@ declare namespace java.util {
             constructor(list: java.util.List<any>);
         }
         class UnmodifiableMap<K, V> implements java.util.Map<K, V> {
+            replaceAll(__function: (p1: any, p2: any) => any): void;
             merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
             computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
-            putIfAbsent(key: any, value: any): any;
             getOrDefault(key: any, defaultValue: any): any;
-            replaceAll(__function: (p1: any, p2: any) => any): void;
+            putIfAbsent(key: any, value: any): any;
             __entrySet: Collections.UnmodifiableSet<java.util.Map.Entry<K, V>>;
             __keySet: Collections.UnmodifiableSet<K>;
             map: java.util.Map<any, any>;
@@ -10499,11 +10524,11 @@ declare namespace java.util {
      * @extends java.util.AbstractSequentialList
      */
     class LinkedList<E> extends java.util.AbstractSequentialList<E> implements java.lang.Cloneable, java.util.List<E>, java.util.Deque<E>, java.io.Serializable {
-        sort(c: java.util.Comparator<any>): void;
+        parallelStream(): java.util.stream.Stream<any>;
         stream(): java.util.stream.Stream<any>;
         forEach(action: (p1: any) => void): void;
+        sort(c: java.util.Comparator<any>): void;
         removeIf(filter: (p1: any) => boolean): boolean;
-        parallelStream(): java.util.stream.Stream<any>;
         /**
          * Ensures that RPC will consider type parameter E to be exposed. It will be
          * pruned by dead code elimination.
@@ -11450,11 +11475,11 @@ declare namespace java.util {
      * @extends java.util.AbstractHashMap
      */
     class IdentityHashMap<K, V> extends java.util.AbstractHashMap<K, V> implements java.util.Map<K, V>, java.lang.Cloneable, java.io.Serializable {
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
-        putIfAbsent(key: any, value: any): any;
         getOrDefault(key: any, defaultValue: any): any;
-        replaceAll(__function: (p1: any, p2: any) => any): void;
+        putIfAbsent(key: any, value: any): any;
         /**
          * Ensures that RPC will consider type parameter K to be exposed. It will be
          * pruned by dead code elimination.
@@ -11670,11 +11695,11 @@ declare namespace java.util {
      * @extends java.util.HashMap
      */
     class LinkedHashMap<K, V> extends java.util.HashMap<K, V> implements java.util.Map<K, V> {
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
-        putIfAbsent(key: any, value: any): any;
         getOrDefault(key: any, defaultValue: any): any;
-        replaceAll(__function: (p1: any, p2: any) => any): void;
+        putIfAbsent(key: any, value: any): any;
         accessOrder: boolean;
         head: LinkedHashMap.ChainEntry;
         map: java.util.HashMap<K, LinkedHashMap.ChainEntry>;

@@ -1934,21 +1934,40 @@ var java;
 (function (java) {
     var text;
     (function (text) {
-        var DecimalFormat = /** @class */ (function () {
-            function DecimalFormat() {
-            }
-            return DecimalFormat;
-        }());
-        text.DecimalFormat = DecimalFormat;
-        DecimalFormat["__class"] = "java.text.DecimalFormat";
-    })(text = java.text || (java.text = {}));
-})(java || (java = {}));
-(function (java) {
-    var text;
-    (function (text) {
         var NumberFormat = /** @class */ (function () {
             function NumberFormat() {
+                this.maximumFractionDigits = 3;
+                this.minimumFractionDigits = 0;
+                if (this.jsweetNumberFormat === undefined) {
+                    this.jsweetNumberFormat = null;
+                }
             }
+            NumberFormat.getInstance = function () {
+                return new NumberFormat();
+            };
+            NumberFormat.prototype.setMaximumFractionDigits = function (newValue) {
+                this.maximumFractionDigits = Math.max(0, newValue);
+                if (this.maximumFractionDigits < this.minimumFractionDigits) {
+                    this.minimumFractionDigits = this.maximumFractionDigits;
+                }
+                this.jsweetNumberFormat = null;
+            };
+            NumberFormat.prototype.setMinimumFractionDigits = function (newValue) {
+                this.minimumFractionDigits = Math.max(0, newValue);
+                if (this.maximumFractionDigits < this.minimumFractionDigits) {
+                    this.maximumFractionDigits = this.minimumFractionDigits;
+                }
+                this.jsweetNumberFormat = null;
+            };
+            NumberFormat.prototype.format = function (number) {
+                if (this.jsweetNumberFormat == null) {
+                    var options = new Object();
+                    options.minimumFractionDigits = this.minimumFractionDigits;
+                    options.maximumFractionDigits = this.maximumFractionDigits;
+                    this.jsweetNumberFormat = new Intl.NumberFormat("en-US", options);
+                }
+                return this.jsweetNumberFormat.format(number);
+            };
             return NumberFormat;
         }());
         text.NumberFormat = NumberFormat;
@@ -2085,6 +2104,12 @@ var java;
         var DecimalFormatSymbols = /** @class */ (function () {
             function DecimalFormatSymbols() {
             }
+            DecimalFormatSymbols.prototype.getDecimalSeparator = function () {
+                return '.';
+            };
+            DecimalFormatSymbols.prototype.getGroupingSeparator = function () {
+                return ',';
+            };
             return DecimalFormatSymbols;
         }());
         text.DecimalFormatSymbols = DecimalFormatSymbols;
@@ -4371,6 +4396,10 @@ var java;
             function AbstractCollection() {
             }
             /* Default method injected from java.util.Collection */
+            AbstractCollection.prototype.parallelStream = function () {
+                return this.stream();
+            };
+            /* Default method injected from java.util.Collection */
             AbstractCollection.prototype.stream = function () {
                 return (new javaemul.internal.stream.StreamHelper(this));
             };
@@ -4408,10 +4437,6 @@ var java;
                     _loop_3(it);
                 }
                 return removed;
-            };
-            /* Default method injected from java.util.Collection */
-            AbstractCollection.prototype.parallelStream = function () {
-                return this.stream();
             };
             /**
              *
@@ -11217,6 +11242,200 @@ var javaemul;
     })(nio = java.nio || (java.nio = {}));
 })(java || (java = {}));
 (function (java) {
+    var text;
+    (function (text) {
+        var DecimalFormat = /** @class */ (function (_super) {
+            __extends(DecimalFormat, _super);
+            function DecimalFormat(pattern, symbols) {
+                var _this = this;
+                if (((typeof pattern === 'string') || pattern === null) && ((symbols != null && symbols instanceof java.text.DecimalFormatSymbols) || symbols === null)) {
+                    var __args = arguments;
+                    _this = _super.call(this) || this;
+                    if (_this.pattern === undefined) {
+                        _this.pattern = null;
+                    }
+                    if (_this.symbols === undefined) {
+                        _this.symbols = null;
+                    }
+                    if (_this.minimumIntegerDigits === undefined) {
+                        _this.minimumIntegerDigits = 0;
+                    }
+                    if (_this.useGrouping === undefined) {
+                        _this.useGrouping = false;
+                    }
+                    _this.symbols = symbols;
+                    _this.applyPattern(pattern);
+                }
+                else if (((typeof pattern === 'string') || pattern === null) && symbols === undefined) {
+                    var __args = arguments;
+                    {
+                        var __args_16 = arguments;
+                        _this = _super.call(this) || this;
+                        if (_this.pattern === undefined) {
+                            _this.pattern = null;
+                        }
+                        if (_this.symbols === undefined) {
+                            _this.symbols = null;
+                        }
+                        if (_this.minimumIntegerDigits === undefined) {
+                            _this.minimumIntegerDigits = 0;
+                        }
+                        if (_this.useGrouping === undefined) {
+                            _this.useGrouping = false;
+                        }
+                        _this.symbols = new java.text.DecimalFormatSymbols();
+                        _this.applyPattern("#,##0.###");
+                    }
+                    if (_this.pattern === undefined) {
+                        _this.pattern = null;
+                    }
+                    if (_this.symbols === undefined) {
+                        _this.symbols = null;
+                    }
+                    if (_this.minimumIntegerDigits === undefined) {
+                        _this.minimumIntegerDigits = 0;
+                    }
+                    if (_this.useGrouping === undefined) {
+                        _this.useGrouping = false;
+                    }
+                    (function () {
+                        _this.applyPattern(pattern);
+                    })();
+                }
+                else if (pattern === undefined && symbols === undefined) {
+                    var __args = arguments;
+                    _this = _super.call(this) || this;
+                    if (_this.pattern === undefined) {
+                        _this.pattern = null;
+                    }
+                    if (_this.symbols === undefined) {
+                        _this.symbols = null;
+                    }
+                    if (_this.minimumIntegerDigits === undefined) {
+                        _this.minimumIntegerDigits = 0;
+                    }
+                    if (_this.useGrouping === undefined) {
+                        _this.useGrouping = false;
+                    }
+                    _this.symbols = new java.text.DecimalFormatSymbols();
+                    _this.applyPattern("#,##0.###");
+                }
+                else
+                    throw new Error('invalid overload');
+                return _this;
+            }
+            DecimalFormat.prototype.applyPattern = function (pattern) {
+                this.pattern = pattern;
+                this.jsweetNumberFormat = null;
+                this.minimumFractionDigits = 0;
+                this.maximumFractionDigits = 0;
+                this.minimumIntegerDigits = 1;
+                this.useGrouping = false;
+                this.useGrouping = /* contains */ (pattern.indexOf(",") != -1);
+                var decimalPointIndex = pattern.indexOf('.');
+                if (decimalPointIndex !== -1) {
+                    var fractionPart = pattern.substring(decimalPointIndex + 1);
+                    var minFrac = 0;
+                    var maxFrac = 0;
+                    {
+                        var array = /* toCharArray */ (fractionPart).split('');
+                        for (var index = 0; index < array.length; index++) {
+                            var c = array[index];
+                            {
+                                if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) == '0'.charCodeAt(0)) {
+                                    minFrac++;
+                                    maxFrac++;
+                                }
+                                else if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) == '#'.charCodeAt(0)) {
+                                    maxFrac++;
+                                }
+                            }
+                        }
+                    }
+                    this.minimumFractionDigits = minFrac;
+                    this.maximumFractionDigits = maxFrac;
+                    var integerPart = pattern.substring(0, decimalPointIndex);
+                    var zeroCountInIntegerPart = 0;
+                    {
+                        var array = /* toCharArray */ (integerPart).split('');
+                        for (var index = 0; index < array.length; index++) {
+                            var c = array[index];
+                            {
+                                if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) == '0'.charCodeAt(0)) {
+                                    zeroCountInIntegerPart++;
+                                }
+                            }
+                        }
+                    }
+                    if (zeroCountInIntegerPart > 0) {
+                        this.minimumIntegerDigits = zeroCountInIntegerPart;
+                    }
+                    else if (!(integerPart.indexOf("#") != -1) && /* isEmpty */ (integerPart.trim().length === 0) && /* startsWith */ (function (str, searchString, position) {
+                        if (position === void 0) { position = 0; }
+                        return str.substr(position, searchString.length) === searchString;
+                    })(pattern, ".")) {
+                        this.minimumIntegerDigits = 0;
+                    }
+                }
+                else {
+                    this.minimumFractionDigits = 0;
+                    this.maximumFractionDigits = 0;
+                    var zeroCountInPattern = 0;
+                    {
+                        var array = /* toCharArray */ (pattern).split('');
+                        for (var index = 0; index < array.length; index++) {
+                            var c = array[index];
+                            {
+                                if ((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(c) == '0'.charCodeAt(0)) {
+                                    zeroCountInPattern++;
+                                }
+                            }
+                        }
+                    }
+                    if (zeroCountInPattern > 0) {
+                        this.minimumIntegerDigits = zeroCountInPattern;
+                    }
+                }
+            };
+            /**
+             *
+             * @param {number} number
+             * @return {string}
+             */
+            DecimalFormat.prototype.format = function (number) {
+                if (this.jsweetNumberFormat == null) {
+                    var options = new Object();
+                    options.minimumFractionDigits = this.minimumFractionDigits;
+                    options.maximumFractionDigits = this.maximumFractionDigits;
+                    options.useGrouping = this.useGrouping;
+                    this.jsweetNumberFormat = new Intl.NumberFormat("en-US", options);
+                }
+                return this.jsweetNumberFormat.format(number);
+            };
+            DecimalFormat.prototype.parse = function (source) {
+                var normalizedSource = source.split(this.symbols.getDecimalSeparator()).join('.');
+                normalizedSource = /* replace */ normalizedSource.split(/* valueOf */ String(this.symbols.getGroupingSeparator()).toString()).join("");
+                try {
+                    return javaemul.internal.DoubleHelper.parseDouble(normalizedSource);
+                }
+                catch (e) {
+                    throw new java.text.ParseException("Unparseable number: \"" + source + "\"", 0);
+                }
+            };
+            DecimalFormat.prototype.setDecimalFormatSymbols = function (newSymbols) {
+                this.symbols = newSymbols;
+                this.jsweetNumberFormat = null;
+            };
+            DecimalFormat.prototype.getDecimalFormatSymbols = function () {
+                return this.symbols;
+            };
+            return DecimalFormat;
+        }(java.text.NumberFormat));
+        text.DecimalFormat = DecimalFormat;
+        DecimalFormat["__class"] = "java.text.DecimalFormat";
+    })(text = java.text || (java.text = {}));
+})(java || (java = {}));
+(function (java) {
     var io;
     (function (io) {
         /**
@@ -11501,7 +11720,7 @@ var javaemul;
                 else if (((buf != null && buf instanceof Array && (buf.length == 0 || buf[0] == null || (typeof buf[0] === 'number'))) || buf === null) && offset === undefined && length === undefined) {
                     var __args = arguments;
                     {
-                        var __args_16 = arguments;
+                        var __args_17 = arguments;
                         var offset_1 = 0;
                         var length_1 = -1;
                         _this = _super.call(this) || this;
@@ -12198,7 +12417,7 @@ var javaemul;
                 else if (((__in != null && __in instanceof java.io.Reader) || __in === null) && sz === undefined) {
                     var __args = arguments;
                     {
-                        var __args_17 = arguments;
+                        var __args_18 = arguments;
                         var sz_1 = BufferedReader.defaultCharBufferSize;
                         _this = _super.call(this, __in) || this;
                         if (_this["in"] === undefined) {
@@ -12575,7 +12794,7 @@ var javaemul;
                 else if (((typeof name === 'string') || name === null) && daemon === undefined) {
                     var __args = arguments;
                     {
-                        var __args_18 = arguments;
+                        var __args_19 = arguments;
                         var daemon_1 = true;
                         if (this.name === undefined) {
                             this.name = null;
@@ -12594,9 +12813,9 @@ var javaemul;
                     var __args = arguments;
                     var daemon_2 = __args[0];
                     {
-                        var __args_19 = arguments;
+                        var __args_20 = arguments;
                         {
-                            var __args_20 = arguments;
+                            var __args_21 = arguments;
                             var name_1 = "Timer-" + ++Timer.nextSerialNumber;
                             var daemon_3 = true;
                             if (this.name === undefined) {
@@ -12621,7 +12840,7 @@ var javaemul;
                 else if (name === undefined && daemon === undefined) {
                     var __args = arguments;
                     {
-                        var __args_21 = arguments;
+                        var __args_22 = arguments;
                         var name_2 = "Timer-" + ++Timer.nextSerialNumber;
                         var daemon_4 = true;
                         if (this.name === undefined) {
@@ -13207,7 +13426,7 @@ var javaemul;
                 if (((c != null && (c.constructor != null && c.constructor["__interfaces"] != null && c.constructor["__interfaces"].indexOf("java.util.Collection") >= 0)) || c === null)) {
                     var __args = arguments;
                     {
-                        var __args_22 = arguments;
+                        var __args_23 = arguments;
                         var numElements = c.size();
                         _this = _super.call(this) || this;
                         if (_this.head === undefined) {
@@ -14445,7 +14664,7 @@ var javaemul;
                 if (((typeof string === 'string') || string === null)) {
                     var __args = arguments;
                     {
-                        var __args_23 = arguments;
+                        var __args_24 = arguments;
                         var reader = new java.io.StringReader(string);
                         if (this.reader === undefined) {
                             this.reader = null;
@@ -14492,7 +14711,7 @@ var javaemul;
                     var __args = arguments;
                     var inputStream = __args[0];
                     {
-                        var __args_24 = arguments;
+                        var __args_25 = arguments;
                         var reader = new java.io.InputStreamReader(inputStream);
                         if (this.reader === undefined) {
                             this.reader = null;
@@ -18579,7 +18798,7 @@ var javaemul;
                 if (((c != null && (c.constructor != null && c.constructor["__interfaces"] != null && c.constructor["__interfaces"].indexOf("java.util.Collection") >= 0)) || c === null)) {
                     var __args = arguments;
                     {
-                        var __args_25 = arguments;
+                        var __args_26 = arguments;
                         _this = _super.call(this) || this;
                         if (_this.map === undefined) {
                             _this.map = null;
@@ -18607,7 +18826,7 @@ var javaemul;
                     var __args = arguments;
                     var s_1 = __args[0];
                     {
-                        var __args_26 = arguments;
+                        var __args_27 = arguments;
                         var c_1 = javaemul.internal.InternalPreconditions.checkNotNull(s_1).comparator();
                         _this = _super.call(this) || this;
                         if (_this.map === undefined) {
@@ -18865,41 +19084,6 @@ var javaemul;
             function AbstractMap() {
             }
             /* Default method injected from java.util.Map */
-            AbstractMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            AbstractMap.prototype.computeIfAbsent = function (key, mappingFunction) {
-                var result;
-                if ((result = this.get(key)) == null) {
-                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
-                    if (result != null)
-                        this.put(key, result);
-                }
-                return result;
-            };
-            /* Default method injected from java.util.Map */
-            AbstractMap.prototype.putIfAbsent = function (key, value) {
-                var v = this.get(key);
-                if (v == null) {
-                    v = this.put(key, value);
-                }
-                return v;
-            };
-            /* Default method injected from java.util.Map */
-            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             AbstractMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -18928,6 +19112,41 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_5(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.computeIfAbsent = function (key, mappingFunction) {
+                var result;
+                if ((result = this.get(key)) == null) {
+                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
+                    if (result != null)
+                        this.put(key, result);
+                }
+                return result;
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.putIfAbsent = function (key, value) {
+                var v = this.get(key);
+                if (v == null) {
+                    v = this.put(key, value);
+                }
+                return v;
             };
             /**
              *
@@ -19790,7 +20009,7 @@ var javaemul;
                     var __args = arguments;
                     var cp = __args[0];
                     {
-                        var __args_27 = arguments;
+                        var __args_28 = arguments;
                         var initialCapacity_1 = PriorityQueue.INITIAL_CAPACITY;
                         var cmp_1 = cp;
                         _this = _super.call(this) || this;
@@ -19821,7 +20040,7 @@ var javaemul;
                     var __args = arguments;
                     var c_2 = __args[0];
                     {
-                        var __args_28 = arguments;
+                        var __args_29 = arguments;
                         var initialCapacity_2 = c_2.size();
                         var cmp_2 = ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                             return funcInst;
@@ -19857,7 +20076,7 @@ var javaemul;
                     var __args = arguments;
                     var c_3 = __args[0];
                     {
-                        var __args_29 = arguments;
+                        var __args_30 = arguments;
                         var initialCapacity_3 = c_3.size();
                         var cmp_3 = ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                             return funcInst;
@@ -19893,10 +20112,10 @@ var javaemul;
                     var __args = arguments;
                     var c_4 = __args[0];
                     {
-                        var __args_30 = arguments;
+                        var __args_31 = arguments;
                         var initialCapacity_4 = c_4.size();
                         {
-                            var __args_31 = arguments;
+                            var __args_32 = arguments;
                             var cmp_4 = null;
                             _this = _super.call(this) || this;
                             if (_this.cmp === undefined) {
@@ -19935,7 +20154,7 @@ var javaemul;
                 else if (((typeof initialCapacity === 'number') || initialCapacity === null) && cmp === undefined) {
                     var __args = arguments;
                     {
-                        var __args_32 = arguments;
+                        var __args_33 = arguments;
                         var cmp_5 = null;
                         _this = _super.call(this) || this;
                         if (_this.cmp === undefined) {
@@ -19964,10 +20183,10 @@ var javaemul;
                 else if (initialCapacity === undefined && cmp === undefined) {
                     var __args = arguments;
                     {
-                        var __args_33 = arguments;
+                        var __args_34 = arguments;
                         var initialCapacity_5 = PriorityQueue.INITIAL_CAPACITY;
                         {
-                            var __args_34 = arguments;
+                            var __args_35 = arguments;
                             var cmp_6 = null;
                             _this = _super.call(this) || this;
                             if (_this.cmp === undefined) {
@@ -22438,7 +22657,7 @@ var javaemul;
                 if (((typeof initialCapacity === 'number') || initialCapacity === null) && ((typeof ignoredCapacityIncrement === 'number') || ignoredCapacityIncrement === null)) {
                     var __args = arguments;
                     {
-                        var __args_35 = arguments;
+                        var __args_36 = arguments;
                         _this = _super.call(this) || this;
                         if (_this.arrayList === undefined) {
                             _this.arrayList = null;
@@ -23034,7 +23253,7 @@ var javaemul;
                     if (((typeof desc === 'string') || desc === null) && ((typeof pattern === 'string') || pattern === null) && ((typeof index === 'number') || index === null)) {
                         var __args = arguments;
                         {
-                            var __args_36 = arguments;
+                            var __args_37 = arguments;
                             var throwable = PatternSyntaxException.createSyntaxError(desc, index);
                             _this = _super.call(this, throwable) || this;
                             if (_this.pattern === undefined) {
@@ -24547,6 +24766,10 @@ var javaemul;
                     this.coll = coll;
                 }
                 /* Default method injected from java.util.Collection */
+                UnmodifiableCollection.prototype.parallelStream = function () {
+                    return this.stream();
+                };
+                /* Default method injected from java.util.Collection */
                 UnmodifiableCollection.prototype.stream = function () {
                     return (new javaemul.internal.stream.StreamHelper(this));
                 };
@@ -24584,10 +24807,6 @@ var javaemul;
                         _loop_7(it);
                     }
                     return removed;
-                };
-                /* Default method injected from java.util.Collection */
-                UnmodifiableCollection.prototype.parallelStream = function () {
-                    return this.stream();
                 };
                 /**
                  *
@@ -25061,41 +25280,6 @@ var javaemul;
                     this.map = map;
                 }
                 /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.merge = function (key, value, map) {
-                    var old = this.get(key);
-                    var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                    if (next == null) {
-                        this.remove(key);
-                    }
-                    else {
-                        this.put(key, next);
-                    }
-                    return next;
-                };
-                /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.computeIfAbsent = function (key, mappingFunction) {
-                    var result;
-                    if ((result = this.get(key)) == null) {
-                        result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
-                        if (result != null)
-                            this.put(key, result);
-                    }
-                    return result;
-                };
-                /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.putIfAbsent = function (key, value) {
-                    var v = this.get(key);
-                    if (v == null) {
-                        v = this.put(key, value);
-                    }
-                    return v;
-                };
-                /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
-                    var v;
-                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-                };
-                /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.replaceAll = function (__function) {
                     java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                         return funcInst;
@@ -25124,6 +25308,41 @@ var javaemul;
                     for (var index = this.entrySet().iterator(); index.hasNext();) {
                         _loop_8(index);
                     }
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.merge = function (key, value, map) {
+                    var old = this.get(key);
+                    var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                    if (next == null) {
+                        this.remove(key);
+                    }
+                    else {
+                        this.put(key, next);
+                    }
+                    return next;
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.computeIfAbsent = function (key, mappingFunction) {
+                    var result;
+                    if ((result = this.get(key)) == null) {
+                        result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
+                        if (result != null)
+                            this.put(key, result);
+                    }
+                    return result;
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
+                    var v;
+                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.putIfAbsent = function (key, value) {
+                    var v = this.get(key);
+                    if (v == null) {
+                        v = this.put(key, value);
+                    }
+                    return v;
                 };
                 /**
                  *
@@ -26431,7 +26650,7 @@ var javaemul;
                 else if (((typeof ignored === 'number') || ignored === null) && alsoIgnored === undefined) {
                     var __args = arguments;
                     {
-                        var __args_37 = arguments;
+                        var __args_38 = arguments;
                         var alsoIgnored_1 = 0;
                         _this = _super.call(this) || this;
                         if (_this.hashCodeMap === undefined) {
@@ -26840,22 +27059,9 @@ var javaemul;
                     throw new Error('invalid overload');
                 return _this;
             }
-            /* Default method injected from java.util.List */
-            LinkedList.prototype.sort = function (c) {
-                var a = this.toArray();
-                java.util.Arrays.sort(a, ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(c)))));
-                var i = this.listIterator();
-                for (var index = 0; index < a.length; index++) {
-                    var e = a[index];
-                    {
-                        i.next();
-                        i.set(e);
-                    }
-                }
+            /* Default method injected from java.util.Collection */
+            LinkedList.prototype.parallelStream = function () {
+                return this.stream();
             };
             /* Default method injected from java.util.Collection */
             LinkedList.prototype.stream = function () {
@@ -26874,6 +27080,23 @@ var javaemul;
                 };
                 for (var index = this.iterator(); index.hasNext();) {
                     _loop_9(index);
+                }
+            };
+            /* Default method injected from java.util.List */
+            LinkedList.prototype.sort = function (c) {
+                var a = this.toArray();
+                java.util.Arrays.sort(a, ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(c)))));
+                var i = this.listIterator();
+                for (var index = 0; index < a.length; index++) {
+                    var e = a[index];
+                    {
+                        i.next();
+                        i.set(e);
+                    }
                 }
             };
             /* Default method injected from java.util.Collection */
@@ -26895,10 +27118,6 @@ var javaemul;
                     _loop_10(it);
                 }
                 return removed;
-            };
-            /* Default method injected from java.util.Collection */
-            LinkedList.prototype.parallelStream = function () {
-                return this.stream();
             };
             /**
              *
@@ -27730,7 +27949,7 @@ var javaemul;
                             var __args = arguments;
                             var characteristics_1 = __args[3];
                             {
-                                var __args_38 = arguments;
+                                var __args_39 = arguments;
                                 var finisher_1 = CollectorImpl.castingIdentity();
                                 if (this.__supplier === undefined) {
                                     this.__supplier = null;
@@ -27780,7 +27999,7 @@ var javaemul;
                         else if (((typeof supplier === 'function' && supplier.length === 0) || supplier === null) && ((typeof accumulator === 'function' && accumulator.length === 2) || accumulator === null) && ((typeof combiner === 'function' && combiner.length === 2) || combiner === null) && finisher === undefined && characteristics === undefined) {
                             var __args = arguments;
                             {
-                                var __args_39 = arguments;
+                                var __args_40 = arguments;
                                 var finisher_2 = CollectorImpl.castingIdentity();
                                 var characteristics_2 = null;
                                 if (this.__supplier === undefined) {
@@ -27937,7 +28156,7 @@ var javaemul;
                     var __args = arguments;
                     var map_1 = __args[0];
                     {
-                        var __args_40 = arguments;
+                        var __args_41 = arguments;
                         var c_5 = javaemul.internal.InternalPreconditions.checkNotNull(map_1).comparator();
                         _this = _super.call(this) || this;
                         if (_this.cmp === undefined) {
@@ -27988,9 +28207,9 @@ var javaemul;
                     var __args = arguments;
                     var map_2 = __args[0];
                     {
-                        var __args_41 = arguments;
+                        var __args_42 = arguments;
                         {
-                            var __args_42 = arguments;
+                            var __args_43 = arguments;
                             var c_6 = ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                                 return funcInst;
                             } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(null));
@@ -28058,7 +28277,7 @@ var javaemul;
                 else if (c === undefined) {
                     var __args = arguments;
                     {
-                        var __args_43 = arguments;
+                        var __args_44 = arguments;
                         var c_7 = ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                             return funcInst;
                         } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(null));
@@ -28747,7 +28966,7 @@ var javaemul;
                     else if (type === undefined && fromKey === undefined && fromInclusive === undefined && toKey === undefined && toInclusive === undefined) {
                         var __args = Array.prototype.slice.call(arguments, [1]);
                         {
-                            var __args_44 = Array.prototype.slice.call(arguments, [1]);
+                            var __args_45 = Array.prototype.slice.call(arguments, [1]);
                             var type_1 = java.util.TreeMap.SubMapType_All_$LI$();
                             var fromKey_1 = null;
                             var fromInclusive_1 = false;
@@ -28840,7 +29059,7 @@ var javaemul;
                     else if (type === undefined && fromKey === undefined && fromInclusive === undefined && toKey === undefined && toInclusive === undefined) {
                         var __args = Array.prototype.slice.call(arguments, [1]);
                         {
-                            var __args_45 = Array.prototype.slice.call(arguments, [1]);
+                            var __args_46 = Array.prototype.slice.call(arguments, [1]);
                             var type_2 = java.util.TreeMap.SubMapType_All_$LI$();
                             var fromKey_2 = null;
                             var fromInclusive_2 = false;
@@ -28949,7 +29168,7 @@ var javaemul;
                     else if (((key != null) || key === null) && ((value != null) || value === null) && isRed === undefined) {
                         var __args = arguments;
                         {
-                            var __args_46 = arguments;
+                            var __args_47 = arguments;
                             var isRed_1 = true;
                             _this = _super.call(this, key, value) || this;
                             if (_this.isRed === undefined) {
@@ -29456,41 +29675,6 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
-                var result;
-                if ((result = this.get(key)) == null) {
-                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
-                    if (result != null)
-                        this.put(key, result);
-                }
-                return result;
-            };
-            /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.putIfAbsent = function (key, value) {
-                var v = this.get(key);
-                if (v == null) {
-                    v = this.put(key, value);
-                }
-                return v;
-            };
-            /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -29519,6 +29703,41 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_11(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
+                var result;
+                if ((result = this.get(key)) == null) {
+                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
+                    if (result != null)
+                        this.put(key, result);
+                }
+                return result;
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.putIfAbsent = function (key, value) {
+                var v = this.get(key);
+                if (v == null) {
+                    v = this.put(key, value);
+                }
+                return v;
             };
             IdentityHashMap.prototype.clone = function () {
                 return (new IdentityHashMap(this));
@@ -30166,7 +30385,7 @@ var javaemul;
                 else if (((typeof ignored === 'number') || ignored === null) && alsoIgnored === undefined && accessOrder === undefined) {
                     var __args = arguments;
                     {
-                        var __args_47 = arguments;
+                        var __args_48 = arguments;
                         var alsoIgnored_2 = 0;
                         _this = _super.call(this, ignored, alsoIgnored_2) || this;
                         if (_this.accessOrder === undefined) {
@@ -30213,41 +30432,6 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
-                var result;
-                if ((result = this.get(key)) == null) {
-                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
-                    if (result != null)
-                        this.put(key, result);
-                }
-                return result;
-            };
-            /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.putIfAbsent = function (key, value) {
-                var v = this.get(key);
-                if (v == null) {
-                    v = this.put(key, value);
-                }
-                return v;
-            };
-            /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -30276,6 +30460,41 @@ var javaemul;
                 for (var index = this.entrySet().iterator(); index.hasNext();) {
                     _loop_12(index);
                 }
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
+                var result;
+                if ((result = this.get(key)) == null) {
+                    result = (function (target) { return (typeof target === 'function') ? target(key) : target.apply(key); })(mappingFunction);
+                    if (result != null)
+                        this.put(key, result);
+                }
+                return result;
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.putIfAbsent = function (key, value) {
+                var v = this.get(key);
+                if (v == null) {
+                    v = this.put(key, value);
+                }
+                return v;
             };
             /**
              *
