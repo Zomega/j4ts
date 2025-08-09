@@ -20,21 +20,20 @@ import static javaemul.internal.InternalPreconditions.checkElement;
 import java.io.Serializable;
 
 /**
- * To keep performance characteristics in line with Java community expectations,
- * <code>Vector</code> is a wrapper around <code>ArrayList</code>. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Vector.html">[Sun
- * docs]</a>
+ * To keep performance characteristics in line with Java community expectations, <code>Vector</code>
+ * is a wrapper around <code>ArrayList</code>. <a
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Vector.html">[Sun docs]</a>
  *
  * @param <E> element type.
  */
-public class Vector<E> extends AbstractList<E> implements List<E>,
-    RandomAccess, Cloneable, Serializable {
+public class Vector<E> extends AbstractList<E>
+    implements List<E>, RandomAccess, Cloneable, Serializable {
 
   private transient ArrayList<E> arrayList;
 
   /**
-   * Ensures that RPC will consider type parameter E to be exposed. It will be
-   * pruned by dead code elimination.
+   * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+   * elimination.
    */
   @SuppressWarnings("unused")
   private E exposeElement;
@@ -52,9 +51,7 @@ public class Vector<E> extends AbstractList<E> implements List<E>,
     arrayList = new ArrayList<E>(initialCapacity);
   }
 
-  /**
-   * Capacity increment is ignored.
-   */
+  /** Capacity increment is ignored. */
   @SuppressWarnings("unused")
   public Vector(int initialCapacity, int ignoredCapacityIncrement) {
     this(initialCapacity);

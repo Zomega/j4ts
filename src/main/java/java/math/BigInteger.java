@@ -17,7 +17,7 @@ public class BigInteger {
   }
 
   public BigInteger(String val, int radix) {
-     // TODO: Implement
+    // TODO: Implement
     this.value = val;
     this.radix = radix;
   }
@@ -49,9 +49,19 @@ public class BigInteger {
     return BigInteger.ZERO; // Stub: returns a dummy BigInteger
   }
 
+  public BigInteger mod(int p) {
+    // TODO: Implement actual power logic
+    return BigInteger.ONE; // Stub: returns a dummy BigInteger
+  }
+
   public int intValue() {
     // TODO: Implement
     return 0;
+  }
+
+  public double doubleValue() {
+    // TODO: Implement
+    return 0d;
   }
 
   @Override

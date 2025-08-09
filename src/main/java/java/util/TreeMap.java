@@ -20,10 +20,9 @@ import static javaemul.internal.InternalPreconditions.checkNotNull;
 import java.io.Serializable;
 
 /**
- * Implements a TreeMap using a red-black tree. This guarantees O(log n)
- * performance on lookups, inserts, and deletes while maintaining linear
- * in-order traversal time. Null keys and values are fully supported if the
- * comparator supports them (the default comparator does not).
+ * Implements a TreeMap using a red-black tree. This guarantees O(log n) performance on lookups,
+ * inserts, and deletes while maintaining linear in-order traversal time. Null keys and values are
+ * fully supported if the comparator supports them (the default comparator does not).
  *
  * @param <K> key type
  * @param <V> value type
@@ -38,16 +37,12 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
    * This version does not require a parent pointer kept in each node.
    */
 
-  /**
-   * Iterator for <code>descendingMap().entrySet()</code>.
-   */
+  /** Iterator for <code>descendingMap().entrySet()</code>. */
   private final class DescendingEntryIterator implements Iterator<Entry<K, V>> {
     private final ListIterator<Entry<K, V>> iter;
     private Entry<K, V> last;
 
-    /**
-     * Constructor for <code>DescendingEntryIterator</code>.
-     */
+    /** Constructor for <code>DescendingEntryIterator</code>. */
     public DescendingEntryIterator() {
       this(SubMapType_All, null, false, null, false);
     }
@@ -58,11 +53,10 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
      * @param fromKey the first key to return in the iterator.
      * @param toKey the upper bound of keys to return.
      */
-    public DescendingEntryIterator(SubMapType type,
-        K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+    public DescendingEntryIterator(
+        SubMapType type, K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
       List<Entry<K, V>> list = new ArrayList<Entry<K, V>>();
-      inOrderAdd(list, type, TreeMap.this.root,
-          fromKey, fromInclusive, toKey, toInclusive);
+      inOrderAdd(list, type, TreeMap.this.root, fromKey, fromInclusive, toKey, toInclusive);
       this.iter = list.listIterator(list.size());
     }
 
@@ -84,16 +78,12 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     }
   }
 
-  /**
-   * Iterator for <code>EntrySet</code>.
-   */
+  /** Iterator for <code>EntrySet</code>. */
   private final class EntryIterator implements Iterator<Entry<K, V>> {
     private final ListIterator<Entry<K, V>> iter;
     private Entry<K, V> last;
 
-    /**
-     * Constructor for <code>EntrySetIterator</code>.
-     */
+    /** Constructor for <code>EntrySetIterator</code>. */
     public EntryIterator() {
       this(SubMapType_All, null, false, null, false);
     }
@@ -104,11 +94,10 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
      * @param fromKey the first key to return in the iterator.
      * @param toKey the upper bound of keys to return.
      */
-    public EntryIterator(SubMapType type,
-        K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+    public EntryIterator(
+        SubMapType type, K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
       List<Entry<K, V>> list = new ArrayList<Entry<K, V>>();
-      inOrderAdd(list, type, TreeMap.this.root,
-          fromKey, fromInclusive, toKey, toInclusive);
+      inOrderAdd(list, type, TreeMap.this.root, fromKey, fromInclusive, toKey, toInclusive);
       this.iter = list.listIterator();
     }
 
@@ -150,6 +139,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
      */
     @SuppressWarnings("unchecked")
     protected final Node<K, V>[] child = new Node[2];
+
     protected boolean isRed;
 
     /**
@@ -176,13 +166,11 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   /**
-   * A state object which is passed down the tree for both insert and remove.
-   * All uses make use of the done flag to indicate when no further rebalancing
-   * of the tree is required. Remove methods use the found flag to indicate when
-   * the desired key has been found. value is used both to return the value of a
-   * removed node as well as to pass in a value which must match (used for
-   * entrySet().remove(entry)), and the matchValue flag is used to request this
-   * behavior.
+   * A state object which is passed down the tree for both insert and remove. All uses make use of
+   * the done flag to indicate when no further rebalancing of the tree is required. Remove methods
+   * use the found flag to indicate when the desired key has been found. value is used both to
+   * return the value of a removed node as well as to pass in a value which must match (used for
+   * entrySet().remove(entry)), and the matchValue flag is used to request this behavior.
    *
    * @param <V> value type
    */
@@ -211,28 +199,25 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
 
     private final SubMapType type;
 
-    SubMap(SubMapType type,
-        K fromKey, boolean fromInclusive,
-        K toKey, boolean toInclusive) {
-      
-        if(type == SubMapType_Range) {
-          if (cmp.compare(toKey, fromKey) < 0) {
-            throw new IllegalArgumentException("subMap: " + toKey
-                + " less than " + fromKey);
-          }
+    SubMap(SubMapType type, K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+
+      if (type == SubMapType_Range) {
+        if (cmp.compare(toKey, fromKey) < 0) {
+          throw new IllegalArgumentException("subMap: " + toKey + " less than " + fromKey);
         }
-          if(type == SubMapType_Head) {
-          // check key for compatibility with comparator
-          cmp.compare(toKey, toKey);
-          }
-          
-          if(type == SubMapType_Tail) {
-          // check key for compatibility with comparator
-          cmp.compare(fromKey, fromKey);
-          }
-          if(type ==  SubMapType_All) {
-          // no checks are needed
-          }
+      }
+      if (type == SubMapType_Head) {
+        // check key for compatibility with comparator
+        cmp.compare(toKey, toKey);
+      }
+
+      if (type == SubMapType_Tail) {
+        // check key for compatibility with comparator
+        cmp.compare(fromKey, fromKey);
+      }
+      if (type == SubMapType_All) {
+        // no checks are needed
+      }
       this.type = type;
       this.fromKey = fromKey;
       this.fromInclusive = fromInclusive;
@@ -258,8 +243,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     @Override
     public NavigableMap<K, V> headMap(K toKey, boolean toInclusive) {
       if (type.toKeyValid() && cmp.compare(toKey, this.toKey) > 0) {
-        throw new IllegalArgumentException("subMap: " + toKey +
-            " greater than " + this.toKey);
+        throw new IllegalArgumentException("subMap: " + toKey + " greater than " + this.toKey);
       }
       if (type.fromKeyValid()) {
         return TreeMap.this.subMap(fromKey, fromInclusive, toKey, toInclusive);
@@ -276,8 +260,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     @Override
     public V put(K key, V value) {
       if (!inRange(key)) {
-        throw new IllegalArgumentException(key + " outside the range "
-            + fromKey + " to " + toKey);
+        throw new IllegalArgumentException(key + " outside the range " + fromKey + " to " + toKey);
       }
       return TreeMap.this.put(key, value);
     }
@@ -303,15 +286,13 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     }
 
     @Override
-    public NavigableMap<K, V> subMap(K newFromKey, boolean newFromInclusive,
-        K newToKey, boolean newToInclusive) {
+    public NavigableMap<K, V> subMap(
+        K newFromKey, boolean newFromInclusive, K newToKey, boolean newToInclusive) {
       if (type.fromKeyValid() && cmp.compare(newFromKey, fromKey) < 0) {
-        throw new IllegalArgumentException("subMap: " + newFromKey +
-            " less than " + fromKey);
+        throw new IllegalArgumentException("subMap: " + newFromKey + " less than " + fromKey);
       }
       if (type.toKeyValid() && cmp.compare(newToKey, toKey) > 0) {
-        throw new IllegalArgumentException("subMap: " + newToKey +
-            " greater than " + toKey);
+        throw new IllegalArgumentException("subMap: " + newToKey + " greater than " + toKey);
       }
       return TreeMap.this.subMap(newFromKey, newFromInclusive, newToKey, newToInclusive);
     }
@@ -319,8 +300,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     @Override
     public NavigableMap<K, V> tailMap(K fromKey, boolean fromInclusive) {
       if (type.fromKeyValid() && cmp.compare(fromKey, this.fromKey) < 0) {
-        throw new IllegalArgumentException("subMap: " + fromKey +
-            " less than " + this.fromKey);
+        throw new IllegalArgumentException("subMap: " + fromKey + " less than " + this.fromKey);
       }
       if (type.toKeyValid()) {
         return TreeMap.this.subMap(fromKey, fromInclusive, toKey, toInclusive);
@@ -411,16 +391,12 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   private static class SubMapType {
-    /**
-     * Returns true if this submap type uses a from-key.
-     */
+    /** Returns true if this submap type uses a from-key. */
     public boolean fromKeyValid() {
       return false;
     }
 
-    /**
-     * Returns true if this submap type uses a to-key.
-     */
+    /** Returns true if this submap type uses a to-key. */
     public boolean toKeyValid() {
       return false;
     }
@@ -428,30 +404,30 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
 
   // extracted anonymous classes for JSweet
   private static class SubMapTypeHead extends SubMapType {
-	    @Override
-	    public boolean toKeyValid() {
-	      return true;
-	    }
+    @Override
+    public boolean toKeyValid() {
+      return true;
+    }
   }
-  
-  private static class SubMapTypeRange extends SubMapType {
-	    @Override
-	    public boolean fromKeyValid() {
-	      return true;
-	    }
 
-	    @Override
-	    public boolean toKeyValid() {
-	      return true;
-	    }
+  private static class SubMapTypeRange extends SubMapType {
+    @Override
+    public boolean fromKeyValid() {
+      return true;
+    }
+
+    @Override
+    public boolean toKeyValid() {
+      return true;
+    }
   }
 
   private static class SubMapTypeTail extends SubMapType {
-	    @Override
-	    public boolean fromKeyValid() {
-	      return true;
-	    }
-}
+    @Override
+    public boolean fromKeyValid() {
+      return true;
+    }
+  }
 
   // these constants were initially in SubMapType (but JSweet does not support it)
   static final SubMapType SubMapType_All = new SubMapType();
@@ -461,7 +437,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   static final SubMapType SubMapType_Range = new SubMapTypeRange();
 
   static final SubMapType SubMapType_Tail = new SubMapTypeTail();
-  
+
   private static final int LEFT = 0;
   private static final int RIGHT = 1;
 
@@ -564,8 +540,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   @Override
-  public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive,
-      K toKey, boolean toInclusive) {
+  public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
     return new SubMap(SubMapType_Range, fromKey, fromInclusive, toKey, toInclusive);
   }
 
@@ -623,8 +598,8 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   /**
-   * Used for testing. Validate that the tree meets all red-black correctness
-   * requirements. These include:
+   * Used for testing. Validate that the tree meets all red-black correctness requirements. These
+   * include:
    *
    * <pre>
    *  - root is black
@@ -665,17 +640,13 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     }
 
     Node<K, V> leftNode = tree.child[LEFT];
-    if (leftNode != null
-        && cmp.compare(leftNode.getKey(), tree.getKey()) > 0) {
-      throw new RuntimeException("Left child " + leftNode
-          + " larger than " + tree);
+    if (leftNode != null && cmp.compare(leftNode.getKey(), tree.getKey()) > 0) {
+      throw new RuntimeException("Left child " + leftNode + " larger than " + tree);
     }
 
     Node<K, V> rightNode = tree.child[RIGHT];
-    if (rightNode != null
-        && cmp.compare(rightNode.getKey(), tree.getKey()) < 0) {
-      throw new RuntimeException("Right child " + rightNode
-          + " smaller than " + tree);
+    if (rightNode != null && cmp.compare(rightNode.getKey(), tree.getKey()) < 0) {
+      throw new RuntimeException("Right child " + rightNode + " smaller than " + tree);
     }
 
     int leftHeight = assertCorrectness(leftNode, tree.isRed);
@@ -706,9 +677,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     return null;
   }
 
-  /**
-   * Returns the left-most node of the tree, or null if empty.
-   */
+  /** Returns the left-most node of the tree, or null if empty. */
   @Override
   Entry<K, V> getFirstEntry() {
     if (root == null) {
@@ -722,9 +691,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     return node;
   }
 
-  /**
-   * Returns the right-most node of the tree, or null if empty.
-   */
+  /** Returns the right-most node of the tree, or null if empty. */
   @Override
   Entry<K, V> getLastEntry() {
     if (root == null) {
@@ -766,8 +733,14 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     return removeWithState(entry.getKey(), state);
   }
 
-  private void inOrderAdd(List<Entry<K, V>> list, SubMapType type, Node<K, V> current,
-      K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+  private void inOrderAdd(
+      List<Entry<K, V>> list,
+      SubMapType type,
+      Node<K, V> current,
+      K fromKey,
+      boolean fromInclusive,
+      K toKey,
+      boolean toInclusive) {
     if (current == null) {
       return;
     }
@@ -775,8 +748,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     // outside of bounds?
     Node<K, V> leftNode = current.child[LEFT];
     if (leftNode != null) {
-      inOrderAdd(list, type, leftNode,
-          fromKey, fromInclusive, toKey, toInclusive);
+      inOrderAdd(list, type, leftNode, fromKey, fromInclusive, toKey, toInclusive);
     }
     if (inRange(type, current.getKey(), fromKey, fromInclusive, toKey, toInclusive)) {
       list.add(current);
@@ -787,8 +759,8 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     }
   }
 
-  private boolean inRange(SubMapType type, K key,
-      K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
+  private boolean inRange(
+      SubMapType type, K key, K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
     if (type.fromKeyValid() && smaller(key, fromKey, !fromInclusive)) {
       return false;
     }
@@ -801,13 +773,13 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   /**
    * Insert a node into a subtree, collecting state about the insertion.
    *
-   * If the same key already exists, the value of the node is overwritten with
-   * the value from the new node instead.
+   * <p>If the same key already exists, the value of the node is overwritten with the value from the
+   * new node instead.
    *
    * @param tree subtree to insert into
    * @param newNode new node to insert
-   * @param state result of the insertion: state.found true if the key already
-   *          existed in the tree state.value the old value if the key existed
+   * @param state result of the insertion: state.found true if the key already existed in the tree
+   *     state.value the old value if the key existed
    * @return the new subtree root
    */
   private Node<K, V> insert(Node<K, V> tree, Node<K, V> newNode, State<V> state) {
@@ -841,25 +813,18 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
     return tree;
   }
 
-  /**
-   * Returns true if <code>node</code> is red. Note that null pointers are
-   * considered black.
-   */
+  /** Returns true if <code>node</code> is red. Note that null pointers are considered black. */
   private boolean isRed(Node<K, V> node) {
     return node != null && node.isRed;
   }
 
-  /**
-   * Returns true if <code>a</code> is greater than or equal to <code>b</code>.
-   */
+  /** Returns true if <code>a</code> is greater than or equal to <code>b</code>. */
   private boolean larger(K a, K b, boolean orEqual) {
     int compare = cmp.compare(a, b);
     return compare > 0 || (orEqual && compare == 0);
   }
 
-  /**
-   * Returns true if <code>a</code> is less than or equal to <code>b</code>.
-   */
+  /** Returns true if <code>a</code> is less than or equal to <code>b</code>. */
   private boolean smaller(K a, K b, boolean orEqual) {
     int compare = cmp.compare(a, b);
     return compare < 0 || (orEqual && compare == 0);
@@ -901,8 +866,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
         } else if (!isRed(node.child[otherChild(dir)])) {
           Node<K, V> sibling = parent.child[otherChild(last)];
           if (sibling != null) {
-            if (!isRed(sibling.child[otherChild(last)])
-                && !isRed(sibling.child[last])) {
+            if (!isRed(sibling.child[otherChild(last)]) && !isRed(sibling.child[last])) {
               parent.isRed = false;
               sibling.isRed = true;
               node.isRed = true;
@@ -927,12 +891,12 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
       state.found = true;
       state.value = found.getValue();
       /**
-       * put the "node" values in "found" (the node with key K) and cut "node"
-       * out. However, we do not want to corrupt "found" -- issue 3423. So
-       * create a new node "newNode" to replace the "found" node.
+       * put the "node" values in "found" (the node with key K) and cut "node" out. However, we do
+       * not want to corrupt "found" -- issue 3423. So create a new node "newNode" to replace the
+       * "found" node.
        *
-       * TODO: (jat's suggestion) Consider using rebalance to move the deleted
-       * node to a leaf to avoid the extra traversal in replaceNode.
+       * <p>TODO: (jat's suggestion) Consider using rebalance to move the deleted node to a leaf to
+       * avoid the extra traversal in replaceNode.
        */
       if (node != found) {
         Node<K, V> newNode = new Node<K, V>(node.getKey(), node.getValue());
@@ -943,8 +907,8 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
       }
 
       // cut "node" out
-      parent.child[parent.child[RIGHT] == node ? RIGHT : LEFT] = node.child[node.child[LEFT] == null
-          ? RIGHT : LEFT];
+      parent.child[parent.child[RIGHT] == node ? RIGHT : LEFT] =
+          node.child[node.child[LEFT] == null ? RIGHT : LEFT];
       size--;
     }
 
@@ -956,13 +920,15 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   /**
-   * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have
-   * avoided this traversal if each node maintained a parent pointer.
+   * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have avoided this traversal
+   * if each node maintained a parent pointer.
    */
   private void replaceNode(Node<K, V> head, Node<K, V> node, Node<K, V> newNode) {
     Node<K, V> parent = head;
-    int direction = (parent.getKey() == null || cmp.compare(node.getKey(), parent.getKey()) > 0)
-        ? RIGHT : LEFT; // parent.key == null handles the fake root node
+    int direction =
+        (parent.getKey() == null || cmp.compare(node.getKey(), parent.getKey()) > 0)
+            ? RIGHT
+            : LEFT; // parent.key == null handles the fake root node
     while (parent.child[direction] != node) {
       parent = parent.child[direction];
       assert parent != null;
@@ -978,9 +944,8 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   /**
-   * Perform a double rotation, first rotating the child which will become the
-   * root in the opposite direction, then rotating the root in the specified
-   * direction.
+   * Perform a double rotation, first rotating the child which will become the root in the opposite
+   * direction, then rotating the root in the specified direction.
    *
    * <pre>
    *           A                                               F
@@ -1001,8 +966,7 @@ public class TreeMap<K, V> extends AbstractNavigableMap<K, V> implements Seriali
   }
 
   /**
-   * Perform a single rotation, pushing the root of the subtree to the specified
-   * direction.
+   * Perform a single rotation, pushing the root of the subtree to the specified direction.
    *
    * <pre>
    *      A                                              B

@@ -24,8 +24,8 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 /**
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">
- * the official Java API doc</a> for details.
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">the official Java
+ * API doc</a> for details.
  *
  * @param <T> type of the wrapped reference
  */

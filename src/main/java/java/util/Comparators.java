@@ -20,44 +20,44 @@ import static javaemul.internal.InternalPreconditions.checkNotNull;
 import static jsweet.util.Lang.object;
 
 class Comparators {
-	/*
-	 * This is a utility class that provides a default Comparator. This class
-	 * exists so Arrays and Collections can share the natural comparator without
-	 * having to know internals of each other.
-	 *
-	 * This class is package protected since it is not in the JRE.
-	 */
+  /*
+   * This is a utility class that provides a default Comparator. This class
+   * exists so Arrays and Collections can share the natural comparator without
+   * having to know internals of each other.
+   *
+   * This class is package protected since it is not in the JRE.
+   */
 
-	// extracted anonymous class
-	static class NaturalComparator implements Comparator<Object> {
-		@Override
-		public int compare(Object o1, Object o2) {
-			checkNotNull(o1);
-			checkNotNull(o2);
-			if (object(o1).$get("compareTo") == undefined) {
-				return o1.toString().compareTo(o2.toString());
-			}
-			return ((Comparable<Object>) o1).compareTo(o2);
-		}
-	}
-	
-	/**
-	 * Compares two Objects according to their <i>natural ordering</i>.
-	 *
-	 * @see java.lang.Comparable
-	 */
-	private static final Comparator<Object> NATURAL = new NaturalComparator();
+  // extracted anonymous class
+  static class NaturalComparator implements Comparator<Object> {
+    @Override
+    public int compare(Object o1, Object o2) {
+      checkNotNull(o1);
+      checkNotNull(o2);
+      if (object(o1).$get("compareTo") == undefined) {
+        return o1.toString().compareTo(o2.toString());
+      }
+      return ((Comparable<Object>) o1).compareTo(o2);
+    }
+  }
 
-	/**
-	 * Returns the natural Comparator.
-	 * <p>
-	 * Example:
-	 *
-	 * <pre>Comparator&lt;String&gt; compareString = Comparators.natural()</pre>
-	 *
-	 * @return the natural Comparator
-	 */
-	public static <T> Comparator<T> natural() {
-		return (Comparator<T>) NATURAL;
-	}
+  /**
+   * Compares two Objects according to their <i>natural ordering</i>.
+   *
+   * @see java.lang.Comparable
+   */
+  private static final Comparator<Object> NATURAL = new NaturalComparator();
+
+  /**
+   * Returns the natural Comparator.
+   *
+   * <p>Example:
+   *
+   * <pre>Comparator&lt;String&gt; compareString = Comparators.natural()</pre>
+   *
+   * @return the natural Comparator
+   */
+  public static <T> Comparator<T> natural() {
+    return (Comparator<T>) NATURAL;
+  }
 }

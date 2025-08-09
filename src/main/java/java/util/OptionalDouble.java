@@ -22,8 +22,8 @@ import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
 /**
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">
- * the official Java API doc</a> for details.
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">the
+ * official Java API doc</a> for details.
  */
 public final class OptionalDouble {
 

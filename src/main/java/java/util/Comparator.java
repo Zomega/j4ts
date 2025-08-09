@@ -17,8 +17,7 @@ package java.util;
 
 /**
  * An interface used a basis for implementing custom ordering. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Comparator.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Comparator.html">[Sun docs]</a>
  *
  * @param <T> the type to be compared.
  */
@@ -28,5 +27,4 @@ public interface Comparator<T> {
 
   @Override
   boolean equals(Object other);
-
 }

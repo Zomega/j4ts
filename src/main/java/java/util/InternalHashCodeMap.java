@@ -20,18 +20,17 @@ import static jsweet.util.Lang.$insert;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Map.Entry;
-
 import javaemul.internal.ArrayHelper;
 
 /**
  * A simple wrapper around JavaScriptObject to provide {@link java.util.Map}-like semantics for any
  * key type.
- * <p>
- * Implementation notes:
- * <p>
- * A key's hashCode is the index in backingMap which should contain that key. Since several keys may
- * have the same hash, each value in hashCodeMap is actually an array containing all entries whose
- * keys share the same hash.
+ *
+ * <p>Implementation notes:
+ *
+ * <p>A key's hashCode is the index in backingMap which should contain that key. Since several keys
+ * may have the same hash, each value in hashCodeMap is actually an array containing all entries
+ * whose keys share the same hash.
  */
 class InternalHashCodeMap<K, V> implements Iterable<Entry<K, V>> {
 
@@ -104,7 +103,7 @@ class InternalHashCodeMap<K, V> implements Iterable<Entry<K, V>> {
 
   @Override
   public Iterator<Entry<K, V>> iterator() {
-    return new Iterator<Map.Entry<K,V>>() {
+    return new Iterator<Map.Entry<K, V>>() {
       final InternalJsMap.Iterator<Object> chains = backingMap.entries();
       int itemIndex = 0;
       Entry<K, V>[] chain = newEntryChain();
@@ -149,11 +148,13 @@ class InternalHashCodeMap<K, V> implements Iterable<Entry<K, V>> {
 
   private Entry<K, V>[] newEntryChain() {
     return $insert("[]");
-  };
+  }
+  ;
 
   private Entry<K, V>[] unsafeCastToArray(Object arr) {
     return $insert("arr");
-  };
+  }
+  ;
 
   /**
    * Returns hash code of the key as calculated by {@link AbstractHashMap#getHashCode(Object)} but

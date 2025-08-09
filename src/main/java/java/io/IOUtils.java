@@ -20,7 +20,7 @@ import static javaemul.internal.InternalPreconditions.checkNotNull;
 /**
  * Provides a series of utilities to be reused between IO classes.
  *
- * TODO(chehayeb): move these checks to InternalPreconditions.
+ * <p>TODO(chehayeb): move these checks to InternalPreconditions.
  */
 final class IOUtils {
 
@@ -73,6 +73,5 @@ final class IOUtils {
     }
   }
 
-  private IOUtils() {
-  }
+  private IOUtils() {}
 }

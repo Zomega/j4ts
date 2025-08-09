@@ -21,290 +21,280 @@ import static javaemul.internal.InternalPreconditions.checkCriticalElement;
 import static javaemul.internal.InternalPreconditions.checkState;
 
 /**
- * Hash table implementation of the Map interface with predictable iteration
- * order. <a href=
- * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun
- * docs]</a>
+ * Hash table implementation of the Map interface with predictable iteration order. <a href=
+ * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun docs]</a>
  *
- * @param <K>
- *            key type.
- * @param <V>
- *            value type.
+ * @param <K> key type.
+ * @param <V> value type.
  */
 public class LinkedHashMap<K, V> extends HashMap<K, V> implements Map<K, V> {
 
-	/**
-	 * The entry we use includes next/prev pointers for a doubly-linked circular
-	 * list with a head node. This reduces the special cases we have to deal
-	 * with in the list operations.
-	 *
-	 * Note that we duplicate the key from the underlying hash map so we can
-	 * find the eldest entry. The alternative would have been to modify HashMap
-	 * so more of the code was directly usable here, but this would have added
-	 * some overhead to HashMap, or to reimplement most of the HashMap code here
-	 * with small modifications. Paying a small storage cost only if you use
-	 * LinkedHashMap and minimizing code size seemed like a better tradeoff
-	 */
-	private class ChainEntry extends SimpleEntry<K, V> {
-		private transient ChainEntry next;
-		private transient ChainEntry prev;
+  /**
+   * The entry we use includes next/prev pointers for a doubly-linked circular list with a head
+   * node. This reduces the special cases we have to deal with in the list operations.
+   *
+   * <p>Note that we duplicate the key from the underlying hash map so we can find the eldest entry.
+   * The alternative would have been to modify HashMap so more of the code was directly usable here,
+   * but this would have added some overhead to HashMap, or to reimplement most of the HashMap code
+   * here with small modifications. Paying a small storage cost only if you use LinkedHashMap and
+   * minimizing code size seemed like a better tradeoff
+   */
+  private class ChainEntry extends SimpleEntry<K, V> {
+    private transient ChainEntry next;
+    private transient ChainEntry prev;
 
-		public ChainEntry() {
-			this(null, null);
-		}
+    public ChainEntry() {
+      this(null, null);
+    }
 
-		public ChainEntry(K key, V value) {
-			super(key, value);
-		}
+    public ChainEntry(K key, V value) {
+      super(key, value);
+    }
 
-		/**
-		 * Add this node to the end of the chain.
-		 */
-		public void addToEnd() {
-			ChainEntry tail = head.prev;
+    /** Add this node to the end of the chain. */
+    public void addToEnd() {
+      ChainEntry tail = head.prev;
 
-			// Chain is valid.
-			assert (head != null && tail != null);
+      // Chain is valid.
+      assert (head != null && tail != null);
 
-			// This entry is not in the list.
-			assert (next == null) && (prev == null);
+      // This entry is not in the list.
+      assert (next == null) && (prev == null);
 
-			// Update me.
-			prev = tail;
-			next = head;
-			tail.next = head.prev = this;
-		}
+      // Update me.
+      prev = tail;
+      next = head;
+      tail.next = head.prev = this;
+    }
 
-		/**
-		 * Remove this node from any list it may be a part of.
-		 */
-		public void remove() {
-			next.prev = prev;
-			prev.next = next;
-			next = prev = null;
-		}
-	}
+    /** Remove this node from any list it may be a part of. */
+    public void remove() {
+      next.prev = prev;
+      prev.next = next;
+      next = prev = null;
+    }
+  }
 
-	private final class EntrySet extends AbstractSet<Map.Entry<K, V>> {
+  private final class EntrySet extends AbstractSet<Map.Entry<K, V>> {
 
-		private final class EntryIterator implements Iterator<Map.Entry<K, V>> {
-			// The last entry that was returned from this iterator.
-			private ChainEntry last;
+    private final class EntryIterator implements Iterator<Map.Entry<K, V>> {
+      // The last entry that was returned from this iterator.
+      private ChainEntry last;
 
-			// The next entry to return from this iterator.
-			private ChainEntry next;
+      // The next entry to return from this iterator.
+      private ChainEntry next;
 
-			public EntryIterator() {
-				next = head.next;
-				recordLastKnownStructure(map, this);
-			}
+      public EntryIterator() {
+        next = head.next;
+        recordLastKnownStructure(map, this);
+      }
 
-			@Override
-			public boolean hasNext() {
-				return next != head;
-			}
+      @Override
+      public boolean hasNext() {
+        return next != head;
+      }
 
-			@Override
-			public Map.Entry<K, V> next() {
-				checkStructuralChange(map, this);
-				checkCriticalElement(hasNext());
+      @Override
+      public Map.Entry<K, V> next() {
+        checkStructuralChange(map, this);
+        checkCriticalElement(hasNext());
 
-				last = next;
-				next = next.next;
-				return last;
-			}
+        last = next;
+        next = next.next;
+        return last;
+      }
 
-			@Override
-			public void remove() {
-				checkState(last != null);
-				checkStructuralChange(map, this);
+      @Override
+      public void remove() {
+        checkState(last != null);
+        checkStructuralChange(map, this);
 
-				last.remove();
-				map.remove(last.getKey());
-				recordLastKnownStructure(map, this);
-				last = null;
-			}
-		}
+        last.remove();
+        map.remove(last.getKey());
+        recordLastKnownStructure(map, this);
+        last = null;
+      }
+    }
 
-		@Override
-		public void clear() {
-			LinkedHashMap.this.clear();
-		}
+    @Override
+    public void clear() {
+      LinkedHashMap.this.clear();
+    }
 
-		@Override
-		public boolean contains(Object o) {
-			if (o instanceof Map.Entry) {
-				return containsEntry((Map.Entry<?, ?>) o);
-			}
-			return false;
-		}
+    @Override
+    public boolean contains(Object o) {
+      if (o instanceof Map.Entry) {
+        return containsEntry((Map.Entry<?, ?>) o);
+      }
+      return false;
+    }
 
-		@Override
-		public Iterator<Map.Entry<K, V>> iterator() {
-			return new EntryIterator();
-		}
+    @Override
+    public Iterator<Map.Entry<K, V>> iterator() {
+      return new EntryIterator();
+    }
 
-		@Override
-		public boolean remove(Object entry) {
-			if (contains(entry)) {
-				Object key = ((Map.Entry<?, ?>) entry).getKey();
-				LinkedHashMap.this.remove(key);
-				return true;
-			}
-			return false;
-		}
+    @Override
+    public boolean remove(Object entry) {
+      if (contains(entry)) {
+        Object key = ((Map.Entry<?, ?>) entry).getKey();
+        LinkedHashMap.this.remove(key);
+        return true;
+      }
+      return false;
+    }
 
-		@Override
-		public int size() {
-			return LinkedHashMap.this.size();
-		}
-	}
+    @Override
+    public int size() {
+      return LinkedHashMap.this.size();
+    }
+  }
 
-	// True if we should use the access order (ie, for LRU caches) instead of
-	// insertion order.
-	private transient boolean accessOrder;
+  // True if we should use the access order (ie, for LRU caches) instead of
+  // insertion order.
+  private transient boolean accessOrder;
 
-	/*
-	 * The head of the LRU/insert order chain, which is a doubly-linked circular
-	 * list. The key and value of head should never be read.
-	 *
-	 * The most recently inserted/accessed node is at the end of the chain, ie.
-	 * chain.prev.
-	 */
-	private final transient ChainEntry head;
+  /*
+   * The head of the LRU/insert order chain, which is a doubly-linked circular
+   * list. The key and value of head should never be read.
+   *
+   * The most recently inserted/accessed node is at the end of the chain, ie.
+   * chain.prev.
+   */
+  private final transient ChainEntry head;
 
-	/*
-	 * The hashmap that keeps track of our entries and the chain. Note that we
-	 * duplicate the key here to eliminate changes to HashMap and minimize the
-	 * code here, at the expense of additional space.
-	 */
-	private final transient HashMap<K, ChainEntry> map;
+  /*
+   * The hashmap that keeps track of our entries and the chain. Note that we
+   * duplicate the key here to eliminate changes to HashMap and minimize the
+   * code here, at the expense of additional space.
+   */
+  private final transient HashMap<K, ChainEntry> map;
 
-	public LinkedHashMap() {
-		this.head = new ChainEntry();
-		this.map = new HashMap<K, ChainEntry>();
-		resetChainEntries();
-	}
+  public LinkedHashMap() {
+    this.head = new ChainEntry();
+    this.map = new HashMap<K, ChainEntry>();
+    resetChainEntries();
+  }
 
-	public LinkedHashMap(int ignored) {
-		this(ignored, 0);
-	}
+  public LinkedHashMap(int ignored) {
+    this(ignored, 0);
+  }
 
-	public LinkedHashMap(int ignored, float alsoIgnored) {
-		super(ignored, alsoIgnored);
-		this.head = new ChainEntry();
-		this.map = new HashMap<K, ChainEntry>();
-		resetChainEntries();
-	}
+  public LinkedHashMap(int ignored, float alsoIgnored) {
+    super(ignored, alsoIgnored);
+    this.head = new ChainEntry();
+    this.map = new HashMap<K, ChainEntry>();
+    resetChainEntries();
+  }
 
-	public LinkedHashMap(int ignored, float alsoIgnored, boolean accessOrder) {
-		super(ignored, alsoIgnored);
-		this.head = new ChainEntry();
-		this.map = new HashMap<K, ChainEntry>();
-		this.accessOrder = accessOrder;
-		resetChainEntries();
-	}
+  public LinkedHashMap(int ignored, float alsoIgnored, boolean accessOrder) {
+    super(ignored, alsoIgnored);
+    this.head = new ChainEntry();
+    this.map = new HashMap<K, ChainEntry>();
+    this.accessOrder = accessOrder;
+    resetChainEntries();
+  }
 
-	public LinkedHashMap(Map<? extends K, ? extends V> toBeCopied) {
-		this.head = new ChainEntry();
-		this.map = new HashMap<K, ChainEntry>();
-		resetChainEntries();
-		this.putAll(toBeCopied);
-	}
+  public LinkedHashMap(Map<? extends K, ? extends V> toBeCopied) {
+    this.head = new ChainEntry();
+    this.map = new HashMap<K, ChainEntry>();
+    resetChainEntries();
+    this.putAll(toBeCopied);
+  }
 
-	@Override
-	public void clear() {
-		map.clear();
-		resetChainEntries();
-	}
+  @Override
+  public void clear() {
+    map.clear();
+    resetChainEntries();
+  }
 
-	private void resetChainEntries() {
-		head.prev = head;
-		head.next = head;
-	}
+  private void resetChainEntries() {
+    head.prev = head;
+    head.next = head;
+  }
 
-	@Override
-	public Object clone() {
-		return new LinkedHashMap<K, V>(this);
-	}
+  @Override
+  public Object clone() {
+    return new LinkedHashMap<K, V>(this);
+  }
 
-	@Override
-	public boolean containsKey(Object key) {
-		return map.containsKey(key);
-	}
+  @Override
+  public boolean containsKey(Object key) {
+    return map.containsKey(key);
+  }
 
-	@Override
-	public boolean containsValue(Object value) {
-		ChainEntry node = head.next;
-		while (node != head) {
-			if (Objects.equals(node.getValue(), value)) {
-				return true;
-			}
-			node = node.next;
-		}
-		return false;
-	}
+  @Override
+  public boolean containsValue(Object value) {
+    ChainEntry node = head.next;
+    while (node != head) {
+      if (Objects.equals(node.getValue(), value)) {
+        return true;
+      }
+      node = node.next;
+    }
+    return false;
+  }
 
-	@Override
-	public Set<Map.Entry<K, V>> entrySet() {
-		return new EntrySet();
-	}
+  @Override
+  public Set<Map.Entry<K, V>> entrySet() {
+    return new EntrySet();
+  }
 
-	@Override
-	public V get(Object key) {
-		ChainEntry entry = map.get(key);
-		if (entry != null) {
-			recordAccess(entry);
-			return entry.getValue();
-		}
-		return null;
-	}
+  @Override
+  public V get(Object key) {
+    ChainEntry entry = map.get(key);
+    if (entry != null) {
+      recordAccess(entry);
+      return entry.getValue();
+    }
+    return null;
+  }
 
-	@Override
-	public V put(K key, V value) {
-		ChainEntry old = map.get(key);
-		if (old == null) {
-			ChainEntry newEntry = new ChainEntry(key, value);
-			map.put(key, newEntry);
-			newEntry.addToEnd();
-			ChainEntry eldest = head.next;
-			if (removeEldestEntry(eldest)) {
-				eldest.remove();
-				map.remove(eldest.getKey());
-			}
-			return null;
-		} else {
-			V oldValue = old.setValue(value);
-			recordAccess(old);
-			return oldValue;
-		}
-	}
+  @Override
+  public V put(K key, V value) {
+    ChainEntry old = map.get(key);
+    if (old == null) {
+      ChainEntry newEntry = new ChainEntry(key, value);
+      map.put(key, newEntry);
+      newEntry.addToEnd();
+      ChainEntry eldest = head.next;
+      if (removeEldestEntry(eldest)) {
+        eldest.remove();
+        map.remove(eldest.getKey());
+      }
+      return null;
+    } else {
+      V oldValue = old.setValue(value);
+      recordAccess(old);
+      return oldValue;
+    }
+  }
 
-	@Override
-	public V remove(Object key) {
-		ChainEntry entry = map.remove(key);
-		if (entry != null) {
-			entry.remove();
-			return entry.getValue();
-		}
-		return null;
-	}
+  @Override
+  public V remove(Object key) {
+    ChainEntry entry = map.remove(key);
+    if (entry != null) {
+      entry.remove();
+      return entry.getValue();
+    }
+    return null;
+  }
 
-	@Override
-	public int size() {
-		return map.size();
-	}
+  @Override
+  public int size() {
+    return map.size();
+  }
 
-	@SuppressWarnings("unused")
-	protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
-		return false;
-	}
+  @SuppressWarnings("unused")
+  protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+    return false;
+  }
 
-	private void recordAccess(ChainEntry entry) {
-		if (accessOrder) {
-			// Move to the tail of the chain on access.
-			entry.remove();
-			entry.addToEnd();
-		}
-	}
+  private void recordAccess(ChainEntry entry) {
+    if (accessOrder) {
+      // Move to the tail of the chain on access.
+      entry.remove();
+      entry.addToEnd();
+    }
+  }
 }

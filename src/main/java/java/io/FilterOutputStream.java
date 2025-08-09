@@ -20,84 +20,75 @@
 package java.io;
 
 /**
- * Wraps an existing {@link OutputStream} and performs some transformation on
- * the output data while it is being written. Transformations can be anything
- * from a simple byte-wise filtering output data to an on-the-fly compression or
- * decompression of the underlying stream. Output streams that wrap another
- * output stream and provide some additional functionality on top of it usually
- * inherit from this class.
+ * Wraps an existing {@link OutputStream} and performs some transformation on the output data while
+ * it is being written. Transformations can be anything from a simple byte-wise filtering output
+ * data to an on-the-fly compression or decompression of the underlying stream. Output streams that
+ * wrap another output stream and provide some additional functionality on top of it usually inherit
+ * from this class.
  *
  * @see FilterOutputStream
  */
 public class FilterOutputStream extends OutputStream {
 
-    /**
-     * The target output stream for this filter stream.
-     */
-    protected OutputStream out;
+  /** The target output stream for this filter stream. */
+  protected OutputStream out;
 
-    /**
-     * Constructs a new {@code FilterOutputStream} with {@code out} as its
-     * target stream.
-     *
-     * @param out
-     *            the target stream that this stream writes to.
-     */
-    public FilterOutputStream(OutputStream out) {
-        this.out = out;
+  /**
+   * Constructs a new {@code FilterOutputStream} with {@code out} as its target stream.
+   *
+   * @param out the target stream that this stream writes to.
+   */
+  public FilterOutputStream(OutputStream out) {
+    this.out = out;
+  }
+
+  /**
+   * Closes this stream. This implementation closes the target stream.
+   *
+   * @throws IOException if an error occurs attempting to close this stream.
+   */
+  @Override
+  public void close() throws IOException {
+    Throwable thrown = null;
+    try {
+      flush();
+    } catch (Throwable e) {
+      thrown = e;
     }
 
-    /**
-     * Closes this stream. This implementation closes the target stream.
-     *
-     * @throws IOException
-     *             if an error occurs attempting to close this stream.
-     */
-    @Override
-    public void close() throws IOException {
-        Throwable thrown = null;
-        try {
-            flush();
-        } catch (Throwable e) {
-            thrown = e;
-        }
-
-        try {
-            out.close();
-        } catch (Throwable e) {
-            if (thrown == null) {
-                thrown = e;
-            }
-        }
-
-        if (thrown != null) {
-            throw new IOException(thrown);
-        }
+    try {
+      out.close();
+    } catch (Throwable e) {
+      if (thrown == null) {
+        thrown = e;
+      }
     }
 
-    /**
-     * Ensures that all pending data is sent out to the target stream. This
-     * implementation flushes the target stream.
-     *
-     * @throws IOException
-     *             if an error occurs attempting to flush this stream.
-     */
-    @Override
-    public void flush() throws IOException {
-        out.flush();
+    if (thrown != null) {
+      throw new IOException(thrown);
     }
+  }
 
-    /**
-     * Writes one byte to the target stream. Only the low order byte of the
-     * integer {@code oneByte} is written.
-     *
-     * @param oneByte
-     *            the byte to be written.
-     * @throws IOException
-     *             if an I/O error occurs while writing to this stream.
-     */
-    @Override
-    public void write(int oneByte) throws IOException {
-        out.write(oneByte);
-    }
+  /**
+   * Ensures that all pending data is sent out to the target stream. This implementation flushes the
+   * target stream.
+   *
+   * @throws IOException if an error occurs attempting to flush this stream.
+   */
+  @Override
+  public void flush() throws IOException {
+    out.flush();
+  }
+
+  /**
+   * Writes one byte to the target stream. Only the low order byte of the integer {@code oneByte} is
+   * written.
+   *
+   * @param oneByte the byte to be written.
+   * @throws IOException if an I/O error occurs while writing to this stream.
+   */
+  @Override
+  public void write(int oneByte) throws IOException {
+    out.write(oneByte);
+  }
 }

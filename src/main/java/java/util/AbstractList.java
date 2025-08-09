@@ -24,13 +24,11 @@ import static javaemul.internal.InternalPreconditions.checkState;
 
 /**
  * Skeletal implementation of the List interface. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun docs]</a>
  *
  * @param <E> the element type.
  */
-public abstract class AbstractList<E> extends AbstractCollection<E> implements
-    List<E> {
+public abstract class AbstractList<E> extends AbstractCollection<E> implements List<E> {
 
   private class IteratorImpl implements Iterator<E> {
     /*
@@ -42,10 +40,10 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements
     int i, last;
 
     public IteratorImpl() {
-        i = 0;
-        last = -1;
-	}
-    
+      i = 0;
+      last = -1;
+    }
+
     @Override
     public boolean hasNext() {
       return i < AbstractList.this.size();
@@ -68,11 +66,8 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements
     }
   }
 
-  /**
-   * Implementation of <code>ListIterator</code> for abstract lists.
-   */
-  private final class ListIteratorImpl extends IteratorImpl implements
-      ListIterator<E> {
+  /** Implementation of <code>ListIterator</code> for abstract lists. */
+  private final class ListIteratorImpl extends IteratorImpl implements ListIterator<E> {
     /*
      * i is the index of the item that will be returned on the next call to
      * next() last is the index of the item that was returned on the previous
@@ -178,8 +173,7 @@ public abstract class AbstractList<E> extends AbstractCollection<E> implements
 
   protected transient int modCount;
 
-  protected AbstractList() {
-  }
+  protected AbstractList() {}
 
   @Override
   public boolean add(E obj) {

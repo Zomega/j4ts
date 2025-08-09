@@ -18,91 +18,86 @@ package javaemul.internal;
 import static javaemul.internal.InternalPreconditions.checkNotNull;
 
 import java.io.Serializable;
-
 import jsweet.lang.Erased;
 
-/**
- * Wraps native <code>boolean</code> as an object.
- */
+/** Wraps native <code>boolean</code> as an object. */
 public final class BooleanHelper implements Comparable<BooleanHelper>, Serializable {
 
-	@Erased
-	private static final long serialVersionUID = 1L;
-	public static final Boolean FALSE = false;
-	public static final Boolean TRUE = true;
+  @Erased private static final long serialVersionUID = 1L;
+  public static final Boolean FALSE = false;
+  public static final Boolean TRUE = true;
 
-	public static final Class<Boolean> TYPE = Boolean.class;
+  public static final Class<Boolean> TYPE = Boolean.class;
 
-	public static int compare(boolean x, boolean y) {
-		return (x == y) ? 0 : (x ? 1 : -1);
-	}
+  public static int compare(boolean x, boolean y) {
+    return (x == y) ? 0 : (x ? 1 : -1);
+  }
 
-	public static int hashCode(boolean value) {
-		// The Java API doc defines these magic numbers.
-		return value ? 1231 : 1237;
-	}
+  public static int hashCode(boolean value) {
+    // The Java API doc defines these magic numbers.
+    return value ? 1231 : 1237;
+  }
 
-	public static boolean logicalAnd(boolean a, boolean b) {
-		return a && b;
-	}
+  public static boolean logicalAnd(boolean a, boolean b) {
+    return a && b;
+  }
 
-	public static boolean logicalOr(boolean a, boolean b) {
-		return a || b;
-	}
+  public static boolean logicalOr(boolean a, boolean b) {
+    return a || b;
+  }
 
-	public static boolean logicalXor(boolean a, boolean b) {
-		return a ^ b;
-	}
+  public static boolean logicalXor(boolean a, boolean b) {
+    return a ^ b;
+  }
 
-	public static boolean parseBoolean(String s) {
-		return "true".equalsIgnoreCase(s);
-	}
+  public static boolean parseBoolean(String s) {
+    return "true".equalsIgnoreCase(s);
+  }
 
-	public static String toString(boolean x) {
-		return String.valueOf(x);
-	}
+  public static String toString(boolean x) {
+    return String.valueOf(x);
+  }
 
-	public static Boolean valueOf(boolean b) {
-		return b ? TRUE : FALSE;
-	}
+  public static Boolean valueOf(boolean b) {
+    return b ? TRUE : FALSE;
+  }
 
-	public static Boolean valueOf(String s) {
-		return valueOf(parseBoolean(s));
-	}
+  public static Boolean valueOf(String s) {
+    return valueOf(parseBoolean(s));
+  }
 
-	@Erased
-	public BooleanHelper(boolean value) {
-	}
+  @Erased
+  public BooleanHelper(boolean value) {}
 
-	@Erased
-	public BooleanHelper(String s) {
-	}
+  @Erased
+  public BooleanHelper(String s) {}
 
-	public boolean booleanValue() {
-		return unsafeCast(checkNotNull(this));
-	}
+  public boolean booleanValue() {
+    return unsafeCast(checkNotNull(this));
+  }
 
-	private static boolean unsafeCast(Object value) {
-		return (Boolean) value;
-	};
+  private static boolean unsafeCast(Object value) {
+    return (Boolean) value;
+  }
+  ;
 
-	@Override
-	public int compareTo(BooleanHelper b) {
-		return compare(booleanValue(), b.booleanValue());
-	}
+  @Override
+  public int compareTo(BooleanHelper b) {
+    return compare(booleanValue(), b.booleanValue());
+  }
 
-	@Override
-	public boolean equals(Object o) {
-		return checkNotNull(this) == o;
-	}
+  @Override
+  public boolean equals(Object o) {
+    return checkNotNull(this) == o;
+  }
 
-	@Override
-	public int hashCode() {
-		return hashCode(booleanValue());
-	}
+  @Override
+  public int hashCode() {
+    return hashCode(booleanValue());
+  }
 
-	@Override
-	public String toString() {
-		return toString(booleanValue());
-	}
+  @Override
+  public String toString() {
+    return toString(booleanValue());
+  }
 }

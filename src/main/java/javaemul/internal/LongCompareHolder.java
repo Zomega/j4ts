@@ -17,11 +17,10 @@ package javaemul.internal;
 
 import static jsweet.util.Lang.function;
 
-/**
- * A helper class for long comparison.
- */
+/** A helper class for long comparison. */
 public class LongCompareHolder {
-	public static Object getLongComparator() {
-		return function((Long l1, Long l2) -> l2 - l1);
-	};
+  public static Object getLongComparator() {
+    return function((Long l1, Long l2) -> l2 - l1);
+  }
+  ;
 }

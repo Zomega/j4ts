@@ -23,29 +23,26 @@ import static javaemul.internal.InternalPreconditions.checkCriticalPositionIndex
 import static javaemul.internal.InternalPreconditions.checkElementIndex;
 import static javaemul.internal.InternalPreconditions.checkNotNull;
 import static javaemul.internal.InternalPreconditions.checkPositionIndexes;
-import static jsweet.util.Lang.any;
 import static jsweet.util.Lang.$insert;
-
-import java.io.Serializable;
-import java.util.stream.Stream;
+import static jsweet.util.Lang.any;
 
 import def.js.Array;
+import java.io.Serializable;
+import java.util.stream.Stream;
 import javaemul.internal.ArrayHelper;
 import javaemul.internal.LongCompareHolder;
 
 /**
  * Utility methods related to native arrays. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun docs]</a>
  */
 public class Arrays {
 
-  private static final class ArrayList<E> extends AbstractList<E> implements
-      RandomAccess, Serializable {
+  private static final class ArrayList<E> extends AbstractList<E>
+      implements RandomAccess, Serializable {
 
     /**
-     * The only reason this is non-final is so that E[] (and E) will be exposed
-     * for serialization.
+     * The only reason this is non-final is so that E[] (and E) will be exposed for serialization.
      */
     private E[] array;
 
@@ -119,10 +116,9 @@ public class Arrays {
    *
    * @param sortedArray byte array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final byte[] sortedArray, final byte key) {
     int low = 0;
@@ -150,10 +146,9 @@ public class Arrays {
    *
    * @param a char array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final char[] a, final char key) {
     int low = 0;
@@ -181,10 +176,9 @@ public class Arrays {
    *
    * @param sortedArray double array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final double[] sortedArray, final double key) {
     int low = 0;
@@ -210,17 +204,15 @@ public class Arrays {
   /**
    * Perform a binary search on a sorted float array.
    *
-   * Note that some underlying JavaScript interpreters do not actually implement
-   * floats (using double instead), so you may get slightly different behavior
-   * regarding values that are very close (or equal) since conversion errors
-   * to/from double may change the values slightly.
+   * <p>Note that some underlying JavaScript interpreters do not actually implement floats (using
+   * double instead), so you may get slightly different behavior regarding values that are very
+   * close (or equal) since conversion errors to/from double may change the values slightly.
    *
    * @param sortedArray float array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final float[] sortedArray, final float key) {
     int low = 0;
@@ -248,10 +240,9 @@ public class Arrays {
    *
    * @param sortedArray int array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final int[] sortedArray, final int key) {
     int low = 0;
@@ -277,18 +268,16 @@ public class Arrays {
   /**
    * Perform a binary search on a sorted long array.
    *
-   * Note that most underlying JavaScript interpreters do not actually implement
-   * longs, so the values must be stored in doubles instead. This means that
-   * certain legal values cannot be represented, and comparison of two unequal
-   * long values may result in unexpected results if they are not also
-   * representable as doubles.
+   * <p>Note that most underlying JavaScript interpreters do not actually implement longs, so the
+   * values must be stored in doubles instead. This means that certain legal values cannot be
+   * represented, and comparison of two unequal long values may result in unexpected results if they
+   * are not also representable as doubles.
    *
    * @param sortedArray long array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final long[] sortedArray, final long key) {
     int low = 0;
@@ -316,12 +305,11 @@ public class Arrays {
    *
    * @param sortedArray object array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
-   * @throws ClassCastException if <code>key</code> is not comparable to
-   *           <code>sortedArray</code>'s elements.
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
+   * @throws ClassCastException if <code>key</code> is not comparable to <code>sortedArray</code>'s
+   *     elements.
    */
   public static int binarySearch(final Object[] sortedArray, final Object key) {
     return binarySearch(sortedArray, key, Comparators.natural());
@@ -332,10 +320,9 @@ public class Arrays {
    *
    * @param sortedArray short array to search
    * @param key value to search for
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
    */
   public static int binarySearch(final short[] sortedArray, final short key) {
     int low = 0;
@@ -359,23 +346,20 @@ public class Arrays {
   }
 
   /**
-   * Perform a binary search on a sorted object array, using a user-specified
-   * comparison function.
+   * Perform a binary search on a sorted object array, using a user-specified comparison function.
    *
    * @param sortedArray object array to search
    * @param key value to search for
-   * @param comparator comparision function, <code>null</code> indicates
-   *          <i>natural ordering</i> should be used.
-   * @return the index of an element with a matching value, or a negative number
-   *         which is the index of the next larger value (or just past the end
-   *         of the array if the searched value is larger than all elements in
-   *         the array) minus 1 (to ensure error returns are negative)
-   * @throws ClassCastException if <code>key</code> and
-   *           <code>sortedArray</code>'s elements cannot be compared by
-   *           <code>comparator</code>.
+   * @param comparator comparision function, <code>null</code> indicates <i>natural ordering</i>
+   *     should be used.
+   * @return the index of an element with a matching value, or a negative number which is the index
+   *     of the next larger value (or just past the end of the array if the searched value is larger
+   *     than all elements in the array) minus 1 (to ensure error returns are negative)
+   * @throws ClassCastException if <code>key</code> and <code>sortedArray</code>'s elements cannot
+   *     be compared by <code>comparator</code>.
    */
-  public static <T> int binarySearch(final T[] sortedArray, final T key,
-      Comparator<? super T> comparator) {
+  public static <T> int binarySearch(
+      final T[] sortedArray, final T key, Comparator<? super T> comparator) {
     if (comparator == null) {
       comparator = Comparators.natural();
     }
@@ -1049,8 +1033,7 @@ public class Arrays {
     mergeSort(x, 0, x.length, c);
   }
 
-  public static <T> void sort(T[] x, int fromIndex, int toIndex,
-      Comparator<? super T> c) {
+  public static <T> void sort(T[] x, int fromIndex, int toIndex, Comparator<? super T> c) {
     checkPositionIndexes(fromIndex, toIndex, x.length);
     mergeSort(x, fromIndex, toIndex, c);
   }
@@ -1151,9 +1134,7 @@ public class Arrays {
     return joiner.toString();
   }
 
-  /**
-   * Recursive helper function for {@link Arrays#deepToString(Object[])}.
-   */
+  /** Recursive helper function for {@link Arrays#deepToString(Object[])}. */
   private static String deepToString(Object[] a, Set<Object[]> arraysIveSeen) {
     if (a == null) {
       return "null";
@@ -1216,8 +1197,7 @@ public class Arrays {
    * @param high upper bound of range to sort
    * @param comp comparator to use
    */
-  private static void insertionSort(Object[] array, int low, int high,
-      Comparator<Object> comp) {
+  private static void insertionSort(Object[] array, int low, int high, Comparator<Object> comp) {
     for (int i = low + 1; i < high; ++i) {
       for (int j = i; j > low && comp.compare(array[j - 1], array[j]) > 0; --j) {
         Object t = array[j];
@@ -1228,26 +1208,30 @@ public class Arrays {
   }
 
   /**
-   * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into
-   * dest.
+   * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into dest.
    *
    * @param src source array for merge
    * @param srcLow lower bound of bottom sorted half
-   * @param srcMid upper bound of bottom sorted half & lower bound of top sorted
-   *          half
+   * @param srcMid upper bound of bottom sorted half & lower bound of top sorted half
    * @param srcHigh upper bound of top sorted half
    * @param dest destination array for merge
    * @param destLow lower bound of destination
    * @param destHigh upper bound of destination
    * @param comp comparator to use
    */
-  private static void merge(Object[] src, int srcLow, int srcMid, int srcHigh,
-      Object[] dest, int destLow, int destHigh, Comparator<Object> comp) {
+  private static void merge(
+      Object[] src,
+      int srcLow,
+      int srcMid,
+      int srcHigh,
+      Object[] dest,
+      int destLow,
+      int destHigh,
+      Comparator<Object> comp) {
     // can't destroy srcMid because we need it as a bound on the lower half
     int topIdx = srcMid;
     while (destLow < destHigh) {
-      if (topIdx >= srcHigh
-          || (srcLow < srcMid && comp.compare(src[srcLow], src[topIdx]) <= 0)) {
+      if (topIdx >= srcHigh || (srcLow < srcMid && comp.compare(src[srcLow], src[topIdx]) <= 0)) {
         dest[destLow++] = src[srcLow++];
       } else {
         dest[destLow++] = src[topIdx++];
@@ -1258,7 +1242,7 @@ public class Arrays {
   /**
    * Performs a merge sort on the specified portion of an object array.
    *
-   * Uses O(n) temporary space to perform the merge, but is stable.
+   * <p>Uses O(n) temporary space to perform the merge, but is stable.
    */
   @SuppressWarnings("unchecked")
   private static void mergeSort(Object[] x, int fromIndex, int toIndex, Comparator<?> comp) {
@@ -1266,25 +1250,22 @@ public class Arrays {
       comp = Comparators.natural();
     }
     Object[] temp = copyOfRange(x, fromIndex, toIndex);
-    mergeSort(temp, x, fromIndex, toIndex, -fromIndex,
-        (Comparator<Object>) comp);
+    mergeSort(temp, x, fromIndex, toIndex, -fromIndex, (Comparator<Object>) comp);
   }
 
   /**
-   * Recursive helper function for
-   * {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
+   * Recursive helper function for {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
    *
-   * @param temp temporary space, as large as the range of elements being
-   *          sorted. On entry, temp should contain a copy of the sort range
-   *          from array.
+   * @param temp temporary space, as large as the range of elements being sorted. On entry, temp
+   *     should contain a copy of the sort range from array.
    * @param array array to sort
    * @param low lower bound of range to sort
    * @param high upper bound of range to sort
    * @param ofs offset to convert an array index into a temp index
    * @param comp comparison function
    */
-  private static void mergeSort(Object[] temp, Object[] array, int low,
-      int high, int ofs, Comparator<Object> comp) {
+  private static void mergeSort(
+      Object[] temp, Object[] array, int low, int high, int ofs, Comparator<Object> comp) {
     int length = high - low;
 
     // insertion sort for small arrays
@@ -1314,32 +1295,26 @@ public class Arrays {
     merge(temp, tempLow, tempMid, tempHigh, array, low, high, comp);
   }
 
-  /**
-   * Sort an entire array of number primitives.
-   */
+  /** Sort an entire array of number primitives. */
   private static void nativeLongSort(Object array, Object compareFunction) {
     $insert("array.sort(compareFunction)");
-  };
+  }
+  ;
 
-  /**
-   * Sort a subset of an array of number primitives.
-   */
+  /** Sort a subset of an array of number primitives. */
   private static void nativeLongSort(Object array, int fromIndex, int toIndex) {
     Object temp = ArrayHelper.unsafeClone(array, fromIndex, toIndex);
     nativeLongSort(temp, LongCompareHolder.getLongComparator());
     ArrayHelper.copy(temp, 0, array, fromIndex, toIndex - fromIndex);
   }
 
-  /**
-   * Sort an entire array of number primitives.
-   */
+  /** Sort an entire array of number primitives. */
   private static void nativeNumberSort(Object array) {
     $insert("array.sort(function(a, b) { return a - b; })");
-  };
+  }
+  ;
 
-  /**
-   * Sort a subset of an array of number primitives.
-   */
+  /** Sort a subset of an array of number primitives. */
   private static void nativeNumberSort(Object array, int fromIndex, int toIndex) {
     Object temp = ArrayHelper.unsafeClone(array, fromIndex, toIndex);
     nativeNumberSort(temp);

@@ -15,20 +15,16 @@
  */
 package javaemul.internal;
 
-/**
- * Private implementation class for GWT. This API should not be
- * considered public or stable.
- */
+/** Private implementation class for GWT. This API should not be considered public or stable. */
 public final class Coercions {
 
   /**
-   * Coerce js int to 32 bits.
-   * Trick related to JS and lack of integer rollover.
-   * {@see com.google.gwt.lang.Cast#narrow_int}
+   * Coerce js int to 32 bits. Trick related to JS and lack of integer rollover. {@see
+   * com.google.gwt.lang.Cast#narrow_int}
    */
   public static int ensureInt(int value) {
     return value | 0;
   }
 
-  private Coercions() { }
+  private Coercions() {}
 }

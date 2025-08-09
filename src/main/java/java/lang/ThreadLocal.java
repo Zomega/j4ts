@@ -1,25 +1,23 @@
 package java.lang;
 
 public class ThreadLocal<T> {
-	private T value;
+  private T value;
 
-	protected T initialValue() {
-		return null;
-	}
+  protected T initialValue() {
+    return null;
+  }
 
-	public T get() {
-		return value;
-	}
+  public T get() {
+    return value;
+  }
 
-	public void set(T value) {
-		this.value = value;
-	}
+  public void set(T value) {
+    this.value = value;
+  }
 
-	public void remove() {
+  public void remove() {}
 
-	}
-
-	T childValue(T parentValue) {
-		throw new UnsupportedOperationException();
-	}
+  T childValue(T parentValue) {
+    throw new UnsupportedOperationException();
+  }
 }

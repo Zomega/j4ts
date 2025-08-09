@@ -21,9 +21,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * A simple of a GwtIncompatible annotation for internal emulation use.
- */
+/** A simple of a GwtIncompatible annotation for internal emulation use. */
 @Retention(RetentionPolicy.CLASS)
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.FIELD})
 @Documented

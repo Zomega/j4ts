@@ -22,8 +22,7 @@ import javaemul.internal.ArrayHelper;
 
 /**
  * A {@link java.util.Map} of {@link Enum}s. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun docs]</a>
  *
  * @param <K> key type
  * @param <V> value type
@@ -189,9 +188,9 @@ public class EnumMap<K extends Enum<K>, V> extends AbstractMap<K, V> {
   }
 
   /**
-   * Returns <code>key</code> as <code>K</code>. Only runtime checks that
-   * key is an Enum, not that it's the particular Enum K. Should only be called
-   * when you are sure <code>key</code> is of type <code>K</code>.
+   * Returns <code>key</code> as <code>K</code>. Only runtime checks that key is an Enum, not that
+   * it's the particular Enum K. Should only be called when you are sure <code>key</code> is of type
+   * <code>K</code>.
    */
   @SuppressWarnings("unchecked")
   private K asKey(Object key) {

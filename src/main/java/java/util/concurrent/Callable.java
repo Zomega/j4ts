@@ -2,6 +2,5 @@ package java.util.concurrent;
 
 @FunctionalInterface
 public interface Callable<V> {
-    V call() throws Exception;
+  V call() throws Exception;
 }
-

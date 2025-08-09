@@ -1,5 +1,5 @@
 package java.text;
 
 class FieldPosition {
-	// TODO: Implementation
+  // TODO: Implementation
 }

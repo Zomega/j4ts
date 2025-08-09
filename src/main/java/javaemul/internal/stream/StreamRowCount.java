@@ -1,14 +1,14 @@
 package javaemul.internal.stream;
 
 public class StreamRowCount extends TerminalStreamRow {
-    private long count;
+  private long count;
 
-    public long getCount() {
-        return count;
-    }
+  public long getCount() {
+    return count;
+  }
 
-    public boolean item(Object a) {
-        ++count;
-        return true;
-    }
+  public boolean item(Object a) {
+    ++count;
+    return true;
+  }
 }

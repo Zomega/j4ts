@@ -15,9 +15,7 @@
  */
 package java.lang;
 
-/**
- * Abstracts the notion of a sequence of characters.
- */
+/** Abstracts the notion of a sequence of characters. */
 public interface CharSequence {
   char charAt(int index);
 

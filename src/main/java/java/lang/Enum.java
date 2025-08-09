@@ -28,95 +28,101 @@ import java.io.Serializable;
  */
 public abstract class Enum<E extends Enum<E>> implements Comparable<E>, Serializable {
 
-	public static <T extends Enum<T>> T valueOf(Class<T> enumType, String name) {
-		def.js.Function enumValueOfFunc = checkNotNull(enumType).enumValueOfFunc;
-		checkCriticalArgument(enumValueOfFunc != null, "EnumValueOfFunc is null at enum class: %s, enum value name: %s",
-				enumType.getName(), name);
-		checkNotNull(name);
-		return invokeValueOf(enumValueOfFunc, name);
-	}
+  public static <T extends Enum<T>> T valueOf(Class<T> enumType, String name) {
+    def.js.Function enumValueOfFunc = checkNotNull(enumType).enumValueOfFunc;
+    checkCriticalArgument(
+        enumValueOfFunc != null,
+        "EnumValueOfFunc is null at enum class: %s, enum value name: %s",
+        enumType.getName(),
+        name);
+    checkNotNull(name);
+    return invokeValueOf(enumValueOfFunc, name);
+  }
 
-	protected static <T extends Enum<T>> def.js.Object createValueOfMap(T[] enumConstants) {
-		def.js.Object result = new def.js.Object();
-		for (T value : enumConstants) {
-			put0(result, ":" + value.name(), value);
-		}
-		return result;
-	}
+  protected static <T extends Enum<T>> def.js.Object createValueOfMap(T[] enumConstants) {
+    def.js.Object result = new def.js.Object();
+    for (T value : enumConstants) {
+      put0(result, ":" + value.name(), value);
+    }
+    return result;
+  }
 
-	protected static <T extends Enum<T>> T valueOf(def.js.Object map, String name) {
-		checkNotNull(name);
+  protected static <T extends Enum<T>> T valueOf(def.js.Object map, String name) {
+    checkNotNull(name);
 
-		T result = Enum.<T> get0(map, ":" + name);
-		checkCriticalArgument(result != null, "Enum constant undefined: %s", name);
-		return result;
-	}
+    T result = Enum.<T>get0(map, ":" + name);
+    checkCriticalArgument(result != null, "Enum constant undefined: %s", name);
+    return result;
+  }
 
-	@SuppressWarnings("unchecked")
-	private static <T extends Enum<T>> T get0(def.js.Object map, String name) {
-		return (T) map.$get(name);
-	};
+  @SuppressWarnings("unchecked")
+  private static <T extends Enum<T>> T get0(def.js.Object map, String name) {
+    return (T) map.$get(name);
+  }
+  ;
 
-	private static <T extends Enum<T>> T invokeValueOf(def.js.Function enumValueOfFunc, String name) {
-		return $apply(enumValueOfFunc, name);
-	};
+  private static <T extends Enum<T>> T invokeValueOf(def.js.Function enumValueOfFunc, String name) {
+    return $apply(enumValueOfFunc, name);
+  }
+  ;
 
-	private static <T extends Enum<T>> void put0(def.js.Object map, String name, T value) {
-		map.$set(name, value);
-	};
+  private static <T extends Enum<T>> void put0(def.js.Object map, String name, T value) {
+    map.$set(name, value);
+  }
+  ;
 
-	private final String name;
+  private final String name;
 
-	private final int ordinal;
+  private final int ordinal;
 
-	protected Enum(String name, int ordinal) {
-		this.name = name;
-		this.ordinal = ordinal;
-	}
+  protected Enum(String name, int ordinal) {
+    this.name = name;
+    this.ordinal = ordinal;
+  }
 
-	@Override
-	public final int compareTo(E other) {
-		// TODO: will a bridge method do the cast for us?
-		// if (this.getDeclaringClass() != other.getDeclaringClass()) {
-		// throw new ClassCastException();
-		// }
-		return this.ordinal - ((Enum) other).ordinal;
-	}
+  @Override
+  public final int compareTo(E other) {
+    // TODO: will a bridge method do the cast for us?
+    // if (this.getDeclaringClass() != other.getDeclaringClass()) {
+    // throw new ClassCastException();
+    // }
+    return this.ordinal - ((Enum) other).ordinal;
+  }
 
-//	@Override
-//	public final boolean equals(Object other) {
-//		return this == other;
-//	}
+  //	@Override
+  //	public final boolean equals(Object other) {
+  //		return this == other;
+  //	}
 
-	@SuppressWarnings("unchecked")
-	public final Class<E> getDeclaringClass() {
-//		Class clazz = getClass();
-//		assert clazz != null : "clazz";
-//
-//		// Don't use getSuperclass() to allow that method to be pruned for most
-//		// class types
-//		Class superclass = clazz.getEnumSuperclass();
-//		assert superclass != null : "superclass";
-//
-//		return (superclass == Enum.class) ? clazz : superclass;
-		return null;
-	}
+  @SuppressWarnings("unchecked")
+  public final Class<E> getDeclaringClass() {
+    //		Class clazz = getClass();
+    //		assert clazz != null : "clazz";
+    //
+    //		// Don't use getSuperclass() to allow that method to be pruned for most
+    //		// class types
+    //		Class superclass = clazz.getEnumSuperclass();
+    //		assert superclass != null : "superclass";
+    //
+    //		return (superclass == Enum.class) ? clazz : superclass;
+    return null;
+  }
 
-//	@Override
-//	public final int hashCode() {
-//		return super.hashCode();
-//	}
+  //	@Override
+  //	public final int hashCode() {
+  //		return super.hashCode();
+  //	}
 
-	public final String name() {
-		return name != null ? name : "" + ordinal;
-	}
+  public final String name() {
+    return name != null ? name : "" + ordinal;
+  }
 
-	public final int ordinal() {
-		return ordinal;
-	}
+  public final int ordinal() {
+    return ordinal;
+  }
 
-	@Override
-	public String toString() {
-		return name();
-	}
+  @Override
+  public String toString() {
+    return name();
+  }
 }

@@ -17,40 +17,42 @@ package javaemul.internal;
 
 import static jsweet.util.Lang.object;
 
-/**
- * Contains logics for calculating hash codes in JavaScript.
- */
+/** Contains logics for calculating hash codes in JavaScript. */
 public class HashCodes {
 
-	private static int sNextHashId = 0;
-	private static final String HASH_CODE_PROPERTY = "$H";
+  private static int sNextHashId = 0;
+  private static final String HASH_CODE_PROPERTY = "$H";
 
-	public static int hashCodeForString(String s) {
-		return StringHashCache.getHashCode(s);
-	}
+  public static int hashCodeForString(String s) {
+    return StringHashCache.getHashCode(s);
+  }
 
-	public static int getIdentityHashCode(Object o) {
-		if (o == null) {
-			return 0;
-		}
-		return o instanceof String ? hashCodeForString(JsUtils.unsafeCastToString(o)) : getObjectIdentityHashCode(o);
-	}
+  public static int getIdentityHashCode(Object o) {
+    if (o == null) {
+      return 0;
+    }
+    return o instanceof String
+        ? hashCodeForString(JsUtils.unsafeCastToString(o))
+        : getObjectIdentityHashCode(o);
+  }
 
-	public static int getObjectIdentityHashCode(Object o) {
-		if (object(o).$get(HASH_CODE_PROPERTY) != null) {
-			return object(o).$get(HASH_CODE_PROPERTY);
-		} else {
-			return object(o).$set(HASH_CODE_PROPERTY, getNextHashId());
-		}
-	};
+  public static int getObjectIdentityHashCode(Object o) {
+    if (object(o).$get(HASH_CODE_PROPERTY) != null) {
+      return object(o).$get(HASH_CODE_PROPERTY);
+    } else {
+      return object(o).$set(HASH_CODE_PROPERTY, getNextHashId());
+    }
+  }
+  ;
 
-	/**
-	 * Called from JSNI. Do not change this implementation without updating:
-	 * <ul>
-	 * <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}</li>
-	 * </ul>
-	 */
-	private static int getNextHashId() {
-		return ++sNextHashId;
-	}
+  /**
+   * Called from JSNI. Do not change this implementation without updating:
+   *
+   * <ul>
+   *   <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}
+   * </ul>
+   */
+  private static int getNextHashId() {
+    return ++sNextHashId;
+  }
 }

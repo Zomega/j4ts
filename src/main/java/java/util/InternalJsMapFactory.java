@@ -15,49 +15,47 @@
  */
 package java.util;
 
-import java.util.function.Supplier;
-
 import static def.js.Globals.eval;
 import static jsweet.util.Lang.*;
 
+import java.util.function.Supplier;
+
 // TODO: remove this file!!
 
-/**
- * A factory to create JavaScript Map instances.
- */
+/** A factory to create JavaScript Map instances. */
 class InternalJsMapFactory {
 
-	private static final Object jsMapCtor = getJsMapConstructor();
+  private static final Object jsMapCtor = getJsMapConstructor();
 
-	private static Object getJsMapConstructor() {
-		return object(function((Supplier<def.js.Object>)() -> eval("Map")).call(null));
-	}
+  private static Object getJsMapConstructor() {
+    return object(function((Supplier<def.js.Object>) () -> eval("Map")).call(null));
+  }
 
-	/*-{
-	// Firefox 24 & 25 throws StopIteration to signal the end of iteration.
-	function isCorrectIterationProtocol() {
-	  try {
-	    return new Map().entries().next().done;
-	  } catch(e) {
-	    return false;
-	  }
-	}
-	
-	if (typeof Map === 'function' && Map.prototype.entries && isCorrectIterationProtocol()) {
-	  return Map;
-	} else {
-	  return @InternalJsMapFactory::getJsMapPolyFill()();
-	}
-	}-*/;
+  /*-{
+  // Firefox 24 & 25 throws StopIteration to signal the end of iteration.
+  function isCorrectIterationProtocol() {
+    try {
+      return new Map().entries().next().done;
+    } catch(e) {
+      return false;
+    }
+  }
 
-	public static <V> InternalJsMap<V> newJsMap() {
-		return $new(jsMapCtor);
-	}
-	/*-{
-	return new @InternalJsMapFactory::jsMapCtor;
-	}-*/;
+  if (typeof Map === 'function' && Map.prototype.entries && isCorrectIterationProtocol()) {
+    return Map;
+  } else {
+    return @InternalJsMapFactory::getJsMapPolyFill()();
+  }
+  }-*/ ;
 
-	private InternalJsMapFactory() {
-		// Hides the constructor.
-	}
+  public static <V> InternalJsMap<V> newJsMap() {
+    return $new(jsMapCtor);
+  }
+  /*-{
+  return new @InternalJsMapFactory::jsMapCtor;
+  }-*/ ;
+
+  private InternalJsMapFactory() {
+    // Hides the constructor.
+  }
 }

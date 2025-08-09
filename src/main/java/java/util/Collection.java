@@ -19,70 +19,66 @@ import static javaemul.internal.InternalPreconditions.checkNotNull;
 
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-
 import javaemul.internal.stream.StreamHelper;
 
 /**
  * General-purpose interface for storing collections of objects. <a href=
- * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html">[Sun
- * docs]</a>
+ * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html">[Sun docs]</a>
  *
- * @param <E>
- *            element type
+ * @param <E> element type
  */
 public interface Collection<E> extends Iterable<E> {
 
-	boolean add(E o);
+  boolean add(E o);
 
-	boolean addAll(Collection<? extends E> c);
+  boolean addAll(Collection<? extends E> c);
 
-	void clear();
+  void clear();
 
-	boolean contains(Object o);
+  boolean contains(Object o);
 
-	boolean containsAll(Collection<?> c);
+  boolean containsAll(Collection<?> c);
 
-	@Override
-	boolean equals(Object o);
+  @Override
+  boolean equals(Object o);
 
-	@Override
-	int hashCode();
+  @Override
+  int hashCode();
 
-	boolean isEmpty();
+  boolean isEmpty();
 
-	@Override
-	Iterator<E> iterator();
+  @Override
+  Iterator<E> iterator();
 
-	boolean remove(Object o);
+  boolean remove(Object o);
 
-	boolean removeAll(Collection<?> c);
+  boolean removeAll(Collection<?> c);
 
-	default boolean removeIf(Predicate<? super E> filter) {
-		checkNotNull(filter);
-		boolean removed = false;
-		for (Iterator<E> it = iterator(); it.hasNext();) {
-			if (filter.test(it.next())) {
-				it.remove();
-				removed = true;
-			}
-		}
-		return removed;
-	}
+  default boolean removeIf(Predicate<? super E> filter) {
+    checkNotNull(filter);
+    boolean removed = false;
+    for (Iterator<E> it = iterator(); it.hasNext(); ) {
+      if (filter.test(it.next())) {
+        it.remove();
+        removed = true;
+      }
+    }
+    return removed;
+  }
 
-	boolean retainAll(Collection<?> c);
+  boolean retainAll(Collection<?> c);
 
-	int size();
+  int size();
 
-	Object[] toArray();
+  Object[] toArray();
 
-	<T> T[] toArray(T[] a);
+  <T> T[] toArray(T[] a);
 
-	default Stream<E> stream() {
-		return new StreamHelper<E>(this);
-	}
+  default Stream<E> stream() {
+    return new StreamHelper<E>(this);
+  }
 
-	default Stream<E> parallelStream() {
-		return stream();
-	}
-
+  default Stream<E> parallelStream() {
+    return stream();
+  }
 }

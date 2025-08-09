@@ -18,92 +18,88 @@ package javaemul.internal;
 import static javaemul.internal.Coercions.ensureInt;
 import static jsweet.util.Lang.$insert;
 
-/**
- * Hashcode caching for strings.
- */
+/** Hashcode caching for strings. */
 class StringHashCache {
-    /**
-     * The "old" cache; it will be dumped when front is full.
-     */
-    private static Object back = createNativeObject();
-    /**
-     * Tracks the number of entries in front.
-     */
-    private static int count = 0;
-    /**
-     * The "new" cache; it will become back when it becomes full.
-     */
-    private static Object front = createNativeObject();
-    /**
-     * Pulled this number out of thin air.
-     */
-    private static final int MAX_CACHE = 256;
+  /** The "old" cache; it will be dumped when front is full. */
+  private static Object back = createNativeObject();
 
-    public static int getHashCode(String str) {
-	// Accesses must to be prefixed with ':' to prevent conflict with
-	// built-in
-	// JavaScript properties.
-	String key = ":" + str;
+  /** Tracks the number of entries in front. */
+  private static int count = 0;
 
-	// Check the front store.
-	Object result = getProperty(front, key);
-	if (!JsUtils.isUndefined(result)) {
-	    return unsafeCastToInt(result);
-	}
-	// Check the back store.
-	result = getProperty(back, key);
-	int hashCode = JsUtils.isUndefined(result) ? compute(str) : unsafeCastToInt(result);
-	// Increment can trigger the swap/flush; call after checking back but
-	// before writing to front.
-	increment();
-	JsUtils.setIntProperty(front, key, hashCode);
+  /** The "new" cache; it will become back when it becomes full. */
+  private static Object front = createNativeObject();
 
-	return hashCode;
+  /** Pulled this number out of thin air. */
+  private static final int MAX_CACHE = 256;
+
+  public static int getHashCode(String str) {
+    // Accesses must to be prefixed with ':' to prevent conflict with
+    // built-in
+    // JavaScript properties.
+    String key = ":" + str;
+
+    // Check the front store.
+    Object result = getProperty(front, key);
+    if (!JsUtils.isUndefined(result)) {
+      return unsafeCastToInt(result);
+    }
+    // Check the back store.
+    result = getProperty(back, key);
+    int hashCode = JsUtils.isUndefined(result) ? compute(str) : unsafeCastToInt(result);
+    // Increment can trigger the swap/flush; call after checking back but
+    // before writing to front.
+    increment();
+    JsUtils.setIntProperty(front, key, hashCode);
+
+    return hashCode;
+  }
+
+  private static int compute(String str) {
+    int hashCode = 0;
+    int n = str.length();
+    int nBatch = n - 4;
+    int i = 0;
+
+    // Process batches of 4 characters at a time and add them to the hash
+    // coercing to 32 bits
+    while (i < nBatch) {
+      hashCode =
+          str.charAt(i + 3)
+              + 31
+                  * (str.charAt(i + 2)
+                      + 31 * (str.charAt(i + 1) + 31 * (str.charAt(i) + 31 * hashCode)));
+
+      hashCode = ensureInt(hashCode); // make sure we don't overflow
+      i += 4;
     }
 
-    private static int compute(String str) {
-	int hashCode = 0;
-	int n = str.length();
-	int nBatch = n - 4;
-	int i = 0;
-
-	// Process batches of 4 characters at a time and add them to the hash
-	// coercing to 32 bits
-	while (i < nBatch) {
-	    hashCode = str.charAt(i + 3)
-		    + 31 * (str.charAt(i + 2) + 31 * (str.charAt(i + 1) + 31 * (str.charAt(i) + 31 * hashCode)));
-
-	    hashCode = ensureInt(hashCode); // make sure we don't overflow
-	    i += 4;
-	}
-
-	// Now process the leftovers
-	while (i < n) {
-	    hashCode = hashCode * 31 + str.charAt(i++);
-	}
-	hashCode = ensureInt(hashCode); // make sure we don't overflow
-
-	return hashCode;
+    // Now process the leftovers
+    while (i < n) {
+      hashCode = hashCode * 31 + str.charAt(i++);
     }
+    hashCode = ensureInt(hashCode); // make sure we don't overflow
 
-    private static void increment() {
-	if (count == MAX_CACHE) {
-	    back = front;
-	    front = createNativeObject();
-	    count = 0;
-	}
-	++count;
-    }
+    return hashCode;
+  }
 
-    private static Object getProperty(Object map, String key) {
-	return $insert("map[key]");
+  private static void increment() {
+    if (count == MAX_CACHE) {
+      back = front;
+      front = createNativeObject();
+      count = 0;
     }
+    ++count;
+  }
 
-    private static Object createNativeObject() {
-	return $insert("{}");
-    }
+  private static Object getProperty(Object map, String key) {
+    return $insert("map[key]");
+  }
 
-    private static int unsafeCastToInt(Object o) {
-	return $insert("o");
-    }
+  private static Object createNativeObject() {
+    return $insert("{}");
+  }
+
+  private static int unsafeCastToInt(Object o) {
+    return $insert("o");
+  }
 }

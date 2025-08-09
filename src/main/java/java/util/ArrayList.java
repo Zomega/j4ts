@@ -24,48 +24,40 @@ import static javaemul.internal.InternalPreconditions.checkState;
 import static jsweet.util.Lang.any;
 
 import java.io.Serializable;
-
 import javaemul.internal.ArrayHelper;
 
 /**
  * Resizeable array implementation of the List interface. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun docs]</a>
  *
- * <p>
- * This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of
- * capacity management. There is no speed advantage to pre-allocating array
- * sizes in JavaScript, so this implementation does not include any of the
- * capacity and "growth increment" concepts in the standard ArrayList class.
- * Although <code>ArrayList(int)</code> accepts a value for the initial
- * capacity of the array, this constructor simply delegates to
- * <code>ArrayList()</code>. It is only present for compatibility with JDK
- * 1.5's API.
- * </p>
+ * <p>This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of capacity
+ * management. There is no speed advantage to pre-allocating array sizes in JavaScript, so this
+ * implementation does not include any of the capacity and "growth increment" concepts in the
+ * standard ArrayList class. Although <code>ArrayList(int)</code> accepts a value for the initial
+ * capacity of the array, this constructor simply delegates to <code>ArrayList()</code>. It is only
+ * present for compatibility with JDK 1.5's API.
  *
  * @param <E> the element type.
  */
-public class ArrayList<E> extends AbstractList<E> implements List<E>,
-    Cloneable, RandomAccess, Serializable {
+public class ArrayList<E> extends AbstractList<E>
+    implements List<E>, Cloneable, RandomAccess, Serializable {
 
-  /**
-   * This field holds a JavaScript array.
-   */
+  /** This field holds a JavaScript array. */
   private transient E[] array;
 
   /**
-   * Ensures that RPC will consider type parameter E to be exposed. It will be
-   * pruned by dead code elimination.
+   * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+   * elimination.
    */
   @SuppressWarnings("unused")
   private E exposeElement;
 
   public ArrayList() {
-	  array = (E[]) new Object[0];
+    array = (E[]) new Object[0];
   }
 
   public ArrayList(Collection<? extends E> c) {
-	  array = (E[]) new Object[0];
+    array = (E[]) new Object[0];
     // Avoid calling overridable methods from constructors
     ArrayHelper.insertValuesToArray(array, 0, c.toArray());
   }
@@ -73,7 +65,7 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>,
   public ArrayList(int initialCapacity) {
     // Avoid calling overridable methods from constructors
     checkArgument(initialCapacity >= 0, "Initial capacity must not be negative");
-	  array = (E[]) new Object[0];
+    array = (E[]) new Object[0];
   }
 
   @Override
@@ -241,9 +233,7 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>,
     ArrayHelper.removeFrom(array, fromIndex, count);
   }
 
-  /**
-   * Used by Vector.
-   */
+  /** Used by Vector. */
   int indexOf(Object o, int index) {
     for (; index < array.length; ++index) {
       if (Objects.equals(o, array[index])) {
@@ -253,9 +243,7 @@ public class ArrayList<E> extends AbstractList<E> implements List<E>,
     return -1;
   }
 
-  /**
-   * Used by Vector.
-   */
+  /** Used by Vector. */
   int lastIndexOf(Object o, int index) {
     for (; index >= 0; --index) {
       if (Objects.equals(o, array[index])) {

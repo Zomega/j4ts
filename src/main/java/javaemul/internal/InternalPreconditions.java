@@ -17,9 +17,7 @@ package javaemul.internal;
 
 import java.util.NoSuchElementException;
 
-/**
- * A utility class that provides utility functions to do precondition checks inside GWT-SDK.
- */
+/** A utility class that provides utility functions to do precondition checks inside GWT-SDK. */
 // Some parts adapted from Guava
 public final class InternalPreconditions {
   private static final boolean CHECKED_MODE =
@@ -49,9 +47,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression that verifies array type.
-   */
+  /** Ensures the truth of an expression that verifies array type. */
   public static void checkArrayType(boolean expression) {
     if (TYPE_CHECK) {
       checkCriticalArrayType(expression);
@@ -70,9 +66,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression that verifies array type.
-   */
+  /** Ensures the truth of an expression that verifies array type. */
   public static void checkArrayType(boolean expression, Object errorMessage) {
     if (TYPE_CHECK) {
       checkCriticalArrayType(expression, errorMessage);
@@ -91,9 +85,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression involving existence of an element.
-   */
+  /** Ensures the truth of an expression involving existence of an element. */
   public static void checkElement(boolean expression) {
     if (API_CHECK) {
       checkCriticalElement(expression);
@@ -108,8 +100,8 @@ public final class InternalPreconditions {
 
   /**
    * Ensures the truth of an expression involving existence of an element.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
   public static void checkCriticalElement(boolean expression) {
@@ -118,9 +110,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression involving existence of an element.
-   */
+  /** Ensures the truth of an expression involving existence of an element. */
   public static void checkElement(boolean expression, Object errorMessage) {
     if (API_CHECK) {
       checkCriticalElement(expression, errorMessage);
@@ -135,8 +125,8 @@ public final class InternalPreconditions {
 
   /**
    * Ensures the truth of an expression involving existence of an element.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
   public static void checkCriticalElement(boolean expression, Object errorMessage) {
@@ -145,9 +135,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression involving one or more parameters to the calling method.
-   */
+  /** Ensures the truth of an expression involving one or more parameters to the calling method. */
   public static void checkArgument(boolean expression) {
     if (API_CHECK) {
       checkCriticalArgument(expression);
@@ -162,8 +150,8 @@ public final class InternalPreconditions {
 
   /**
    * Ensures the truth of an expression involving one or more parameters to the calling method.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
   public static void checkCriticalArgument(boolean expression) {
@@ -172,9 +160,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression involving one or more parameters to the calling method.
-   */
+  /** Ensures the truth of an expression involving one or more parameters to the calling method. */
   public static void checkArgument(boolean expression, Object errorMessage) {
     if (API_CHECK) {
       checkCriticalArgument(expression, errorMessage);
@@ -189,8 +175,8 @@ public final class InternalPreconditions {
 
   /**
    * Ensures the truth of an expression involving one or more parameters to the calling method.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
   public static void checkCriticalArgument(boolean expression, Object errorMessage) {
@@ -199,11 +185,9 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures the truth of an expression involving one or more parameters to the calling method.
-   */
-  public static void checkArgument(boolean expression, String errorMessageTemplate,
-      Object... errorMessageArgs) {
+  /** Ensures the truth of an expression involving one or more parameters to the calling method. */
+  public static void checkArgument(
+      boolean expression, String errorMessageTemplate, Object... errorMessageArgs) {
     if (API_CHECK) {
       checkCriticalArgument(expression, errorMessageTemplate, errorMessageArgs);
     } else if (CHECKED_MODE) {
@@ -217,12 +201,12 @@ public final class InternalPreconditions {
 
   /**
    * Ensures the truth of an expression involving one or more parameters to the calling method.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
-  public static void checkCriticalArgument(boolean expression, String errorMessageTemplate,
-      Object... errorMessageArgs) {
+  public static void checkCriticalArgument(
+      boolean expression, String errorMessageTemplate, Object... errorMessageArgs) {
     if (!expression) {
       throw new IllegalArgumentException(format(errorMessageTemplate, errorMessageArgs));
     }
@@ -250,8 +234,8 @@ public final class InternalPreconditions {
   /**
    * Ensures the truth of an expression involving the state of the calling instance, but not
    * involving any parameters to the calling method.
-   * <p>
-   * For cases where failing fast is pretty important and not failing early could cause bugs that
+   *
+   * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
    * are much harder to debug.
    */
   public static void checkCritcalState(boolean expression) {
@@ -286,9 +270,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures that an object reference passed as a parameter to the calling method is not null.
-   */
+  /** Ensures that an object reference passed as a parameter to the calling method is not null. */
   public static <T> T checkNotNull(T reference) {
     if (API_CHECK) {
       checkCriticalNotNull(reference);
@@ -310,9 +292,7 @@ public final class InternalPreconditions {
     return reference;
   }
 
-  /**
-   * Ensures that an object reference passed as a parameter to the calling method is not null.
-   */
+  /** Ensures that an object reference passed as a parameter to the calling method is not null. */
   public static void checkNotNull(Object reference, Object errorMessage) {
     if (API_CHECK) {
       checkCriticalNotNull(reference, errorMessage);
@@ -331,9 +311,7 @@ public final class InternalPreconditions {
     }
   }
 
-  /**
-   * Ensures that {@code size} specifies a valid array size (i.e. non-negative).
-   */
+  /** Ensures that {@code size} specifies a valid array size (i.e. non-negative). */
   public static void checkArraySize(int size) {
     if (API_CHECK) {
       checkCriticalArraySize(size);
@@ -449,7 +427,7 @@ public final class InternalPreconditions {
 
   /**
    * Substitutes each {@code %s} in {@code template} with an argument. These are matched by
-   * position: the first {@code %s} gets {@code args[0]}, etc.  If there are more arguments than
+   * position: the first {@code %s} gets {@code args[0]}, etc. If there are more arguments than
    * placeholders, the unmatched arguments will be appended to the end of the formatted message in
    * square braces.
    */
@@ -486,5 +464,5 @@ public final class InternalPreconditions {
   }
 
   // Hides the constructor for this static utility class.
-  private InternalPreconditions() { }
+  private InternalPreconditions() {}
 }

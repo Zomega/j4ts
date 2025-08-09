@@ -1,4 +1,3 @@
 package java.util.stream;
 
-public interface LongStream {
-}
+public interface LongStream {}

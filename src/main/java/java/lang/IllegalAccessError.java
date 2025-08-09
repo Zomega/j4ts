@@ -28,19 +28,19 @@ package java.lang;
 @SuppressWarnings("serial")
 public class IllegalAccessError extends Error {
 
-    public IllegalAccessError() {
-        super();
-    }
+  public IllegalAccessError() {
+    super();
+  }
 
-    public IllegalAccessError(String message) {
-        super(message);
-    }
+  public IllegalAccessError(String message) {
+    super(message);
+  }
 
-    public IllegalAccessError(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
-    public IllegalAccessError(Throwable cause) {
-        super(cause);
-    }
+  public IllegalAccessError(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  public IllegalAccessError(Throwable cause) {
+    super(cause);
+  }
 }

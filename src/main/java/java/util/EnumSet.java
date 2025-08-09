@@ -25,22 +25,19 @@ import javaemul.internal.annotations.SpecializeMethod;
 
 /**
  * A {@link java.util.Set} of {@link Enum}s. <a
- * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun
- * docs]</a>
+ * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun docs]</a>
  *
  * @param <E> enumeration type
  */
 public abstract class EnumSet<E extends Enum<E>> extends AbstractSet<E> {
 
   /**
-   * Implemented via sparse array since the set size is finite. Iteration takes
-   * linear time with respect to the set of the enum rather than the number of
-   * items in the set.
+   * Implemented via sparse array since the set size is finite. Iteration takes linear time with
+   * respect to the set of the enum rather than the number of items in the set.
    *
-   * Note: Implemented as a subclass instead of a concrete final EnumSet class.
-   * This is because declaring an EnumSet.add(E) causes hosted mode to bind to
-   * the tighter method rather than the bridge method; but the tighter method
-   * isn't available in the real JRE.
+   * <p>Note: Implemented as a subclass instead of a concrete final EnumSet class. This is because
+   * declaring an EnumSet.add(E) causes hosted mode to bind to the tighter method rather than the
+   * bridge method; but the tighter method isn't available in the real JRE.
    */
   static final class EnumSetImpl<E extends Enum<E>> extends EnumSet<E> {
     private class IteratorImpl implements Iterator<E> {
@@ -89,24 +86,18 @@ public abstract class EnumSet<E extends Enum<E>> extends AbstractSet<E> {
       }
     }
 
-    /**
-     * All enums; reference to the class's copy; must not be modified.
-     */
+    /** All enums; reference to the class's copy; must not be modified. */
     private final E[] all;
 
-    /**
-     * Live enums in the set.
-     */
+    /** Live enums in the set. */
     private E[] set;
 
-    /**
-     * Count of enums in the set.
-     */
+    /** Count of enums in the set. */
     private int size;
 
     /**
-     * Constructs a set taking ownership of the specified set. The size must
-     * accurately reflect the number of non-null items in set.
+     * Constructs a set taking ownership of the specified set. The size must accurately reflect the
+     * number of non-null items in set.
      */
     public EnumSetImpl(E[] all, E[] set, int size) {
       this.all = all;
@@ -246,11 +237,8 @@ public abstract class EnumSet<E extends Enum<E>> extends AbstractSet<E> {
     return new EnumSetImpl<E>(all, set, end - start);
   }
 
-  /**
-   * Single implementation only.
-   */
-  EnumSet() {
-  }
+  /** Single implementation only. */
+  EnumSet() {}
 
   public abstract EnumSet<E> clone();
 

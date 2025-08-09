@@ -1,12 +1,12 @@
 /*
  * Copyright 2010 Google Inc.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -19,23 +19,22 @@ import java.util.Comparator;
 
 /**
  * A basic implementation for Java collators.
- * 
+ *
  * @author Renaud Pawlak
  */
 public class Collator implements Comparator<Object> {
 
-	private static Collator collator;
+  private static Collator collator;
 
-	public static Collator getInstance() {
-		if (collator == null) {
-			collator = new Collator();
-		}
-		return collator;
-	}
+  public static Collator getInstance() {
+    if (collator == null) {
+      collator = new Collator();
+    }
+    return collator;
+  }
 
-	@Override
-	public int compare(Object a, Object b) {
-		return ((def.js.String) a).localeCompare((def.js.String) b);
-	}
-
+  @Override
+  public int compare(Object a, Object b) {
+    return ((def.js.String) a).localeCompare((def.js.String) b);
+  }
 }

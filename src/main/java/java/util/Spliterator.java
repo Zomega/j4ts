@@ -1,4 +1,3 @@
 package java.util;
 
-public interface Spliterator<T> {
-}
+public interface Spliterator<T> {}

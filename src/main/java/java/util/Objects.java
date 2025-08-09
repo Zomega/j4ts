@@ -18,13 +18,11 @@ package java.util;
 import java.util.function.Supplier;
 
 /**
- * See <a
- * href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the
- * official Java API doc</a> for details.
+ * See <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the official Java
+ * API doc</a> for details.
  */
 public final class Objects {
-  private Objects() {
-  }
+  private Objects() {}
 
   public static <T> int compare(T a, T b, Comparator<? super T> c) {
     return a == b ? 0 : c.compare(a, b);

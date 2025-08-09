@@ -17,20 +17,19 @@ package javaemul.internal;
 
 import static jsweet.util.Lang.$insert;
 
-/**
- * Simple Helper class to return Date.now.
- */
+/** Simple Helper class to return Date.now. */
 public class DateUtil {
-    /**
-     * Returns the numeric value corresponding to the current time - the number
-     * of milliseconds elapsed since 1 January 1970 00:00:00 UTC.
-     */
-    public static double now() {
-	// IE8 does not have Date.now
-	// when removing IE8 support we change this to Date.now()
-	// Date.now vs Date.getTime() performance comparison:
-	// http://jsperf.com/date-now-vs-new-date/8
-	$insert("if (Date.now) { return Date.now(); } ");
-	return $insert("(new Date()).getTime()");
-    };
+  /**
+   * Returns the numeric value corresponding to the current time - the number of milliseconds
+   * elapsed since 1 January 1970 00:00:00 UTC.
+   */
+  public static double now() {
+    // IE8 does not have Date.now
+    // when removing IE8 support we change this to Date.now()
+    // Date.now vs Date.getTime() performance comparison:
+    // http://jsperf.com/date-now-vs-new-date/8
+    $insert("if (Date.now) { return Date.now(); } ");
+    return $insert("(new Date()).getTime()");
+  }
+  ;
 }

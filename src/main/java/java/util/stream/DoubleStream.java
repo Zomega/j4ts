@@ -1,4 +1,3 @@
 package java.util.stream;
 
-public interface DoubleStream {
-}
+public interface DoubleStream {}

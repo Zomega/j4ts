@@ -17,15 +17,12 @@ package javaemul.internal;
 
 import static jsweet.util.Lang.any;
 
-/**
- * A utility to provide array stamping. Provided as a separate class to simplify
- * super-source.
- */
+/** A utility to provide array stamping. Provided as a separate class to simplify super-source. */
 class ArrayStamper {
-	public static <T> T[] stampJavaTypeInfo(Object array, T[] referenceType) {
-		// do nothing, was JSNI:
-		// return @com.google.gwt.lang.Array::stampJavaTypeInfo(
-		// Ljava/lang/Object;[Ljava/lang/Object;)(array, referenceType);
-		return any(array);
-	}
+  public static <T> T[] stampJavaTypeInfo(Object array, T[] referenceType) {
+    // do nothing, was JSNI:
+    // return @com.google.gwt.lang.Array::stampJavaTypeInfo(
+    // Ljava/lang/Object;[Ljava/lang/Object;)(array, referenceType);
+    return any(array);
+  }
 }

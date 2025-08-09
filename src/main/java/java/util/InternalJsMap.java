@@ -19,29 +19,28 @@ import jsweet.lang.Ambient;
 
 @Ambient
 class InternalJsMap<V> {
-	@Ambient
-	static class Iterator<V> {
-		public native IteratorEntry<V> next();
-	}
+  @Ambient
+  static class Iterator<V> {
+    public native IteratorEntry<V> next();
+  }
 
-	@Ambient
-	static class IteratorEntry<V> {
-		public Object[] value;
-		public boolean done;
-	}
+  @Ambient
+  static class IteratorEntry<V> {
+    public Object[] value;
+    public boolean done;
+  }
 
-	public native V get(int key);
+  public native V get(int key);
 
-	public native V get(String key);
+  public native V get(String key);
 
-	public native void set(int key, V value);
+  public native void set(int key, V value);
 
-	public native void set(String key, V value);
+  public native void set(String key, V value);
 
-	public native final void delete(int key);
+  public final native void delete(int key);
 
-	public native final void delete(String key);
+  public final native void delete(String key);
 
-	public native Iterator<V> entries();
-
+  public native Iterator<V> entries();
 }

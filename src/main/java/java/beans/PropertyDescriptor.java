@@ -2,9 +2,8 @@ package java.beans;
 
 public class PropertyDescriptor {
 
+  public Class<?> getPropertyType() {
 
-	   public Class<?> getPropertyType() {
-
-	        return null;
-	    }
+    return null;
+  }
 }

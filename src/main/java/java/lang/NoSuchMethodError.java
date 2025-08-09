@@ -28,19 +28,19 @@ package java.lang;
 @SuppressWarnings("serial")
 public class NoSuchMethodError extends Error {
 
-    public NoSuchMethodError() {
-        super();
-    }
+  public NoSuchMethodError() {
+    super();
+  }
 
-    public NoSuchMethodError(String message) {
-        super(message);
-    }
+  public NoSuchMethodError(String message) {
+    super(message);
+  }
 
-    public NoSuchMethodError(String message, Throwable cause) {
-        super(message, cause);
-    }
-    
-    public NoSuchMethodError(Throwable cause) {
-        super(cause);
-    }
+  public NoSuchMethodError(String message, Throwable cause) {
+    super(message, cause);
+  }
+
+  public NoSuchMethodError(Throwable cause) {
+    super(cause);
+  }
 }

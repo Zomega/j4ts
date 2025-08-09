@@ -18,8 +18,8 @@ package java.util;
 import static javaemul.internal.InternalPreconditions.checkNotNull;
 
 /**
- * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">
- * the official Java API doc</a> for details.
+ * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">the official
+ * Java API doc</a> for details.
  */
 public final class StringJoiner {
 
@@ -59,7 +59,8 @@ public final class StringJoiner {
 
   public StringJoiner merge(StringJoiner other) {
     if (other.builder != null) {
-      // in case of other == this we need the length before adding delimiter to this (and thus other)
+      // in case of other == this we need the length before adding delimiter to this (and thus
+      // other)
       // so we can skip the trailing delimiter of other when merging into this.
       int otherLength = other.builder.length();
       initBuilderOrAddDelimiter();

@@ -67,5 +67,4 @@ public interface Set<E> extends Collection<E> {
 
   @Override
   <T> T[] toArray(T[] a);
-
 }

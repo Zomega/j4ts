@@ -15,9 +15,7 @@
  */
 package java.util;
 
-/**
- * Skeletal implementation of a NavigableMap.
- */
+/** Skeletal implementation of a NavigableMap. */
 abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements NavigableMap<K, V> {
 
   class DescendingMap extends AbstractNavigableMap<K, V> {
@@ -57,8 +55,8 @@ abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements N
     }
 
     @Override
-    public NavigableMap<K, V> subMap(K fromKey, boolean fromInclusive,
-        K toKey, boolean toInclusive) {
+    public NavigableMap<K, V> subMap(
+        K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) {
       return ascendingMap().subMap(toKey, toInclusive, fromKey, fromInclusive).descendingMap();
     }
 
@@ -120,7 +118,6 @@ abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements N
     boolean removeEntry(Entry<K, V> entry) {
       return ascendingMap().removeEntry(entry);
     }
-    
   }
 
   class EntrySet extends AbstractSet<Entry<K, V>> {
@@ -271,8 +268,8 @@ abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements N
     }
 
     @Override
-    public NavigableSet<K> subSet(K fromElement, boolean fromInclusive,
-        K toElement, boolean toInclusive) {
+    public NavigableSet<K> subSet(
+        K fromElement, boolean fromInclusive, K toElement, boolean toInclusive) {
       return map.subMap(fromElement, fromInclusive, toElement, toInclusive).navigableKeySet();
     }
 
@@ -435,30 +432,22 @@ abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements N
     return lookupEntry != null && Objects.equals(lookupEntry.getValue(), entry.getValue());
   }
 
-  /**
-   * Returns an iterator over the entries in this map in descending order.
-   */
+  /** Returns an iterator over the entries in this map in descending order. */
   abstract Iterator<Entry<K, V>> descendingEntryIterator();
 
-  /**
-   * Returns an iterator over the entries in this map in ascending order.
-   */
+  /** Returns an iterator over the entries in this map in ascending order. */
   abstract Iterator<Entry<K, V>> entryIterator();
 
   /**
-   * Returns the entry corresponding to the specified key. If no such entry exists returns
-   * {@code null}.
+   * Returns the entry corresponding to the specified key. If no such entry exists returns {@code
+   * null}.
    */
   abstract Entry<K, V> getEntry(K key);
 
-  /**
-   * Returns the first entry or {@code null} if map is empty.
-   */
+  /** Returns the first entry or {@code null} if map is empty. */
   abstract Entry<K, V> getFirstEntry();
 
-  /**
-   * Returns the last entry or {@code null} if map is empty.
-   */
+  /** Returns the last entry or {@code null} if map is empty. */
   abstract Entry<K, V> getLastEntry();
 
   /**
@@ -485,9 +474,7 @@ abstract class AbstractNavigableMap<K, V> extends AbstractMap<K, V> implements N
    */
   abstract Entry<K, V> getLowerEntry(K key);
 
-  /**
-   * Remove an entry from the tree, returning whether it was found.
-   */
+  /** Remove an entry from the tree, returning whether it was found. */
   abstract boolean removeEntry(Entry<K, V> entry);
 
   private Entry<K, V> pollEntry(Entry<K, V> entry) {

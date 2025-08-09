@@ -18,119 +18,116 @@ package java.util;
 import static java.util.ConcurrentModificationDetector.structureChanged;
 
 import java.util.Map.Entry;
-
 import javaemul.internal.JsUtils;
 
-/**
- * A simple wrapper around JavaScript Map for key type is string.
- */
+/** A simple wrapper around JavaScript Map for key type is string. */
 class InternalStringMap<K, V> implements Iterable<Entry<K, V>> {
 
-	private final InternalJsMap<V> backingMap = InternalJsMapFactory.newJsMap();
-	private AbstractHashMap<K, V> host;
-	private int size;
+  private final InternalJsMap<V> backingMap = InternalJsMapFactory.newJsMap();
+  private AbstractHashMap<K, V> host;
+  private int size;
 
-	/**
-	 * A mod count to track 'value' replacements in map to ensure that the
-	 * 'value' that we have in the iterator entry is guaranteed to be still
-	 * correct. This is to optimize for the common scenario where the values are
-	 * not modified during iterations where the entries are never stale.
-	 */
-	private int valueMod;
+  /**
+   * A mod count to track 'value' replacements in map to ensure that the 'value' that we have in the
+   * iterator entry is guaranteed to be still correct. This is to optimize for the common scenario
+   * where the values are not modified during iterations where the entries are never stale.
+   */
+  private int valueMod;
 
-	public InternalStringMap(AbstractHashMap<K, V> host) {
-		this.host = host;
-	}
+  public InternalStringMap(AbstractHashMap<K, V> host) {
+    this.host = host;
+  }
 
-	public boolean contains(String key) {
-		return !JsUtils.isUndefined(backingMap.get(key));
-	}
+  public boolean contains(String key) {
+    return !JsUtils.isUndefined(backingMap.get(key));
+  }
 
-	public V get(String key) {
-		return backingMap.get(key);
-	}
+  public V get(String key) {
+    return backingMap.get(key);
+  }
 
-	public V put(String key, V value) {
-		V oldValue = backingMap.get(key);
-		backingMap.set(key, toNullIfUndefined(value));
+  public V put(String key, V value) {
+    V oldValue = backingMap.get(key);
+    backingMap.set(key, toNullIfUndefined(value));
 
-		if (JsUtils.isUndefined(oldValue)) {
-			size++;
-			structureChanged(host);
-		} else {
-			valueMod++;
-		}
-		return oldValue;
-	}
+    if (JsUtils.isUndefined(oldValue)) {
+      size++;
+      structureChanged(host);
+    } else {
+      valueMod++;
+    }
+    return oldValue;
+  }
 
-	public V remove(String key) {
-		V value = backingMap.get(key);
-		if (!JsUtils.isUndefined(value)) {
-			backingMap.delete(key);
-			size--;
-			structureChanged(host);
-		} else {
-			valueMod++;
-		}
+  public V remove(String key) {
+    V value = backingMap.get(key);
+    if (!JsUtils.isUndefined(value)) {
+      backingMap.delete(key);
+      size--;
+      structureChanged(host);
+    } else {
+      valueMod++;
+    }
 
-		return value;
-	}
+    return value;
+  }
 
-	public int getSize() {
-		return size;
-	}
+  public int getSize() {
+    return size;
+  }
 
-	@Override
-	public Iterator<Entry<K, V>> iterator() {
-		return new Iterator<Map.Entry<K, V>>() {
-			InternalJsMap.Iterator<V> entries = backingMap.entries();
-			InternalJsMap.IteratorEntry<V> current = entries.next();
-			InternalJsMap.IteratorEntry<V> last;
+  @Override
+  public Iterator<Entry<K, V>> iterator() {
+    return new Iterator<Map.Entry<K, V>>() {
+      InternalJsMap.Iterator<V> entries = backingMap.entries();
+      InternalJsMap.IteratorEntry<V> current = entries.next();
+      InternalJsMap.IteratorEntry<V> last;
 
-			@Override
-			public boolean hasNext() {
-				return !current.done;
-			}
+      @Override
+      public boolean hasNext() {
+        return !current.done;
+      }
 
-			@Override
-			public Entry<K, V> next() {
-				last = current;
-				current = entries.next();
-				return newMapEntry(last, valueMod);
-			}
+      @Override
+      public Entry<K, V> next() {
+        last = current;
+        current = entries.next();
+        return newMapEntry(last, valueMod);
+      }
 
-			@Override
-			public void remove() {
-				InternalStringMap.this.remove((String) last.value[0]);
-			}
-		};
-	}
+      @Override
+      public void remove() {
+        InternalStringMap.this.remove((String) last.value[0]);
+      }
+    };
+  }
 
-	private Entry<K, V> newMapEntry(final InternalJsMap.IteratorEntry<V> entry, final int lastValueMod) {
-		return new AbstractMapEntry<K, V>() {
-			@SuppressWarnings("unchecked")
-			@Override
-			public K getKey() {
-				return (K) entry.value[0];
-			}
+  private Entry<K, V> newMapEntry(
+      final InternalJsMap.IteratorEntry<V> entry, final int lastValueMod) {
+    return new AbstractMapEntry<K, V>() {
+      @SuppressWarnings("unchecked")
+      @Override
+      public K getKey() {
+        return (K) entry.value[0];
+      }
 
-			@Override
-			public V getValue() {
-				if (valueMod != lastValueMod) {
-					// Let's get a fresh copy as the value may have changed.
-					return get((String) entry.value[0]);
-				}
-				return (V) entry.value[1];
-			}
+      @Override
+      public V getValue() {
+        if (valueMod != lastValueMod) {
+          // Let's get a fresh copy as the value may have changed.
+          return get((String) entry.value[0]);
+        }
+        return (V) entry.value[1];
+      }
 
-			@Override
-			public V setValue(V object) {
-				return put((String) entry.value[0], object);
-			}
-		};
-	}
+      @Override
+      public V setValue(V object) {
+        return put((String) entry.value[0], object);
+      }
+    };
+  }
 
-	private static <T> T toNullIfUndefined(T value) {
-		return JsUtils.isUndefined(value) ? null : value;
-	}
+  private static <T> T toNullIfUndefined(T value) {
+    return JsUtils.isUndefined(value) ? null : value;
+  }
 }

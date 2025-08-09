@@ -17,9 +17,7 @@ package java.util.logging;
 
 import static def.dom.Globals.console;
 
-/**
- * A simple console logger used in super dev mode.
- */
+/** A simple console logger used in super dev mode. */
 class SimpleConsoleLogHandler extends Handler {
 
   @Override
