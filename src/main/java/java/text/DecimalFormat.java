@@ -120,6 +120,7 @@ public class DecimalFormat extends NumberFormat {
 
   // Implement parse method (simplified)
   // TODO: This is nowhere near full featured.
+  @Override
   public Number parse(String source) throws java.text.ParseException {
     String normalizedSource = source.replace(symbols.getDecimalSeparator(), '.');
     normalizedSource = normalizedSource.replace(String.valueOf(symbols.getGroupingSeparator()), "");
@@ -129,11 +130,6 @@ public class DecimalFormat extends NumberFormat {
     } catch (NumberFormatException e) {
       throw new java.text.ParseException("Unparseable number: \"" + source + "\"", 0);
     }
-  }
-
-  // TODO: Might need to make this better. Stubbing for now.
-  public Number parse(String source, ParsePosition pos) throws java.text.ParseException {
-    return parse(source);
   }
 
   public void setDecimalFormatSymbols(DecimalFormatSymbols newSymbols) {

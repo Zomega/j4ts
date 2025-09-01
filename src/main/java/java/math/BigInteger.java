@@ -39,6 +39,11 @@ public class BigInteger {
     return 0; // Stub: returns 0 (equal)
   }
 
+  public BigInteger add(BigInteger val) {
+    // TODO: Implement actual addition logic
+    return null; // Stub: returns null
+  }
+
   public BigInteger subtract(BigInteger val) {
     // TODO: Implement actual subtraction logic
     return null; // Stub: returns null
@@ -50,13 +55,23 @@ public class BigInteger {
   }
 
   public BigInteger mod(int p) {
-    // TODO: Implement actual power logic
+    // TODO: Implement actual modulo logic
+    return BigInteger.ONE; // Stub: returns a dummy BigInteger
+  }
+
+  public BigInteger pow(int exponent) {
+    // TODO: Implement actual pow logic
     return BigInteger.ONE; // Stub: returns a dummy BigInteger
   }
 
   public int intValue() {
     // TODO: Implement
     return 0;
+  }
+
+  public long longValue() {
+    // TODO: Implement
+    return 0l;
   }
 
   public double doubleValue() {
@@ -68,5 +83,10 @@ public class BigInteger {
   public String toString() {
     // TODO: Implement
     return this.value;
+  }
+
+  public String toString(int radix) {
+    // TODO: Implement
+    return "TODO_BI_toString";
   }
 }

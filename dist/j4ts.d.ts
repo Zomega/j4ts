@@ -1,9 +1,8 @@
 declare namespace java.lang { }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html">the
-     * official Java API doc</a> for details.
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html">the official Java
+     * API doc</a> for details.
      * @param {string} message
      * @param {java.lang.Throwable} cause
      * @class
@@ -16,8 +15,7 @@ declare namespace java.lang {
 declare namespace java.lang {
     /**
      * An interface used a basis for implementing custom ordering. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Comparable.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Comparable.html">[Sun docs]</a>
      *
      * @param <T> the type to compare to.
      * @class
@@ -40,9 +38,8 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/javase/6/docs/api/java/lang/Appendable.html">the
-     * official Java API doc</a> for details.
+     * See <a href="http://java.sun.com/javase/6/docs/api/java/lang/Appendable.html">the official Java
+     * API doc</a> for details.
      * @class
      */
     interface Appendable {
@@ -52,9 +49,10 @@ declare namespace java.lang {
 declare namespace java.lang {
     /**
      * A base class to share implementation between {@link StringBuffer} and {@link StringBuilder}.
-     * <p>
-     * Most methods will give expected performance results. Exception is {@link #setCharAt(int, char)},
-     * which is O(n), and thus should not be used many times on the same <code>StringBuffer</code>.
+     *
+     * <p>Most methods will give expected performance results. Exception is {@link #setCharAt(int,
+     * char)}, which is O(n), and thus should not be used many times on the same <code>StringBuffer
+     * </code>.
      * @param {string} string
      * @class
      */
@@ -134,14 +132,13 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * Generally unsupported. This class is provided so that the GWT compiler can
-     * choke down class literal references.
-     * <p>
-     * NOTE: The code in this class is very sensitive and should keep its
-     * dependencies upon other classes to a minimum.
+     * Generally unsupported. This class is provided so that the GWT compiler can choke down class
+     * literal references.
      *
-     * @param <T>
-     * the type of the object
+     * <p>NOTE: The code in this class is very sensitive and should keep its dependencies upon other
+     * classes to a minimum.
+     *
+     * @param <T> the type of the object
      * @class
      */
     class Class<T> implements java.lang.reflect.Type {
@@ -158,10 +155,10 @@ declare namespace java.lang {
         static ENUM: number;
         /**
          * Create a Class object for an array.
-         * <p>
          *
-         * Arrays are not registered in the prototype table and get the class
-         * literal explicitly at construction.
+         * <p>Arrays are not registered in the prototype table and get the class literal explicitly at
+         * construction.
+         *
          * <p>
          * @param {java.lang.Class} leafClass
          * @param {number} dimensions
@@ -229,16 +226,16 @@ declare namespace java.lang {
         static createClassObject<T>(packageName: string, compoundClassName: string, typeId: string): any;
         /**
          * Initiliazes {@code clazz} names from metadata.
-         * <p>
-         * Written in JSNI to minimize dependencies (on String.+).
+         *
+         * <p>Written in JSNI to minimize dependencies (on String.+).
          * @param {java.lang.Class} clazz
          * @private
          */
         static initializeNames(clazz: any): void;
         /**
          * Sets the class object for primitives.
-         * <p>
-         * Written in JSNI to minimize dependencies (on (String)+).
+         *
+         * <p>Written in JSNI to minimize dependencies (on (String)+).
          * @param {java.lang.Class} clazz
          * @param {Object} primitiveTypeId
          */
@@ -286,13 +283,9 @@ declare namespace java.lang {
 declare namespace java.lang {
     /**
      * Encapsulates an action for later execution. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Runnable.html">[Sun docs]</a>
      *
-     * <p>
-     * This interface is provided only for JRE compatibility. GWT does not support
-     * multithreading.
-     * </p>
+     * <p>This interface is provided only for JRE compatibility. GWT does not support multithreading.
      * @class
      */
     interface Runnable {
@@ -306,10 +299,9 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * Allows an instance of a class implementing this interface to be used in the
-     * foreach statement.
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html">
-     * the official Java API doc</a> for details.
+     * Allows an instance of a class implementing this interface to be used in the foreach statement.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Iterable.html">the official Java
+     * API doc</a> for details.
      *
      * @param <T> type of returned iterator
      * @class
@@ -330,9 +322,8 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html">the
-     * official Java API doc</a> for details.
+     * See <a href="http://docs.oracle.com/javase/7/docs/api/java/lang/AutoCloseable.html">the official
+     * Java API doc</a> for details.
      * @class
      */
     interface AutoCloseable {
@@ -372,9 +363,8 @@ declare namespace java.lang.reflect {
 }
 declare namespace java.lang.ref {
     /**
-     * This implements the reference API in a minimal way. In JavaScript, there is
-     * no control over the reference and the GC. So this implementation's only
-     * purpose is for compilation.
+     * This implements the reference API in a minimal way. In JavaScript, there is no control over the
+     * reference and the GC. So this implementation's only purpose is for compilation.
      * @class
      */
     abstract class Reference<T> {
@@ -451,21 +441,20 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * Constructs a {@code VirtualMachineError} with the specified
-     * detail message and cause.  <p>Note that the detail message
-     * associated with {@code cause} is <i>not</i> automatically
+     * Constructs a {@code VirtualMachineError} with the specified detail message and cause.
+     *
+     * <p>Note that the detail message associated with {@code cause} is <i>not</i> automatically
      * incorporated in this error's detail message.
      *
-     * @param  {string} message the detail message (which is saved for later retrieval
-     * by the {@link #getMessage()} method).
-     * @param  {java.lang.Throwable} cause the cause (which is saved for later retrieval by the
-     * {@link #getCause()} method).  (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or
+     * @param {string} message the detail message (which is saved for later retrieval by the {@link
+     * #getMessage()} method).
+     * @param {java.lang.Throwable} cause the cause (which is saved for later retrieval by the {@link #getCause()} method).
+     * (A {@code null} value is permitted, and indicates that the cause is nonexistent or
      * unknown.)
-     * @since  1.8
+     * @since 1.8
      * @class
      * @extends java.lang.Error
-     * @author  Frank Yellin
+     * @author Frank Yellin
      */
     abstract class VirtualMachineError extends Error {
         static serialVersionUID: number;
@@ -474,8 +463,8 @@ declare namespace java.lang {
 }
 declare namespace java.lang.annotation {
     /**
-     * Indicates the annotation parser determined the annotation was malformed when
-     * reading from the class file <a
+     * Indicates the annotation parser determined the annotation was malformed when reading from the
+     * class file <a
      * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/AnnotationFormatError.html">[Sun
      * docs]</a>.
      * @class
@@ -757,6 +746,19 @@ declare namespace java.text {
         setMaximumFractionDigits(newValue: number): void;
         setMinimumFractionDigits(newValue: number): void;
         format(number: number): string;
+        setGroupingUsed(newValue: boolean): void;
+        parse$java_lang_String(source: string): number;
+        parse$java_lang_String$java_text_ParsePosition(source: string, pos: java.text.ParsePosition): number;
+        parse(source?: any, pos?: any): number;
+        static getIntegerInstance$(): NumberFormat;
+        static getIntegerInstance$java_util_Locale(l: java.util.Locale): NumberFormat;
+        static getIntegerInstance(l?: any): NumberFormat;
+        static getCurrencyInstance$(): NumberFormat;
+        static getCurrencyInstance$java_util_Locale(l: java.util.Locale): NumberFormat;
+        static getCurrencyInstance(l?: any): NumberFormat;
+        static getPercentInstance$(): NumberFormat;
+        static getPercentInstance$java_util_Locale(l: java.util.Locale): NumberFormat;
+        static getPercentInstance(l?: any): NumberFormat;
         constructor();
     }
 }
@@ -766,21 +768,20 @@ declare namespace java.text {
      *
      * @param {number} index initial index
      * @class
-     * @author      Mark Davis
+     * @author Mark Davis
      */
     class ParsePosition {
         /**
-         * Input: the place you start parsing.
-         * <br>Output: position where the parse stopped.
-         * This is designed to be used serially,
-         * with each call setting index up for the next one.
+         * Input: the place you start parsing. <br>
+         * Output: position where the parse stopped. This is designed to be used serially, with each call
+         * setting index up for the next one.
          */
         index: number;
         errorIndex: number;
         /**
-         * Retrieve the current parse position.  On input to a parse method, this
-         * is the index of the character at which parsing will begin; on output, it
-         * is the index of the character following the last character parsed.
+         * Retrieve the current parse position. On input to a parse method, this is the index of the
+         * character at which parsing will begin; on output, it is the index of the character following
+         * the last character parsed.
          *
          * @return {number} the current parse position
          */
@@ -793,17 +794,15 @@ declare namespace java.text {
         setIndex(index: number): void;
         constructor(index: number);
         /**
-         * Set the index at which a parse error occurred.  Formatters
-         * should set this before returning an error code from their
-         * parseObject method.  The default value is -1 if this is not set.
+         * Set the index at which a parse error occurred. Formatters should set this before returning an
+         * error code from their parseObject method. The default value is -1 if this is not set.
          *
          * @param {number} ei the index at which an error occurred
          * @since 1.2
          */
         setErrorIndex(ei: number): void;
         /**
-         * Retrieve the index at which an error occurred, or -1 if the
-         * error index has not been set.
+         * Retrieve the index at which an error occurred, or -1 if the error index has not been set.
          *
          * @return {number} the index at which an error occurred
          * @since 1.2
@@ -817,12 +816,14 @@ declare namespace java.text {
         equals(obj: any): boolean;
         /**
          * Returns a hash code for this ParsePosition.
+         *
          * @return {number} a hash code value for this object
          */
         hashCode(): number;
         /**
          * Return a string representation of this ParsePosition.
-         * @return  {string} a string representation of this object
+         *
+         * @return {string} a string representation of this object
          */
         toString(): string;
     }
@@ -884,8 +885,7 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * This constructor does nothing. It is provided for signature
-     * compatibility.
+     * This constructor does nothing. It is provided for signature compatibility.
      * @class
      * @extends *
      */
@@ -899,31 +899,28 @@ declare namespace java.io {
          * Returns an estimated number of bytes that can be read or skipped without blocking for more
          * input.
          *
-         * <p>Note that this method provides such a weak guarantee that it is not very useful in
-         * practice.
+         * <p>Note that this method provides such a weak guarantee that it is not very useful in practice.
          *
-         * <p>Firstly, the guarantee is "without blocking for more input" rather than "without
-         * blocking": a read may still block waiting for I/O to complete&nbsp;&mdash; the guarantee is
-         * merely that it won't have to wait indefinitely for data to be written. The result of this
-         * method should not be used as a license to do I/O on a thread that shouldn't be blocked.
+         * <p>Firstly, the guarantee is "without blocking for more input" rather than "without blocking":
+         * a read may still block waiting for I/O to complete&nbsp;&mdash; the guarantee is merely that it
+         * won't have to wait indefinitely for data to be written. The result of this method should not be
+         * used as a license to do I/O on a thread that shouldn't be blocked.
          *
-         * <p>Secondly, the result is a
-         * conservative estimate and may be significantly smaller than the actual number of bytes
-         * available. In particular, an implementation that always returns 0 would be correct.
-         * In general, callers should only use this method if they'd be satisfied with
-         * treating the result as a boolean yes or no answer to the question "is there definitely
-         * data ready?".
+         * <p>Secondly, the result is a conservative estimate and may be significantly smaller than the
+         * actual number of bytes available. In particular, an implementation that always returns 0 would
+         * be correct. In general, callers should only use this method if they'd be satisfied with
+         * treating the result as a boolean yes or no answer to the question "is there definitely data
+         * ready?".
          *
-         * <p>Thirdly, the fact that a given number of bytes is "available" does not guarantee that a
-         * read or skip will actually read or skip that many bytes: they may read or skip fewer.
+         * <p>Thirdly, the fact that a given number of bytes is "available" does not guarantee that a read
+         * or skip will actually read or skip that many bytes: they may read or skip fewer.
          *
-         * <p>It is particularly important to realize that you <i>must not</i> use this method to
-         * size a container and assume that you can read the entirety of the stream without needing
-         * to resize the container. Such callers should probably write everything they read to a
-         * {@link ByteArrayOutputStream} and convert that to a byte array. Alternatively, if you're
-         * reading from a file, {@link File#length} returns the current length of the file (though
-         * assuming the file's length can't change may be incorrect, reading a file is inherently
-         * racy).
+         * <p>It is particularly important to realize that you <i>must not</i> use this method to size a
+         * container and assume that you can read the entirety of the stream without needing to resize the
+         * container. Such callers should probably write everything they read to a {@link
+         * ByteArrayOutputStream} and convert that to a byte array. Alternatively, if you're reading from
+         * a file, {@link File#length} returns the current length of the file (though assuming the file's
+         * length can't change may be incorrect, reading a file is inherently racy).
          *
          * <p>The default implementation of this method in {@code InputStream} always returns 0.
          * Subclasses should override this method if they are able to indicate the number of bytes
@@ -934,32 +931,29 @@ declare namespace java.io {
          */
         available(): number;
         /**
-         * Closes this stream. Concrete implementations of this class should free
-         * any resources during close. This implementation does nothing.
+         * Closes this stream. Concrete implementations of this class should free any resources during
+         * close. This implementation does nothing.
          *
-         * @throws IOException
-         * if an error occurs while closing this stream.
+         * @throws IOException if an error occurs while closing this stream.
          */
         close(): void;
         /**
-         * Sets a mark position in this InputStream. The parameter {@code readlimit}
-         * indicates how many bytes can be read before the mark is invalidated.
-         * Sending {@code reset()} will reposition the stream back to the marked
-         * position provided {@code readLimit} has not been surpassed.
-         * <p>
-         * This default implementation does nothing and concrete subclasses must
-         * provide their own implementation.
+         * Sets a mark position in this InputStream. The parameter {@code readlimit} indicates how many
+         * bytes can be read before the mark is invalidated. Sending {@code reset()} will reposition the
+         * stream back to the marked position provided {@code readLimit} has not been surpassed.
          *
-         * @param {number} readlimit
-         * the number of bytes that can be read from this stream before
-         * the mark is invalidated.
+         * <p>This default implementation does nothing and concrete subclasses must provide their own
+         * implementation.
+         *
+         * @param {number} readlimit the number of bytes that can be read from this stream before the mark is
+         * invalidated.
          * @see #markSupported()
          * @see #reset()
          */
         mark(readlimit: number): void;
         /**
-         * Indicates whether this stream supports the {@code mark()} and
-         * {@code reset()} methods. The default implementation returns {@code false}.
+         * Indicates whether this stream supports the {@code mark()} and {@code reset()} methods. The
+         * default implementation returns {@code false}.
          *
          * @return {boolean} always {@code false}.
          * @see #mark(int)
@@ -970,15 +964,13 @@ declare namespace java.io {
         read$byte_A(buffer: number[]): number;
         read$byte_A$int$int(buffer: number[], byteOffset: number, byteCount: number): number;
         /**
-         * Reads up to {@code byteCount} bytes from this stream and stores them in
-         * the byte array {@code buffer} starting at {@code byteOffset}.
-         * Returns the number of bytes actually read or -1 if the end of the stream
-         * has been reached.
+         * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+         * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+         * end of the stream has been reached.
          *
-         * @throws IndexOutOfBoundsException
-         * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-         * @throws IOException
-         * if the stream is closed or another IOException occurs.
+         * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+         * byteCount > buffer.length}.
+         * @throws IOException if the stream is closed or another IOException occurs.
          * @param {byte[]} buffer
          * @param {number} byteOffset
          * @param {number} byteCount
@@ -986,34 +978,29 @@ declare namespace java.io {
          */
         read(buffer?: any, byteOffset?: any, byteCount?: any): number;
         /**
-         * Resets this stream to the last marked location. Throws an
-         * {@code IOException} if the number of bytes read since the mark has been
-         * set is greater than the limit provided to {@code mark}, or if no mark
-         * has been set.
-         * <p>
-         * This implementation always throws an {@code IOException} and concrete
-         * subclasses should provide the proper implementation.
+         * Resets this stream to the last marked location. Throws an {@code IOException} if the number of
+         * bytes read since the mark has been set is greater than the limit provided to {@code mark}, or
+         * if no mark has been set.
          *
-         * @throws IOException
-         * if this stream is closed or another IOException occurs.
+         * <p>This implementation always throws an {@code IOException} and concrete subclasses should
+         * provide the proper implementation.
+         *
+         * @throws IOException if this stream is closed or another IOException occurs.
          */
         reset(): void;
         /**
-         * Skips at most {@code byteCount} bytes in this stream. The number of actual
-         * bytes skipped may be anywhere between 0 and {@code byteCount}. If
-         * {@code byteCount} is negative, this method does nothing and returns 0, but
-         * some subclasses may throw.
+         * Skips at most {@code byteCount} bytes in this stream. The number of actual bytes skipped may be
+         * anywhere between 0 and {@code byteCount}. If {@code byteCount} is negative, this method does
+         * nothing and returns 0, but some subclasses may throw.
          *
-         * <p>Note the "at most" in the description of this method: this method may
-         * choose to skip fewer bytes than requested. Callers should <i>always</i>
-         * check the return value.
+         * <p>Note the "at most" in the description of this method: this method may choose to skip fewer
+         * bytes than requested. Callers should <i>always</i> check the return value.
          *
-         * <p>This default implementation reads bytes into a temporary buffer. Concrete
-         * subclasses should provide their own implementation.
+         * <p>This default implementation reads bytes into a temporary buffer. Concrete subclasses should
+         * provide their own implementation.
          *
          * @return {number} the number of bytes actually skipped.
-         * @throws IOException if this stream is closed or another IOException
-         * occurs.
+         * @throws IOException if this stream is closed or another IOException occurs.
          * @param {number} byteCount
          */
         skip(byteCount: number): number;
@@ -1027,40 +1014,31 @@ declare namespace java.io {
     abstract class OutputStream implements java.io.Closeable, java.io.Flushable {
         constructor();
         /**
-         * Closes this stream. Implementations of this method should free any
-         * resources used by the stream. This implementation does nothing.
+         * Closes this stream. Implementations of this method should free any resources used by the
+         * stream. This implementation does nothing.
          *
-         * @throws IOException
-         * if an error occurs while closing this stream.
+         * @throws IOException if an error occurs while closing this stream.
          */
         close(): void;
         /**
-         * Flushes this stream. Implementations of this method should ensure that
-         * any buffered data is written out. This implementation does nothing.
+         * Flushes this stream. Implementations of this method should ensure that any buffered data is
+         * written out. This implementation does nothing.
          *
-         * @throws IOException
-         * if an error occurs while flushing this stream.
+         * @throws IOException if an error occurs while flushing this stream.
          */
         flush(): void;
         write$byte_A(buffer: number[]): void;
         write$byte_A$int$int(buffer: number[], offset: number, count: number): void;
         /**
-         * Writes {@code count} bytes from the byte array {@code buffer} starting at
-         * position {@code offset} to this stream.
+         * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+         * offset} to this stream.
          *
-         * @param {byte[]} buffer
-         * the buffer to be written.
-         * @param {number} offset
-         * the start position in {@code buffer} from where to get bytes.
-         * @param {number} count
-         * the number of bytes from {@code buffer} to write to this
-         * stream.
-         * @throws IOException
-         * if an error occurs while writing to this stream.
-         * @throws IndexOutOfBoundsException
-         * if {@code offset < 0} or {@code count < 0}, or if
-         * {@code offset + count} is bigger than the length of
-         * {@code buffer}.
+         * @param {byte[]} buffer the buffer to be written.
+         * @param {number} offset the start position in {@code buffer} from where to get bytes.
+         * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+         * @throws IOException if an error occurs while writing to this stream.
+         * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+         * offset + count} is bigger than the length of {@code buffer}.
          */
         write(buffer?: any, offset?: any, count?: any): any;
         write$int(oneByte: number): void;
@@ -1096,18 +1074,15 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * Defines an interface for classes that can (or need to) be flushed, typically
-     * before some output processing is considered to be finished and the object
-     * gets closed.
+     * Defines an interface for classes that can (or need to) be flushed, typically before some output
+     * processing is considered to be finished and the object gets closed.
      * @class
      */
     interface Flushable {
         /**
-         * Flushes the object by writing out any buffered data to the underlying
-         * output.
+         * Flushes the object by writing out any buffered data to the underlying output.
          *
-         * @throws IOException
-         * if there are any issues writing the data.
+         * @throws IOException if there are any issues writing the data.
          */
         flush(): any;
     }
@@ -1116,7 +1091,7 @@ declare namespace java.io {
     /**
      * Provides a series of utilities to be reused between IO classes.
      *
-     * TODO(chehayeb): move these checks to InternalPreconditions.
+     * <p>TODO(chehayeb): move these checks to InternalPreconditions.
      * @class
      */
     class IOUtils {
@@ -1139,9 +1114,9 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * Provided for interoperability; RPC treats this interface synonymously with
-     * {@link com.google.gwt.user.client.rpc.IsSerializable}.
-     * The Java serialization protocol is explicitly not supported.
+     * Provided for interoperability; RPC treats this interface synonymously with {@link
+     * com.google.gwt.user.client.rpc.IsSerializable}. The Java serialization protocol is
+     * explicitly not supported.
      * @class
      */
     interface Serializable {
@@ -1156,38 +1131,33 @@ declare namespace java.io {
         /**
          * Closes the object and release any system resources it holds.
          *
-         * <p>Although only the first call has any effect, it is safe to call close
-         * multiple times on the same object. This is more lenient than the
-         * overridden {@code AutoCloseable.close()}, which may be called at most
-         * once.
+         * <p>Although only the first call has any effect, it is safe to call close multiple times on the
+         * same object. This is more lenient than the overridden {@code AutoCloseable.close()}, which may
+         * be called at most once.
          */
         close(): any;
     }
 }
 declare namespace java.util {
     /**
-     * Constructs a string tokenizer for the specified string. All
-     * characters in the <code>delim</code> argument are the delimiters
-     * for separating tokens.
-     * <p>
-     * If the <code>returnDelims</code> flag is <code>true</code>, then
-     * the delimiter characters are also returned as tokens. Each
-     * delimiter is returned as a string of length one. If the flag is
-     * <code>false</code>, the delimiter characters are skipped and only
-     * serve as separators between tokens.
-     * <p>
-     * Note that if <tt>delim</tt> is <tt>null</tt>, this constructor does
-     * not throw an exception. However, trying to invoke other methods on the
-     * resulting <tt>StringTokenizer</tt> may result in a
-     * <tt>NullPointerException</tt>.
+     * Constructs a string tokenizer for the specified string. All characters in the <code>delim
+     * </code> argument are the delimiters for separating tokens.
      *
-     * @param   {string} str            a string to be parsed.
-     * @param   {string} delim          the delimiters.
-     * @param   {boolean} returnDelims   flag indicating whether to return the delimiters
-     * as tokens.
+     * <p>If the <code>returnDelims</code> flag is <code>true</code>, then the delimiter characters
+     * are also returned as tokens. Each delimiter is returned as a string of length one. If the flag
+     * is <code>false</code>, the delimiter characters are skipped and only serve as separators
+     * between tokens.
+     *
+     * <p>Note that if <tt>delim</tt> is <tt>null</tt>, this constructor does not throw an exception.
+     * However, trying to invoke other methods on the resulting <tt>StringTokenizer</tt> may result in
+     * a <tt>NullPointerException</tt>.
+     *
+     * @param {string} str a string to be parsed.
+     * @param {string} delim the delimiters.
+     * @param {boolean} returnDelims flag indicating whether to return the delimiters as tokens.
      * @exception NullPointerException if str is <CODE>null</CODE>
      * @class
-     * @author  unascribed
+     * @author unascribed
      */
     class StringTokenizer implements java.util.Enumeration<any> {
         currentPosition: number;
@@ -1198,27 +1168,23 @@ declare namespace java.util {
         retDelims: boolean;
         delimsChanged: boolean;
         /**
-         * maxDelimCodePoint stores the value of the delimiter character with the
-         * highest value. It is used to optimize the detection of delimiter
-         * characters.
+         * maxDelimCodePoint stores the value of the delimiter character with the highest value. It is
+         * used to optimize the detection of delimiter characters.
          *
-         * It is unlikely to provide any optimization benefit in the
-         * hasSurrogates case because most string characters will be
-         * smaller than the limit, but we keep it so that the two code
-         * paths remain similar.
+         * <p>It is unlikely to provide any optimization benefit in the hasSurrogates case because most
+         * string characters will be smaller than the limit, but we keep it so that the two code paths
+         * remain similar.
          */
         maxDelimCodePoint: number;
         /**
-         * If delimiters include any surrogates (including surrogate
-         * pairs), hasSurrogates is true and the tokenizer uses the
-         * different code path. This is because String.indexOf(int)
-         * doesn't handle unpaired surrogates as a single character.
+         * If delimiters include any surrogates (including surrogate pairs), hasSurrogates is true and the
+         * tokenizer uses the different code path. This is because String.indexOf(int) doesn't handle
+         * unpaired surrogates as a single character.
          */
         hasSurrogates: boolean;
         /**
-         * When hasSurrogates is true, delimiters are converted to code
-         * points and isDelimiter(int) is used to determine if the given
-         * codepoint is a delimiter.
+         * When hasSurrogates is true, delimiters are converted to code points and isDelimiter(int) is
+         * used to determine if the given codepoint is a delimiter.
          */
         delimiterCodePoints: number[];
         /**
@@ -1228,17 +1194,17 @@ declare namespace java.util {
         setMaxDelimCodePoint(): void;
         constructor(str?: any, delim?: any, returnDelims?: any);
         /**
-         * Skips delimiters starting from the specified position. If retDelims
-         * is false, returns the index of the first non-delimiter character at or
-         * after startPos. If retDelims is true, startPos is returned.
+         * Skips delimiters starting from the specified position. If retDelims is false, returns the index
+         * of the first non-delimiter character at or after startPos. If retDelims is true, startPos is
+         * returned.
          * @param {number} startPos
          * @return {number}
          * @private
          */
         skipDelimiters(startPos: number): number;
         /**
-         * Skips ahead from startPos and returns the index of the next delimiter
-         * character encountered, or maxPosition if no such delimiter is found.
+         * Skips ahead from startPos and returns the index of the next delimiter character encountered, or
+         * maxPosition if no such delimiter is found.
          * @param {number} startPos
          * @return {number}
          * @private
@@ -1246,76 +1212,64 @@ declare namespace java.util {
         scanToken(startPos: number): number;
         isDelimiter(codePoint: number): boolean;
         /**
-         * Tests if there are more tokens available from this tokenizer's string.
-         * If this method returns <tt>true</tt>, then a subsequent call to
-         * <tt>nextToken</tt> with no argument will successfully return a token.
+         * Tests if there are more tokens available from this tokenizer's string. If this method returns
+         * <tt>true</tt>, then a subsequent call to <tt>nextToken</tt> with no argument will successfully
+         * return a token.
          *
-         * @return  {boolean} <code>true</code> if and only if there is at least one token
-         * in the string after the current position; <code>false</code>
-         * otherwise.
+         * @return {boolean} <code>true</code> if and only if there is at least one token in the string after the
+         * current position; <code>false</code> otherwise.
          */
         hasMoreTokens(): boolean;
         nextToken$(): string;
         nextToken$java_lang_String(delim: string): string;
         /**
-         * Returns the next token in this string tokenizer's string. First,
-         * the set of characters considered to be delimiters by this
-         * <tt>StringTokenizer</tt> object is changed to be the characters in
-         * the string <tt>delim</tt>. Then the next token in the string
-         * after the current position is returned. The current position is
-         * advanced beyond the recognized token.  The new delimiter set
-         * remains the default after this call.
+         * Returns the next token in this string tokenizer's string. First, the set of characters
+         * considered to be delimiters by this <tt>StringTokenizer</tt> object is changed to be the
+         * characters in the string <tt>delim</tt>. Then the next token in the string after the current
+         * position is returned. The current position is advanced beyond the recognized token. The new
+         * delimiter set remains the default after this call.
          *
-         * @param      {string} delim   the new delimiters.
-         * @return     {string} the next token, after switching to the new delimiter set.
-         * @exception  NoSuchElementException  if there are no more tokens in this
-         * tokenizer's string.
+         * @param {string} delim the new delimiters.
+         * @return {string} the next token, after switching to the new delimiter set.
+         * @exception NoSuchElementException if there are no more tokens in this tokenizer's string.
          * @exception NullPointerException if delim is <CODE>null</CODE>
          */
         nextToken(delim?: any): string;
         /**
-         * Returns the same value as the <code>hasMoreTokens</code>
-         * method. It exists so that this class can implement the
-         * <code>Enumeration</code> interface.
+         * Returns the same value as the <code>hasMoreTokens</code> method. It exists so that this class
+         * can implement the <code>Enumeration</code> interface.
          *
-         * @return  {boolean} <code>true</code> if there are more tokens;
-         * <code>false</code> otherwise.
-         * @see     java.util.Enumeration
-         * @see     java.util.StringTokenizer#hasMoreTokens()
+         * @return {boolean} <code>true</code> if there are more tokens; <code>false</code> otherwise.
+         * @see java.util.Enumeration
+         * @see java.util.StringTokenizer#hasMoreTokens()
          */
         hasMoreElements(): boolean;
         /**
-         * Returns the same value as the <code>nextToken</code> method,
-         * except that its declared return value is <code>Object</code> rather than
-         * <code>String</code>. It exists so that this class can implement the
-         * <code>Enumeration</code> interface.
+         * Returns the same value as the <code>nextToken</code> method, except that its declared return
+         * value is <code>Object</code> rather than <code>String</code>. It exists so that this class can
+         * implement the <code>Enumeration</code> interface.
          *
-         * @return     {*} the next token in the string.
-         * @exception  NoSuchElementException  if there are no more tokens in this
-         * tokenizer's string.
-         * @see        java.util.Enumeration
-         * @see        java.util.StringTokenizer#nextToken()
+         * @return {*} the next token in the string.
+         * @exception NoSuchElementException if there are no more tokens in this tokenizer's string.
+         * @see java.util.Enumeration
+         * @see java.util.StringTokenizer#nextToken()
          */
         nextElement(): any;
         /**
-         * Calculates the number of times that this tokenizer's
-         * <code>nextToken</code> method can be called before it generates an
-         * exception. The current position is not advanced.
+         * Calculates the number of times that this tokenizer's <code>nextToken</code> method can be
+         * called before it generates an exception. The current position is not advanced.
          *
-         * @return  {number} the number of tokens remaining in the string using the current
-         * delimiter set.
-         * @see     java.util.StringTokenizer#nextToken()
+         * @return {number} the number of tokens remaining in the string using the current delimiter set.
+         * @see java.util.StringTokenizer#nextToken()
          */
         countTokens(): number;
     }
 }
 declare namespace java.util {
     /**
-     * Construct a random generator with the given {@code seed} as the initial
-     * state.
+     * Construct a random generator with the given {@code seed} as the initial state.
      *
-     * @param {number} seed the seed that will determine the initial state of this random
-     * number generator.
+     * @param {number} seed the seed that will determine the initial state of this random number generator.
      * @see #setSeed
      * @class
      */
@@ -1336,8 +1290,8 @@ declare namespace java.util {
         static twoToTheXMinus48: number[];
         static twoToTheXMinus48_$LI$(): number[];
         /**
-         * A value used to avoid two random number generators produced at the same
-         * time having the same seed.
+         * A value used to avoid two random number generators produced at the same time having the same
+         * seed.
          */
         static uniqueSeed: number;
         static __static_initializer_0(): void;
@@ -1359,43 +1313,41 @@ declare namespace java.util {
         seedlo: number;
         constructor(seed?: any);
         /**
-         * Returns the next pseudo-random, uniformly distributed {@code boolean} value
-         * generated by this generator.
+         * Returns the next pseudo-random, uniformly distributed {@code boolean} value generated by this
+         * generator.
          *
          * @return {boolean} a pseudo-random, uniformly distributed boolean value.
          */
         nextBoolean(): boolean;
         /**
-         * Modifies the {@code byte} array by a random sequence of {@code byte}s
-         * generated by this random number generator.
+         * Modifies the {@code byte} array by a random sequence of {@code byte}s generated by this random
+         * number generator.
          *
          * @param {byte[]} buf non-null array to contain the new random {@code byte}s.
          * @see #next
          */
         nextBytes(buf: number[]): void;
         /**
-         * Generates a normally distributed random {@code double} number between 0.0
-         * inclusively and 1.0 exclusively.
+         * Generates a normally distributed random {@code double} number between 0.0 inclusively and 1.0
+         * exclusively.
          *
          * @return {number} a random {@code double} in the range [0.0 - 1.0)
          * @see #nextFloat
          */
         nextDouble(): number;
         /**
-         * Generates a normally distributed random {@code float} number between 0.0
-         * inclusively and 1.0 exclusively.
+         * Generates a normally distributed random {@code float} number between 0.0 inclusively and 1.0
+         * exclusively.
          *
          * @return {number} float a random {@code float} number between [0.0 and 1.0)
          * @see #nextDouble
          */
         nextFloat(): number;
         /**
-         * Pseudo-randomly generates (approximately) a normally distributed {@code
-         * double} value with mean 0.0 and a standard deviation value of {@code 1.0}
-         * using the <i>polar method<i> of G. E. P. Box, M. E. Muller, and G.
-         * Marsaglia, as described by Donald E. Knuth in <i>The Art of Computer
-         * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.4.1,
-         * subsection C, algorithm P.
+         * Pseudo-randomly generates (approximately) a normally distributed {@code double} value with mean
+         * 0.0 and a standard deviation value of {@code 1.0} using the <i>polar method<i> of G. E. P. Box,
+         * M. E. Muller, and G. Marsaglia, as described by Donald E. Knuth in <i>The Art of Computer
+         * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.4.1, subsection C, algorithm P.
          *
          * @return {number} a random {@code double}
          * @see #nextDouble
@@ -1404,17 +1356,15 @@ declare namespace java.util {
         nextInt$(): number;
         nextInt$int(n: number): number;
         /**
-         * Returns a new pseudo-random {@code int} value which is uniformly
-         * distributed between 0 (inclusively) and the value of {@code n}
-         * (exclusively).
+         * Returns a new pseudo-random {@code int} value which is uniformly distributed between 0
+         * (inclusively) and the value of {@code n} (exclusively).
          *
          * @param {number} n the exclusive upper border of the range [0 - n).
          * @return {number} a random {@code int}.
          */
         nextInt(n?: any): number;
         /**
-         * Generates a uniformly distributed 64-bit integer value from the random
-         * number sequence.
+         * Generates a uniformly distributed 64-bit integer value from the random number sequence.
          *
          * @return {number} 64-bit random integer.
          * @see java.lang.Integer#MAX_VALUE
@@ -1426,10 +1376,9 @@ declare namespace java.util {
         nextLong(): number;
         setSeed$long(seed: number): void;
         /**
-         * Returns a pseudo-random uniformly distributed {@code int} value of the
-         * number of bits specified by the argument {@code bits} as described by
-         * Donald E. Knuth in <i>The Art of Computer Programming, Volume 2:
-         * Seminumerical Algorithms</i>, section 3.2.1.
+         * Returns a pseudo-random uniformly distributed {@code int} value of the number of bits specified
+         * by the argument {@code bits} as described by Donald E. Knuth in <i>The Art of Computer
+         * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.2.1.
          *
          * @param {number} bits number of bits of the returned value.
          * @return {number} a pseudo-random generated int number.
@@ -1457,38 +1406,32 @@ declare namespace java.util {
         obs: java.util.Vector<java.util.Observer>;
         constructor();
         /**
-         * Adds an observer to the set of observers for this object, provided that
-         * it is not the same as some observer already in the set. The order in
-         * which notifications will be delivered to multiple observers is not
-         * specified. See the class comment.
+         * Adds an observer to the set of observers for this object, provided that it is not the same as
+         * some observer already in the set. The order in which notifications will be delivered to
+         * multiple observers is not specified. See the class comment.
          *
-         * @param {*} o
-         * an observer to be added.
-         * @throws NullPointerException
-         * if the parameter o is null.
+         * @param {*} o an observer to be added.
+         * @throws NullPointerException if the parameter o is null.
          */
         addObserver(o: java.util.Observer): void;
         /**
-         * Deletes an observer from the set of observers of this object. Passing
-         * <CODE>null</CODE> to this method will have no effect.
+         * Deletes an observer from the set of observers of this object. Passing <CODE>null</CODE> to this
+         * method will have no effect.
          *
-         * @param {*} o
-         * the observer to be deleted.
+         * @param {*} o the observer to be deleted.
          */
         deleteObserver(o: java.util.Observer): void;
         notifyObservers$(): void;
         notifyObservers$java_lang_Object(arg: any): void;
         /**
-         * If this object has changed, as indicated by the <code>hasChanged</code>
-         * method, then notify all of its observers and then call the
-         * <code>clearChanged</code> method to indicate that this object has no
-         * longer changed.
-         * <p>
-         * Each observer has its <code>update</code> method called with two
-         * arguments: this observable object and the <code>arg</code> argument.
+         * If this object has changed, as indicated by the <code>hasChanged</code> method, then notify all
+         * of its observers and then call the <code>clearChanged</code> method to indicate that this
+         * object has no longer changed.
          *
-         * @param {*} arg
-         * any object.
+         * <p>Each observer has its <code>update</code> method called with two arguments: this observable
+         * object and the <code>arg</code> argument.
+         *
+         * @param {*} arg any object.
          * @see java.util.Observable#clearChanged()
          * @see java.util.Observable#hasChanged()
          * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
@@ -1499,15 +1442,15 @@ declare namespace java.util {
          */
         deleteObservers(): void;
         /**
-         * Marks this <tt>Observable</tt> object as having been changed; the
-         * <tt>hasChanged</tt> method will now return <tt>true</tt>.
+         * Marks this <tt>Observable</tt> object as having been changed; the <tt>hasChanged</tt> method
+         * will now return <tt>true</tt>.
          */
         setChanged(): void;
         /**
-         * Indicates that this object has no longer changed, or that it has already
-         * notified all of its observers of its most recent change, so that the
-         * <tt>hasChanged</tt> method will now return <tt>false</tt>. This method is
-         * called automatically by the <code>notifyObservers</code> methods.
+         * Indicates that this object has no longer changed, or that it has already notified all of its
+         * observers of its most recent change, so that the <tt>hasChanged</tt> method will now return
+         * <tt>false</tt>. This method is called automatically by the <code>notifyObservers</code>
+         * methods.
          *
          * @see java.util.Observable#notifyObservers()
          * @see java.util.Observable#notifyObservers(java.lang.Object)
@@ -1516,10 +1459,9 @@ declare namespace java.util {
         /**
          * Tests if this object has changed.
          *
-         * @return {boolean} <code>true</code> if and only if the <code>setChanged</code>
-         * method has been called more recently than the
-         * <code>clearChanged</code> method on this object;
-         * <code>false</code> otherwise.
+         * @return {boolean} <code>true</code> if and only if the <code>setChanged</code> method has been called
+         * more recently than the <code>clearChanged</code> method on this object; <code>false</code>
+         * otherwise.
          * @see java.util.Observable#clearChanged()
          * @see java.util.Observable#setChanged()
          */
@@ -1621,9 +1563,9 @@ declare namespace java.util {
         toString(): string;
         static ONE_HOUR_IN_MILLISECONDS: number;
         /**
-         * Detects if the requested time falls into a non-existent time range due to
-         * local time advancing into daylight savings time or is ambiguous due to
-         * going out of daylight savings. If so, adjust accordingly.
+         * Detects if the requested time falls into a non-existent time range due to local time advancing
+         * into daylight savings time or is ambiguous due to going out of daylight savings. If so, adjust
+         * accordingly.
          * @param {number} requestedHours
          * @private
          */
@@ -1631,8 +1573,7 @@ declare namespace java.util {
     }
     namespace Date {
         /**
-         * Encapsulates static data to avoid Date itself having a static
-         * initializer.
+         * Encapsulates static data to avoid Date itself having a static initializer.
          * @class
          */
         class StringData {
@@ -1646,8 +1587,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Incomplete and naive implementation of the BitSet utility (mainly for
-     * compatibility/compilation purpose).
+     * Incomplete and naive implementation of the BitSet utility (mainly for compatibility/compilation
+     * purpose).
      *
      * @author Renaud Pawlak
      * @param {number} nbits
@@ -1686,8 +1627,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * A tag interface that other "listener" interfaces can extend to indicate their
-     * adherence to the observer pattern.
+     * A tag interface that other "listener" interfaces can extend to indicate their adherence to the
+     * observer pattern.
      * @class
      */
     interface EventListener {
@@ -1696,11 +1637,9 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * General-purpose interface for storing collections of objects. <a href=
-     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html">[Sun
-     * docs]</a>
+     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collection.html">[Sun docs]</a>
      *
-     * @param <E>
-     * element type
+     * @param <E> element type
      * @class
      */
     interface Collection<E> extends java.lang.Iterable<E> {
@@ -1729,12 +1668,12 @@ declare namespace java.util {
     /**
      * A simple wrapper around JavaScriptObject to provide {@link java.util.Map}-like semantics for any
      * key type.
-     * <p>
-     * Implementation notes:
-     * <p>
-     * A key's hashCode is the index in backingMap which should contain that key. Since several keys may
-     * have the same hash, each value in hashCodeMap is actually an array containing all entries whose
-     * keys share the same hash.
+     *
+     * <p>Implementation notes:
+     *
+     * <p>A key's hashCode is the index in backingMap which should contain that key. Since several keys
+     * may have the same hash, each value in hashCodeMap is actually an array containing all entries
+     * whose keys share the same hash.
      * @param {java.util.AbstractHashMap} host
      * @class
      */
@@ -1851,8 +1790,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Iterator.html">the official Java
+     * API doc</a> for details.
      *
      * @param <E> element type
      * @class
@@ -1868,10 +1807,8 @@ declare namespace java.util {
     /**
      * Abstract interface for maps.
      *
-     * @param <K>
-     * key type.
-     * @param <V>
-     * value type.
+     * @param <K> key type.
+     * @param <V> value type.
      * @class
      */
     interface Map<K, V> {
@@ -1905,20 +1842,14 @@ declare namespace java.util {
         }
         namespace Entry {
             /**
+             * Returns a comparator that compares {@link Map.Entry} by value using the given {@link
+             * Comparator}.
              *
-             * Returns a comparator that compares {@link Map.Entry} by value using the given
-             * {@link Comparator}.
+             * <p>The returned comparator is serializable if the specified comparator is also serializable.
              *
-             * <p>
-             * The returned comparator is serializable if the specified comparator is also
-             * serializable.
-             *
-             * @param <K>
-             * the type of the map keys
-             * @param <V>
-             * the type of the map values
-             * @param {*} cmp
-             * the value {@link Comparator}
+             * @param <K> the type of the map keys
+             * @param <V> the type of the map values
+             * @param {*} cmp the value {@link Comparator}
              * @return {*} a comparator that compares {@link Map.Entry} by the value.
              * @since 1.8
              */
@@ -1929,17 +1860,16 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Skeletal implementation of the Collection interface. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractCollection.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractCollection.html">[Sun docs]</a>
      *
      * @param <E> the element type.
      * @class
      */
     abstract class AbstractCollection<E> implements java.util.Collection<E> {
-        removeIf(filter: (p1: any) => boolean): boolean;
         stream(): java.util.stream.Stream<any>;
-        forEach(action: (p1: any) => void): void;
+        removeIf(filter: (p1: any) => boolean): boolean;
         parallelStream(): java.util.stream.Stream<any>;
+        forEach(action: (p1: any) => void): void;
         constructor();
         /**
          *
@@ -2020,8 +1950,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">the official Java
+     * API doc</a> for details.
      *
      * @param <T> type of the wrapped reference
      * @class
@@ -2063,8 +1993,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.html">the
+     * official Java API doc</a> for details.
      *
      * @param <T> element type
      * @param <C> consumer type
@@ -2074,8 +2004,9 @@ declare namespace java.util {
     }
     namespace PrimitiveIterator {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.OfDouble.html">
-         * the official Java API doc</a> for details.
+         * See <a
+         * href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.OfDouble.html">the
+         * official Java API doc</a> for details.
          * @class
          */
         interface OfDouble extends java.util.PrimitiveIterator<number, any> {
@@ -2110,8 +2041,9 @@ declare namespace java.util {
             forEachRemaining(consumer?: any): any;
         }
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.OfLong.html">
-         * the official Java API doc</a> for details.
+         * See <a
+         * href="https://docs.oracle.com/javase/8/docs/api/java/util/PrimitiveIterator.OfLong.html">the
+         * official Java API doc</a> for details.
          * @class
          */
         interface OfLong extends java.util.PrimitiveIterator<number, any> {
@@ -2131,8 +2063,7 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Indicates that a data structure supports constant-time random access to its
-     * contained objects.
+     * Indicates that a data structure supports constant-time random access to its contained objects.
      * @class
      */
     interface RandomAccess {
@@ -2141,8 +2072,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * A set known to be in ascending order. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/SortedSet.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/SortedSet.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @class
@@ -2158,9 +2088,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a
-     * href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the
-     * official Java API doc</a> for details.
+     * See <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the official Java
+     * API doc</a> for details.
      * @class
      */
     class Objects {
@@ -2183,8 +2112,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalLong.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalLong.html">the official
+     * Java API doc</a> for details.
      * @class
      */
     class OptionalLong {
@@ -2222,8 +2151,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * A collection designed for holding elements prior to processing. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Queue.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Queue.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @class
@@ -2275,8 +2203,8 @@ declare namespace java.util {
         static NATURAL_$LI$(): java.util.Comparator<any>;
         /**
          * Returns the natural Comparator.
-         * <p>
-         * Example:
+         *
+         * <p>Example:
          *
          * <pre>Comparator&lt;String&gt; compareString = Comparators.natural()</pre>
          *
@@ -2302,91 +2230,80 @@ declare namespace java.util {
         /**
          * Returns the number of entries (distinct keys) in this dictionary.
          *
-         * @return  {number} the number of keys in this dictionary.
+         * @return {number} the number of keys in this dictionary.
          */
         size(): number;
         /**
-         * Tests if this dictionary maps no keys to value. The general contract
-         * for the <tt>isEmpty</tt> method is that the result is true if and only
-         * if this dictionary contains no entries.
+         * Tests if this dictionary maps no keys to value. The general contract for the <tt>isEmpty</tt>
+         * method is that the result is true if and only if this dictionary contains no entries.
          *
-         * @return  {boolean} <code>true</code> if this dictionary maps no keys to values;
-         * <code>false</code> otherwise.
+         * @return {boolean} <code>true</code> if this dictionary maps no keys to values; <code>false</code>
+         * otherwise.
          */
         isEmpty(): boolean;
         /**
-         * Returns an enumeration of the keys in this dictionary. The general
-         * contract for the keys method is that an <tt>Enumeration</tt> object
-         * is returned that will generate all the keys for which this dictionary
-         * contains entries.
+         * Returns an enumeration of the keys in this dictionary. The general contract for the keys method
+         * is that an <tt>Enumeration</tt> object is returned that will generate all the keys for which
+         * this dictionary contains entries.
          *
-         * @return  {*} an enumeration of the keys in this dictionary.
-         * @see     java.util.Dictionary#elements()
-         * @see     java.util.Enumeration
+         * @return {*} an enumeration of the keys in this dictionary.
+         * @see java.util.Dictionary#elements()
+         * @see java.util.Enumeration
          */
         keys(): java.util.Enumeration<K>;
         /**
-         * Returns an enumeration of the values in this dictionary. The general
-         * contract for the <tt>elements</tt> method is that an
-         * <tt>Enumeration</tt> is returned that will generate all the elements
-         * contained in entries in this dictionary.
+         * Returns an enumeration of the values in this dictionary. The general contract for the
+         * <tt>elements</tt> method is that an <tt>Enumeration</tt> is returned that will generate all the
+         * elements contained in entries in this dictionary.
          *
-         * @return  {*} an enumeration of the values in this dictionary.
-         * @see     java.util.Dictionary#keys()
-         * @see     java.util.Enumeration
+         * @return {*} an enumeration of the values in this dictionary.
+         * @see java.util.Dictionary#keys()
+         * @see java.util.Enumeration
          */
         elements(): java.util.Enumeration<V>;
         /**
-         * Returns the value to which the key is mapped in this dictionary.
-         * The general contract for the <tt>isEmpty</tt> method is that if this
-         * dictionary contains an entry for the specified key, the associated
-         * value is returned; otherwise, <tt>null</tt> is returned.
+         * Returns the value to which the key is mapped in this dictionary. The general contract for the
+         * <tt>isEmpty</tt> method is that if this dictionary contains an entry for the specified key, the
+         * associated value is returned; otherwise, <tt>null</tt> is returned.
          *
-         * @return  {*} the value to which the key is mapped in this dictionary;
-         * @param   {*} key   a key in this dictionary.
-         * <code>null</code> if the key is not mapped to any value in
+         * @return {*} the value to which the key is mapped in this dictionary;
+         * @param {*} key a key in this dictionary. <code>null</code> if the key is not mapped to any value in
          * this dictionary.
          * @exception NullPointerException if the <tt>key</tt> is <tt>null</tt>.
-         * @see     java.util.Dictionary#put(java.lang.Object, java.lang.Object)
+         * @see java.util.Dictionary#put(java.lang.Object, java.lang.Object)
          */
         get(key: any): V;
         /**
-         * Maps the specified <code>key</code> to the specified
-         * <code>value</code> in this dictionary. Neither the key nor the
-         * value can be <code>null</code>.
-         * <p>
-         * If this dictionary already contains an entry for the specified
-         * <tt>key</tt>, the value already in this dictionary for that
-         * <tt>key</tt> is returned, after modifying the entry to contain the
-         * new element. <p>If this dictionary does not already have an entry
-         * for the specified <tt>key</tt>, an entry is created for the
-         * specified <tt>key</tt> and <tt>value</tt>, and <tt>null</tt> is
-         * returned.
-         * <p>
-         * The <code>value</code> can be retrieved by calling the
-         * <code>get</code> method with a <code>key</code> that is equal to
-         * the original <code>key</code>.
+         * Maps the specified <code>key</code> to the specified <code>value</code> in this dictionary.
+         * Neither the key nor the value can be <code>null</code>.
          *
-         * @param      {*} key     the hashtable key.
-         * @param      {*} value   the value.
-         * @return     {*} the previous value to which the <code>key</code> was mapped
-         * in this dictionary, or <code>null</code> if the key did not
-         * have a previous mapping.
-         * @exception  NullPointerException  if the <code>key</code> or
-         * <code>value</code> is <code>null</code>.
-         * @see        java.lang.Object#equals(java.lang.Object)
-         * @see        java.util.Dictionary#get(java.lang.Object)
+         * <p>If this dictionary already contains an entry for the specified <tt>key</tt>, the value
+         * already in this dictionary for that <tt>key</tt> is returned, after modifying the entry to
+         * contain the new element.
+         *
+         * <p>If this dictionary does not already have an entry for the specified <tt>key</tt>, an entry
+         * is created for the specified <tt>key</tt> and <tt>value</tt>, and <tt>null</tt> is returned.
+         *
+         * <p>The <code>value</code> can be retrieved by calling the <code>get</code> method with a <code>
+         * key</code> that is equal to the original <code>key</code>.
+         *
+         * @param {*} key the hashtable key.
+         * @param {*} value the value.
+         * @return {*} the previous value to which the <code>key</code> was mapped in this dictionary, or
+         * <code>null</code> if the key did not have a previous mapping.
+         * @exception NullPointerException if the <code>key</code> or <code>value</code> is <code>null
+         * </code>.
+         * @see java.lang.Object#equals(java.lang.Object)
+         * @see java.util.Dictionary#get(java.lang.Object)
          */
         put(key: K, value: V): V;
         /**
-         * Removes the <code>key</code> (and its corresponding
-         * <code>value</code>) from this dictionary. This method does nothing
-         * if the <code>key</code> is not in this dictionary.
+         * Removes the <code>key</code> (and its corresponding <code>value</code>) from this dictionary.
+         * This method does nothing if the <code>key</code> is not in this dictionary.
          *
-         * @param   {*} key   the key that needs to be removed.
-         * @return  {*} the value to which the <code>key</code> had been mapped in this
-         * dictionary, or <code>null</code> if the key did not have a
-         * mapping.
+         * @param {*} key the key that needs to be removed.
+         * @return {*} the value to which the <code>key</code> had been mapped in this dictionary, or <code>
+         * null</code> if the key did not have a mapping.
          * @exception NullPointerException if <tt>key</tt> is <tt>null</tt>.
          */
         remove(key: any): V;
@@ -2469,16 +2386,14 @@ declare namespace java.util.regex {
         ends: number[];
         groups: string[];
         /**
-         * The range of string that last matched the pattern. If the last
-         * match failed then first is -1; last initially holds 0 then it
-         * holds the index of the end of the last match (which is where the
+         * The range of string that last matched the pattern. If the last match failed then first is -1;
+         * last initially holds 0 then it holds the index of the end of the last match (which is where the
          * next search starts).
          */
         first: number;
         /**
-         * The range of string that last matched the pattern. If the last
-         * match failed then first is -1; last initially holds 0 then it
-         * holds the index of the end of the last match (which is where the
+         * The range of string that last matched the pattern. If the last match failed then first is -1;
+         * last initially holds 0 then it holds the index of the end of the last match (which is where the
          * next search starts).
          */
         last: number;
@@ -2566,8 +2481,7 @@ declare namespace java.util.regex {
 declare namespace java.util {
     /**
      * An interface to generate a series of elements, one at a time. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Enumeration.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Enumeration.html">[Sun docs]</a>
      *
      * @param <E> the type being enumerated.
      * @class
@@ -2591,8 +2505,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">the official
+     * Java API doc</a> for details.
      * @param {*} delimiter
      * @param {*} prefix
      * @param {*} suffix
@@ -2689,11 +2603,11 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * A very simple emulation of Locale for shared-code patterns like
-     * {@code String.toUpperCase(Locale.US)}.
-     * <p>
-     * Note: Any changes to this class should put into account the assumption that
-     * was made in rest of the JRE emulation.
+     * A very simple emulation of Locale for shared-code patterns like {@code
+     * String.toUpperCase(Locale.US)}.
+     *
+     * <p>Note: Any changes to this class should put into account the assumption that was made in rest
+     * of the JRE emulation.
      * @class
      */
     class Locale {
@@ -2710,8 +2624,8 @@ declare namespace java.util {
         static defaultLocale: Locale;
         static defaultLocale_$LI$(): Locale;
         /**
-         * Returns an instance that represents the browser's default locale (not
-         * necessarily the one defined by 'gwt.locale').
+         * Returns an instance that represents the browser's default locale (not necessarily the one
+         * defined by 'gwt.locale').
          * @return {java.util.Locale}
          */
         static getDefault(): Locale;
@@ -2771,8 +2685,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * A map with ordering. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/SortedMap.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/SortedMap.html">[Sun docs]</a>
      *
      * @param <K> key type.
      * @param <V> value type.
@@ -2789,9 +2702,9 @@ declare namespace java.util {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.Handler class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Handler.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.Handler class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Handler.html">The Java API doc
+     * for details</a>
      * @class
      */
     abstract class Handler {
@@ -2810,9 +2723,9 @@ declare namespace java.util.logging {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.Level class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Level.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.Level class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Level.html">The Java API doc for
+     * details</a>
      * @class
      */
     class Level implements java.io.Serializable {
@@ -2966,9 +2879,9 @@ declare namespace java.util.logging {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.LogRecord class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogRecord.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.LogRecord class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogRecord.html">The Java API doc
+     * for details</a>
      * @param {java.util.logging.Level} level
      * @param {string} msg
      * @class
@@ -2994,9 +2907,9 @@ declare namespace java.util.logging {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.Formatter class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Formatter.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.Formatter class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Formatter.html">The Java API doc
+     * for details</a>
      * @class
      */
     abstract class Formatter {
@@ -3006,9 +2919,9 @@ declare namespace java.util.logging {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.LogManager class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogManger.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.LogManager class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogManger.html">The Java API doc
+     * for details</a>
      * @class
      */
     class LogManager {
@@ -3020,21 +2933,18 @@ declare namespace java.util.logging {
         getLogger(name: string): java.util.logging.Logger;
         getLoggerNames(): java.util.Enumeration<string>;
         /**
-         * Helper function to add a logger when we have already determined that it
-         * does not exist.  When we add a logger, we recursively add all of it's
-         * ancestors. Since loggers do not get removed, logger creation is cheap,
-         * and there are not usually too many loggers in an ancestry chain,
-         * this is a simple way to ensure that the parent/child relationships are
-         * always correctly set up.
+         * Helper function to add a logger when we have already determined that it does not exist. When we
+         * add a logger, we recursively add all of it's ancestors. Since loggers do not get removed,
+         * logger creation is cheap, and there are not usually too many loggers in an ancestry chain, this
+         * is a simple way to ensure that the parent/child relationships are always correctly set up.
          * @param {java.util.logging.Logger} logger
          * @private
          */
         addLoggerAndEnsureParents(logger: java.util.logging.Logger): void;
         addLoggerImpl(logger: java.util.logging.Logger): void;
         /**
-         * Helper function to create a logger if it does not exist since the public
-         * APIs for getLogger and addLogger make it difficult to use those functions
-         * for this.
+         * Helper function to create a logger if it does not exist since the public APIs for getLogger and
+         * addLogger make it difficult to use those functions for this.
          * @param {string} name
          * @return {java.util.logging.Logger}
          */
@@ -3043,8 +2953,7 @@ declare namespace java.util.logging {
 }
 declare namespace java.util {
     /**
-     * Basic {@link Map.Entry} implementation that implements hashCode, equals, and
-     * toString.
+     * Basic {@link Map.Entry} implementation that implements hashCode, equals, and toString.
      * @class
      */
     abstract class AbstractMapEntry<K, V> implements java.util.Map.Entry<K, V> {
@@ -3150,11 +3059,9 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Uses Java 1.5 ListIterator for documentation. The methods hasNext, next, and
-     * remove are repeated to allow the specialized ListIterator documentation to be
-     * associated with them. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ListIterator.html">[Sun
-     * docs]</a>
+     * Uses Java 1.5 ListIterator for documentation. The methods hasNext, next, and remove are repeated
+     * to allow the specialized ListIterator documentation to be associated with them. <a
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ListIterator.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @class
@@ -3207,8 +3114,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * An interface used a basis for implementing custom ordering. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Comparator.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Comparator.html">[Sun docs]</a>
      *
      * @param <T> the type to be compared.
      * @class
@@ -3224,22 +3130,20 @@ declare namespace java.util {
      */
     interface Observer {
         /**
-         * This method is called whenever the observed object is changed. An
-         * application calls an <tt>Observable</tt> object's
-         * <code>notifyObservers</code> method to have all the object's
+         * This method is called whenever the observed object is changed. An application calls an
+         * <tt>Observable</tt> object's <code>notifyObservers</code> method to have all the object's
          * observers notified of the change.
          *
-         * @param   {java.util.Observable} o     the observable object.
-         * @param   {*} arg   an argument passed to the <code>notifyObservers</code>
-         * method.
+         * @param {java.util.Observable} o the observable object.
+         * @param {*} arg an argument passed to the <code>notifyObservers</code> method.
          */
         update(o: java.util.Observable, arg: any): any;
     }
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">the
+     * official Java API doc</a> for details.
      * @class
      */
     class OptionalDouble {
@@ -3336,26 +3240,23 @@ declare namespace java.util.stream {
     namespace Collector {
         enum Characteristics {
             /**
-             * Indicates that this collector is <em>concurrent</em>, meaning that
-             * the result container can support the accumulator function being
-             * called concurrently with the same result container from multiple
-             * threads.
+             * Indicates that this collector is <em>concurrent</em>, meaning that the result container can
+             * support the accumulator function being called concurrently with the same result container
+             * from multiple threads.
              *
-             * <p>If a {@code CONCURRENT} collector is not also {@code UNORDERED},
-             * then it should only be evaluated concurrently if applied to an
-             * unordered data source.
+             * <p>If a {@code CONCURRENT} collector is not also {@code UNORDERED}, then it should only be
+             * evaluated concurrently if applied to an unordered data source.
              */
             CONCURRENT = 0,
             /**
-             * Indicates that the collection operation does not commit to preserving
-             * the encounter order of input elements.  (This might be true if the
-             * result container has no intrinsic order, such as a {@link Set}.)
+             * Indicates that the collection operation does not commit to preserving the encounter order of
+             * input elements. (This might be true if the result container has no intrinsic order, such as a
+             * {@link Set}.)
              */
             UNORDERED = 1,
             /**
-             * Indicates that the finisher function is the identity function and
-             * can be elided.  If set, it must be the case that an unchecked cast
-             * from A to R will succeed.
+             * Indicates that the finisher function is the identity function and can be elided. If set, it
+             * must be the case that an unchecked cast from A to R will succeed.
              */
             IDENTITY_FINISH = 2
         }
@@ -3363,8 +3264,8 @@ declare namespace java.util.stream {
 }
 declare namespace java.util {
     /**
-     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">
-     * the official Java API doc</a> for details.
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">the official
+     * Java API doc</a> for details.
      * @class
      */
     class OptionalInt {
@@ -3411,17 +3312,18 @@ declare namespace java.math {
         multiply(val: BigInteger): BigInteger;
         divide(val: BigInteger): BigInteger;
         compareTo(val: BigInteger): number;
+        add(val: BigInteger): BigInteger;
         subtract(val: BigInteger): BigInteger;
         mod$java_math_BigInteger(m: BigInteger): BigInteger;
         mod(m?: any): BigInteger;
         mod$int(p: number): BigInteger;
+        pow(exponent: number): BigInteger;
         intValue(): number;
+        longValue(): number;
         doubleValue(): number;
-        /**
-         *
-         * @return {string}
-         */
-        toString(): string;
+        toString$(): string;
+        toString$int(radix: number): string;
+        toString(radix?: any): string;
     }
 }
 declare namespace java.beans {
@@ -3444,8 +3346,7 @@ declare namespace java.beans {
 }
 declare namespace javaemul.internal {
     /**
-     * A utility to provide array stamping. Provided as a separate class to simplify
-     * super-source.
+     * A utility to provide array stamping. Provided as a separate class to simplify super-source.
      * @class
      */
     class ArrayStamper {
@@ -3465,15 +3366,13 @@ declare namespace javaemul.internal {
 }
 declare namespace javaemul.internal {
     /**
-     * Private implementation class for GWT. This API should not be
-     * considered public or stable.
+     * Private implementation class for GWT. This API should not be considered public or stable.
      * @class
      */
     class Coercions {
         /**
-         * Coerce js int to 32 bits.
-         * Trick related to JS and lack of integer rollover.
-         * {@see com.google.gwt.lang.Cast#narrow_int}
+         * Coerce js int to 32 bits. Trick related to JS and lack of integer rollover. {@see
+         * com.google.gwt.lang.Cast#narrow_int}
          * @param {number} value
          * @return {number}
          */
@@ -3492,11 +3391,9 @@ declare namespace javaemul.internal {
          */
         static floatRegex: RegExp;
         /**
-         * @skip
-         *
-         * This function will determine the radix that the string is expressed
-         * in based on the parsing rules defined in the Javadocs for
-         * Integer.decode() and invoke __parseAndValidateInt.
+         * @skip This function will determine the radix that the string is expressed in based on the
+         * parsing rules defined in the Javadocs for Integer.decode() and invoke
+         * __parseAndValidateInt.
          * @param {string} s
          * @param {number} lowerBound
          * @param {number} upperBound
@@ -3505,19 +3402,15 @@ declare namespace javaemul.internal {
         static __decodeAndValidateInt(s: string, lowerBound: number, upperBound: number): number;
         static __decodeNumberString(s: string): NumberHelper.__Decode;
         /**
-         * @skip
-         *
-         * This function contains common logic for parsing a String as a
-         * floating- point number and validating the range.
+         * @skip This function contains common logic for parsing a String as a floating- point number and
+         * validating the range.
          * @param {string} s
          * @return {number}
          */
         static __parseAndValidateDouble(s: string): number;
         /**
-         * @skip
-         *
-         * This function contains common logic for parsing a String in a given
-         * radix and validating the result.
+         * @skip This function contains common logic for parsing a String in a given radix and validating
+         * the result.
          * @param {string} s
          * @param {number} radix
          * @param {number} lowerBound
@@ -3526,10 +3419,8 @@ declare namespace javaemul.internal {
          */
         static __parseAndValidateInt(s: string, radix: number, lowerBound: number, upperBound: number): number;
         /**
-         * @skip
-         *
-         * This function contains common logic for parsing a String in a given
-         * radix and validating the result.
+         * @skip This function contains common logic for parsing a String in a given radix and validating
+         * the result.
          * @param {string} s
          * @param {number} radix
          * @return {number}
@@ -3537,10 +3428,8 @@ declare namespace javaemul.internal {
         static __parseAndValidateLong(s: string, radix: number): number;
         /**
          * @skip
-         *
          * @param {string} str
-         * @return {boolean} {@code true} if the string matches the float format,
-         * {@code false} otherwise
+         * @return {boolean} {@code true} if the string matches the float format, {@code false} otherwise
          * @private
          */
         static __isValidDouble(str: string): boolean;
@@ -3567,10 +3456,9 @@ declare namespace javaemul.internal {
             static __static_initialized: boolean;
             static __static_initialize(): void;
             /**
-             * The number of digits (excluding minus sign and leading zeros) to
-             * process at a time. The largest value expressible in maxDigits digits
-             * as well as the factor radix^maxDigits must be strictly less than
-             * 2^31.
+             * The number of digits (excluding minus sign and leading zeros) to process at a time. The
+             * largest value expressible in maxDigits digits as well as the factor radix^maxDigits must be
+             * strictly less than 2^31.
              */
             static maxDigitsForRadix: number[];
             static maxDigitsForRadix_$LI$(): number[];
@@ -3580,9 +3468,8 @@ declare namespace javaemul.internal {
             static maxDigitsRadixPower: number[];
             static maxDigitsRadixPower_$LI$(): number[];
             /**
-             * The largest number of digits (excluding minus sign and leading zeros)
-             * that can fit into a long for a given radix between 2 and 36,
-             * inclusive.
+             * The largest number of digits (excluding minus sign and leading zeros) that can fit into a
+             * long for a given radix between 2 and 36, inclusive.
              */
             static maxLengthForRadix: number[];
             static maxLengthForRadix_$LI$(): number[];
@@ -3652,9 +3539,8 @@ declare namespace javaemul.internal {
         static ARRAY_PROCESS_BATCH_SIZE: number;
         static clone<T>(array: T[], fromIndex: number, toIndex: number): T[];
         /**
-         * Unlike clone, this method returns a copy of the array that is not type
-         * marked. This is only safe for temp arrays as returned array will not do
-         * any type checks.
+         * Unlike clone, this method returns a copy of the array that is not type marked. This is only
+         * safe for temp arrays as returned array will not do any type checks.
          * @param {*} array
          * @param {number} fromIndex
          * @param {number} toIndex
@@ -3670,8 +3556,8 @@ declare namespace javaemul.internal {
         static insertTo$java_lang_Object$int$java_lang_Object_A(array: any, index: number, values: any[]): void;
         static insertTo(array?: any, index?: any, values?: any): any;
         /**
-         * This version of insertTo is specified only for arrays.
-         * Same implementation (and arguments) as "public static void insertTo(Object array, int index, Object[] values)"
+         * This version of insertTo is specified only for arrays. Same implementation (and arguments) as
+         * "public static void insertTo(Object array, int index, Object[] values)"
          * @param {*} array
          * @param {number} index
          * @param {java.lang.Object[]} values
@@ -3690,8 +3576,8 @@ declare namespace javaemul.internal {
      */
     class DateUtil {
         /**
-         * Returns the numeric value corresponding to the current time - the number
-         * of milliseconds elapsed since 1 January 1970 00:00:00 UTC.
+         * Returns the numeric value corresponding to the current time - the number of milliseconds
+         * elapsed since 1 January 1970 00:00:00 UTC.
          * @return {number}
          */
         static now(): number;
@@ -3716,13 +3602,12 @@ declare namespace javaemul.internal {
     /**
      * Wraps a native <code>char</code> as an object.
      *
-     * TODO(jat): many of the classification methods implemented here are not
-     * correct in that they only handle ASCII characters, and many other methods are
-     * not currently implemented. I think the proper approach is to introduce * a
-     * deferred binding parameter which substitutes an implementation using a
-     * fully-correct Unicode character database, at the expense of additional data
-     * being downloaded. That way developers that need the functionality can get it
-     * without those who don't need it paying for it.
+     * <p>TODO(jat): many of the classification methods implemented here are not correct in that they
+     * only handle ASCII characters, and many other methods are not currently implemented. I think the
+     * proper approach is to introduce * a deferred binding parameter which substitutes an
+     * implementation using a fully-correct Unicode character database, at the expense of additional
+     * data being downloaded. That way developers that need the functionality can get it without those
+     * who don't need it paying for it.
      *
      * <pre>
      * The following methods are still not implemented -- most would require Unicode
@@ -3793,9 +3678,7 @@ declare namespace javaemul.internal {
         static forDigit$int$int(digit: number, radix: number): string;
         static forDigit(digit?: any, radix?: any): string;
         /**
-         * @skip
-         *
-         * public for shared implementation with Arrays.hashCode
+         * @skip public for shared implementation with Arrays.hashCode
          * @param {string} c
          * @return {number}
          */
@@ -3843,22 +3726,18 @@ declare namespace javaemul.internal {
         static codePointBefore$java_lang_CharSequence$int$int(cs: any, index: number, start: number): number;
         static forDigit$int(digit: number): string;
         /**
-         * Computes the high surrogate character of the UTF16 representation of a
-         * non-BMP code point. See {@link getLowSurrogate}.
+         * Computes the high surrogate character of the UTF16 representation of a non-BMP code point. See
+         * {@link getLowSurrogate}.
          *
-         * @param {number} codePoint
-         * requested codePoint, required to be >=
-         * MIN_SUPPLEMENTARY_CODE_POINT
+         * @param {number} codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
          * @return {string} high surrogate character
          */
         static getHighSurrogate(codePoint: number): string;
         /**
-         * Computes the low surrogate character of the UTF16 representation of a non-BMP
-         * code point. See {@link getHighSurrogate}.
+         * Computes the low surrogate character of the UTF16 representation of a non-BMP code point. See
+         * {@link getHighSurrogate}.
          *
-         * @param {number} codePoint
-         * requested codePoint, required to be >=
-         * MIN_SUPPLEMENTARY_CODE_POINT
+         * @param {number} codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
          * @return {string} low surrogate character
          */
         static getLowSurrogate(codePoint: number): string;
@@ -4040,8 +3919,9 @@ declare namespace javaemul.internal {
         static getObjectIdentityHashCode(o: any): number;
         /**
          * Called from JSNI. Do not change this implementation without updating:
+         *
          * <ul>
-         * <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}</li>
+         * <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}
          * </ul>
          * @return {number}
          * @private
@@ -4197,10 +4077,9 @@ interface Object {
 }
 declare namespace java.lang {
     /**
-     * Constructs an <code>InterruptedException</code> with the
-     * specified detail message.
+     * Constructs an <code>InterruptedException</code> with the specified detail message.
      *
-     * @param   {string} s   the detail message.
+     * @param {string} s the detail message.
      * @class
      * @extends java.lang.Exception
      */
@@ -4215,8 +4094,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/RuntimeException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/RuntimeException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @param {java.lang.Throwable} cause
@@ -4229,8 +4107,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/CloneNotSupportedException.html">
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/CloneNotSupportedException.html">
      * the official Java API doc</a> for details.
      * @param {string} msg
      * @class
@@ -4245,9 +4122,9 @@ declare namespace java.lang {
      * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NoSuchMethodException.html">the
      * official Java API doc</a> for details.
      *
-     * This exception is never thrown by GWT or GWT's libraries, as GWT does not support reflection. It
-     * is provided in GWT only for compatibility with user code that explicitly throws or catches it for
-     * non-reflection purposes.
+     * <p>This exception is never thrown by GWT or GWT's libraries, as GWT does not support reflection.
+     * It is provided in GWT only for compatibility with user code that explicitly throws or catches it
+     * for non-reflection purposes.
      * @param {string} message
      * @class
      * @extends java.lang.Exception
@@ -4285,9 +4162,8 @@ declare namespace java.text {
 }
 declare namespace java.io {
     /**
-     * See <a
-     * href="http://java.sun.com/javase/6/docs/api/java/io/IOException.html">the
-     * official Java API doc</a> for details.
+     * See <a href="http://java.sun.com/javase/6/docs/api/java/io/IOException.html">the official Java
+     * API doc</a> for details.
      * @param {string} message
      * @param {java.lang.Throwable} throwable
      * @class
@@ -4300,7 +4176,6 @@ declare namespace java.io {
 declare namespace java.util {
     /**
      * Thrown when the subject of an observer cannot support additional observers.
-     *
      * @param {string} message
      * @class
      * @extends java.lang.Exception
@@ -4313,8 +4188,8 @@ declare namespace java.lang {
     /**
      * A fast way to create strings using multiple appends.
      *
-     * This class is an exact clone of {@link StringBuffer} except for the name. Any
-     * change made to one should be mirrored in the other.
+     * <p>This class is an exact clone of {@link StringBuffer} except for the name. Any change made to
+     * one should be mirrored in the other.
      * @param {*} s
      * @class
      * @extends java.lang.AbstractStringBuilder
@@ -4359,8 +4234,8 @@ declare namespace java.lang {
     /**
      * A fast way to create strings using multiple appends.
      *
-     * This class is an exact clone of {@link StringBuilder} except for the name.
-     * Any change made to one should be mirrored in the other.
+     * <p>This class is an exact clone of {@link StringBuilder} except for the name. Any change made to
+     * one should be mirrored in the other.
      * @param {*} s
      * @class
      * @extends java.lang.AbstractStringBuilder
@@ -4403,9 +4278,8 @@ declare namespace java.lang {
 }
 declare namespace java.lang.ref {
     /**
-     * This implements the reference API in a minimal way. In JavaScript, there is
-     * no control over the reference and the GC. So this implementation's only
-     * purpose is for compilation.
+     * This implements the reference API in a minimal way. In JavaScript, there is no control over the
+     * reference and the GC. So this implementation's only purpose is for compilation.
      * @param {*} referent
      * @class
      * @extends java.lang.ref.Reference
@@ -4421,21 +4295,20 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * Constructs an {@code InternalError} with the specified detail
-     * message and cause.  <p>Note that the detail message associated
-     * with {@code cause} is <i>not</i> automatically incorporated in
-     * this error's detail message.
+     * Constructs an {@code InternalError} with the specified detail message and cause.
      *
-     * @param  {string} message the detail message (which is saved for later retrieval
-     * by the {@link #getMessage()} method).
-     * @param  {java.lang.Throwable} cause the cause (which is saved for later retrieval by the
-     * {@link #getCause()} method).  (A {@code null} value is
-     * permitted, and indicates that the cause is nonexistent or
+     * <p>Note that the detail message associated with {@code cause} is <i>not</i> automatically
+     * incorporated in this error's detail message.
+     *
+     * @param {string} message the detail message (which is saved for later retrieval by the {@link
+     * #getMessage()} method).
+     * @param {java.lang.Throwable} cause the cause (which is saved for later retrieval by the {@link #getCause()} method).
+     * (A {@code null} value is permitted, and indicates that the cause is nonexistent or
      * unknown.)
-     * @since  1.8
+     * @since 1.8
      * @class
      * @extends java.lang.VirtualMachineError
-     * @author  unascribed
+     * @author unascribed
      */
     class InternalError extends java.lang.VirtualMachineError {
         static __java_lang_InternalError_serialVersionUID: number;
@@ -4445,8 +4318,7 @@ declare namespace java.lang {
 declare namespace java.security {
     /**
      * Message Digest algorithm - <a href=
-     * "http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html"
-     * >[Sun's docs]</a>.
+     * "http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html" >[Sun's docs]</a>.
      * @extends java.security.MessageDigestSpi
      * @class
      */
@@ -4704,9 +4576,8 @@ declare namespace java.text {
          * @return {string}
          */
         format(number: number): string;
-        parse$java_lang_String(source: string): number;
-        parse$java_lang_String$java_text_ParsePosition(source: string, pos: java.text.ParsePosition): number;
         parse(source?: any, pos?: any): number;
+        parse$java_lang_String(source: string): number;
         setDecimalFormatSymbols(newSymbols: java.text.DecimalFormatSymbols): void;
         getDecimalFormatSymbols(): java.text.DecimalFormatSymbols;
     }
@@ -4715,7 +4586,7 @@ declare namespace java.io {
     /**
      * JSweet implementation (partial).
      *
-     * TODO: actual support of charsets.
+     * <p>TODO: actual support of charsets.
      * @param {java.io.OutputStream} out
      * @param {string} charsetName
      * @class
@@ -4735,12 +4606,11 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * Wraps an existing {@link InputStream} and performs some transformation on
-     * the input data while it is being read. Transformations can be anything from a
-     * simple byte-wise filtering input data to an on-the-fly compression or
-     * decompression of the underlying stream. Input streams that wrap another input
-     * stream and provide some additional functionality on top of it usually inherit
-     * from this class.
+     * Wraps an existing {@link InputStream} and performs some transformation on the input data while it
+     * is being read. Transformations can be anything from a simple byte-wise filtering input data to an
+     * on-the-fly compression or decompression of the underlying stream. Input streams that wrap another
+     * input stream and provide some additional functionality on top of it usually inherit from this
+     * class.
      *
      * @see FilterOutputStream
      * @extends java.io.InputStream
@@ -4760,47 +4630,41 @@ declare namespace java.io {
         /**
          * Closes this stream. This implementation closes the filtered stream.
          *
-         * @throws IOException
-         * if an error occurs while closing this stream.
+         * @throws IOException if an error occurs while closing this stream.
          */
         close(): void;
         /**
-         * Sets a mark position in this stream. The parameter {@code readlimit}
-         * indicates how many bytes can be read before the mark is invalidated.
-         * Sending {@code reset()} will reposition this stream back to the marked
-         * position, provided that {@code readlimit} has not been surpassed.
-         * <p>
-         * This implementation sets a mark in the filtered stream.
+         * Sets a mark position in this stream. The parameter {@code readlimit} indicates how many bytes
+         * can be read before the mark is invalidated. Sending {@code reset()} will reposition this stream
+         * back to the marked position, provided that {@code readlimit} has not been surpassed.
          *
-         * @param {number} readlimit
-         * the number of bytes that can be read from this stream before
-         * the mark is invalidated.
+         * <p>This implementation sets a mark in the filtered stream.
+         *
+         * @param {number} readlimit the number of bytes that can be read from this stream before the mark is
+         * invalidated.
          * @see #markSupported()
          * @see #reset()
          */
         mark(readlimit: number): void;
         /**
-         * Indicates whether this stream supports {@code mark()} and {@code reset()}.
-         * This implementation returns whether or not the filtered stream supports
-         * marking.
+         * Indicates whether this stream supports {@code mark()} and {@code reset()}. This implementation
+         * returns whether or not the filtered stream supports marking.
          *
-         * @return {boolean} {@code true} if {@code mark()} and {@code reset()} are supported,
-         * {@code false} otherwise.
+         * @return {boolean} {@code true} if {@code mark()} and {@code reset()} are supported, {@code false}
+         * otherwise.
          * @see #mark(int)
          * @see #reset()
          * @see #skip(long)
          */
         markSupported(): boolean;
         /**
-         * Reads up to {@code byteCount} bytes from this stream and stores them in
-         * the byte array {@code buffer} starting at {@code byteOffset}.
-         * Returns the number of bytes actually read or -1 if the end of the stream
-         * has been reached.
+         * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+         * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+         * end of the stream has been reached.
          *
-         * @throws IndexOutOfBoundsException
-         * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-         * @throws IOException
-         * if the stream is closed or another IOException occurs.
+         * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+         * byteCount > buffer.length}.
+         * @throws IOException if the stream is closed or another IOException occurs.
          * @param {byte[]} buffer
          * @param {number} byteOffset
          * @param {number} byteCount
@@ -4809,26 +4673,22 @@ declare namespace java.io {
         read(buffer?: any, byteOffset?: any, byteCount?: any): number;
         read$(): number;
         /**
-         * Resets this stream to the last marked location. This implementation
-         * resets the target stream.
+         * Resets this stream to the last marked location. This implementation resets the target stream.
          *
-         * @throws IOException
-         * if this stream is already closed, no mark has been set or the
-         * mark is no longer valid because more than {@code readlimit}
-         * bytes have been read since setting the mark.
+         * @throws IOException if this stream is already closed, no mark has been set or the mark is no
+         * longer valid because more than {@code readlimit} bytes have been read since setting the
+         * mark.
          * @see #mark(int)
          * @see #markSupported()
          */
         reset(): void;
         /**
-         * Skips {@code byteCount} bytes in this stream. Subsequent
-         * calls to {@code read} will not return these bytes unless {@code reset} is
-         * used. This implementation skips {@code byteCount} bytes in the
-         * filtered stream.
+         * Skips {@code byteCount} bytes in this stream. Subsequent calls to {@code read} will not return
+         * these bytes unless {@code reset} is used. This implementation skips {@code byteCount} bytes in
+         * the filtered stream.
          *
          * @return {number} the number of bytes actually skipped.
-         * @throws IOException
-         * if this stream is closed or another IOException occurs.
+         * @throws IOException if this stream is closed or another IOException occurs.
          * @see #mark(int)
          * @see #reset()
          * @param {number} byteCount
@@ -4838,16 +4698,13 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * Constructs a new {@code ByteArrayInputStream} on the byte array
-     * {@code buf} with the initial position set to {@code offset} and the
-     * number of bytes available set to {@code offset} + {@code length}.
+     * Constructs a new {@code ByteArrayInputStream} on the byte array {@code buf} with the initial
+     * position set to {@code offset} and the number of bytes available set to {@code offset} + {@code
+     * length}.
      *
-     * @param {byte[]} buf
-     * the byte array to stream over.
-     * @param {number} offset
-     * the initial position in {@code buf} to start streaming from.
-     * @param {number} length
-     * the number of bytes available for streaming.
+     * @param {byte[]} buf the byte array to stream over.
+     * @param {number} offset the initial position in {@code buf} to start streaming from.
+     * @param {number} length the number of bytes available for streaming.
      * @class
      * @extends java.io.InputStream
      */
@@ -4861,13 +4718,12 @@ declare namespace java.io {
          */
         pos: number;
         /**
-         * The current mark position. Initially set to 0 or the <code>offset</code>
-         * parameter within the constructor.
+         * The current mark position. Initially set to 0 or the <code>offset</code> parameter within the
+         * constructor.
          */
         _mark: number;
         /**
-         * The total number of bytes initially available in the byte array
-         * {@code buf}.
+         * The total number of bytes initially available in the byte array {@code buf}.
          */
         count: number;
         constructor(buf?: any, offset?: any, length?: any);
@@ -4880,25 +4736,21 @@ declare namespace java.io {
         /**
          * Closes this stream and frees resources associated with this stream.
          *
-         * @throws IOException
-         * if an I/O error occurs while closing this stream.
+         * @throws IOException if an I/O error occurs while closing this stream.
          */
         close(): void;
         /**
-         * Sets a mark position in this ByteArrayInputStream. The parameter
-         * {@code readlimit} is ignored. Sending {@code reset()} will reposition the
-         * stream back to the marked position.
+         * Sets a mark position in this ByteArrayInputStream. The parameter {@code readlimit} is ignored.
+         * Sending {@code reset()} will reposition the stream back to the marked position.
          *
-         * @param {number} readlimit
-         * ignored.
+         * @param {number} readlimit ignored.
          * @see #markSupported()
          * @see #reset()
          */
         mark(readlimit: number): void;
         /**
-         * Indicates whether this stream supports the {@code mark()} and
-         * {@code reset()} methods. Returns {@code true} since this class supports
-         * these methods.
+         * Indicates whether this stream supports the {@code mark()} and {@code reset()} methods. Returns
+         * {@code true} since this class supports these methods.
          *
          * @return {boolean} always {@code true}.
          * @see #mark(int)
@@ -4916,18 +4768,18 @@ declare namespace java.io {
          */
         read(buffer?: any, byteOffset?: any, byteCount?: any): number;
         /**
-         * Resets this stream to the last marked location. This implementation
-         * resets the position to either the marked position, the start position
-         * supplied in the constructor or 0 if neither has been provided.
+         * Resets this stream to the last marked location. This implementation resets the position to
+         * either the marked position, the start position supplied in the constructor or 0 if neither has
+         * been provided.
          *
          * @see #mark(int)
          */
         reset(): void;
         /**
-         * Skips {@code byteCount} bytes in this InputStream. Subsequent calls to
-         * {@code read} will not return these bytes unless {@code reset} is used.
-         * This implementation skips {@code byteCount} number of bytes in the target
-         * stream. It does nothing and returns 0 if {@code byteCount} is negative.
+         * Skips {@code byteCount} bytes in this InputStream. Subsequent calls to {@code read} will not
+         * return these bytes unless {@code reset} is used. This implementation skips {@code byteCount}
+         * number of bytes in the target stream. It does nothing and returns 0 if {@code byteCount} is
+         * negative.
          *
          * @return {number} the number of bytes actually skipped.
          * @param {number} byteCount
@@ -4937,15 +4789,12 @@ declare namespace java.io {
 }
 declare namespace java.io {
     /**
-     * Constructs a new {@code ByteArrayOutputStream} with a default size of
-     * {@code size} bytes. If more than {@code size} bytes are written to this
-     * instance, the underlying byte array will expand.
+     * Constructs a new {@code ByteArrayOutputStream} with a default size of {@code size} bytes. If
+     * more than {@code size} bytes are written to this instance, the underlying byte array will
+     * expand.
      *
-     * @param {number} size
-     * initial size for the underlying byte array, must be
-     * non-negative.
-     * @throws IllegalArgumentException
-     * if {@code size} < 0.
+     * @param {number} size initial size for the underlying byte array, must be non-negative.
+     * @throws IllegalArgumentException if {@code size} < 0.
      * @class
      * @extends java.io.OutputStream
      */
@@ -4962,15 +4811,13 @@ declare namespace java.io {
         /**
          * Closes this stream. This releases system resources used for this stream.
          *
-         * @throws IOException
-         * if an error occurs while attempting to close this stream.
+         * @throws IOException if an error occurs while attempting to close this stream.
          */
         close(): void;
         expand(i: number): void;
         /**
-         * Resets this stream to the beginning of the underlying byte array. All
-         * subsequent writes will overwrite any bytes previously stored in this
-         * stream.
+         * Resets this stream to the beginning of the underlying byte array. All subsequent writes will
+         * overwrite any bytes previously stored in this stream.
          */
         reset(): void;
         /**
@@ -4980,9 +4827,8 @@ declare namespace java.io {
          */
         size(): number;
         /**
-         * Returns the contents of this ByteArrayOutputStream as a byte array. Any
-         * changes made to the receiver after returning will not be reflected in the
-         * byte array returned to the caller.
+         * Returns the contents of this ByteArrayOutputStream as a byte array. Any changes made to the
+         * receiver after returning will not be reflected in the byte array returned to the caller.
          *
          * @return {byte[]} this stream's current contents as a byte array.
          */
@@ -4991,56 +4837,43 @@ declare namespace java.io {
         toString$int(hibyte: number): string;
         toString$java_lang_String(charsetName: string): string;
         /**
-         * Returns the contents of this ByteArrayOutputStream as a string converted
-         * according to the encoding declared in {@code charsetName}.
+         * Returns the contents of this ByteArrayOutputStream as a string converted according to the
+         * encoding declared in {@code charsetName}.
          *
-         * @param {string} charsetName
-         * a string representing the encoding to use when translating
-         * this stream to a string.
+         * @param {string} charsetName a string representing the encoding to use when translating this stream to a
+         * string.
          * @return {string} this stream's current contents as an encoded string.
-         * @throws UnsupportedEncodingException
-         * if the provided encoding is not supported.
+         * @throws UnsupportedEncodingException if the provided encoding is not supported.
          */
         toString(charsetName?: any): string;
         write$byte_A$int$int(buffer: number[], offset: number, len: number): void;
         /**
-         * Writes {@code count} bytes from the byte array {@code buffer} starting at
-         * offset {@code index} to this stream.
+         * Writes {@code count} bytes from the byte array {@code buffer} starting at offset {@code index}
+         * to this stream.
          *
-         * @param {byte[]} buffer
-         * the buffer to be written.
-         * @param {number} offset
-         * the initial position in {@code buffer} to retrieve bytes.
-         * @param {number} len
-         * the number of bytes of {@code buffer} to write.
-         * @throws NullPointerException
-         * if {@code buffer} is {@code null}.
-         * @throws IndexOutOfBoundsException
-         * if {@code offset < 0} or {@code len < 0}, or if
-         * {@code offset + len} is greater than the length of
-         * {@code buffer}.
+         * @param {byte[]} buffer the buffer to be written.
+         * @param {number} offset the initial position in {@code buffer} to retrieve bytes.
+         * @param {number} len the number of bytes of {@code buffer} to write.
+         * @throws NullPointerException if {@code buffer} is {@code null}.
+         * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code len < 0}, or if {@code offset
+         * + len} is greater than the length of {@code buffer}.
          */
         write(buffer?: any, offset?: any, len?: any): any;
         write$int(oneByte: number): void;
         /**
-         * Takes the contents of this stream and writes it to the output stream
-         * {@code out}.
+         * Takes the contents of this stream and writes it to the output stream {@code out}.
          *
-         * @param {java.io.OutputStream} out
-         * an OutputStream on which to write the contents of this stream.
-         * @throws IOException
-         * if an error occurs while writing to {@code out}.
+         * @param {java.io.OutputStream} out an OutputStream on which to write the contents of this stream.
+         * @throws IOException if an error occurs while writing to {@code out}.
          */
         writeTo(out: java.io.OutputStream): void;
     }
 }
 declare namespace java.io {
     /**
-     * Constructs a new {@code FilterOutputStream} with {@code out} as its
-     * target stream.
+     * Constructs a new {@code FilterOutputStream} with {@code out} as its target stream.
      *
-     * @param {java.io.OutputStream} out
-     * the target stream that this stream writes to.
+     * @param {java.io.OutputStream} out the target stream that this stream writes to.
      * @class
      * @extends java.io.OutputStream
      */
@@ -5053,35 +4886,26 @@ declare namespace java.io {
         /**
          * Closes this stream. This implementation closes the target stream.
          *
-         * @throws IOException
-         * if an error occurs attempting to close this stream.
+         * @throws IOException if an error occurs attempting to close this stream.
          */
         close(): void;
         /**
-         * Ensures that all pending data is sent out to the target stream. This
-         * implementation flushes the target stream.
+         * Ensures that all pending data is sent out to the target stream. This implementation flushes the
+         * target stream.
          *
-         * @throws IOException
-         * if an error occurs attempting to flush this stream.
+         * @throws IOException if an error occurs attempting to flush this stream.
          */
         flush(): void;
         /**
-         * Writes {@code count} bytes from the byte array {@code buffer} starting at
-         * position {@code offset} to this stream.
+         * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+         * offset} to this stream.
          *
-         * @param {byte[]} buffer
-         * the buffer to be written.
-         * @param {number} offset
-         * the start position in {@code buffer} from where to get bytes.
-         * @param {number} count
-         * the number of bytes from {@code buffer} to write to this
-         * stream.
-         * @throws IOException
-         * if an error occurs while writing to this stream.
-         * @throws IndexOutOfBoundsException
-         * if {@code offset < 0} or {@code count < 0}, or if
-         * {@code offset + count} is bigger than the length of
-         * {@code buffer}.
+         * @param {byte[]} buffer the buffer to be written.
+         * @param {number} offset the start position in {@code buffer} from where to get bytes.
+         * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+         * @throws IOException if an error occurs while writing to this stream.
+         * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+         * offset + count} is bigger than the length of {@code buffer}.
          */
         write(buffer?: any, offset?: any, count?: any): any;
         write$int(oneByte: number): void;
@@ -5312,8 +5136,8 @@ declare namespace java.sql {
 declare namespace java.sql {
     /**
      * An implementation of java.sql.Timestame. Derived from
-     * http://java.sun.com/j2se/1.5.0/docs/api/java/sql/Timestamp.html. This is
-     * basically just regular Date decorated with a nanoseconds field.
+     * http://java.sun.com/j2se/1.5.0/docs/api/java/sql/Timestamp.html. This is basically just regular
+     * Date decorated with a nanoseconds field.
      * @param {number} year
      * @param {number} month
      * @param {number} date
@@ -5328,8 +5152,8 @@ declare namespace java.sql {
         static valueOf(s: string): Timestamp;
         static padNine(value: number): string;
         /**
-         * Stores the nanosecond resolution of the timestamp; must be kept in sync
-         * with the sub-second part of Date.millis.
+         * Stores the nanosecond resolution of the timestamp; must be kept in sync with the sub-second
+         * part of Date.millis.
          */
         nanos: number;
         constructor(year?: any, month?: any, date?: any, hour?: any, minute?: any, second?: any, nano?: any);
@@ -5366,9 +5190,9 @@ declare namespace java.util {
     /**
      * A {@link Deque} based on circular buffer that is implemented with an array and head/tail
      * pointers. Array deques have no capacity restrictions; they grow as necessary to support usage.
-     * Null elements are prohibited. This class is likely to be faster than {@link Stack}
-     * when used as a stack, and faster than {@link LinkedList} when used as a queue.
-     * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html">ArrayDeque</a>
+     * Null elements are prohibited. This class is likely to be faster than {@link Stack} when used as a
+     * stack, and faster than {@link LinkedList} when used as a queue. <a
+     * href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html">ArrayDeque</a>
      *
      * @param <E> the element type.
      * @param {*} c
@@ -5377,8 +5201,7 @@ declare namespace java.util {
      */
     class ArrayDeque<E> extends java.util.AbstractCollection<E> implements java.util.Deque<E>, java.lang.Cloneable {
         /**
-         * The minimum capacity that we'll use for a newly created deque.
-         * Must be a power of 2.
+         * The minimum capacity that we'll use for a newly created deque. Must be a power of 2.
          */
         static MIN_INITIAL_CAPACITY: number;
         static checkConcurrentModification(expression: boolean): void;
@@ -5391,9 +5214,8 @@ declare namespace java.util {
          */
         static nextArrayLength(numElements: number): number;
         /**
-         * Returns a number that is greater than {@code num} and is a power of two.
-         * If passed {@code num} is not positive integer or next power of two overflows then
-         * returned value is non-positive.
+         * Returns a number that is greater than {@code num} and is a power of two. If passed {@code num}
+         * is not positive integer or next power of two overflows then returned value is non-positive.
          * E.g., if num == 32, returns 64. if num == 31, returns 32.
          *
          * @param {number} num positive integer.
@@ -5406,14 +5228,13 @@ declare namespace java.util {
          */
         array: E[];
         /**
-         * The index of the element at the head of the deque (which is the
-         * element that would be removed by remove() or pop()); or an
-         * arbitrary number equal to tail if the deque is empty.
+         * The index of the element at the head of the deque (which is the element that would be removed
+         * by remove() or pop()); or an arbitrary number equal to tail if the deque is empty.
          */
         head: number;
         /**
-         * The index at which the next element would be added to the tail
-         * of the deque (via addLast(E), add(E), or push(E)).
+         * The index at which the next element would be added to the tail of the deque (via addLast(E),
+         * add(E), or push(E)).
          */
         tail: number;
         constructor(c?: any);
@@ -5570,25 +5391,23 @@ declare namespace java.util {
         peekFirstElement(): E;
         peekLastElement(): E;
         /**
-         * Copies {@code count} ArrayDeque's elements to {@code dest} array.
-         * The method is safe to use when ArrayDeque's array has been rolled over,
-         * i.e. {@code head == tail}.
-         * It is assumed that {@code count < size()}.
+         * Copies {@code count} ArrayDeque's elements to {@code dest} array. The method is safe to use
+         * when ArrayDeque's array has been rolled over, i.e. {@code head == tail}. It is assumed that
+         * {@code count < size()}.
          * @param {java.lang.Object[]} dest
          * @param {number} count
          * @private
          */
         copyElements(dest: any[], count: number): void;
         /**
-         * Increase the capacity of this deque when full, i.e.,
-         * when head and tail have wrapped around to become equal.
+         * Increase the capacity of this deque when full, i.e., when head and tail have wrapped around to
+         * become equal.
          * @private
          */
         ensureCapacity(): void;
         /**
-         * Removes the element at the specified position in the elements array,
-         * adjusting head and tail as necessary. This results in motion of
-         * elements backwards or forwards in the array.
+         * Removes the element at the specified position in the elements array, adjusting head and tail as
+         * necessary. This results in motion of elements backwards or forwards in the array.
          *
          * @return {number} -1 if elements moved backwards (left-shifted); 1 if forwards (right-shifted).
          * @param {number} i
@@ -5607,13 +5426,13 @@ declare namespace java.util {
              */
             currentIndex: number;
             /**
-             * Tail recorded at construction (also in remove), to stop
-             * iterator and also to check for comodification.
+             * Tail recorded at construction (also in remove), to stop iterator and also to check for
+             * comodification.
              */
             fence: number;
             /**
-             * Index of element returned by most recent call to next.
-             * Reset to -1 if element is deleted by a call to remove.
+             * Index of element returned by most recent call to next. Reset to -1 if element is deleted by a
+             * call to remove.
              */
             lastIndex: number;
             /**
@@ -5659,8 +5478,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Skeletal implementation of the Set interface. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractSet.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractSet.html">[Sun docs]</a>
      *
      * @param <E> the element type.
      * @class
@@ -5692,8 +5510,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Skeletal implementation of the Queue interface. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractQueue.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractQueue.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @extends java.util.AbstractCollection
@@ -5752,8 +5569,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Skeletal implementation of the List interface. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun docs]</a>
      *
      * @param <E> the element type.
      * @extends java.util.AbstractCollection
@@ -5952,8 +5768,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     class Scanner implements java.util.Iterator<string>, java.io.Closeable {
-        remove(): void;
         forEachRemaining(consumer: (p1: any) => void): void;
+        remove(): void;
         static digit: string;
         static decimalSeparator: string;
         static numeral: string;
@@ -6073,10 +5889,9 @@ declare namespace java.util {
         host: java.util.AbstractHashMap<K, V>;
         size: number;
         /**
-         * A mod count to track 'value' replacements in map to ensure that the
-         * 'value' that we have in the iterator entry is guaranteed to be still
-         * correct. This is to optimize for the common scenario where the values are
-         * not modified during iterations where the entries are never stale.
+         * A mod count to track 'value' replacements in map to ensure that the 'value' that we have in the
+         * iterator entry is guaranteed to be still correct. This is to optimize for the common scenario
+         * where the values are not modified during iterations where the entries are never stale.
          */
         valueMod: number;
         constructor(host: java.util.AbstractHashMap<K, V>);
@@ -6163,9 +5978,8 @@ declare namespace javaemul.internal {
         static valueOf$long(x: number): string;
         static valueOf$java_lang_Object(x: any): string;
         /**
-         * This method converts Java-escaped dollar signs "\$" into
-         * JavaScript-escaped dollar signs "$$", and removes all other lone
-         * backslashes, which serve as escapes in Java but are passed through
+         * This method converts Java-escaped dollar signs "\$" into JavaScript-escaped dollar signs "$$",
+         * and removes all other lone backslashes, which serve as escapes in Java but are passed through
          * literally in JavaScript.
          *
          * @skip
@@ -6295,9 +6109,7 @@ declare namespace javaemul.internal {
         static compare(x: number, y: number): number;
         static decode(s: string): number;
         /**
-         * @skip
-         *
-         * Here for shared implementation with Arrays.hashCode
+         * @skip Here for shared implementation with Arrays.hashCode
          * @param {number} i
          * @return {number}
          */
@@ -6397,8 +6209,8 @@ declare namespace javaemul.internal {
          */
         class ReverseNibbles {
             /**
-             * A fast-lookup of the reversed bits of all the nibbles 0-15. Used to
-             * implement {@link #reverse(int)}.
+             * A fast-lookup of the reversed bits of all the nibbles 0-15. Used to implement {@link
+             * #reverse(int)}.
              */
             static reverseNibbles: number[];
             static reverseNibbles_$LI$(): number[];
@@ -6471,13 +6283,12 @@ declare namespace javaemul.internal {
          */
         floatValue(): number;
         /**
-         * Performance caution: using Float objects as map keys is not recommended.
-         * Using floating point values as keys is generally a bad idea due to
-         * difficulty determining exact equality. In addition, there is no efficient
-         * JavaScript equivalent of <code>floatToIntBits</code>. As a result, this
-         * method computes a hash code by truncating the whole number portion of the
-         * float, which may lead to poor performance for certain value sets if
-         * Floats are used as keys in a {@link java.util.HashMap}.
+         * Performance caution: using Float objects as map keys is not recommended. Using floating point
+         * values as keys is generally a bad idea due to difficulty determining exact equality. In
+         * addition, there is no efficient JavaScript equivalent of <code>floatToIntBits</code>. As a
+         * result, this method computes a hash code by truncating the whole number portion of the float,
+         * which may lead to poor performance for certain value sets if Floats are used as keys in a
+         * {@link java.util.HashMap}.
          * @return {number}
          */
         hashCode(): number;
@@ -6595,13 +6406,12 @@ declare namespace javaemul.internal {
          */
         floatValue(): number;
         /**
-         * Performance caution: using Double objects as map keys is not recommended.
-         * Using double values as keys is generally a bad idea due to difficulty
-         * determining exact equality. In addition, there is no efficient JavaScript
-         * equivalent of <code>doubleToIntBits</code>. As a result, this method
-         * computes a hash code by truncating the whole number portion of the
-         * double, which may lead to poor performance for certain value sets if
-         * Doubles are used as keys in a {@link java.util.HashMap}.
+         * Performance caution: using Double objects as map keys is not recommended. Using double values
+         * as keys is generally a bad idea due to difficulty determining exact equality. In addition,
+         * there is no efficient JavaScript equivalent of <code>doubleToIntBits</code>. As a result, this
+         * method computes a hash code by truncating the whole number portion of the double, which may
+         * lead to poor performance for certain value sets if Doubles are used as keys in a {@link
+         * java.util.HashMap}.
          * @return {number}
          */
         hashCode(): number;
@@ -6765,9 +6575,7 @@ declare namespace javaemul.internal {
         static compare(x: number, y: number): number;
         static decode(s: string): number;
         /**
-         * @skip
-         *
-         * Here for shared implementation with Arrays.hashCode
+         * @skip Here for shared implementation with Arrays.hashCode
          * @param {number} b
          * @return {number}
          */
@@ -6958,11 +6766,9 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * NOTE: in GWT this is only thrown for division by zero on longs and
-     * BigInteger/BigDecimal.
-     * <p>
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArithmeticException.html">the
+     * NOTE: in GWT this is only thrown for division by zero on longs and BigInteger/BigDecimal.
+     *
+     * <p>See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArithmeticException.html">the
      * official Java API doc</a> for details.
      * @param {string} explanation
      * @class
@@ -6974,8 +6780,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * Indicates that an objet was in an invalid state during an attempted
-     * operation.
+     * Indicates that an objet was in an invalid state during an attempted operation.
      * @param {string} message
      * @param {java.lang.Throwable} cause
      * @class
@@ -6987,8 +6792,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/IllegalArgumentException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/IllegalArgumentException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @param {java.lang.Throwable} cause
@@ -7006,8 +6810,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayStoreException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayStoreException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @class
@@ -7030,8 +6833,7 @@ declare namespace java.lang {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NullPointerException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NullPointerException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @class
@@ -7071,8 +6873,8 @@ declare namespace java.lang {
 }
 declare namespace java.lang.annotation {
     /**
-     * Indicates an attempt to access an element of an annotation that was added
-     * since it was compiled or serialized <a
+     * Indicates an attempt to access an element of an annotation that was added since it was compiled
+     * or serialized <a
      * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/IncompleteAnnotationException.html">[Sun
      * docs]</a>.
      * @param {java.lang.Class} annotationType
@@ -7090,8 +6892,8 @@ declare namespace java.lang.annotation {
 }
 declare namespace java.lang.annotation {
     /**
-     * Indicates an attempt to access an element of an annotation that has changed
-     * since it was compiled or serialized <a
+     * Indicates an attempt to access an element of an annotation that has changed since it was compiled
+     * or serialized <a
      * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/AnnotationTypeMismatchException.html">[Sun
      * docs]</a>.
      * @class
@@ -7113,8 +6915,7 @@ declare namespace java.nio {
 }
 declare namespace java.io {
     /**
-     * See <a
-     * href="https://docs.oracle.com/javase/8/docs/api/java/io/UncheckedIOException.html">the
+     * See <a href="https://docs.oracle.com/javase/8/docs/api/java/io/UncheckedIOException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @param {java.io.IOException} cause
@@ -7132,8 +6933,7 @@ declare namespace java.io {
 }
 declare namespace java.util {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/NoSuchElementException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/NoSuchElementException.html">the
      * official Java API doc</a> for details.
      * @param {string} s
      * @class
@@ -7145,8 +6945,7 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/MissingResourceException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/MissingResourceException.html">the
      * official Java API doc</a> for details.
      * @param {string} s
      * @param {string} className
@@ -7164,8 +6963,7 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EmptyStackException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EmptyStackException.html">the
      * official Java API doc</a> for details.
      * @class
      * @extends java.lang.RuntimeException
@@ -7279,8 +7077,7 @@ declare namespace java.io {
 declare namespace java.util {
     /**
      * Implements a set in terms of a hash table. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashSet.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashSet.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @param {number} initialCapacity
@@ -7291,8 +7088,8 @@ declare namespace java.util {
     class HashSet<E> extends java.util.AbstractSet<E> implements java.util.Set<E>, java.lang.Cloneable, java.io.Serializable {
         map: java.util.HashMap<E, any>;
         /**
-         * Ensures that RPC will consider type parameter E to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeElement: E;
         constructor(initialCapacity?: any, loadFactor?: any);
@@ -7344,8 +7141,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Implements a set using a TreeMap. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/TreeSet.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/TreeSet.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @param {*} c
@@ -7482,21 +7278,18 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Skeletal implementation of the Map interface.
-     * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractMap.html">
-     * [Sun docs]</a>
+     * Skeletal implementation of the Map interface. <a
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractMap.html">[Sun docs]</a>
      *
-     * @param <K>
-     * the key type.
-     * @param <V>
-     * the value type.
+     * @param <K> the key type.
+     * @param <V> the value type.
      * @class
      */
     abstract class AbstractMap<K, V> implements java.util.Map<K, V> {
-        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
-        getOrDefault(key: any, defaultValue: any): any;
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         constructor();
         /**
@@ -7586,8 +7379,8 @@ declare namespace java.util {
     }
     namespace AbstractMap {
         /**
-         * Basic {@link Map.Entry} implementation used by {@link SimpleEntry} and
-         * {@link SimpleImmutableEntry}.
+         * Basic {@link Map.Entry} implementation used by {@link SimpleEntry} and {@link
+         * SimpleImmutableEntry}.
          * @class
          */
         abstract class AbstractEntry<K, V> implements Map.Entry<K, V> {
@@ -7628,8 +7421,7 @@ declare namespace java.util {
             toString(): string;
         }
         /**
-         * A mutable {@link Map.Entry} shared by several {@link Map}
-         * implementations.
+         * A mutable {@link Map.Entry} shared by several {@link Map} implementations.
          * @param {*} key
          * @param {*} value
          * @class
@@ -7639,8 +7431,7 @@ declare namespace java.util {
             constructor(key?: any, value?: any);
         }
         /**
-         * An immutable {@link Map.Entry} shared by several {@link Map}
-         * implementations.
+         * An immutable {@link Map.Entry} shared by several {@link Map} implementations.
          * @param {*} key
          * @param {*} value
          * @class
@@ -7758,8 +7549,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * A {@link java.util.Set} of {@link Enum}s. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun docs]</a>
      *
      * @param <E> enumeration type
      * @extends java.util.AbstractSet
@@ -7781,8 +7571,8 @@ declare namespace java.util {
     }
     namespace EnumSet {
         /**
-         * Constructs a set taking ownership of the specified set. The size must
-         * accurately reflect the number of non-null items in set.
+         * Constructs a set taking ownership of the specified set. The size must accurately reflect the
+         * number of non-null items in set.
          * @param {E[]} all
          * @param {E[]} set
          * @param {number} size
@@ -7874,8 +7664,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * An unbounded priority queue based on a priority heap. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/PriorityQueue.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/PriorityQueue.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @param {number} initialCapacity
@@ -7891,9 +7680,9 @@ declare namespace java.util {
         static isLeaf(node: number, size: number): boolean;
         cmp: java.util.Comparator<any>;
         /**
-         * A heap held in an array. heap[0] is the root of the heap (the smallest
-         * element), the subtrees of node i are 2*i+1 (left) and 2*i+2 (right). Node i
-         * is a leaf node if 2*i>=n. Node i's parent, if i>0, is floor((i-1)/2).
+         * A heap held in an array. heap[0] is the root of the heap (the smallest element), the subtrees
+         * of node i are 2*i+1 (left) and 2*i+2 (right). Node i is a leaf node if 2*i>=n. Node i's parent,
+         * if i>0, is floor((i-1)/2).
          */
         heap: java.util.ArrayList<E>;
         constructor(initialCapacity?: any, cmp?: any);
@@ -7992,7 +7781,7 @@ declare namespace java.util {
         /**
          * Merge two subheaps into a single heap. O(log n) time
          *
-         * PRECONDITION: both children of <code>node</code> are heaps
+         * <p>PRECONDITION: both children of <code>node</code> are heaps
          *
          * @param {number} node the parent of the two subtrees to merge
          */
@@ -8071,8 +7860,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Utility methods related to native arrays. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun docs]</a>
      * @class
      */
     class Arrays {
@@ -8088,20 +7876,17 @@ declare namespace java.util {
         static binarySearch$short_A$short(sortedArray: number[], key: number): number;
         static binarySearch$java_lang_Object_A$java_lang_Object$java_util_Comparator<T>(sortedArray: T[], key: T, comparator: java.util.Comparator<any>): number;
         /**
-         * Perform a binary search on a sorted object array, using a user-specified
-         * comparison function.
+         * Perform a binary search on a sorted object array, using a user-specified comparison function.
          *
          * @param {T[]} sortedArray object array to search
          * @param {*} key value to search for
-         * @param {*} comparator comparision function, <code>null</code> indicates
-         * <i>natural ordering</i> should be used.
-         * @return {number} the index of an element with a matching value, or a negative number
-         * which is the index of the next larger value (or just past the end
-         * of the array if the searched value is larger than all elements in
-         * the array) minus 1 (to ensure error returns are negative)
-         * @throws ClassCastException if <code>key</code> and
-         * <code>sortedArray</code>'s elements cannot be compared by
-         * <code>comparator</code>.
+         * @param {*} comparator comparision function, <code>null</code> indicates <i>natural ordering</i>
+         * should be used.
+         * @return {number} the index of an element with a matching value, or a negative number which is the index
+         * of the next larger value (or just past the end of the array if the searched value is larger
+         * than all elements in the array) minus 1 (to ensure error returns are negative)
+         * @throws ClassCastException if <code>key</code> and <code>sortedArray</code>'s elements cannot
+         * be compared by <code>comparator</code>.
          */
         static binarySearch<T0 = any>(sortedArray?: any, key?: any, comparator?: any): number;
         static copyOf$boolean_A$int(original: boolean[], newLength: number): boolean[];
@@ -8216,13 +8001,11 @@ declare namespace java.util {
          */
         static insertionSort(array: any[], low: number, high: number, comp: java.util.Comparator<any>): void;
         /**
-         * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into
-         * dest.
+         * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into dest.
          *
          * @param {java.lang.Object[]} src source array for merge
          * @param {number} srcLow lower bound of bottom sorted half
-         * @param {number} srcMid upper bound of bottom sorted half & lower bound of top sorted
-         * half
+         * @param {number} srcMid upper bound of bottom sorted half & lower bound of top sorted half
          * @param {number} srcHigh upper bound of top sorted half
          * @param {java.lang.Object[]} dest destination array for merge
          * @param {number} destLow lower bound of destination
@@ -8234,12 +8017,10 @@ declare namespace java.util {
         static mergeSort$java_lang_Object_A$int$int$java_util_Comparator(x: any[], fromIndex: number, toIndex: number, comp: java.util.Comparator<any>): void;
         static mergeSort$java_lang_Object_A$java_lang_Object_A$int$int$int$java_util_Comparator(temp: any[], array: any[], low: number, high: number, ofs: number, comp: java.util.Comparator<any>): void;
         /**
-         * Recursive helper function for
-         * {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
+         * Recursive helper function for {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
          *
-         * @param {java.lang.Object[]} temp temporary space, as large as the range of elements being
-         * sorted. On entry, temp should contain a copy of the sort range
-         * from array.
+         * @param {java.lang.Object[]} temp temporary space, as large as the range of elements being sorted. On entry, temp
+         * should contain a copy of the sort range from array.
          * @param {java.lang.Object[]} array array to sort
          * @param {number} low lower bound of range to sort
          * @param {number} high upper bound of range to sort
@@ -8272,8 +8053,7 @@ declare namespace java.util {
     namespace Arrays {
         class ArrayList<E> extends java.util.AbstractList<E> implements java.util.RandomAccess, java.io.Serializable {
             /**
-             * The only reason this is non-final is so that E[] (and E) will be exposed
-             * for serialization.
+             * The only reason this is non-final is so that E[] (and E) will be exposed for serialization.
              */
             array: E[];
             constructor(array: E[]);
@@ -8315,19 +8095,14 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Resizeable array implementation of the List interface. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun docs]</a>
      *
-     * <p>
-     * This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of
-     * capacity management. There is no speed advantage to pre-allocating array
-     * sizes in JavaScript, so this implementation does not include any of the
-     * capacity and "growth increment" concepts in the standard ArrayList class.
-     * Although <code>ArrayList(int)</code> accepts a value for the initial
-     * capacity of the array, this constructor simply delegates to
-     * <code>ArrayList()</code>. It is only present for compatibility with JDK
-     * 1.5's API.
-     * </p>
+     * <p>This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of capacity
+     * management. There is no speed advantage to pre-allocating array sizes in JavaScript, so this
+     * implementation does not include any of the capacity and "growth increment" concepts in the
+     * standard ArrayList class. Although <code>ArrayList(int)</code> accepts a value for the initial
+     * capacity of the array, this constructor simply delegates to <code>ArrayList()</code>. It is only
+     * present for compatibility with JDK 1.5's API.
      *
      * @param <E> the element type.
      * @param {*} c
@@ -8340,8 +8115,8 @@ declare namespace java.util {
          */
         array: E[];
         /**
-         * Ensures that RPC will consider type parameter E to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeElement: E;
         constructor(c?: any);
@@ -8480,8 +8255,8 @@ declare namespace java.util {
     class Vector<E> extends java.util.AbstractList<E> implements java.util.List<E>, java.util.RandomAccess, java.lang.Cloneable, java.io.Serializable {
         arrayList: java.util.ArrayList<E>;
         /**
-         * Ensures that RPC will consider type parameter E to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeElement: E;
         constructor(initialCapacity?: any, ignoredCapacityIncrement?: any);
@@ -8623,10 +8398,9 @@ declare namespace javaemul.internal.stream {
 }
 declare namespace java.lang {
     /**
-     * NOTE: in GWT this will never be thrown for normal array accesses, only for
-     * explicit throws.
+     * NOTE: in GWT this will never be thrown for normal array accesses, only for explicit throws.
      *
-     * See <a
+     * <p>See <a
      * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayIndexOutOfBoundsException.html">the
      * official Java API doc</a> for details.
      * @param {number} index
@@ -8657,8 +8431,7 @@ declare namespace java.nio {
 }
 declare namespace java.lang {
     /**
-     * See <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NumberFormatException.html">the
+     * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NumberFormatException.html">the
      * official Java API doc</a> for details.
      * @param {string} message
      * @class
@@ -8724,10 +8497,8 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Hash table and linked-list implementation of the Set interface with
-     * predictable iteration order. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashSet.html">[Sun
-     * docs]</a>
+     * Hash table and linked-list implementation of the Set interface with predictable iteration order.
+     * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashSet.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @param {number} ignored
@@ -8747,8 +8518,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * A {@link java.util.Map} of {@link Enum}s. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun docs]</a>
      *
      * @param <K> key type
      * @param <V> value type
@@ -8808,9 +8578,9 @@ declare namespace java.util {
          */
         size(): number;
         /**
-         * Returns <code>key</code> as <code>K</code>. Only runtime checks that
-         * key is an Enum, not that it's the particular Enum K. Should only be called
-         * when you are sure <code>key</code> is of type <code>K</code>.
+         * Returns <code>key</code> as <code>K</code>. Only runtime checks that key is an Enum, not that
+         * it's the particular Enum K. Should only be called when you are sure <code>key</code> is of type
+         * <code>K</code>.
          * @param {*} key
          * @return {java.lang.Enum}
          * @private
@@ -8900,8 +8670,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Utility methods that operate on collections. <a href=
-     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collections.html">[Sun
-     * docs]</a>
+     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collections.html">[Sun docs]</a>
      * @class
      */
     class Collections {
@@ -8916,29 +8685,20 @@ declare namespace java.util {
         static binarySearch$java_util_List$java_lang_Object<T>(sortedList: java.util.List<any>, key: T): number;
         static binarySearch$java_util_List$java_lang_Object$java_util_Comparator<T>(sortedList: java.util.List<any>, key: T, comparator: java.util.Comparator<any>): number;
         /**
-         * Perform a binary search on a sorted List, using a user-specified comparison
-         * function.
+         * Perform a binary search on a sorted List, using a user-specified comparison function.
          *
-         * <p>
-         * Note: The GWT implementation differs from the JDK implementation in that it
-         * does not do an iterator-based binary search for Lists that do not implement
-         * RandomAccess.
-         * </p>
+         * <p>Note: The GWT implementation differs from the JDK implementation in that it does not do an
+         * iterator-based binary search for Lists that do not implement RandomAccess.
          *
-         * @param {*} sortedList
-         * List to search
-         * @param {*} key
-         * value to search for
-         * @param {*} comparator
-         * comparision function, <code>null</code> indicates <i>natural
-         * ordering</i> should be used.
-         * @return {number} the index of an element with a matching value, or a negative number
-         * which is the index of the next larger value (or just past the end of
-         * the array if the searched value is larger than all elements in the
-         * array) minus 1 (to ensure error returns are negative)
-         * @throws ClassCastException
-         * if <code>key</code> and <code>sortedList</code>'s elements cannot
-         * be compared by <code>comparator</code>.
+         * @param {*} sortedList List to search
+         * @param {*} key value to search for
+         * @param {*} comparator comparision function, <code>null</code> indicates <i>natural ordering</i>
+         * should be used.
+         * @return {number} the index of an element with a matching value, or a negative number which is the index
+         * of the next larger value (or just past the end of the array if the searched value is larger
+         * than all elements in the array) minus 1 (to ensure error returns are negative)
+         * @throws ClassCastException if <code>key</code> and <code>sortedList</code>'s elements cannot be
+         * compared by <code>comparator</code>.
          */
         static binarySearch<T0 = any>(sortedList?: any, key?: any, comparator?: any): number;
         static copy<T>(dest: java.util.List<any>, src: java.util.List<any>): void;
@@ -8965,16 +8725,13 @@ declare namespace java.util {
         static reverseOrder<T0 = any>(cmp?: any): any;
         /**
          * Rotates the elements in {@code list} by the distance {@code dist}
-         * <p>
-         * e.g. for a given list with elements [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], calling
-         * rotate(list, 3) or rotate(list, -7) would modify the list to look like this:
-         * [8, 9, 0, 1, 2, 3, 4, 5, 6, 7]
          *
-         * @param {*} lst
-         * the list whose elements are to be rotated.
-         * @param {number} dist
-         * is the distance the list is rotated. This can be any valid
-         * integer. Negative values rotate the list backwards.
+         * <p>e.g. for a given list with elements [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], calling rotate(list, 3)
+         * or rotate(list, -7) would modify the list to look like this: [8, 9, 0, 1, 2, 3, 4, 5, 6, 7]
+         *
+         * @param {*} lst the list whose elements are to be rotated.
+         * @param {number} dist is the distance the list is rotated. This can be any valid integer. Negative values
+         * rotate the list backwards.
          */
         static rotate(lst: java.util.List<any>, dist: number): void;
         static shuffle<T>(list: java.util.List<T>, rnd?: java.util.Random): void;
@@ -9002,12 +8759,9 @@ declare namespace java.util {
         /**
          * Replace contents of a list from an array.
          *
-         * @param <T>
-         * element type
-         * @param {*} target
-         * list to replace contents from an array
-         * @param {java.lang.Object[]} x
-         * an Object array which can contain only T instances
+         * @param <T> element type
+         * @param {*} target list to replace contents from an array
+         * @param {java.lang.Object[]} x an Object array which can contain only T instances
          * @private
          */
         static replaceContents<T>(target: java.util.List<T>, x: any[]): void;
@@ -9284,10 +9038,10 @@ declare namespace java.util {
             size(): number;
         }
         class UnmodifiableCollection<T> implements java.util.Collection<T> {
-            removeIf(filter: (p1: any) => boolean): boolean;
             stream(): java.util.stream.Stream<any>;
-            forEach(action: (p1: any) => void): void;
+            removeIf(filter: (p1: any) => boolean): boolean;
             parallelStream(): java.util.stream.Stream<any>;
+            forEach(action: (p1: any) => void): void;
             coll: java.util.Collection<any>;
             constructor(coll: java.util.Collection<any>);
             /**
@@ -9524,10 +9278,10 @@ declare namespace java.util {
             constructor(list: java.util.List<any>);
         }
         class UnmodifiableMap<K, V> implements java.util.Map<K, V> {
-            replaceAll(__function: (p1: any, p2: any) => any): void;
             merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
-            getOrDefault(key: any, defaultValue: any): any;
+            replaceAll(__function: (p1: any, p2: any) => any): void;
             computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
+            getOrDefault(key: any, defaultValue: any): any;
             putIfAbsent(key: any, value: any): any;
             __entrySet: Collections.UnmodifiableSet<java.util.Map.Entry<K, V>>;
             __keySet: Collections.UnmodifiableSet<K>;
@@ -9647,10 +9401,8 @@ declare namespace java.util {
                 /**
                  * Wrap an array of Map.Entries as UnmodifiableEntries.
                  *
-                 * @param {java.lang.Object[]} array
-                 * array to wrap
-                 * @param {number} size
-                 * number of entries to wrap
+                 * @param {java.lang.Object[]} array array to wrap
+                 * @param {number} size number of entries to wrap
                  * @private
                  */
                 wrap(array: any[], size: number): void;
@@ -9975,8 +9727,8 @@ declare namespace java.util {
          */
         abstract entryIterator(): java.util.Iterator<Map.Entry<K, V>>;
         /**
-         * Returns the entry corresponding to the specified key. If no such entry exists returns
-         * {@code null}.
+         * Returns the entry corresponding to the specified key. If no such entry exists returns {@code
+         * null}.
          * @param {*} key
          * @return {*}
          */
@@ -10319,14 +10071,11 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Implementation of Map interface based on a hash table.
-     * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun
-     * docs]</a>
+     * Implementation of Map interface based on a hash table. <a
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun docs]</a>
      *
-     * @param <K>
-     * key type
-     * @param <V>
-     * value type
+     * @param <K> key type
+     * @param <V> value type
      * @param {number} ignored
      * @param {number} alsoIgnored
      * @class
@@ -10390,41 +10139,39 @@ declare namespace java.util {
          */
         size(): number;
         /**
-         * Subclasses must override to return a whether or not two keys or values
-         * are equal.
+         * Subclasses must override to return a whether or not two keys or values are equal.
          * @param {*} value1
          * @param {*} value2
          * @return {boolean}
          */
         abstract _equals(value1: any, value2: any): boolean;
         /**
-         * Subclasses must override to return a hash code for a given key. The key
-         * is guaranteed to be non-null and not a String.
+         * Subclasses must override to return a hash code for a given key. The key is guaranteed to be
+         * non-null and not a String.
          * @param {*} key
          * @return {number}
          */
         abstract getHashCode(key: any): number;
         /**
-         * Returns the Map.Entry whose key is Object equal to <code>key</code>,
-         * provided that <code>key</code>'s hash code is <code>hashCode</code>; or
-         * <code>null</code> if no such Map.Entry exists at the specified hashCode.
+         * Returns the Map.Entry whose key is Object equal to <code>key</code>, provided that <code>key
+         * </code>'s hash code is <code>hashCode</code>; or <code>null</code> if no such Map.Entry exists
+         * at the specified hashCode.
          * @param {*} key
          * @return {*}
          * @private
          */
         getHashValue(key: any): V;
         /**
-         * Returns the value for the given key in the stringMap. Returns
-         * <code>null</code> if the specified key does not exist.
+         * Returns the value for the given key in the stringMap. Returns <code>null</code> if the
+         * specified key does not exist.
          * @param {string} key
          * @return {*}
          * @private
          */
         getStringValue(key: string): V;
         /**
-         * Returns true if the a key exists in the hashCodeMap that is Object equal
-         * to <code>key</code>, provided that <code>key</code>'s hash code is
-         * <code>hashCode</code>.
+         * Returns true if the a key exists in the hashCodeMap that is Object equal to <code>key</code>,
+         * provided that <code>key</code>'s hash code is <code>hashCode</code>.
          * @param {*} key
          * @return {boolean}
          * @private
@@ -10438,9 +10185,8 @@ declare namespace java.util {
          */
         hasStringValue(key: string): boolean;
         /**
-         * Sets the specified key to the specified value in the hashCodeMap. Returns
-         * the value previously at that key. Returns <code>null</code> if the
-         * specified key did not exist.
+         * Sets the specified key to the specified value in the hashCodeMap. Returns the value previously
+         * at that key. Returns <code>null</code> if the specified key did not exist.
          * @param {*} key
          * @param {*} value
          * @return {*}
@@ -10448,9 +10194,8 @@ declare namespace java.util {
          */
         putHashValue(key: K, value: V): V;
         /**
-         * Sets the specified key to the specified value in the stringMap. Returns
-         * the value previously at that key. Returns <code>null</code> if the
-         * specified key did not exist.
+         * Sets the specified key to the specified value in the stringMap. Returns the value previously at
+         * that key. Returns <code>null</code> if the specified key did not exist.
          * @param {string} key
          * @param {*} value
          * @return {*}
@@ -10458,19 +10203,17 @@ declare namespace java.util {
          */
         putStringValue(key: string, value: V): V;
         /**
-         * Removes the pair whose key is Object equal to <code>key</code> from
-         * <code>hashCodeMap</code>, provided that <code>key</code>'s hash code is
-         * <code>hashCode</code>. Returns the value that was associated with the
-         * removed key, or null if no such key existed.
+         * Removes the pair whose key is Object equal to <code>key</code> from <code>hashCodeMap</code>,
+         * provided that <code>key</code>'s hash code is <code>hashCode</code>. Returns the value that was
+         * associated with the removed key, or null if no such key existed.
          * @param {*} key
          * @return {*}
          * @private
          */
         removeHashValue(key: any): V;
         /**
-         * Removes the specified key from the stringMap and returns the value that
-         * was previously there. Returns <code>null</code> if the specified key does
-         * not exist.
+         * Removes the specified key from the stringMap and returns the value that was previously there.
+         * Returns <code>null</code> if the specified key does not exist.
          * @param {string} key
          * @return {*}
          * @private
@@ -10540,25 +10283,23 @@ declare namespace java.util {
 }
 declare namespace java.util {
     /**
-     * Linked list implementation.
-     * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedList.html">
-     * [Sun docs]</a>
+     * Linked list implementation. <a
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedList.html">[Sun docs]</a>
      *
-     * @param <E>
-     * element type.
+     * @param <E> element type.
      * @param {*} c
      * @class
      * @extends java.util.AbstractSequentialList
      */
     class LinkedList<E> extends java.util.AbstractSequentialList<E> implements java.lang.Cloneable, java.util.List<E>, java.util.Deque<E>, java.io.Serializable {
-        removeIf(filter: (p1: any) => boolean): boolean;
-        stream(): java.util.stream.Stream<any>;
-        forEach(action: (p1: any) => void): void;
-        parallelStream(): java.util.stream.Stream<any>;
         sort(c: java.util.Comparator<any>): void;
+        stream(): java.util.stream.Stream<any>;
+        removeIf(filter: (p1: any) => boolean): boolean;
+        parallelStream(): java.util.stream.Stream<any>;
+        forEach(action: (p1: any) => void): void;
         /**
-         * Ensures that RPC will consider type parameter E to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter E to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeElement: E;
         /**
@@ -10741,10 +10482,8 @@ declare namespace java.util {
             constructor(__parent: any);
         }
         /**
-         * @param {number} index
-         * from the beginning of the list (0 = first node)
-         * @param {java.util.LinkedList.Node} startNode
-         * the initial current node
+         * @param {number} index from the beginning of the list (0 = first node)
+         * @param {java.util.LinkedList.Node} startNode the initial current node
          * @class
          */
         class ListIteratorImpl2 implements java.util.ListIterator<any> {
@@ -10759,8 +10498,7 @@ declare namespace java.util {
              */
             currentNode: LinkedList.Node<any>;
             /**
-             * The last node returned from next/previous, or null if deleted or
-             * never called.
+             * The last node returned from next/previous, or null if deleted or never called.
              */
             lastNode: LinkedList.Node<any>;
             constructor(__parent: any, index: number, startNode: LinkedList.Node<any>);
@@ -10812,8 +10550,7 @@ declare namespace java.util {
         /**
          * Internal class representing a doubly-linked list node.
          *
-         * @param <E>
-         * element type
+         * @param <E> element type
          * @class
          */
         class Node<E> {
@@ -10827,8 +10564,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Maintains a last-in, first-out collection of objects. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Stack.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Stack.html">[Sun docs]</a>
      *
      * @param <E> element type.
      * @class
@@ -10866,20 +10602,14 @@ declare namespace java.util.stream {
         static joining$java_lang_CharSequence(delimiter: any): java.util.stream.Collector<any, any, string>;
         static joining$java_lang_CharSequence$java_lang_CharSequence$java_lang_CharSequence(delimiter: any, prefix: any, suffix: any): java.util.stream.Collector<any, any, string>;
         /**
-         * Returns a {@code Collector} that concatenates the input elements, separated
-         * by the specified delimiter, with the specified prefix and suffix, in
-         * encounter order.
+         * Returns a {@code Collector} that concatenates the input elements, separated by the specified
+         * delimiter, with the specified prefix and suffix, in encounter order.
          *
-         * @param {*} delimiter
-         * the delimiter to be used between each element
-         * @param {*} prefix
-         * the sequence of characters to be used at the beginning of the
-         * joined result
-         * @param {*} suffix
-         * the sequence of characters to be used at the end of the joined
-         * result
-         * @return {*} A {@code Collector} which concatenates CharSequence elements,
-         * separated by the specified delimiter, in encounter order
+         * @param {*} delimiter the delimiter to be used between each element
+         * @param {*} prefix the sequence of characters to be used at the beginning of the joined result
+         * @param {*} suffix the sequence of characters to be used at the end of the joined result
+         * @return {*} A {@code Collector} which concatenates CharSequence elements, separated by the
+         * specified delimiter, in encounter order
          */
         static joining(delimiter?: any, prefix?: any, suffix?: any): java.util.stream.Collector<any, any, string>;
         static groupingBy$java_util_function_Function$java_util_stream_Collector<T, K, A, D>(classifier: (p1: any) => any, downstream: java.util.stream.Collector<any, A, D>): java.util.stream.Collector<T, any, java.util.Map<K, D>>;
@@ -10930,10 +10660,9 @@ declare namespace java.util.stream {
 }
 declare namespace java.util {
     /**
-     * Implements a TreeMap using a red-black tree. This guarantees O(log n)
-     * performance on lookups, inserts, and deletes while maintaining linear
-     * in-order traversal time. Null keys and values are fully supported if the
-     * comparator supports them (the default comparator does not).
+     * Implements a TreeMap using a red-black tree. This guarantees O(log n) performance on lookups,
+     * inserts, and deletes while maintaining linear in-order traversal time. Null keys and values are
+     * fully supported if the comparator supports them (the default comparator does not).
      *
      * @param <K> key type
      * @param <V> value type
@@ -11109,20 +10838,19 @@ declare namespace java.util {
         /**
          * Insert a node into a subtree, collecting state about the insertion.
          *
-         * If the same key already exists, the value of the node is overwritten with
-         * the value from the new node instead.
+         * <p>If the same key already exists, the value of the node is overwritten with the value from the
+         * new node instead.
          *
          * @param {java.util.TreeMap.Node} tree subtree to insert into
          * @param {java.util.TreeMap.Node} newNode new node to insert
-         * @param {java.util.TreeMap.State} state result of the insertion: state.found true if the key already
-         * existed in the tree state.value the old value if the key existed
+         * @param {java.util.TreeMap.State} state result of the insertion: state.found true if the key already existed in the tree
+         * state.value the old value if the key existed
          * @return {java.util.TreeMap.Node} the new subtree root
          * @private
          */
         insert(tree: TreeMap.Node<K, V>, newNode: TreeMap.Node<K, V>, state: TreeMap.State<V>): TreeMap.Node<K, V>;
         /**
-         * Returns true if <code>node</code> is red. Note that null pointers are
-         * considered black.
+         * Returns true if <code>node</code> is red. Note that null pointers are considered black.
          * @param {java.util.TreeMap.Node} node
          * @return {boolean}
          * @private
@@ -11156,8 +10884,8 @@ declare namespace java.util {
          */
         removeWithState(key: K, state: TreeMap.State<V>): boolean;
         /**
-         * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have
-         * avoided this traversal if each node maintained a parent pointer.
+         * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have avoided this traversal
+         * if each node maintained a parent pointer.
          * @param {java.util.TreeMap.Node} head
          * @param {java.util.TreeMap.Node} node
          * @param {java.util.TreeMap.Node} newNode
@@ -11165,9 +10893,8 @@ declare namespace java.util {
          */
         replaceNode(head: TreeMap.Node<K, V>, node: TreeMap.Node<K, V>, newNode: TreeMap.Node<K, V>): void;
         /**
-         * Perform a double rotation, first rotating the child which will become the
-         * root in the opposite direction, then rotating the root in the specified
-         * direction.
+         * Perform a double rotation, first rotating the child which will become the root in the opposite
+         * direction, then rotating the root in the specified direction.
          *
          * <pre>
          * A                                               F
@@ -11183,8 +10910,7 @@ declare namespace java.util {
          */
         rotateDouble(tree: TreeMap.Node<K, V>, rotateDirection: number): TreeMap.Node<K, V>;
         /**
-         * Perform a single rotation, pushing the root of the subtree to the specified
-         * direction.
+         * Perform a single rotation, pushing the root of the subtree to the specified direction.
          *
          * <pre>
          * A                                              B
@@ -11285,13 +11011,11 @@ declare namespace java.util {
             constructor(key?: any, value?: any, isRed?: any);
         }
         /**
-         * A state object which is passed down the tree for both insert and remove.
-         * All uses make use of the done flag to indicate when no further rebalancing
-         * of the tree is required. Remove methods use the found flag to indicate when
-         * the desired key has been found. value is used both to return the value of a
-         * removed node as well as to pass in a value which must match (used for
-         * entrySet().remove(entry)), and the matchValue flag is used to request this
-         * behavior.
+         * A state object which is passed down the tree for both insert and remove. All uses make use of
+         * the done flag to indicate when no further rebalancing of the tree is required. Remove methods
+         * use the found flag to indicate when the desired key has been found. value is used both to
+         * return the value of a removed node as well as to pass in a value which must match (used for
+         * entrySet().remove(entry)), and the matchValue flag is used to request this behavior.
          *
          * @param <V> value type
          * @class
@@ -11492,8 +11216,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Map using reference equality on keys. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/IdentityHashMap.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/IdentityHashMap.html">[Sun docs]</a>
      *
      * @param <K> key type
      * @param <V> value type
@@ -11502,19 +11225,19 @@ declare namespace java.util {
      * @extends java.util.AbstractHashMap
      */
     class IdentityHashMap<K, V> extends java.util.AbstractHashMap<K, V> implements java.util.Map<K, V>, java.lang.Cloneable, java.io.Serializable {
-        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
-        getOrDefault(key: any, defaultValue: any): any;
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         /**
-         * Ensures that RPC will consider type parameter K to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter K to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeKey: K;
         /**
-         * Ensures that RPC will consider type parameter V to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter V to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeValue: V;
         constructor(toBeCopied?: any);
@@ -11548,8 +11271,7 @@ declare namespace java.util {
 declare namespace java.util {
     /**
      * Implementation of Map interface based on a hash table. <a
-     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun
-     * docs]</a>
+     * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun docs]</a>
      *
      * @param <K> key type
      * @param <V> value type
@@ -11560,13 +11282,13 @@ declare namespace java.util {
      */
     class HashMap<K, V> extends java.util.AbstractHashMap<K, V> implements java.lang.Cloneable, java.io.Serializable {
         /**
-         * Ensures that RPC will consider type parameter K to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter K to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeKey: K;
         /**
-         * Ensures that RPC will consider type parameter V to be exposed. It will be
-         * pruned by dead code elimination.
+         * Ensures that RPC will consider type parameter V to be exposed. It will be pruned by dead code
+         * elimination.
          */
         exposeValue: V;
         constructor(ignored?: any, alsoIgnored?: any);
@@ -11624,22 +11346,15 @@ declare namespace java.lang {
             sep: string;
             toOut: string;
             /**
-             * Writes {@code count} bytes from the byte array {@code buffer} starting at
-             * position {@code offset} to this stream.
+             * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+             * offset} to this stream.
              *
-             * @param {byte[]} buffer
-             * the buffer to be written.
-             * @param {number} offset
-             * the start position in {@code buffer} from where to get bytes.
-             * @param {number} count
-             * the number of bytes from {@code buffer} to write to this
-             * stream.
-             * @throws IOException
-             * if an error occurs while writing to this stream.
-             * @throws IndexOutOfBoundsException
-             * if {@code offset < 0} or {@code count < 0}, or if
-             * {@code offset + count} is bigger than the length of
-             * {@code buffer}.
+             * @param {byte[]} buffer the buffer to be written.
+             * @param {number} offset the start position in {@code buffer} from where to get bytes.
+             * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+             * @throws IOException if an error occurs while writing to this stream.
+             * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+             * offset + count} is bigger than the length of {@code buffer}.
              */
             write(buffer?: any, offset?: any, count?: any): any;
             write$int(i: number): void;
@@ -11653,22 +11368,15 @@ declare namespace java.lang {
             sep: string;
             toOut: string;
             /**
-             * Writes {@code count} bytes from the byte array {@code buffer} starting at
-             * position {@code offset} to this stream.
+             * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+             * offset} to this stream.
              *
-             * @param {byte[]} buffer
-             * the buffer to be written.
-             * @param {number} offset
-             * the start position in {@code buffer} from where to get bytes.
-             * @param {number} count
-             * the number of bytes from {@code buffer} to write to this
-             * stream.
-             * @throws IOException
-             * if an error occurs while writing to this stream.
-             * @throws IndexOutOfBoundsException
-             * if {@code offset < 0} or {@code count < 0}, or if
-             * {@code offset + count} is bigger than the length of
-             * {@code buffer}.
+             * @param {byte[]} buffer the buffer to be written.
+             * @param {number} offset the start position in {@code buffer} from where to get bytes.
+             * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+             * @throws IOException if an error occurs while writing to this stream.
+             * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+             * offset + count} is bigger than the length of {@code buffer}.
              */
             write(buffer?: any, offset?: any, count?: any): any;
             write$int(i: number): void;
@@ -11684,15 +11392,13 @@ declare namespace java.lang {
             sep: string;
             readerFunction: () => string;
             /**
-             * Reads up to {@code byteCount} bytes from this stream and stores them in
-             * the byte array {@code buffer} starting at {@code byteOffset}.
-             * Returns the number of bytes actually read or -1 if the end of the stream
-             * has been reached.
+             * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+             * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+             * end of the stream has been reached.
              *
-             * @throws IndexOutOfBoundsException
-             * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-             * @throws IOException
-             * if the stream is closed or another IOException occurs.
+             * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+             * byteCount > buffer.length}.
+             * @throws IOException if the stream is closed or another IOException occurs.
              * @param {byte[]} buffer
              * @param {number} byteOffset
              * @param {number} byteCount
@@ -11706,15 +11412,11 @@ declare namespace java.lang {
 }
 declare namespace java.util {
     /**
-     * Hash table implementation of the Map interface with predictable iteration
-     * order. <a href=
-     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun
-     * docs]</a>
+     * Hash table implementation of the Map interface with predictable iteration order. <a href=
+     * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun docs]</a>
      *
-     * @param <K>
-     * key type.
-     * @param <V>
-     * value type.
+     * @param <K> key type.
+     * @param <V> value type.
      * @param {number} ignored
      * @param {number} alsoIgnored
      * @param {boolean} accessOrder
@@ -11722,10 +11424,10 @@ declare namespace java.util {
      * @extends java.util.HashMap
      */
     class LinkedHashMap<K, V> extends java.util.HashMap<K, V> implements java.util.Map<K, V> {
-        replaceAll(__function: (p1: any, p2: any) => any): void;
         merge(key: any, value: any, map: (p1: any, p2: any) => any): any;
-        getOrDefault(key: any, defaultValue: any): any;
+        replaceAll(__function: (p1: any, p2: any) => any): void;
         computeIfAbsent(key: any, mappingFunction: (p1: any) => any): any;
+        getOrDefault(key: any, defaultValue: any): any;
         putIfAbsent(key: any, value: any): any;
         accessOrder: boolean;
         head: LinkedHashMap.ChainEntry;
@@ -11787,16 +11489,14 @@ declare namespace java.util {
     }
     namespace LinkedHashMap {
         /**
-         * The entry we use includes next/prev pointers for a doubly-linked circular
-         * list with a head node. This reduces the special cases we have to deal
-         * with in the list operations.
+         * The entry we use includes next/prev pointers for a doubly-linked circular list with a head
+         * node. This reduces the special cases we have to deal with in the list operations.
          *
-         * Note that we duplicate the key from the underlying hash map so we can
-         * find the eldest entry. The alternative would have been to modify HashMap
-         * so more of the code was directly usable here, but this would have added
-         * some overhead to HashMap, or to reimplement most of the HashMap code here
-         * with small modifications. Paying a small storage cost only if you use
-         * LinkedHashMap and minimizing code size seemed like a better tradeoff
+         * <p>Note that we duplicate the key from the underlying hash map so we can find the eldest entry.
+         * The alternative would have been to modify HashMap so more of the code was directly usable here,
+         * but this would have added some overhead to HashMap, or to reimplement most of the HashMap code
+         * here with small modifications. Paying a small storage cost only if you use LinkedHashMap and
+         * minimizing code size seemed like a better tradeoff
          * @param {*} key
          * @param {*} value
          * @class
@@ -11966,9 +11666,9 @@ declare namespace java.util {
 }
 declare namespace java.util.logging {
     /**
-     * An emulation of the java.util.logging.Logger class. See
-     * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">
-     * The Java API doc for details</a>
+     * An emulation of the java.util.logging.Logger class. See <a
+     * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">The Java API doc for
+     * details</a>
      * @class
      */
     class Logger {
@@ -12060,8 +11760,8 @@ declare namespace javaemul.internal {
         static checkCriticalElement$boolean$java_lang_Object(expression: boolean, errorMessage: any): void;
         /**
          * Ensures the truth of an expression involving existence of an element.
-         * <p>
-         * For cases where failing fast is pretty important and not failing early could cause bugs that
+         *
+         * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
          * are much harder to debug.
          * @param {boolean} expression
          * @param {*} errorMessage
@@ -12082,8 +11782,8 @@ declare namespace javaemul.internal {
         static checkCriticalArgument$boolean$java_lang_String$java_lang_Object_A(expression: boolean, errorMessageTemplate: string, ...errorMessageArgs: any[]): void;
         /**
          * Ensures the truth of an expression involving one or more parameters to the calling method.
-         * <p>
-         * For cases where failing fast is pretty important and not failing early could cause bugs that
+         *
+         * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
          * are much harder to debug.
          * @param {boolean} expression
          * @param {string} errorMessageTemplate
@@ -12094,8 +11794,8 @@ declare namespace javaemul.internal {
         /**
          * Ensures the truth of an expression involving the state of the calling instance, but not
          * involving any parameters to the calling method.
-         * <p>
-         * For cases where failing fast is pretty important and not failing early could cause bugs that
+         *
+         * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
          * are much harder to debug.
          * @param {boolean} expression
          */
@@ -12177,7 +11877,7 @@ declare namespace javaemul.internal {
         static checkStringBounds(start: number, end: number, size: number): void;
         /**
          * Substitutes each {@code %s} in {@code template} with an argument. These are matched by
-         * position: the first {@code %s} gets {@code args[0]}, etc.  If there are more arguments than
+         * position: the first {@code %s} gets {@code args[0]}, etc. If there are more arguments than
          * placeholders, the unmatched arguments will be appended to the end of the formatted message in
          * square braces.
          * @param {string} template

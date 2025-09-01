@@ -23,9 +23,8 @@ var java;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html">the
-         * official Java API doc</a> for details.
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Exception.html">the official Java
+         * API doc</a> for details.
          * @param {string} message
          * @param {java.lang.Throwable} cause
          * @class
@@ -174,9 +173,10 @@ var java;
     (function (lang) {
         /**
          * A base class to share implementation between {@link StringBuffer} and {@link StringBuilder}.
-         * <p>
-         * Most methods will give expected performance results. Exception is {@link #setCharAt(int, char)},
-         * which is O(n), and thus should not be used many times on the same <code>StringBuffer</code>.
+         *
+         * <p>Most methods will give expected performance results. Exception is {@link #setCharAt(int,
+         * char)}, which is O(n), and thus should not be used many times on the same <code>StringBuffer
+         * </code>.
          * @param {string} string
          * @class
          */
@@ -438,14 +438,13 @@ var java;
     var lang;
     (function (lang) {
         /**
-         * Generally unsupported. This class is provided so that the GWT compiler can
-         * choke down class literal references.
-         * <p>
-         * NOTE: The code in this class is very sensitive and should keep its
-         * dependencies upon other classes to a minimum.
+         * Generally unsupported. This class is provided so that the GWT compiler can choke down class
+         * literal references.
          *
-         * @param <T>
-         * the type of the object
+         * <p>NOTE: The code in this class is very sensitive and should keep its dependencies upon other
+         * classes to a minimum.
+         *
+         * @param <T> the type of the object
          * @class
          */
         var Class = /** @class */ (function () {
@@ -518,10 +517,10 @@ var java;
             };
             /**
              * Create a Class object for an array.
-             * <p>
              *
-             * Arrays are not registered in the prototype table and get the class
-             * literal explicitly at construction.
+             * <p>Arrays are not registered in the prototype table and get the class literal explicitly at
+             * construction.
+             *
              * <p>
              * @param {java.lang.Class} leafClass
              * @param {number} dimensions
@@ -632,8 +631,8 @@ var java;
             };
             /**
              * Initiliazes {@code clazz} names from metadata.
-             * <p>
-             * Written in JSNI to minimize dependencies (on String.+).
+             *
+             * <p>Written in JSNI to minimize dependencies (on String.+).
              * @param {java.lang.Class} clazz
              * @private
              */
@@ -661,8 +660,8 @@ var java;
             };
             /**
              * Sets the class object for primitives.
-             * <p>
-             * Written in JSNI to minimize dependencies (on (String)+).
+             *
+             * <p>Written in JSNI to minimize dependencies (on (String)+).
              * @param {java.lang.Class} clazz
              * @param {Object} primitiveTypeId
              */
@@ -819,9 +818,8 @@ var java;
         var ref;
         (function (ref) {
             /**
-             * This implements the reference API in a minimal way. In JavaScript, there is
-             * no control over the reference and the GC. So this implementation's only
-             * purpose is for compilation.
+             * This implements the reference API in a minimal way. In JavaScript, there is no control over the
+             * reference and the GC. So this implementation's only purpose is for compilation.
              * @class
              */
             var Reference = /** @class */ (function () {
@@ -1012,21 +1010,20 @@ var java;
     var lang;
     (function (lang) {
         /**
-         * Constructs a {@code VirtualMachineError} with the specified
-         * detail message and cause.  <p>Note that the detail message
-         * associated with {@code cause} is <i>not</i> automatically
+         * Constructs a {@code VirtualMachineError} with the specified detail message and cause.
+         *
+         * <p>Note that the detail message associated with {@code cause} is <i>not</i> automatically
          * incorporated in this error's detail message.
          *
-         * @param  {string} message the detail message (which is saved for later retrieval
-         * by the {@link #getMessage()} method).
-         * @param  {java.lang.Throwable} cause the cause (which is saved for later retrieval by the
-         * {@link #getCause()} method).  (A {@code null} value is
-         * permitted, and indicates that the cause is nonexistent or
+         * @param {string} message the detail message (which is saved for later retrieval by the {@link
+         * #getMessage()} method).
+         * @param {java.lang.Throwable} cause the cause (which is saved for later retrieval by the {@link #getCause()} method).
+         * (A {@code null} value is permitted, and indicates that the cause is nonexistent or
          * unknown.)
-         * @since  1.8
+         * @since 1.8
          * @class
          * @extends java.lang.Error
-         * @author  Frank Yellin
+         * @author Frank Yellin
          */
         var VirtualMachineError = /** @class */ (function (_super) {
             __extends(VirtualMachineError, _super);
@@ -1070,8 +1067,8 @@ var java;
         var annotation;
         (function (annotation) {
             /**
-             * Indicates the annotation parser determined the annotation was malformed when
-             * reading from the class file <a
+             * Indicates the annotation parser determined the annotation was malformed when reading from the
+             * class file <a
              * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/AnnotationFormatError.html">[Sun
              * docs]</a>.
              * @class
@@ -1968,6 +1965,77 @@ var java;
                 }
                 return this.jsweetNumberFormat.format(number);
             };
+            NumberFormat.prototype.setGroupingUsed = function (newValue) {
+            };
+            NumberFormat.prototype.parse$java_lang_String = function (source) {
+                try {
+                    return javaemul.internal.DoubleHelper.parseDouble(source);
+                }
+                catch (e) {
+                    throw new java.text.ParseException("Unparseable number: \"" + source + "\"", 0);
+                }
+            };
+            NumberFormat.prototype.parse$java_lang_String$java_text_ParsePosition = function (source, pos) {
+                return this.parse$java_lang_String(source);
+            };
+            NumberFormat.prototype.parse = function (source, pos) {
+                if (((typeof source === 'string') || source === null) && ((pos != null && pos instanceof java.text.ParsePosition) || pos === null)) {
+                    return this.parse$java_lang_String$java_text_ParsePosition(source, pos);
+                }
+                else if (((typeof source === 'string') || source === null) && pos === undefined) {
+                    return this.parse$java_lang_String(source);
+                }
+                else
+                    throw new Error('invalid overload');
+            };
+            NumberFormat.getIntegerInstance$ = function () {
+                return NumberFormat.getInstance();
+            };
+            NumberFormat.getIntegerInstance$java_util_Locale = function (l) {
+                return NumberFormat.getCurrencyInstance$();
+            };
+            NumberFormat.getIntegerInstance = function (l) {
+                if (((l != null && l instanceof java.util.Locale) || l === null)) {
+                    return java.text.NumberFormat.getIntegerInstance$java_util_Locale(l);
+                }
+                else if (l === undefined) {
+                    return java.text.NumberFormat.getIntegerInstance$();
+                }
+                else
+                    throw new Error('invalid overload');
+            };
+            NumberFormat.getCurrencyInstance$ = function () {
+                return NumberFormat.getInstance();
+            };
+            NumberFormat.getCurrencyInstance$java_util_Locale = function (l) {
+                return NumberFormat.getCurrencyInstance$();
+            };
+            NumberFormat.getCurrencyInstance = function (l) {
+                if (((l != null && l instanceof java.util.Locale) || l === null)) {
+                    return java.text.NumberFormat.getCurrencyInstance$java_util_Locale(l);
+                }
+                else if (l === undefined) {
+                    return java.text.NumberFormat.getCurrencyInstance$();
+                }
+                else
+                    throw new Error('invalid overload');
+            };
+            NumberFormat.getPercentInstance$ = function () {
+                return NumberFormat.getInstance();
+            };
+            NumberFormat.getPercentInstance$java_util_Locale = function (l) {
+                return NumberFormat.getCurrencyInstance$();
+            };
+            NumberFormat.getPercentInstance = function (l) {
+                if (((l != null && l instanceof java.util.Locale) || l === null)) {
+                    return java.text.NumberFormat.getPercentInstance$java_util_Locale(l);
+                }
+                else if (l === undefined) {
+                    return java.text.NumberFormat.getPercentInstance$();
+                }
+                else
+                    throw new Error('invalid overload');
+            };
             return NumberFormat;
         }());
         text.NumberFormat = NumberFormat;
@@ -1982,7 +2050,7 @@ var java;
          *
          * @param {number} index initial index
          * @class
-         * @author      Mark Davis
+         * @author Mark Davis
          */
         var ParsePosition = /** @class */ (function () {
             function ParsePosition(index) {
@@ -1991,9 +2059,9 @@ var java;
                 this.index = index;
             }
             /**
-             * Retrieve the current parse position.  On input to a parse method, this
-             * is the index of the character at which parsing will begin; on output, it
-             * is the index of the character following the last character parsed.
+             * Retrieve the current parse position. On input to a parse method, this is the index of the
+             * character at which parsing will begin; on output, it is the index of the character following
+             * the last character parsed.
              *
              * @return {number} the current parse position
              */
@@ -2009,9 +2077,8 @@ var java;
                 this.index = index;
             };
             /**
-             * Set the index at which a parse error occurred.  Formatters
-             * should set this before returning an error code from their
-             * parseObject method.  The default value is -1 if this is not set.
+             * Set the index at which a parse error occurred. Formatters should set this before returning an
+             * error code from their parseObject method. The default value is -1 if this is not set.
              *
              * @param {number} ei the index at which an error occurred
              * @since 1.2
@@ -2020,8 +2087,7 @@ var java;
                 this.errorIndex = ei;
             };
             /**
-             * Retrieve the index at which an error occurred, or -1 if the
-             * error index has not been set.
+             * Retrieve the index at which an error occurred, or -1 if the error index has not been set.
              *
              * @return {number} the index at which an error occurred
              * @since 1.2
@@ -2044,6 +2110,7 @@ var java;
             };
             /**
              * Returns a hash code for this ParsePosition.
+             *
              * @return {number} a hash code value for this object
              */
             ParsePosition.prototype.hashCode = function () {
@@ -2051,7 +2118,8 @@ var java;
             };
             /**
              * Return a string representation of this ParsePosition.
-             * @return  {string} a string representation of this object
+             *
+             * @return {string} a string representation of this object
              */
             ParsePosition.prototype.toString = function () {
                 return /* getName */ (function (c) { return typeof c === 'string' ? c : c["__class"] ? c["__class"] : c["name"]; })(this.constructor) + "[index=" + this.index + ",errorIndex=" + this.errorIndex + ']';
@@ -2248,8 +2316,7 @@ var java;
     var io;
     (function (io) {
         /**
-         * This constructor does nothing. It is provided for signature
-         * compatibility.
+         * This constructor does nothing. It is provided for signature compatibility.
          * @class
          * @extends *
          */
@@ -2260,31 +2327,28 @@ var java;
              * Returns an estimated number of bytes that can be read or skipped without blocking for more
              * input.
              *
-             * <p>Note that this method provides such a weak guarantee that it is not very useful in
-             * practice.
+             * <p>Note that this method provides such a weak guarantee that it is not very useful in practice.
              *
-             * <p>Firstly, the guarantee is "without blocking for more input" rather than "without
-             * blocking": a read may still block waiting for I/O to complete&nbsp;&mdash; the guarantee is
-             * merely that it won't have to wait indefinitely for data to be written. The result of this
-             * method should not be used as a license to do I/O on a thread that shouldn't be blocked.
+             * <p>Firstly, the guarantee is "without blocking for more input" rather than "without blocking":
+             * a read may still block waiting for I/O to complete&nbsp;&mdash; the guarantee is merely that it
+             * won't have to wait indefinitely for data to be written. The result of this method should not be
+             * used as a license to do I/O on a thread that shouldn't be blocked.
              *
-             * <p>Secondly, the result is a
-             * conservative estimate and may be significantly smaller than the actual number of bytes
-             * available. In particular, an implementation that always returns 0 would be correct.
-             * In general, callers should only use this method if they'd be satisfied with
-             * treating the result as a boolean yes or no answer to the question "is there definitely
-             * data ready?".
+             * <p>Secondly, the result is a conservative estimate and may be significantly smaller than the
+             * actual number of bytes available. In particular, an implementation that always returns 0 would
+             * be correct. In general, callers should only use this method if they'd be satisfied with
+             * treating the result as a boolean yes or no answer to the question "is there definitely data
+             * ready?".
              *
-             * <p>Thirdly, the fact that a given number of bytes is "available" does not guarantee that a
-             * read or skip will actually read or skip that many bytes: they may read or skip fewer.
+             * <p>Thirdly, the fact that a given number of bytes is "available" does not guarantee that a read
+             * or skip will actually read or skip that many bytes: they may read or skip fewer.
              *
-             * <p>It is particularly important to realize that you <i>must not</i> use this method to
-             * size a container and assume that you can read the entirety of the stream without needing
-             * to resize the container. Such callers should probably write everything they read to a
-             * {@link ByteArrayOutputStream} and convert that to a byte array. Alternatively, if you're
-             * reading from a file, {@link File#length} returns the current length of the file (though
-             * assuming the file's length can't change may be incorrect, reading a file is inherently
-             * racy).
+             * <p>It is particularly important to realize that you <i>must not</i> use this method to size a
+             * container and assume that you can read the entirety of the stream without needing to resize the
+             * container. Such callers should probably write everything they read to a {@link
+             * ByteArrayOutputStream} and convert that to a byte array. Alternatively, if you're reading from
+             * a file, {@link File#length} returns the current length of the file (though assuming the file's
+             * length can't change may be incorrect, reading a file is inherently racy).
              *
              * <p>The default implementation of this method in {@code InputStream} always returns 0.
              * Subclasses should override this method if they are able to indicate the number of bytes
@@ -2297,34 +2361,31 @@ var java;
                 return 0;
             };
             /**
-             * Closes this stream. Concrete implementations of this class should free
-             * any resources during close. This implementation does nothing.
+             * Closes this stream. Concrete implementations of this class should free any resources during
+             * close. This implementation does nothing.
              *
-             * @throws IOException
-             * if an error occurs while closing this stream.
+             * @throws IOException if an error occurs while closing this stream.
              */
             InputStream.prototype.close = function () {
             };
             /**
-             * Sets a mark position in this InputStream. The parameter {@code readlimit}
-             * indicates how many bytes can be read before the mark is invalidated.
-             * Sending {@code reset()} will reposition the stream back to the marked
-             * position provided {@code readLimit} has not been surpassed.
-             * <p>
-             * This default implementation does nothing and concrete subclasses must
-             * provide their own implementation.
+             * Sets a mark position in this InputStream. The parameter {@code readlimit} indicates how many
+             * bytes can be read before the mark is invalidated. Sending {@code reset()} will reposition the
+             * stream back to the marked position provided {@code readLimit} has not been surpassed.
              *
-             * @param {number} readlimit
-             * the number of bytes that can be read from this stream before
-             * the mark is invalidated.
+             * <p>This default implementation does nothing and concrete subclasses must provide their own
+             * implementation.
+             *
+             * @param {number} readlimit the number of bytes that can be read from this stream before the mark is
+             * invalidated.
              * @see #markSupported()
              * @see #reset()
              */
             InputStream.prototype.mark = function (readlimit) {
             };
             /**
-             * Indicates whether this stream supports the {@code mark()} and
-             * {@code reset()} methods. The default implementation returns {@code false}.
+             * Indicates whether this stream supports the {@code mark()} and {@code reset()} methods. The
+             * default implementation returns {@code false}.
              *
              * @return {boolean} always {@code false}.
              * @see #mark(int)
@@ -2361,15 +2422,13 @@ var java;
                 return byteCount;
             };
             /**
-             * Reads up to {@code byteCount} bytes from this stream and stores them in
-             * the byte array {@code buffer} starting at {@code byteOffset}.
-             * Returns the number of bytes actually read or -1 if the end of the stream
-             * has been reached.
+             * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+             * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+             * end of the stream has been reached.
              *
-             * @throws IndexOutOfBoundsException
-             * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-             * @throws IOException
-             * if the stream is closed or another IOException occurs.
+             * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+             * byteCount > buffer.length}.
+             * @throws IOException if the stream is closed or another IOException occurs.
              * @param {byte[]} buffer
              * @param {number} byteOffset
              * @param {number} byteCount
@@ -2389,36 +2448,31 @@ var java;
                     throw new Error('invalid overload');
             };
             /**
-             * Resets this stream to the last marked location. Throws an
-             * {@code IOException} if the number of bytes read since the mark has been
-             * set is greater than the limit provided to {@code mark}, or if no mark
-             * has been set.
-             * <p>
-             * This implementation always throws an {@code IOException} and concrete
-             * subclasses should provide the proper implementation.
+             * Resets this stream to the last marked location. Throws an {@code IOException} if the number of
+             * bytes read since the mark has been set is greater than the limit provided to {@code mark}, or
+             * if no mark has been set.
              *
-             * @throws IOException
-             * if this stream is closed or another IOException occurs.
+             * <p>This implementation always throws an {@code IOException} and concrete subclasses should
+             * provide the proper implementation.
+             *
+             * @throws IOException if this stream is closed or another IOException occurs.
              */
             InputStream.prototype.reset = function () {
                 throw new java.io.IOException();
             };
             /**
-             * Skips at most {@code byteCount} bytes in this stream. The number of actual
-             * bytes skipped may be anywhere between 0 and {@code byteCount}. If
-             * {@code byteCount} is negative, this method does nothing and returns 0, but
-             * some subclasses may throw.
+             * Skips at most {@code byteCount} bytes in this stream. The number of actual bytes skipped may be
+             * anywhere between 0 and {@code byteCount}. If {@code byteCount} is negative, this method does
+             * nothing and returns 0, but some subclasses may throw.
              *
-             * <p>Note the "at most" in the description of this method: this method may
-             * choose to skip fewer bytes than requested. Callers should <i>always</i>
-             * check the return value.
+             * <p>Note the "at most" in the description of this method: this method may choose to skip fewer
+             * bytes than requested. Callers should <i>always</i> check the return value.
              *
-             * <p>This default implementation reads bytes into a temporary buffer. Concrete
-             * subclasses should provide their own implementation.
+             * <p>This default implementation reads bytes into a temporary buffer. Concrete subclasses should
+             * provide their own implementation.
              *
              * @return {number} the number of bytes actually skipped.
-             * @throws IOException if this stream is closed or another IOException
-             * occurs.
+             * @throws IOException if this stream is closed or another IOException occurs.
              * @param {number} byteCount
              */
             InputStream.prototype.skip = function (byteCount) {
@@ -2467,20 +2521,18 @@ var java;
             function OutputStream() {
             }
             /**
-             * Closes this stream. Implementations of this method should free any
-             * resources used by the stream. This implementation does nothing.
+             * Closes this stream. Implementations of this method should free any resources used by the
+             * stream. This implementation does nothing.
              *
-             * @throws IOException
-             * if an error occurs while closing this stream.
+             * @throws IOException if an error occurs while closing this stream.
              */
             OutputStream.prototype.close = function () {
             };
             /**
-             * Flushes this stream. Implementations of this method should ensure that
-             * any buffered data is written out. This implementation does nothing.
+             * Flushes this stream. Implementations of this method should ensure that any buffered data is
+             * written out. This implementation does nothing.
              *
-             * @throws IOException
-             * if an error occurs while flushing this stream.
+             * @throws IOException if an error occurs while flushing this stream.
              */
             OutputStream.prototype.flush = function () {
             };
@@ -2498,22 +2550,15 @@ var java;
                 }
             };
             /**
-             * Writes {@code count} bytes from the byte array {@code buffer} starting at
-             * position {@code offset} to this stream.
+             * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+             * offset} to this stream.
              *
-             * @param {byte[]} buffer
-             * the buffer to be written.
-             * @param {number} offset
-             * the start position in {@code buffer} from where to get bytes.
-             * @param {number} count
-             * the number of bytes from {@code buffer} to write to this
-             * stream.
-             * @throws IOException
-             * if an error occurs while writing to this stream.
-             * @throws IndexOutOfBoundsException
-             * if {@code offset < 0} or {@code count < 0}, or if
-             * {@code offset + count} is bigger than the length of
-             * {@code buffer}.
+             * @param {byte[]} buffer the buffer to be written.
+             * @param {number} offset the start position in {@code buffer} from where to get bytes.
+             * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+             * @throws IOException if an error occurs while writing to this stream.
+             * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+             * offset + count} is bigger than the length of {@code buffer}.
              */
             OutputStream.prototype.write = function (buffer, offset, count) {
                 if (((buffer != null && buffer instanceof Array && (buffer.length == 0 || buffer[0] == null || (typeof buffer[0] === 'number'))) || buffer === null) && ((typeof offset === 'number') || offset === null) && ((typeof count === 'number') || count === null)) {
@@ -2639,7 +2684,7 @@ var java;
         /**
          * Provides a series of utilities to be reused between IO classes.
          *
-         * TODO(chehayeb): move these checks to InternalPreconditions.
+         * <p>TODO(chehayeb): move these checks to InternalPreconditions.
          * @class
          */
         var IOUtils = /** @class */ (function () {
@@ -2691,28 +2736,24 @@ var java;
     var util;
     (function (util) {
         /**
-         * Constructs a string tokenizer for the specified string. All
-         * characters in the <code>delim</code> argument are the delimiters
-         * for separating tokens.
-         * <p>
-         * If the <code>returnDelims</code> flag is <code>true</code>, then
-         * the delimiter characters are also returned as tokens. Each
-         * delimiter is returned as a string of length one. If the flag is
-         * <code>false</code>, the delimiter characters are skipped and only
-         * serve as separators between tokens.
-         * <p>
-         * Note that if <tt>delim</tt> is <tt>null</tt>, this constructor does
-         * not throw an exception. However, trying to invoke other methods on the
-         * resulting <tt>StringTokenizer</tt> may result in a
-         * <tt>NullPointerException</tt>.
+         * Constructs a string tokenizer for the specified string. All characters in the <code>delim
+         * </code> argument are the delimiters for separating tokens.
          *
-         * @param   {string} str            a string to be parsed.
-         * @param   {string} delim          the delimiters.
-         * @param   {boolean} returnDelims   flag indicating whether to return the delimiters
-         * as tokens.
+         * <p>If the <code>returnDelims</code> flag is <code>true</code>, then the delimiter characters
+         * are also returned as tokens. Each delimiter is returned as a string of length one. If the flag
+         * is <code>false</code>, the delimiter characters are skipped and only serve as separators
+         * between tokens.
+         *
+         * <p>Note that if <tt>delim</tt> is <tt>null</tt>, this constructor does not throw an exception.
+         * However, trying to invoke other methods on the resulting <tt>StringTokenizer</tt> may result in
+         * a <tt>NullPointerException</tt>.
+         *
+         * @param {string} str a string to be parsed.
+         * @param {string} delim the delimiters.
+         * @param {boolean} returnDelims flag indicating whether to return the delimiters as tokens.
          * @exception NullPointerException if str is <CODE>null</CODE>
          * @class
-         * @author  unascribed
+         * @author unascribed
          */
         var StringTokenizer = /** @class */ (function () {
             function StringTokenizer(str, delim, returnDelims) {
@@ -2940,9 +2981,9 @@ var java;
                 }
             };
             /**
-             * Skips delimiters starting from the specified position. If retDelims
-             * is false, returns the index of the first non-delimiter character at or
-             * after startPos. If retDelims is true, startPos is returned.
+             * Skips delimiters starting from the specified position. If retDelims is false, returns the index
+             * of the first non-delimiter character at or after startPos. If retDelims is true, startPos is
+             * returned.
              * @param {number} startPos
              * @return {number}
              * @private
@@ -2972,8 +3013,8 @@ var java;
                 return position;
             };
             /**
-             * Skips ahead from startPos and returns the index of the next delimiter
-             * character encountered, or maxPosition if no such delimiter is found.
+             * Skips ahead from startPos and returns the index of the next delimiter character encountered, or
+             * maxPosition if no such delimiter is found.
              * @param {number} startPos
              * @return {number}
              * @private
@@ -3023,13 +3064,12 @@ var java;
                 return false;
             };
             /**
-             * Tests if there are more tokens available from this tokenizer's string.
-             * If this method returns <tt>true</tt>, then a subsequent call to
-             * <tt>nextToken</tt> with no argument will successfully return a token.
+             * Tests if there are more tokens available from this tokenizer's string. If this method returns
+             * <tt>true</tt>, then a subsequent call to <tt>nextToken</tt> with no argument will successfully
+             * return a token.
              *
-             * @return  {boolean} <code>true</code> if and only if there is at least one token
-             * in the string after the current position; <code>false</code>
-             * otherwise.
+             * @return {boolean} <code>true</code> if and only if there is at least one token in the string after the
+             * current position; <code>false</code> otherwise.
              */
             StringTokenizer.prototype.hasMoreTokens = function () {
                 this.newPosition = this.skipDelimiters(this.currentPosition);
@@ -3052,18 +3092,15 @@ var java;
                 return this.nextToken$();
             };
             /**
-             * Returns the next token in this string tokenizer's string. First,
-             * the set of characters considered to be delimiters by this
-             * <tt>StringTokenizer</tt> object is changed to be the characters in
-             * the string <tt>delim</tt>. Then the next token in the string
-             * after the current position is returned. The current position is
-             * advanced beyond the recognized token.  The new delimiter set
-             * remains the default after this call.
+             * Returns the next token in this string tokenizer's string. First, the set of characters
+             * considered to be delimiters by this <tt>StringTokenizer</tt> object is changed to be the
+             * characters in the string <tt>delim</tt>. Then the next token in the string after the current
+             * position is returned. The current position is advanced beyond the recognized token. The new
+             * delimiter set remains the default after this call.
              *
-             * @param      {string} delim   the new delimiters.
-             * @return     {string} the next token, after switching to the new delimiter set.
-             * @exception  NoSuchElementException  if there are no more tokens in this
-             * tokenizer's string.
+             * @param {string} delim the new delimiters.
+             * @return {string} the next token, after switching to the new delimiter set.
+             * @exception NoSuchElementException if there are no more tokens in this tokenizer's string.
              * @exception NullPointerException if delim is <CODE>null</CODE>
              */
             StringTokenizer.prototype.nextToken = function (delim) {
@@ -3077,41 +3114,35 @@ var java;
                     throw new Error('invalid overload');
             };
             /**
-             * Returns the same value as the <code>hasMoreTokens</code>
-             * method. It exists so that this class can implement the
-             * <code>Enumeration</code> interface.
+             * Returns the same value as the <code>hasMoreTokens</code> method. It exists so that this class
+             * can implement the <code>Enumeration</code> interface.
              *
-             * @return  {boolean} <code>true</code> if there are more tokens;
-             * <code>false</code> otherwise.
-             * @see     java.util.Enumeration
-             * @see     java.util.StringTokenizer#hasMoreTokens()
+             * @return {boolean} <code>true</code> if there are more tokens; <code>false</code> otherwise.
+             * @see java.util.Enumeration
+             * @see java.util.StringTokenizer#hasMoreTokens()
              */
             StringTokenizer.prototype.hasMoreElements = function () {
                 return this.hasMoreTokens();
             };
             /**
-             * Returns the same value as the <code>nextToken</code> method,
-             * except that its declared return value is <code>Object</code> rather than
-             * <code>String</code>. It exists so that this class can implement the
-             * <code>Enumeration</code> interface.
+             * Returns the same value as the <code>nextToken</code> method, except that its declared return
+             * value is <code>Object</code> rather than <code>String</code>. It exists so that this class can
+             * implement the <code>Enumeration</code> interface.
              *
-             * @return     {*} the next token in the string.
-             * @exception  NoSuchElementException  if there are no more tokens in this
-             * tokenizer's string.
-             * @see        java.util.Enumeration
-             * @see        java.util.StringTokenizer#nextToken()
+             * @return {*} the next token in the string.
+             * @exception NoSuchElementException if there are no more tokens in this tokenizer's string.
+             * @see java.util.Enumeration
+             * @see java.util.StringTokenizer#nextToken()
              */
             StringTokenizer.prototype.nextElement = function () {
                 return this.nextToken$();
             };
             /**
-             * Calculates the number of times that this tokenizer's
-             * <code>nextToken</code> method can be called before it generates an
-             * exception. The current position is not advanced.
+             * Calculates the number of times that this tokenizer's <code>nextToken</code> method can be
+             * called before it generates an exception. The current position is not advanced.
              *
-             * @return  {number} the number of tokens remaining in the string using the current
-             * delimiter set.
-             * @see     java.util.StringTokenizer#nextToken()
+             * @return {number} the number of tokens remaining in the string using the current delimiter set.
+             * @see java.util.StringTokenizer#nextToken()
              */
             StringTokenizer.prototype.countTokens = function () {
                 var count = 0;
@@ -3139,11 +3170,9 @@ var java;
     var util;
     (function (util) {
         /**
-         * Construct a random generator with the given {@code seed} as the initial
-         * state.
+         * Construct a random generator with the given {@code seed} as the initial state.
          *
-         * @param {number} seed the seed that will determine the initial state of this random
-         * number generator.
+         * @param {number} seed the seed that will determine the initial state of this random number generator.
          * @see #setSeed
          * @class
          */
@@ -3214,8 +3243,8 @@ var java;
                 }
             };
             /**
-             * Returns the next pseudo-random, uniformly distributed {@code boolean} value
-             * generated by this generator.
+             * Returns the next pseudo-random, uniformly distributed {@code boolean} value generated by this
+             * generator.
              *
              * @return {boolean} a pseudo-random, uniformly distributed boolean value.
              */
@@ -3223,8 +3252,8 @@ var java;
                 return this.nextInternal(1) !== 0;
             };
             /**
-             * Modifies the {@code byte} array by a random sequence of {@code byte}s
-             * generated by this random number generator.
+             * Modifies the {@code byte} array by a random sequence of {@code byte}s generated by this random
+             * number generator.
              *
              * @param {byte[]} buf non-null array to contain the new random {@code byte}s.
              * @see #next
@@ -3250,8 +3279,8 @@ var java;
                 ;
             };
             /**
-             * Generates a normally distributed random {@code double} number between 0.0
-             * inclusively and 1.0 exclusively.
+             * Generates a normally distributed random {@code double} number between 0.0 inclusively and 1.0
+             * exclusively.
              *
              * @return {number} a random {@code double} in the range [0.0 - 1.0)
              * @see #nextFloat
@@ -3260,8 +3289,8 @@ var java;
                 return this.nextInternal(26) * Random.twoToTheMinus26 + this.nextInternal(27) * Random.twoToTheMinus53;
             };
             /**
-             * Generates a normally distributed random {@code float} number between 0.0
-             * inclusively and 1.0 exclusively.
+             * Generates a normally distributed random {@code float} number between 0.0 inclusively and 1.0
+             * exclusively.
              *
              * @return {number} float a random {@code float} number between [0.0 and 1.0)
              * @see #nextDouble
@@ -3270,12 +3299,10 @@ var java;
                 return (this.nextInternal(24) * Random.twoToTheMinus24);
             };
             /**
-             * Pseudo-randomly generates (approximately) a normally distributed {@code
-             * double} value with mean 0.0 and a standard deviation value of {@code 1.0}
-             * using the <i>polar method<i> of G. E. P. Box, M. E. Muller, and G.
-             * Marsaglia, as described by Donald E. Knuth in <i>The Art of Computer
-             * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.4.1,
-             * subsection C, algorithm P.
+             * Pseudo-randomly generates (approximately) a normally distributed {@code double} value with mean
+             * 0.0 and a standard deviation value of {@code 1.0} using the <i>polar method<i> of G. E. P. Box,
+             * M. E. Muller, and G. Marsaglia, as described by Donald E. Knuth in <i>The Art of Computer
+             * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.4.1, subsection C, algorithm P.
              *
              * @return {number} a random {@code double}
              * @see #nextDouble
@@ -3319,9 +3346,8 @@ var java;
                 return (val | 0);
             };
             /**
-             * Returns a new pseudo-random {@code int} value which is uniformly
-             * distributed between 0 (inclusively) and the value of {@code n}
-             * (exclusively).
+             * Returns a new pseudo-random {@code int} value which is uniformly distributed between 0
+             * (inclusively) and the value of {@code n} (exclusively).
              *
              * @param {number} n the exclusive upper border of the range [0 - n).
              * @return {number} a random {@code int}.
@@ -3337,8 +3363,7 @@ var java;
                     throw new Error('invalid overload');
             };
             /**
-             * Generates a uniformly distributed 64-bit integer value from the random
-             * number sequence.
+             * Generates a uniformly distributed 64-bit integer value from the random number sequence.
              *
              * @return {number} 64-bit random integer.
              * @see java.lang.Integer#MAX_VALUE
@@ -3354,10 +3379,9 @@ var java;
                 this.setSeed$int$int((((seed >> 24) & 16777215) | 0), ((seed & 16777215) | 0));
             };
             /**
-             * Returns a pseudo-random uniformly distributed {@code int} value of the
-             * number of bits specified by the argument {@code bits} as described by
-             * Donald E. Knuth in <i>The Art of Computer Programming, Volume 2:
-             * Seminumerical Algorithms</i>, section 3.2.1.
+             * Returns a pseudo-random uniformly distributed {@code int} value of the number of bits specified
+             * by the argument {@code bits} as described by Donald E. Knuth in <i>The Art of Computer
+             * Programming, Volume 2: Seminumerical Algorithms</i>, section 3.2.1.
              *
              * @param {number} bits number of bits of the returned value.
              * @return {number} a pseudo-random generated int number.
@@ -3420,8 +3444,8 @@ var java;
             Random.twoToTheMinus31 = 4.6566128730773926E-10;
             Random.twoToTheMinus53 = 1.1102230246251565E-16;
             /**
-             * A value used to avoid two random number generators produced at the same
-             * time having the same seed.
+             * A value used to avoid two random number generators produced at the same time having the same
+             * seed.
              */
             Random.uniqueSeed = 0;
             return Random;
@@ -3446,15 +3470,12 @@ var java;
                 this.obs = (new java.util.Vector());
             }
             /**
-             * Adds an observer to the set of observers for this object, provided that
-             * it is not the same as some observer already in the set. The order in
-             * which notifications will be delivered to multiple observers is not
-             * specified. See the class comment.
+             * Adds an observer to the set of observers for this object, provided that it is not the same as
+             * some observer already in the set. The order in which notifications will be delivered to
+             * multiple observers is not specified. See the class comment.
              *
-             * @param {*} o
-             * an observer to be added.
-             * @throws NullPointerException
-             * if the parameter o is null.
+             * @param {*} o an observer to be added.
+             * @throws NullPointerException if the parameter o is null.
              */
             Observable.prototype.addObserver = function (o) {
                 if (o == null)
@@ -3464,11 +3485,10 @@ var java;
                 }
             };
             /**
-             * Deletes an observer from the set of observers of this object. Passing
-             * <CODE>null</CODE> to this method will have no effect.
+             * Deletes an observer from the set of observers of this object. Passing <CODE>null</CODE> to this
+             * method will have no effect.
              *
-             * @param {*} o
-             * the observer to be deleted.
+             * @param {*} o the observer to be deleted.
              */
             Observable.prototype.deleteObserver = function (o) {
                 this.obs.removeElement(o);
@@ -3487,16 +3507,14 @@ var java;
                 }
             };
             /**
-             * If this object has changed, as indicated by the <code>hasChanged</code>
-             * method, then notify all of its observers and then call the
-             * <code>clearChanged</code> method to indicate that this object has no
-             * longer changed.
-             * <p>
-             * Each observer has its <code>update</code> method called with two
-             * arguments: this observable object and the <code>arg</code> argument.
+             * If this object has changed, as indicated by the <code>hasChanged</code> method, then notify all
+             * of its observers and then call the <code>clearChanged</code> method to indicate that this
+             * object has no longer changed.
              *
-             * @param {*} arg
-             * any object.
+             * <p>Each observer has its <code>update</code> method called with two arguments: this observable
+             * object and the <code>arg</code> argument.
+             *
+             * @param {*} arg any object.
              * @see java.util.Observable#clearChanged()
              * @see java.util.Observable#hasChanged()
              * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
@@ -3518,17 +3536,17 @@ var java;
                 this.obs.removeAllElements();
             };
             /**
-             * Marks this <tt>Observable</tt> object as having been changed; the
-             * <tt>hasChanged</tt> method will now return <tt>true</tt>.
+             * Marks this <tt>Observable</tt> object as having been changed; the <tt>hasChanged</tt> method
+             * will now return <tt>true</tt>.
              */
             Observable.prototype.setChanged = function () {
                 this.changed = true;
             };
             /**
-             * Indicates that this object has no longer changed, or that it has already
-             * notified all of its observers of its most recent change, so that the
-             * <tt>hasChanged</tt> method will now return <tt>false</tt>. This method is
-             * called automatically by the <code>notifyObservers</code> methods.
+             * Indicates that this object has no longer changed, or that it has already notified all of its
+             * observers of its most recent change, so that the <tt>hasChanged</tt> method will now return
+             * <tt>false</tt>. This method is called automatically by the <code>notifyObservers</code>
+             * methods.
              *
              * @see java.util.Observable#notifyObservers()
              * @see java.util.Observable#notifyObservers(java.lang.Object)
@@ -3539,10 +3557,9 @@ var java;
             /**
              * Tests if this object has changed.
              *
-             * @return {boolean} <code>true</code> if and only if the <code>setChanged</code>
-             * method has been called more recently than the
-             * <code>clearChanged</code> method on this object;
-             * <code>false</code> otherwise.
+             * @return {boolean} <code>true</code> if and only if the <code>setChanged</code> method has been called
+             * more recently than the <code>clearChanged</code> method on this object; <code>false</code>
+             * otherwise.
              * @see java.util.Observable#clearChanged()
              * @see java.util.Observable#setChanged()
              */
@@ -3835,9 +3852,9 @@ var java;
                 return Date.StringData.DAYS_$LI$()[(this.getDay() | 0)] + " " + Date.StringData.MONTHS_$LI$()[(this.getMonth() | 0)] + " " + Date.padTwo((this.getDate() | 0)) + " " + Date.padTwo((this.getHours() | 0)) + ":" + Date.padTwo((this.getMinutes() | 0)) + ":" + Date.padTwo((this.getSeconds() | 0)) + " GMT" + hourOffset + minuteOffset + " " + this.jsdate["getFullYear"](this.jsdate);
             };
             /**
-             * Detects if the requested time falls into a non-existent time range due to
-             * local time advancing into daylight savings time or is ambiguous due to
-             * going out of daylight savings. If so, adjust accordingly.
+             * Detects if the requested time falls into a non-existent time range due to local time advancing
+             * into daylight savings time or is ambiguous due to going out of daylight savings. If so, adjust
+             * accordingly.
              * @param {number} requestedHours
              * @private
              */
@@ -3873,8 +3890,7 @@ var java;
         Date["__interfaces"] = ["java.lang.Cloneable", "java.lang.Comparable", "java.io.Serializable"];
         (function (Date) {
             /**
-             * Encapsulates static data to avoid Date itself having a static
-             * initializer.
+             * Encapsulates static data to avoid Date itself having a static initializer.
              * @class
              */
             var StringData = /** @class */ (function () {
@@ -3897,8 +3913,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * Incomplete and naive implementation of the BitSet utility (mainly for
-         * compatibility/compilation purpose).
+         * Incomplete and naive implementation of the BitSet utility (mainly for compatibility/compilation
+         * purpose).
          *
          * @author Renaud Pawlak
          * @param {number} nbits
@@ -4137,12 +4153,12 @@ var java;
         /**
          * A simple wrapper around JavaScriptObject to provide {@link java.util.Map}-like semantics for any
          * key type.
-         * <p>
-         * Implementation notes:
-         * <p>
-         * A key's hashCode is the index in backingMap which should contain that key. Since several keys may
-         * have the same hash, each value in hashCodeMap is actually an array containing all entries whose
-         * keys share the same hash.
+         *
+         * <p>Implementation notes:
+         *
+         * <p>A key's hashCode is the index in backingMap which should contain that key. Since several keys
+         * may have the same hash, each value in hashCodeMap is actually an array containing all entries
+         * whose keys share the same hash.
          * @param {java.util.AbstractHashMap} host
          * @class
          */
@@ -4351,20 +4367,14 @@ var java;
             var Entry;
             (function (Entry) {
                 /**
+                 * Returns a comparator that compares {@link Map.Entry} by value using the given {@link
+                 * Comparator}.
                  *
-                 * Returns a comparator that compares {@link Map.Entry} by value using the given
-                 * {@link Comparator}.
+                 * <p>The returned comparator is serializable if the specified comparator is also serializable.
                  *
-                 * <p>
-                 * The returned comparator is serializable if the specified comparator is also
-                 * serializable.
-                 *
-                 * @param <K>
-                 * the type of the map keys
-                 * @param <V>
-                 * the type of the map values
-                 * @param {*} cmp
-                 * the value {@link Comparator}
+                 * @param <K> the type of the map keys
+                 * @param <V> the type of the map values
+                 * @param {*} cmp the value {@link Comparator}
                  * @return {*} a comparator that compares {@link Map.Entry} by the value.
                  * @since 1.8
                  */
@@ -4386,8 +4396,7 @@ var java;
     (function (util) {
         /**
          * Skeletal implementation of the Collection interface. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractCollection.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractCollection.html">[Sun docs]</a>
          *
          * @param <E> the element type.
          * @class
@@ -4395,6 +4404,10 @@ var java;
         var AbstractCollection = /** @class */ (function () {
             function AbstractCollection() {
             }
+            /* Default method injected from java.util.Collection */
+            AbstractCollection.prototype.stream = function () {
+                return (new javaemul.internal.stream.StreamHelper(this));
+            };
             /* Default method injected from java.util.Collection */
             AbstractCollection.prototype.removeIf = function (filter) {
                 javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
@@ -4416,8 +4429,8 @@ var java;
                 return removed;
             };
             /* Default method injected from java.util.Collection */
-            AbstractCollection.prototype.stream = function () {
-                return (new javaemul.internal.stream.StreamHelper(this));
+            AbstractCollection.prototype.parallelStream = function () {
+                return this.stream();
             };
             /* Default method injected from java.lang.Iterable */
             AbstractCollection.prototype.forEach = function (action) {
@@ -4433,10 +4446,6 @@ var java;
                 for (var index = this.iterator(); index.hasNext();) {
                     _loop_3(index);
                 }
-            };
-            /* Default method injected from java.util.Collection */
-            AbstractCollection.prototype.parallelStream = function () {
-                return this.stream();
             };
             /**
              *
@@ -4631,8 +4640,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">
-         * the official Java API doc</a> for details.
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">the official Java
+         * API doc</a> for details.
          *
          * @param <T> type of the wrapped reference
          * @class
@@ -4762,9 +4771,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a
-         * href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the
-         * official Java API doc</a> for details.
+         * See <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html">the official Java
+         * API doc</a> for details.
          * @class
          */
         var Objects = /** @class */ (function () {
@@ -4903,8 +4911,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalLong.html">
-         * the official Java API doc</a> for details.
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalLong.html">the official
+         * Java API doc</a> for details.
          * @class
          */
         var OptionalLong = /** @class */ (function () {
@@ -5016,8 +5024,8 @@ var java;
             } return Comparators.NATURAL; };
             /**
              * Returns the natural Comparator.
-             * <p>
-             * Example:
+             *
+             * <p>Example:
              *
              * <pre>Comparator&lt;String&gt; compareString = Comparators.natural()</pre>
              *
@@ -5631,8 +5639,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">
-         * the official Java API doc</a> for details.
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/StringJoiner.html">the official
+         * Java API doc</a> for details.
          * @param {*} delimiter
          * @param {*} prefix
          * @param {*} suffix
@@ -5770,11 +5778,11 @@ var java;
     var util;
     (function (util) {
         /**
-         * A very simple emulation of Locale for shared-code patterns like
-         * {@code String.toUpperCase(Locale.US)}.
-         * <p>
-         * Note: Any changes to this class should put into account the assumption that
-         * was made in rest of the JRE emulation.
+         * A very simple emulation of Locale for shared-code patterns like {@code
+         * String.toUpperCase(Locale.US)}.
+         *
+         * <p>Note: Any changes to this class should put into account the assumption that was made in rest
+         * of the JRE emulation.
          * @class
          */
         var Locale = /** @class */ (function () {
@@ -5799,8 +5807,8 @@ var java;
                 Locale.defaultLocale = new Locale.DefaultLocale();
             } return Locale.defaultLocale; };
             /**
-             * Returns an instance that represents the browser's default locale (not
-             * necessarily the one defined by 'gwt.locale').
+             * Returns an instance that represents the browser's default locale (not necessarily the one
+             * defined by 'gwt.locale').
              * @return {java.util.Locale}
              */
             Locale.getDefault = function () {
@@ -5916,9 +5924,9 @@ var java;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.Handler class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Handler.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.Handler class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Handler.html">The Java API doc
+             * for details</a>
              * @class
              */
             var Handler = /** @class */ (function () {
@@ -5961,9 +5969,9 @@ var java;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.Level class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Level.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.Level class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Level.html">The Java API doc for
+             * details</a>
              * @class
              */
             var Level = /** @class */ (function () {
@@ -6271,9 +6279,9 @@ var java;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.LogRecord class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogRecord.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.LogRecord class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogRecord.html">The Java API doc
+             * for details</a>
              * @param {java.util.logging.Level} level
              * @param {string} msg
              * @class
@@ -6358,9 +6366,9 @@ var java;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.Formatter class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Formatter.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.Formatter class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Formatter.html">The Java API doc
+             * for details</a>
              * @class
              */
             var Formatter = /** @class */ (function () {
@@ -6382,9 +6390,9 @@ var java;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.LogManager class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogManger.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.LogManager class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/LogManger.html">The Java API doc
+             * for details</a>
              * @class
              */
             var LogManager = /** @class */ (function () {
@@ -6414,12 +6422,10 @@ var java;
                     return java.util.Collections.enumeration(this.loggerMap.keySet());
                 };
                 /**
-                 * Helper function to add a logger when we have already determined that it
-                 * does not exist.  When we add a logger, we recursively add all of it's
-                 * ancestors. Since loggers do not get removed, logger creation is cheap,
-                 * and there are not usually too many loggers in an ancestry chain,
-                 * this is a simple way to ensure that the parent/child relationships are
-                 * always correctly set up.
+                 * Helper function to add a logger when we have already determined that it does not exist. When we
+                 * add a logger, we recursively add all of it's ancestors. Since loggers do not get removed,
+                 * logger creation is cheap, and there are not usually too many loggers in an ancestry chain, this
+                 * is a simple way to ensure that the parent/child relationships are always correctly set up.
                  * @param {java.util.logging.Logger} logger
                  * @private
                  */
@@ -6438,9 +6444,8 @@ var java;
                     this.loggerMap.put(logger.getName(), logger);
                 };
                 /**
-                 * Helper function to create a logger if it does not exist since the public
-                 * APIs for getLogger and addLogger make it difficult to use those functions
-                 * for this.
+                 * Helper function to create a logger if it does not exist since the public APIs for getLogger and
+                 * addLogger make it difficult to use those functions for this.
                  * @param {string} name
                  * @return {java.util.logging.Logger}
                  */
@@ -6465,8 +6470,7 @@ var java;
     var util;
     (function (util) {
         /**
-         * Basic {@link Map.Entry} implementation that implements hashCode, equals, and
-         * toString.
+         * Basic {@link Map.Entry} implementation that implements hashCode, equals, and toString.
          * @class
          */
         var AbstractMapEntry = /** @class */ (function () {
@@ -6534,8 +6538,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">
-         * the official Java API doc</a> for details.
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalDouble.html">the
+         * official Java API doc</a> for details.
          * @class
          */
         var OptionalDouble = /** @class */ (function () {
@@ -6690,26 +6694,23 @@ var java;
                 var Characteristics;
                 (function (Characteristics) {
                     /**
-                     * Indicates that this collector is <em>concurrent</em>, meaning that
-                     * the result container can support the accumulator function being
-                     * called concurrently with the same result container from multiple
-                     * threads.
+                     * Indicates that this collector is <em>concurrent</em>, meaning that the result container can
+                     * support the accumulator function being called concurrently with the same result container
+                     * from multiple threads.
                      *
-                     * <p>If a {@code CONCURRENT} collector is not also {@code UNORDERED},
-                     * then it should only be evaluated concurrently if applied to an
-                     * unordered data source.
+                     * <p>If a {@code CONCURRENT} collector is not also {@code UNORDERED}, then it should only be
+                     * evaluated concurrently if applied to an unordered data source.
                      */
                     Characteristics[Characteristics["CONCURRENT"] = 0] = "CONCURRENT";
                     /**
-                     * Indicates that the collection operation does not commit to preserving
-                     * the encounter order of input elements.  (This might be true if the
-                     * result container has no intrinsic order, such as a {@link Set}.)
+                     * Indicates that the collection operation does not commit to preserving the encounter order of
+                     * input elements. (This might be true if the result container has no intrinsic order, such as a
+                     * {@link Set}.)
                      */
                     Characteristics[Characteristics["UNORDERED"] = 1] = "UNORDERED";
                     /**
-                     * Indicates that the finisher function is the identity function and
-                     * can be elided.  If set, it must be the case that an unchecked cast
-                     * from A to R will succeed.
+                     * Indicates that the finisher function is the identity function and can be elided. If set, it
+                     * must be the case that an unchecked cast from A to R will succeed.
                      */
                     Characteristics[Characteristics["IDENTITY_FINISH"] = 2] = "IDENTITY_FINISH";
                 })(Characteristics = Collector.Characteristics || (Collector.Characteristics = {}));
@@ -6721,8 +6722,8 @@ var java;
     var util;
     (function (util) {
         /**
-         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">
-         * the official Java API doc</a> for details.
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/OptionalInt.html">the official
+         * Java API doc</a> for details.
          * @class
          */
         var OptionalInt = /** @class */ (function () {
@@ -6862,6 +6863,9 @@ var java;
             BigInteger.prototype.compareTo = function (val) {
                 return 0;
             };
+            BigInteger.prototype.add = function (val) {
+                return null;
+            };
             BigInteger.prototype.subtract = function (val) {
                 return null;
             };
@@ -6881,18 +6885,33 @@ var java;
             BigInteger.prototype.mod$int = function (p) {
                 return BigInteger.ONE_$LI$();
             };
+            BigInteger.prototype.pow = function (exponent) {
+                return BigInteger.ONE_$LI$();
+            };
             BigInteger.prototype.intValue = function () {
+                return 0;
+            };
+            BigInteger.prototype.longValue = function () {
                 return 0;
             };
             BigInteger.prototype.doubleValue = function () {
                 return 0.0;
             };
-            /**
-             *
-             * @return {string}
-             */
-            BigInteger.prototype.toString = function () {
+            BigInteger.prototype.toString$ = function () {
                 return this.value;
+            };
+            BigInteger.prototype.toString$int = function (radix) {
+                return "TODO_BI_toString";
+            };
+            BigInteger.prototype.toString = function (radix) {
+                if (((typeof radix === 'number') || radix === null)) {
+                    return this.toString$int(radix);
+                }
+                else if (radix === undefined) {
+                    return this.toString$();
+                }
+                else
+                    throw new Error('invalid overload');
             };
             return BigInteger;
         }());
@@ -6943,8 +6962,7 @@ var javaemul;
     var internal;
     (function (internal) {
         /**
-         * A utility to provide array stamping. Provided as a separate class to simplify
-         * super-source.
+         * A utility to provide array stamping. Provided as a separate class to simplify super-source.
          * @class
          */
         var ArrayStamper = /** @class */ (function () {
@@ -7019,17 +7037,15 @@ var javaemul;
     var internal;
     (function (internal) {
         /**
-         * Private implementation class for GWT. This API should not be
-         * considered public or stable.
+         * Private implementation class for GWT. This API should not be considered public or stable.
          * @class
          */
         var Coercions = /** @class */ (function () {
             function Coercions() {
             }
             /**
-             * Coerce js int to 32 bits.
-             * Trick related to JS and lack of integer rollover.
-             * {@see com.google.gwt.lang.Cast#narrow_int}
+             * Coerce js int to 32 bits. Trick related to JS and lack of integer rollover. {@see
+             * com.google.gwt.lang.Cast#narrow_int}
              * @param {number} value
              * @return {number}
              */
@@ -7053,11 +7069,9 @@ var javaemul;
             function NumberHelper() {
             }
             /**
-             * @skip
-             *
-             * This function will determine the radix that the string is expressed
-             * in based on the parsing rules defined in the Javadocs for
-             * Integer.decode() and invoke __parseAndValidateInt.
+             * @skip This function will determine the radix that the string is expressed in based on the
+             * parsing rules defined in the Javadocs for Integer.decode() and invoke
+             * __parseAndValidateInt.
              * @param {string} s
              * @param {number} lowerBound
              * @param {number} upperBound
@@ -7118,10 +7132,8 @@ var javaemul;
                 return new NumberHelper.__Decode(radix, s);
             };
             /**
-             * @skip
-             *
-             * This function contains common logic for parsing a String as a
-             * floating- point number and validating the range.
+             * @skip This function contains common logic for parsing a String as a floating- point number and
+             * validating the range.
              * @param {string} s
              * @return {number}
              */
@@ -7132,10 +7144,8 @@ var javaemul;
                 return parseFloat(s);
             };
             /**
-             * @skip
-             *
-             * This function contains common logic for parsing a String in a given
-             * radix and validating the result.
+             * @skip This function contains common logic for parsing a String in a given radix and validating
+             * the result.
              * @param {string} s
              * @param {number} radix
              * @param {number} lowerBound
@@ -7170,10 +7180,8 @@ var javaemul;
                 return toReturn;
             };
             /**
-             * @skip
-             *
-             * This function contains common logic for parsing a String in a given
-             * radix and validating the result.
+             * @skip This function contains common logic for parsing a String in a given radix and validating
+             * the result.
              * @param {string} s
              * @param {number} radix
              * @return {number}
@@ -7260,10 +7268,8 @@ var javaemul;
             };
             /**
              * @skip
-             *
              * @param {string} str
-             * @return {boolean} {@code true} if the string matches the float format,
-             * {@code false} otherwise
+             * @return {boolean} {@code true} if the string matches the float format, {@code false} otherwise
              * @private
              */
             NumberHelper.__isValidDouble = function (str) {
@@ -7463,9 +7469,8 @@ var javaemul;
                 return javaemul.internal.ArrayStamper.stampJavaTypeInfo(result, array);
             };
             /**
-             * Unlike clone, this method returns a copy of the array that is not type
-             * marked. This is only safe for temp arrays as returned array will not do
-             * any type checks.
+             * Unlike clone, this method returns a copy of the array that is not type marked. This is only
+             * safe for temp arrays as returned array will not do any type checks.
              * @param {*} array
              * @param {number} fromIndex
              * @param {number} toIndex
@@ -7507,8 +7512,8 @@ var javaemul;
                     throw new Error('invalid overload');
             };
             /**
-             * This version of insertTo is specified only for arrays.
-             * Same implementation (and arguments) as "public static void insertTo(Object array, int index, Object[] values)"
+             * This version of insertTo is specified only for arrays. Same implementation (and arguments) as
+             * "public static void insertTo(Object array, int index, Object[] values)"
              * @param {*} array
              * @param {number} index
              * @param {java.lang.Object[]} values
@@ -7566,8 +7571,8 @@ var javaemul;
             function DateUtil() {
             }
             /**
-             * Returns the numeric value corresponding to the current time - the number
-             * of milliseconds elapsed since 1 January 1970 00:00:00 UTC.
+             * Returns the numeric value corresponding to the current time - the number of milliseconds
+             * elapsed since 1 January 1970 00:00:00 UTC.
              * @return {number}
              */
             DateUtil.now = function () {
@@ -7630,13 +7635,12 @@ var javaemul;
         /**
          * Wraps a native <code>char</code> as an object.
          *
-         * TODO(jat): many of the classification methods implemented here are not
-         * correct in that they only handle ASCII characters, and many other methods are
-         * not currently implemented. I think the proper approach is to introduce * a
-         * deferred binding parameter which substitutes an implementation using a
-         * fully-correct Unicode character database, at the expense of additional data
-         * being downloaded. That way developers that need the functionality can get it
-         * without those who don't need it paying for it.
+         * <p>TODO(jat): many of the classification methods implemented here are not correct in that they
+         * only handle ASCII characters, and many other methods are not currently implemented. I think the
+         * proper approach is to introduce * a deferred binding parameter which substitutes an
+         * implementation using a fully-correct Unicode character database, at the expense of additional
+         * data being downloaded. That way developers that need the functionality can get it without those
+         * who don't need it paying for it.
          *
          * <pre>
          * The following methods are still not implemented -- most would require Unicode
@@ -7825,9 +7829,7 @@ var javaemul;
                     throw new Error('invalid overload');
             };
             /**
-             * @skip
-             *
-             * public for shared implementation with Arrays.hashCode
+             * @skip public for shared implementation with Arrays.hashCode
              * @param {string} c
              * @return {number}
              */
@@ -8060,24 +8062,20 @@ var javaemul;
                 return String.fromCharCode((overBaseTen < 0 ? '0'.charCodeAt(0) + digit : 'a'.charCodeAt(0) + overBaseTen));
             };
             /**
-             * Computes the high surrogate character of the UTF16 representation of a
-             * non-BMP code point. See {@link getLowSurrogate}.
+             * Computes the high surrogate character of the UTF16 representation of a non-BMP code point. See
+             * {@link getLowSurrogate}.
              *
-             * @param {number} codePoint
-             * requested codePoint, required to be >=
-             * MIN_SUPPLEMENTARY_CODE_POINT
+             * @param {number} codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
              * @return {string} high surrogate character
              */
             CharacterHelper.getHighSurrogate = function (codePoint) {
                 return String.fromCharCode(((function (c) { return c.charCodeAt == null ? c : c.charCodeAt(0); })(CharacterHelper.MIN_HIGH_SURROGATE) + (((codePoint - CharacterHelper.MIN_SUPPLEMENTARY_CODE_POINT) >> 10) & 1023)));
             };
             /**
-             * Computes the low surrogate character of the UTF16 representation of a non-BMP
-             * code point. See {@link getHighSurrogate}.
+             * Computes the low surrogate character of the UTF16 representation of a non-BMP code point. See
+             * {@link getHighSurrogate}.
              *
-             * @param {number} codePoint
-             * requested codePoint, required to be >=
-             * MIN_SUPPLEMENTARY_CODE_POINT
+             * @param {number} codePoint requested codePoint, required to be >= MIN_SUPPLEMENTARY_CODE_POINT
              * @return {string} low surrogate character
              */
             CharacterHelper.getLowSurrogate = function (codePoint) {
@@ -8678,8 +8676,9 @@ var javaemul;
             };
             /**
              * Called from JSNI. Do not change this implementation without updating:
+             *
              * <ul>
-             * <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}</li>
+             * <li>{@link com.google.gwt.user.client.rpc.impl.SerializerBase}
              * </ul>
              * @return {number}
              * @private
@@ -9220,10 +9219,9 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * Constructs an <code>InterruptedException</code> with the
-         * specified detail message.
+         * Constructs an <code>InterruptedException</code> with the specified detail message.
          *
-         * @param   {string} s   the detail message.
+         * @param {string} s the detail message.
          * @class
          * @extends java.lang.Exception
          */
@@ -9282,8 +9280,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/RuntimeException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/RuntimeException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @param {java.lang.Throwable} cause
@@ -9334,8 +9331,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/CloneNotSupportedException.html">
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/CloneNotSupportedException.html">
          * the official Java API doc</a> for details.
          * @param {string} msg
          * @class
@@ -9372,9 +9368,9 @@ var javaemul;
          * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NoSuchMethodException.html">the
          * official Java API doc</a> for details.
          *
-         * This exception is never thrown by GWT or GWT's libraries, as GWT does not support reflection. It
-         * is provided in GWT only for compatibility with user code that explicitly throws or catches it for
-         * non-reflection purposes.
+         * <p>This exception is never thrown by GWT or GWT's libraries, as GWT does not support reflection.
+         * It is provided in GWT only for compatibility with user code that explicitly throws or catches it
+         * for non-reflection purposes.
          * @param {string} message
          * @class
          * @extends java.lang.Exception
@@ -9474,9 +9470,8 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * See <a
-         * href="http://java.sun.com/javase/6/docs/api/java/io/IOException.html">the
-         * official Java API doc</a> for details.
+         * See <a href="http://java.sun.com/javase/6/docs/api/java/io/IOException.html">the official Java
+         * API doc</a> for details.
          * @param {string} message
          * @param {java.lang.Throwable} throwable
          * @class
@@ -9522,7 +9517,6 @@ var javaemul;
     (function (util) {
         /**
          * Thrown when the subject of an observer cannot support additional observers.
-         *
          * @param {string} message
          * @class
          * @extends java.lang.Exception
@@ -9557,8 +9551,8 @@ var javaemul;
         /**
          * A fast way to create strings using multiple appends.
          *
-         * This class is an exact clone of {@link StringBuffer} except for the name. Any
-         * change made to one should be mirrored in the other.
+         * <p>This class is an exact clone of {@link StringBuffer} except for the name. Any change made to
+         * one should be mirrored in the other.
          * @param {*} s
          * @class
          * @extends java.lang.AbstractStringBuilder
@@ -9794,8 +9788,8 @@ var javaemul;
         /**
          * A fast way to create strings using multiple appends.
          *
-         * This class is an exact clone of {@link StringBuilder} except for the name.
-         * Any change made to one should be mirrored in the other.
+         * <p>This class is an exact clone of {@link StringBuilder} except for the name. Any change made to
+         * one should be mirrored in the other.
          * @param {*} s
          * @class
          * @extends java.lang.AbstractStringBuilder
@@ -10030,9 +10024,8 @@ var javaemul;
         var ref;
         (function (ref) {
             /**
-             * This implements the reference API in a minimal way. In JavaScript, there is
-             * no control over the reference and the GC. So this implementation's only
-             * purpose is for compilation.
+             * This implements the reference API in a minimal way. In JavaScript, there is no control over the
+             * reference and the GC. So this implementation's only purpose is for compilation.
              * @param {*} referent
              * @class
              * @extends java.lang.ref.Reference
@@ -10070,21 +10063,20 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * Constructs an {@code InternalError} with the specified detail
-         * message and cause.  <p>Note that the detail message associated
-         * with {@code cause} is <i>not</i> automatically incorporated in
-         * this error's detail message.
+         * Constructs an {@code InternalError} with the specified detail message and cause.
          *
-         * @param  {string} message the detail message (which is saved for later retrieval
-         * by the {@link #getMessage()} method).
-         * @param  {java.lang.Throwable} cause the cause (which is saved for later retrieval by the
-         * {@link #getCause()} method).  (A {@code null} value is
-         * permitted, and indicates that the cause is nonexistent or
+         * <p>Note that the detail message associated with {@code cause} is <i>not</i> automatically
+         * incorporated in this error's detail message.
+         *
+         * @param {string} message the detail message (which is saved for later retrieval by the {@link
+         * #getMessage()} method).
+         * @param {java.lang.Throwable} cause the cause (which is saved for later retrieval by the {@link #getCause()} method).
+         * (A {@code null} value is permitted, and indicates that the cause is nonexistent or
          * unknown.)
-         * @since  1.8
+         * @since 1.8
          * @class
          * @extends java.lang.VirtualMachineError
-         * @author  unascribed
+         * @author unascribed
          */
         var InternalError = /** @class */ (function (_super) {
             __extends(InternalError, _super);
@@ -10124,8 +10116,7 @@ var javaemul;
     (function (security) {
         /**
          * Message Digest algorithm - <a href=
-         * "http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html"
-         * >[Sun's docs]</a>.
+         * "http://java.sun.com/j2se/1.4.2/docs/api/java/security/MessageDigest.html" >[Sun's docs]</a>.
          * @extends java.security.MessageDigestSpi
          * @class
          */
@@ -11491,6 +11482,16 @@ var javaemul;
                 }
                 return this.jsweetNumberFormat.format(number);
             };
+            DecimalFormat.prototype.parse = function (source, pos) {
+                if (((typeof source === 'string') || source === null) && ((pos != null && pos instanceof java.text.ParsePosition) || pos === null)) {
+                    return _super.prototype.parse.call(this, source, pos);
+                }
+                else if (((typeof source === 'string') || source === null) && pos === undefined) {
+                    return this.parse$java_lang_String(source);
+                }
+                else
+                    throw new Error('invalid overload');
+            };
             DecimalFormat.prototype.parse$java_lang_String = function (source) {
                 var normalizedSource = source.split(this.symbols.getDecimalSeparator()).join('.');
                 normalizedSource = /* replace */ normalizedSource.split(/* valueOf */ String(this.symbols.getGroupingSeparator()).toString()).join("");
@@ -11500,19 +11501,6 @@ var javaemul;
                 catch (e) {
                     throw new java.text.ParseException("Unparseable number: \"" + source + "\"", 0);
                 }
-            };
-            DecimalFormat.prototype.parse$java_lang_String$java_text_ParsePosition = function (source, pos) {
-                return this.parse$java_lang_String(source);
-            };
-            DecimalFormat.prototype.parse = function (source, pos) {
-                if (((typeof source === 'string') || source === null) && ((pos != null && pos instanceof java.text.ParsePosition) || pos === null)) {
-                    return this.parse$java_lang_String$java_text_ParsePosition(source, pos);
-                }
-                else if (((typeof source === 'string') || source === null) && pos === undefined) {
-                    return this.parse$java_lang_String(source);
-                }
-                else
-                    throw new Error('invalid overload');
             };
             DecimalFormat.prototype.setDecimalFormatSymbols = function (newSymbols) {
                 this.symbols = newSymbols;
@@ -11533,7 +11521,7 @@ var javaemul;
         /**
          * JSweet implementation (partial).
          *
-         * TODO: actual support of charsets.
+         * <p>TODO: actual support of charsets.
          * @param {java.io.OutputStream} out
          * @param {string} charsetName
          * @class
@@ -11629,12 +11617,11 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * Wraps an existing {@link InputStream} and performs some transformation on
-         * the input data while it is being read. Transformations can be anything from a
-         * simple byte-wise filtering input data to an on-the-fly compression or
-         * decompression of the underlying stream. Input streams that wrap another input
-         * stream and provide some additional functionality on top of it usually inherit
-         * from this class.
+         * Wraps an existing {@link InputStream} and performs some transformation on the input data while it
+         * is being read. Transformations can be anything from a simple byte-wise filtering input data to an
+         * on-the-fly compression or decompression of the underlying stream. Input streams that wrap another
+         * input stream and provide some additional functionality on top of it usually inherit from this
+         * class.
          *
          * @see FilterOutputStream
          * @extends java.io.InputStream
@@ -11660,23 +11647,20 @@ var javaemul;
             /**
              * Closes this stream. This implementation closes the filtered stream.
              *
-             * @throws IOException
-             * if an error occurs while closing this stream.
+             * @throws IOException if an error occurs while closing this stream.
              */
             FilterInputStream.prototype.close = function () {
                 this["in"].close();
             };
             /**
-             * Sets a mark position in this stream. The parameter {@code readlimit}
-             * indicates how many bytes can be read before the mark is invalidated.
-             * Sending {@code reset()} will reposition this stream back to the marked
-             * position, provided that {@code readlimit} has not been surpassed.
-             * <p>
-             * This implementation sets a mark in the filtered stream.
+             * Sets a mark position in this stream. The parameter {@code readlimit} indicates how many bytes
+             * can be read before the mark is invalidated. Sending {@code reset()} will reposition this stream
+             * back to the marked position, provided that {@code readlimit} has not been surpassed.
              *
-             * @param {number} readlimit
-             * the number of bytes that can be read from this stream before
-             * the mark is invalidated.
+             * <p>This implementation sets a mark in the filtered stream.
+             *
+             * @param {number} readlimit the number of bytes that can be read from this stream before the mark is
+             * invalidated.
              * @see #markSupported()
              * @see #reset()
              */
@@ -11684,12 +11668,11 @@ var javaemul;
                 this["in"].mark(readlimit);
             };
             /**
-             * Indicates whether this stream supports {@code mark()} and {@code reset()}.
-             * This implementation returns whether or not the filtered stream supports
-             * marking.
+             * Indicates whether this stream supports {@code mark()} and {@code reset()}. This implementation
+             * returns whether or not the filtered stream supports marking.
              *
-             * @return {boolean} {@code true} if {@code mark()} and {@code reset()} are supported,
-             * {@code false} otherwise.
+             * @return {boolean} {@code true} if {@code mark()} and {@code reset()} are supported, {@code false}
+             * otherwise.
              * @see #mark(int)
              * @see #reset()
              * @see #skip(long)
@@ -11698,15 +11681,13 @@ var javaemul;
                 return this["in"].markSupported();
             };
             /**
-             * Reads up to {@code byteCount} bytes from this stream and stores them in
-             * the byte array {@code buffer} starting at {@code byteOffset}.
-             * Returns the number of bytes actually read or -1 if the end of the stream
-             * has been reached.
+             * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+             * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+             * end of the stream has been reached.
              *
-             * @throws IndexOutOfBoundsException
-             * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-             * @throws IOException
-             * if the stream is closed or another IOException occurs.
+             * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+             * byteCount > buffer.length}.
+             * @throws IOException if the stream is closed or another IOException occurs.
              * @param {byte[]} buffer
              * @param {number} byteOffset
              * @param {number} byteCount
@@ -11729,13 +11710,11 @@ var javaemul;
                 return this["in"].read$();
             };
             /**
-             * Resets this stream to the last marked location. This implementation
-             * resets the target stream.
+             * Resets this stream to the last marked location. This implementation resets the target stream.
              *
-             * @throws IOException
-             * if this stream is already closed, no mark has been set or the
-             * mark is no longer valid because more than {@code readlimit}
-             * bytes have been read since setting the mark.
+             * @throws IOException if this stream is already closed, no mark has been set or the mark is no
+             * longer valid because more than {@code readlimit} bytes have been read since setting the
+             * mark.
              * @see #mark(int)
              * @see #markSupported()
              */
@@ -11743,14 +11722,12 @@ var javaemul;
                 this["in"].reset();
             };
             /**
-             * Skips {@code byteCount} bytes in this stream. Subsequent
-             * calls to {@code read} will not return these bytes unless {@code reset} is
-             * used. This implementation skips {@code byteCount} bytes in the
-             * filtered stream.
+             * Skips {@code byteCount} bytes in this stream. Subsequent calls to {@code read} will not return
+             * these bytes unless {@code reset} is used. This implementation skips {@code byteCount} bytes in
+             * the filtered stream.
              *
              * @return {number} the number of bytes actually skipped.
-             * @throws IOException
-             * if this stream is closed or another IOException occurs.
+             * @throws IOException if this stream is closed or another IOException occurs.
              * @see #mark(int)
              * @see #reset()
              * @param {number} byteCount
@@ -11769,16 +11746,13 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * Constructs a new {@code ByteArrayInputStream} on the byte array
-         * {@code buf} with the initial position set to {@code offset} and the
-         * number of bytes available set to {@code offset} + {@code length}.
+         * Constructs a new {@code ByteArrayInputStream} on the byte array {@code buf} with the initial
+         * position set to {@code offset} and the number of bytes available set to {@code offset} + {@code
+         * length}.
          *
-         * @param {byte[]} buf
-         * the byte array to stream over.
-         * @param {number} offset
-         * the initial position in {@code buf} to start streaming from.
-         * @param {number} length
-         * the number of bytes available for streaming.
+         * @param {byte[]} buf the byte array to stream over.
+         * @param {number} offset the initial position in {@code buf} to start streaming from.
+         * @param {number} length the number of bytes available for streaming.
          * @class
          * @extends java.io.InputStream
          */
@@ -11864,18 +11838,15 @@ var javaemul;
             /**
              * Closes this stream and frees resources associated with this stream.
              *
-             * @throws IOException
-             * if an I/O error occurs while closing this stream.
+             * @throws IOException if an I/O error occurs while closing this stream.
              */
             ByteArrayInputStream.prototype.close = function () {
             };
             /**
-             * Sets a mark position in this ByteArrayInputStream. The parameter
-             * {@code readlimit} is ignored. Sending {@code reset()} will reposition the
-             * stream back to the marked position.
+             * Sets a mark position in this ByteArrayInputStream. The parameter {@code readlimit} is ignored.
+             * Sending {@code reset()} will reposition the stream back to the marked position.
              *
-             * @param {number} readlimit
-             * ignored.
+             * @param {number} readlimit ignored.
              * @see #markSupported()
              * @see #reset()
              */
@@ -11883,9 +11854,8 @@ var javaemul;
                 this._mark = this.pos;
             };
             /**
-             * Indicates whether this stream supports the {@code mark()} and
-             * {@code reset()} methods. Returns {@code true} since this class supports
-             * these methods.
+             * Indicates whether this stream supports the {@code mark()} and {@code reset()} methods. Returns
+             * {@code true} since this class supports these methods.
              *
              * @return {boolean} always {@code true}.
              * @see #mark(int)
@@ -11934,9 +11904,9 @@ var javaemul;
                     throw new Error('invalid overload');
             };
             /**
-             * Resets this stream to the last marked location. This implementation
-             * resets the position to either the marked position, the start position
-             * supplied in the constructor or 0 if neither has been provided.
+             * Resets this stream to the last marked location. This implementation resets the position to
+             * either the marked position, the start position supplied in the constructor or 0 if neither has
+             * been provided.
              *
              * @see #mark(int)
              */
@@ -11944,10 +11914,10 @@ var javaemul;
                 this.pos = this._mark;
             };
             /**
-             * Skips {@code byteCount} bytes in this InputStream. Subsequent calls to
-             * {@code read} will not return these bytes unless {@code reset} is used.
-             * This implementation skips {@code byteCount} number of bytes in the target
-             * stream. It does nothing and returns 0 if {@code byteCount} is negative.
+             * Skips {@code byteCount} bytes in this InputStream. Subsequent calls to {@code read} will not
+             * return these bytes unless {@code reset} is used. This implementation skips {@code byteCount}
+             * number of bytes in the target stream. It does nothing and returns 0 if {@code byteCount} is
+             * negative.
              *
              * @return {number} the number of bytes actually skipped.
              * @param {number} byteCount
@@ -11971,15 +11941,12 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * Constructs a new {@code ByteArrayOutputStream} with a default size of
-         * {@code size} bytes. If more than {@code size} bytes are written to this
-         * instance, the underlying byte array will expand.
+         * Constructs a new {@code ByteArrayOutputStream} with a default size of {@code size} bytes. If
+         * more than {@code size} bytes are written to this instance, the underlying byte array will
+         * expand.
          *
-         * @param {number} size
-         * initial size for the underlying byte array, must be
-         * non-negative.
-         * @throws IllegalArgumentException
-         * if {@code size} < 0.
+         * @param {number} size initial size for the underlying byte array, must be non-negative.
+         * @throws IllegalArgumentException if {@code size} < 0.
          * @class
          * @extends java.io.OutputStream
          */
@@ -12023,8 +11990,7 @@ var javaemul;
             /**
              * Closes this stream. This releases system resources used for this stream.
              *
-             * @throws IOException
-             * if an error occurs while attempting to close this stream.
+             * @throws IOException if an error occurs while attempting to close this stream.
              */
             ByteArrayOutputStream.prototype.close = function () {
                 _super.prototype.close.call(this);
@@ -12039,9 +12005,8 @@ var javaemul;
                 this.buf = newbuf;
             };
             /**
-             * Resets this stream to the beginning of the underlying byte array. All
-             * subsequent writes will overwrite any bytes previously stored in this
-             * stream.
+             * Resets this stream to the beginning of the underlying byte array. All subsequent writes will
+             * overwrite any bytes previously stored in this stream.
              */
             ByteArrayOutputStream.prototype.reset = function () {
                 this.count = 0;
@@ -12055,9 +12020,8 @@ var javaemul;
                 return this.count;
             };
             /**
-             * Returns the contents of this ByteArrayOutputStream as a byte array. Any
-             * changes made to the receiver after returning will not be reflected in the
-             * byte array returned to the caller.
+             * Returns the contents of this ByteArrayOutputStream as a byte array. Any changes made to the
+             * receiver after returning will not be reflected in the byte array returned to the caller.
              *
              * @return {byte[]} this stream's current contents as a byte array.
              */
@@ -12085,15 +12049,13 @@ var javaemul;
                 return (function (str, index, len) { return str.substring(index, index + len); })((this.buf).map(function (s) { return String.fromCharCode(s); }).join(''), 0, this.count);
             };
             /**
-             * Returns the contents of this ByteArrayOutputStream as a string converted
-             * according to the encoding declared in {@code charsetName}.
+             * Returns the contents of this ByteArrayOutputStream as a string converted according to the
+             * encoding declared in {@code charsetName}.
              *
-             * @param {string} charsetName
-             * a string representing the encoding to use when translating
-             * this stream to a string.
+             * @param {string} charsetName a string representing the encoding to use when translating this stream to a
+             * string.
              * @return {string} this stream's current contents as an encoded string.
-             * @throws UnsupportedEncodingException
-             * if the provided encoding is not supported.
+             * @throws UnsupportedEncodingException if the provided encoding is not supported.
              */
             ByteArrayOutputStream.prototype.toString = function (charsetName) {
                 if (((typeof charsetName === 'string') || charsetName === null)) {
@@ -12118,21 +12080,15 @@ var javaemul;
                 this.count += len;
             };
             /**
-             * Writes {@code count} bytes from the byte array {@code buffer} starting at
-             * offset {@code index} to this stream.
+             * Writes {@code count} bytes from the byte array {@code buffer} starting at offset {@code index}
+             * to this stream.
              *
-             * @param {byte[]} buffer
-             * the buffer to be written.
-             * @param {number} offset
-             * the initial position in {@code buffer} to retrieve bytes.
-             * @param {number} len
-             * the number of bytes of {@code buffer} to write.
-             * @throws NullPointerException
-             * if {@code buffer} is {@code null}.
-             * @throws IndexOutOfBoundsException
-             * if {@code offset < 0} or {@code len < 0}, or if
-             * {@code offset + len} is greater than the length of
-             * {@code buffer}.
+             * @param {byte[]} buffer the buffer to be written.
+             * @param {number} offset the initial position in {@code buffer} to retrieve bytes.
+             * @param {number} len the number of bytes of {@code buffer} to write.
+             * @throws NullPointerException if {@code buffer} is {@code null}.
+             * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code len < 0}, or if {@code offset
+             * + len} is greater than the length of {@code buffer}.
              */
             ByteArrayOutputStream.prototype.write = function (buffer, offset, len) {
                 if (((buffer != null && buffer instanceof Array && (buffer.length == 0 || buffer[0] == null || (typeof buffer[0] === 'number'))) || buffer === null) && ((typeof offset === 'number') || offset === null) && ((typeof len === 'number') || len === null)) {
@@ -12154,13 +12110,10 @@ var javaemul;
                 this.buf[this.count++] = (oneByte | 0);
             };
             /**
-             * Takes the contents of this stream and writes it to the output stream
-             * {@code out}.
+             * Takes the contents of this stream and writes it to the output stream {@code out}.
              *
-             * @param {java.io.OutputStream} out
-             * an OutputStream on which to write the contents of this stream.
-             * @throws IOException
-             * if an error occurs while writing to {@code out}.
+             * @param {java.io.OutputStream} out an OutputStream on which to write the contents of this stream.
+             * @throws IOException if an error occurs while writing to {@code out}.
              */
             ByteArrayOutputStream.prototype.writeTo = function (out) {
                 out.write$byte_A$int$int(this.buf, 0, this.count);
@@ -12176,11 +12129,9 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * Constructs a new {@code FilterOutputStream} with {@code out} as its
-         * target stream.
+         * Constructs a new {@code FilterOutputStream} with {@code out} as its target stream.
          *
-         * @param {java.io.OutputStream} out
-         * the target stream that this stream writes to.
+         * @param {java.io.OutputStream} out the target stream that this stream writes to.
          * @class
          * @extends java.io.OutputStream
          */
@@ -12197,8 +12148,7 @@ var javaemul;
             /**
              * Closes this stream. This implementation closes the target stream.
              *
-             * @throws IOException
-             * if an error occurs attempting to close this stream.
+             * @throws IOException if an error occurs attempting to close this stream.
              */
             FilterOutputStream.prototype.close = function () {
                 var thrown = null;
@@ -12221,32 +12171,24 @@ var javaemul;
                 }
             };
             /**
-             * Ensures that all pending data is sent out to the target stream. This
-             * implementation flushes the target stream.
+             * Ensures that all pending data is sent out to the target stream. This implementation flushes the
+             * target stream.
              *
-             * @throws IOException
-             * if an error occurs attempting to flush this stream.
+             * @throws IOException if an error occurs attempting to flush this stream.
              */
             FilterOutputStream.prototype.flush = function () {
                 this.out.flush();
             };
             /**
-             * Writes {@code count} bytes from the byte array {@code buffer} starting at
-             * position {@code offset} to this stream.
+             * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+             * offset} to this stream.
              *
-             * @param {byte[]} buffer
-             * the buffer to be written.
-             * @param {number} offset
-             * the start position in {@code buffer} from where to get bytes.
-             * @param {number} count
-             * the number of bytes from {@code buffer} to write to this
-             * stream.
-             * @throws IOException
-             * if an error occurs while writing to this stream.
-             * @throws IndexOutOfBoundsException
-             * if {@code offset < 0} or {@code count < 0}, or if
-             * {@code offset + count} is bigger than the length of
-             * {@code buffer}.
+             * @param {byte[]} buffer the buffer to be written.
+             * @param {number} offset the start position in {@code buffer} from where to get bytes.
+             * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+             * @throws IOException if an error occurs while writing to this stream.
+             * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+             * offset + count} is bigger than the length of {@code buffer}.
              */
             FilterOutputStream.prototype.write = function (buffer, offset, count) {
                 if (((buffer != null && buffer instanceof Array && (buffer.length == 0 || buffer[0] == null || (typeof buffer[0] === 'number'))) || buffer === null) && ((typeof offset === 'number') || offset === null) && ((typeof count === 'number') || count === null)) {
@@ -13311,8 +13253,8 @@ var javaemul;
     (function (sql) {
         /**
          * An implementation of java.sql.Timestame. Derived from
-         * http://java.sun.com/j2se/1.5.0/docs/api/java/sql/Timestamp.html. This is
-         * basically just regular Date decorated with a nanoseconds field.
+         * http://java.sun.com/j2se/1.5.0/docs/api/java/sql/Timestamp.html. This is basically just regular
+         * Date decorated with a nanoseconds field.
          * @param {number} year
          * @param {number} month
          * @param {number} date
@@ -13502,9 +13444,9 @@ var javaemul;
         /**
          * A {@link Deque} based on circular buffer that is implemented with an array and head/tail
          * pointers. Array deques have no capacity restrictions; they grow as necessary to support usage.
-         * Null elements are prohibited. This class is likely to be faster than {@link Stack}
-         * when used as a stack, and faster than {@link LinkedList} when used as a queue.
-         * <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html">ArrayDeque</a>
+         * Null elements are prohibited. This class is likely to be faster than {@link Stack} when used as a
+         * stack, and faster than {@link LinkedList} when used as a queue. <a
+         * href="https://docs.oracle.com/javase/8/docs/api/java/util/ArrayDeque.html">ArrayDeque</a>
          *
          * @param <E> the element type.
          * @param {*} c
@@ -13589,9 +13531,8 @@ var javaemul;
                 return ArrayDeque.nextPowerOfTwo(Math.max(ArrayDeque.MIN_INITIAL_CAPACITY, numElements));
             };
             /**
-             * Returns a number that is greater than {@code num} and is a power of two.
-             * If passed {@code num} is not positive integer or next power of two overflows then
-             * returned value is non-positive.
+             * Returns a number that is greater than {@code num} and is a power of two. If passed {@code num}
+             * is not positive integer or next power of two overflows then returned value is non-positive.
              * E.g., if num == 32, returns 64. if num == 31, returns 32.
              *
              * @param {number} num positive integer.
@@ -13912,10 +13853,9 @@ var javaemul;
                 return this.array[(this.tail - 1) & (this.array.length - 1)];
             };
             /**
-             * Copies {@code count} ArrayDeque's elements to {@code dest} array.
-             * The method is safe to use when ArrayDeque's array has been rolled over,
-             * i.e. {@code head == tail}.
-             * It is assumed that {@code count < size()}.
+             * Copies {@code count} ArrayDeque's elements to {@code dest} array. The method is safe to use
+             * when ArrayDeque's array has been rolled over, i.e. {@code head == tail}. It is assumed that
+             * {@code count < size()}.
              * @param {java.lang.Object[]} dest
              * @param {number} count
              * @private
@@ -13930,8 +13870,8 @@ var javaemul;
                 }
             };
             /**
-             * Increase the capacity of this deque when full, i.e.,
-             * when head and tail have wrapped around to become equal.
+             * Increase the capacity of this deque when full, i.e., when head and tail have wrapped around to
+             * become equal.
              * @private
              */
             ArrayDeque.prototype.ensureCapacity = function () {
@@ -13952,9 +13892,8 @@ var javaemul;
                 this.tail = numElements;
             };
             /**
-             * Removes the element at the specified position in the elements array,
-             * adjusting head and tail as necessary. This results in motion of
-             * elements backwards or forwards in the array.
+             * Removes the element at the specified position in the elements array, adjusting head and tail as
+             * necessary. This results in motion of elements backwards or forwards in the array.
              *
              * @return {number} -1 if elements moved backwards (left-shifted); 1 if forwards (right-shifted).
              * @param {number} i
@@ -14002,8 +13941,7 @@ var javaemul;
                 this.head = (this.head + 1) & mask;
             };
             /**
-             * The minimum capacity that we'll use for a newly created deque.
-             * Must be a power of 2.
+             * The minimum capacity that we'll use for a newly created deque. Must be a power of 2.
              */
             ArrayDeque.MIN_INITIAL_CAPACITY = 8;
             return ArrayDeque;
@@ -14130,8 +14068,7 @@ var javaemul;
     (function (util) {
         /**
          * Skeletal implementation of the Set interface. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractSet.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractSet.html">[Sun docs]</a>
          *
          * @param <E> the element type.
          * @class
@@ -14208,8 +14145,7 @@ var javaemul;
     (function (util) {
         /**
          * Skeletal implementation of the Queue interface. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractQueue.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractQueue.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @extends java.util.AbstractCollection
@@ -14290,8 +14226,7 @@ var javaemul;
     (function (util) {
         /**
          * Skeletal implementation of the List interface. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractList.html">[Sun docs]</a>
          *
          * @param <E> the element type.
          * @extends java.util.AbstractCollection
@@ -14874,10 +14809,6 @@ var javaemul;
                     throw new Error('invalid overload');
             }
             /* Default method injected from java.util.Iterator */
-            Scanner.prototype.remove = function () {
-                throw new java.lang.UnsupportedOperationException();
-            };
-            /* Default method injected from java.util.Iterator */
             Scanner.prototype.forEachRemaining = function (consumer) {
                 var _this = this;
                 javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
@@ -14889,6 +14820,10 @@ var javaemul;
                     }
                 }
                 ;
+            };
+            /* Default method injected from java.util.Iterator */
+            Scanner.prototype.remove = function () {
+                throw new java.lang.UnsupportedOperationException();
             };
             Scanner.numeral_$LI$ = function () { if (Scanner.numeral == null) {
                 Scanner.numeral = Scanner.digit + "+";
@@ -15550,9 +15485,8 @@ var javaemul;
                 return x == null ? "null" : x.toString();
             };
             /**
-             * This method converts Java-escaped dollar signs "\$" into
-             * JavaScript-escaped dollar signs "$$", and removes all other lone
-             * backslashes, which serve as escapes in Java but are passed through
+             * This method converts Java-escaped dollar signs "\$" into JavaScript-escaped dollar signs "$$",
+             * and removes all other lone backslashes, which serve as escapes in Java but are passed through
              * literally in JavaScript.
              *
              * @skip
@@ -15887,9 +15821,7 @@ var javaemul;
                 return IntegerHelper.valueOf$int(internal.NumberHelper.__decodeAndValidateInt(s, IntegerHelper.MIN_VALUE, IntegerHelper.MAX_VALUE));
             };
             /**
-             * @skip
-             *
-             * Here for shared implementation with Arrays.hashCode
+             * @skip Here for shared implementation with Arrays.hashCode
              * @param {number} i
              * @return {number}
              */
@@ -16401,13 +16333,12 @@ var javaemul;
                 return this.value;
             };
             /**
-             * Performance caution: using Float objects as map keys is not recommended.
-             * Using floating point values as keys is generally a bad idea due to
-             * difficulty determining exact equality. In addition, there is no efficient
-             * JavaScript equivalent of <code>floatToIntBits</code>. As a result, this
-             * method computes a hash code by truncating the whole number portion of the
-             * float, which may lead to poor performance for certain value sets if
-             * Floats are used as keys in a {@link java.util.HashMap}.
+             * Performance caution: using Float objects as map keys is not recommended. Using floating point
+             * values as keys is generally a bad idea due to difficulty determining exact equality. In
+             * addition, there is no efficient JavaScript equivalent of <code>floatToIntBits</code>. As a
+             * result, this method computes a hash code by truncating the whole number portion of the float,
+             * which may lead to poor performance for certain value sets if Floats are used as keys in a
+             * {@link java.util.HashMap}.
              * @return {number}
              */
             FloatHelper.prototype.hashCode = function () {
@@ -16723,13 +16654,12 @@ var javaemul;
                 return this.doubleValue();
             };
             /**
-             * Performance caution: using Double objects as map keys is not recommended.
-             * Using double values as keys is generally a bad idea due to difficulty
-             * determining exact equality. In addition, there is no efficient JavaScript
-             * equivalent of <code>doubleToIntBits</code>. As a result, this method
-             * computes a hash code by truncating the whole number portion of the
-             * double, which may lead to poor performance for certain value sets if
-             * Doubles are used as keys in a {@link java.util.HashMap}.
+             * Performance caution: using Double objects as map keys is not recommended. Using double values
+             * as keys is generally a bad idea due to difficulty determining exact equality. In addition,
+             * there is no efficient JavaScript equivalent of <code>doubleToIntBits</code>. As a result, this
+             * method computes a hash code by truncating the whole number portion of the double, which may
+             * lead to poor performance for certain value sets if Doubles are used as keys in a {@link
+             * java.util.HashMap}.
              * @return {number}
              */
             DoubleHelper.prototype.hashCode = function () {
@@ -17223,9 +17153,7 @@ var javaemul;
                 return ByteHelper.valueOf$byte((internal.NumberHelper.__decodeAndValidateInt(s, ByteHelper.MIN_VALUE_$LI$(), ByteHelper.MAX_VALUE_$LI$()) | 0));
             };
             /**
-             * @skip
-             *
-             * Here for shared implementation with Arrays.hashCode
+             * @skip Here for shared implementation with Arrays.hashCode
              * @param {number} b
              * @return {number}
              */
@@ -17806,11 +17734,9 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * NOTE: in GWT this is only thrown for division by zero on longs and
-         * BigInteger/BigDecimal.
-         * <p>
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArithmeticException.html">the
+         * NOTE: in GWT this is only thrown for division by zero on longs and BigInteger/BigDecimal.
+         *
+         * <p>See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArithmeticException.html">the
          * official Java API doc</a> for details.
          * @param {string} explanation
          * @class
@@ -17843,8 +17769,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * Indicates that an objet was in an invalid state during an attempted
-         * operation.
+         * Indicates that an objet was in an invalid state during an attempted operation.
          * @param {string} message
          * @param {java.lang.Throwable} cause
          * @class
@@ -17887,8 +17812,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/IllegalArgumentException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/IllegalArgumentException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @param {java.lang.Throwable} cause
@@ -17967,8 +17891,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayStoreException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayStoreException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @class
@@ -18033,8 +17956,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NullPointerException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NullPointerException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @class
@@ -18150,8 +18072,8 @@ var javaemul;
         var annotation;
         (function (annotation) {
             /**
-             * Indicates an attempt to access an element of an annotation that was added
-             * since it was compiled or serialized <a
+             * Indicates an attempt to access an element of an annotation that was added since it was compiled
+             * or serialized <a
              * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/IncompleteAnnotationException.html">[Sun
              * docs]</a>.
              * @param {java.lang.Class} annotationType
@@ -18194,8 +18116,8 @@ var javaemul;
         var annotation;
         (function (annotation) {
             /**
-             * Indicates an attempt to access an element of an annotation that has changed
-             * since it was compiled or serialized <a
+             * Indicates an attempt to access an element of an annotation that has changed since it was compiled
+             * or serialized <a
              * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/annotation/AnnotationTypeMismatchException.html">[Sun
              * docs]</a>.
              * @class
@@ -18254,8 +18176,7 @@ var javaemul;
     var io;
     (function (io) {
         /**
-         * See <a
-         * href="https://docs.oracle.com/javase/8/docs/api/java/io/UncheckedIOException.html">the
+         * See <a href="https://docs.oracle.com/javase/8/docs/api/java/io/UncheckedIOException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @param {java.io.IOException} cause
@@ -18297,8 +18218,7 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/NoSuchElementException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/NoSuchElementException.html">the
          * official Java API doc</a> for details.
          * @param {string} s
          * @class
@@ -18331,8 +18251,7 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/MissingResourceException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/MissingResourceException.html">the
          * official Java API doc</a> for details.
          * @param {string} s
          * @param {string} className
@@ -18372,8 +18291,7 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EmptyStackException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EmptyStackException.html">the
          * official Java API doc</a> for details.
          * @class
          * @extends java.lang.RuntimeException
@@ -18726,8 +18644,7 @@ var javaemul;
     (function (util) {
         /**
          * Implements a set in terms of a hash table. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashSet.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashSet.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @param {number} initialCapacity
@@ -18875,8 +18792,7 @@ var javaemul;
     (function (util) {
         /**
          * Implements a set using a TreeMap. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/TreeSet.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/TreeSet.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @param {*} c
@@ -19162,19 +19078,28 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Skeletal implementation of the Map interface.
-         * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractMap.html">
-         * [Sun docs]</a>
+         * Skeletal implementation of the Map interface. <a
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/AbstractMap.html">[Sun docs]</a>
          *
-         * @param <K>
-         * the key type.
-         * @param <V>
-         * the value type.
+         * @param <K> the key type.
+         * @param <V> the value type.
          * @class
          */
         var AbstractMap = /** @class */ (function () {
             function AbstractMap() {
             }
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
             /* Default method injected from java.util.Map */
             AbstractMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
@@ -19206,23 +19131,6 @@ var javaemul;
                 }
             };
             /* Default method injected from java.util.Map */
-            AbstractMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             AbstractMap.prototype.computeIfAbsent = function (key, mappingFunction) {
                 var result;
                 if ((result = this.get(key)) == null) {
@@ -19231,6 +19139,11 @@ var javaemul;
                         this.put(key, result);
                 }
                 return result;
+            };
+            /* Default method injected from java.util.Map */
+            AbstractMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             AbstractMap.prototype.putIfAbsent = function (key, value) {
@@ -19441,8 +19354,8 @@ var javaemul;
         AbstractMap["__interfaces"] = ["java.util.Map"];
         (function (AbstractMap) {
             /**
-             * Basic {@link Map.Entry} implementation used by {@link SimpleEntry} and
-             * {@link SimpleImmutableEntry}.
+             * Basic {@link Map.Entry} implementation used by {@link SimpleEntry} and {@link
+             * SimpleImmutableEntry}.
              * @class
              */
             var AbstractEntry = /** @class */ (function () {
@@ -19512,8 +19425,7 @@ var javaemul;
             AbstractEntry["__class"] = "java.util.AbstractMap.AbstractEntry";
             AbstractEntry["__interfaces"] = ["java.util.Map.Entry"];
             /**
-             * A mutable {@link Map.Entry} shared by several {@link Map}
-             * implementations.
+             * A mutable {@link Map.Entry} shared by several {@link Map} implementations.
              * @param {*} key
              * @param {*} value
              * @class
@@ -19542,8 +19454,7 @@ var javaemul;
             SimpleEntry["__class"] = "java.util.AbstractMap.SimpleEntry";
             SimpleEntry["__interfaces"] = ["java.util.Map.Entry"];
             /**
-             * An immutable {@link Map.Entry} shared by several {@link Map}
-             * implementations.
+             * An immutable {@link Map.Entry} shared by several {@link Map} implementations.
              * @param {*} key
              * @param {*} value
              * @class
@@ -19769,8 +19680,7 @@ var javaemul;
     (function (util) {
         /**
          * A {@link java.util.Set} of {@link Enum}s. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumSet.html">[Sun docs]</a>
          *
          * @param <E> enumeration type
          * @extends java.util.AbstractSet
@@ -19881,8 +19791,8 @@ var javaemul;
         EnumSet["__interfaces"] = ["java.util.Collection", "java.util.Set", "java.lang.Iterable"];
         (function (EnumSet) {
             /**
-             * Constructs a set taking ownership of the specified set. The size must
-             * accurately reflect the number of non-null items in set.
+             * Constructs a set taking ownership of the specified set. The size must accurately reflect the
+             * number of non-null items in set.
              * @param {E[]} all
              * @param {E[]} set
              * @param {number} size
@@ -20065,8 +19975,7 @@ var javaemul;
     (function (util) {
         /**
          * An unbounded priority queue based on a priority heap. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/PriorityQueue.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/PriorityQueue.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @param {number} initialCapacity
@@ -20528,7 +20437,7 @@ var javaemul;
             /**
              * Merge two subheaps into a single heap. O(log n) time
              *
-             * PRECONDITION: both children of <code>node</code> are heaps
+             * <p>PRECONDITION: both children of <code>node</code> are heaps
              *
              * @param {number} node the parent of the two subtrees to merge
              */
@@ -20733,8 +20642,7 @@ var javaemul;
     (function (util) {
         /**
          * Utility methods related to native arrays. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Arrays.html">[Sun docs]</a>
          * @class
          */
         var Arrays = /** @class */ (function () {
@@ -20937,20 +20845,17 @@ var javaemul;
                 return -low - 1;
             };
             /**
-             * Perform a binary search on a sorted object array, using a user-specified
-             * comparison function.
+             * Perform a binary search on a sorted object array, using a user-specified comparison function.
              *
              * @param {T[]} sortedArray object array to search
              * @param {*} key value to search for
-             * @param {*} comparator comparision function, <code>null</code> indicates
-             * <i>natural ordering</i> should be used.
-             * @return {number} the index of an element with a matching value, or a negative number
-             * which is the index of the next larger value (or just past the end
-             * of the array if the searched value is larger than all elements in
-             * the array) minus 1 (to ensure error returns are negative)
-             * @throws ClassCastException if <code>key</code> and
-             * <code>sortedArray</code>'s elements cannot be compared by
-             * <code>comparator</code>.
+             * @param {*} comparator comparision function, <code>null</code> indicates <i>natural ordering</i>
+             * should be used.
+             * @return {number} the index of an element with a matching value, or a negative number which is the index
+             * of the next larger value (or just past the end of the array if the searched value is larger
+             * than all elements in the array) minus 1 (to ensure error returns are negative)
+             * @throws ClassCastException if <code>key</code> and <code>sortedArray</code>'s elements cannot
+             * be compared by <code>comparator</code>.
              */
             Arrays.binarySearch = function (sortedArray, key, comparator) {
                 if (((sortedArray != null && sortedArray instanceof Array && (sortedArray.length == 0 || sortedArray[0] == null || (sortedArray[0] != null))) || sortedArray === null) && ((key != null) || key === null) && ((typeof comparator === 'function' && comparator.length === 2) || comparator === null)) {
@@ -22115,13 +22020,11 @@ var javaemul;
                 }
             };
             /**
-             * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into
-             * dest.
+             * Merge the two sorted subarrays (srcLow,srcMid] and (srcMid,srcHigh] into dest.
              *
              * @param {java.lang.Object[]} src source array for merge
              * @param {number} srcLow lower bound of bottom sorted half
-             * @param {number} srcMid upper bound of bottom sorted half & lower bound of top sorted
-             * half
+             * @param {number} srcMid upper bound of bottom sorted half & lower bound of top sorted half
              * @param {number} srcHigh upper bound of top sorted half
              * @param {java.lang.Object[]} dest destination array for merge
              * @param {number} destLow lower bound of destination
@@ -22187,12 +22090,10 @@ var javaemul;
                 } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(comp)));
             };
             /**
-             * Recursive helper function for
-             * {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
+             * Recursive helper function for {@link Arrays#mergeSort(Object[], int, int, Comparator)}.
              *
-             * @param {java.lang.Object[]} temp temporary space, as large as the range of elements being
-             * sorted. On entry, temp should contain a copy of the sort range
-             * from array.
+             * @param {java.lang.Object[]} temp temporary space, as large as the range of elements being sorted. On entry, temp
+             * should contain a copy of the sort range from array.
              * @param {java.lang.Object[]} array array to sort
              * @param {number} low lower bound of range to sort
              * @param {number} high upper bound of range to sort
@@ -22358,19 +22259,14 @@ var javaemul;
     (function (util) {
         /**
          * Resizeable array implementation of the List interface. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/ArrayList.html">[Sun docs]</a>
          *
-         * <p>
-         * This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of
-         * capacity management. There is no speed advantage to pre-allocating array
-         * sizes in JavaScript, so this implementation does not include any of the
-         * capacity and "growth increment" concepts in the standard ArrayList class.
-         * Although <code>ArrayList(int)</code> accepts a value for the initial
-         * capacity of the array, this constructor simply delegates to
-         * <code>ArrayList()</code>. It is only present for compatibility with JDK
-         * 1.5's API.
-         * </p>
+         * <p>This implementation differs from JDK 1.5 <code>ArrayList</code> in terms of capacity
+         * management. There is no speed advantage to pre-allocating array sizes in JavaScript, so this
+         * implementation does not include any of the capacity and "growth increment" concepts in the
+         * standard ArrayList class. Although <code>ArrayList(int)</code> accepts a value for the initial
+         * capacity of the array, this constructor simply delegates to <code>ArrayList()</code>. It is only
+         * present for compatibility with JDK 1.5's API.
          *
          * @param <E> the element type.
          * @param {*} c
@@ -23130,10 +23026,9 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * NOTE: in GWT this will never be thrown for normal array accesses, only for
-         * explicit throws.
+         * NOTE: in GWT this will never be thrown for normal array accesses, only for explicit throws.
          *
-         * See <a
+         * <p>See <a
          * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/ArrayIndexOutOfBoundsException.html">the
          * official Java API doc</a> for details.
          * @param {number} index
@@ -23228,8 +23123,7 @@ var javaemul;
     var lang;
     (function (lang) {
         /**
-         * See <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NumberFormatException.html">the
+         * See <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/NumberFormatException.html">the
          * official Java API doc</a> for details.
          * @param {string} message
          * @class
@@ -23446,10 +23340,8 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Hash table and linked-list implementation of the Set interface with
-         * predictable iteration order. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashSet.html">[Sun
-         * docs]</a>
+         * Hash table and linked-list implementation of the Set interface with predictable iteration order.
+         * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashSet.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @param {number} ignored
@@ -23502,8 +23394,7 @@ var javaemul;
     (function (util) {
         /**
          * A {@link java.util.Map} of {@link Enum}s. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">[Sun docs]</a>
          *
          * @param <K> key type
          * @param <V> value type
@@ -23653,9 +23544,9 @@ var javaemul;
                 return this.__keySet.size();
             };
             /**
-             * Returns <code>key</code> as <code>K</code>. Only runtime checks that
-             * key is an Enum, not that it's the particular Enum K. Should only be called
-             * when you are sure <code>key</code> is of type <code>K</code>.
+             * Returns <code>key</code> as <code>K</code>. Only runtime checks that key is an Enum, not that
+             * it's the particular Enum K. Should only be called when you are sure <code>key</code> is of type
+             * <code>K</code>.
              * @param {*} key
              * @return {java.lang.Enum}
              * @private
@@ -23863,8 +23754,7 @@ var javaemul;
     (function (util) {
         /**
          * Utility methods that operate on collections. <a href=
-         * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collections.html">[Sun
-         * docs]</a>
+         * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/Collections.html">[Sun docs]</a>
          * @class
          */
         var Collections = /** @class */ (function () {
@@ -23929,29 +23819,20 @@ var javaemul;
                 return -low - 1;
             };
             /**
-             * Perform a binary search on a sorted List, using a user-specified comparison
-             * function.
+             * Perform a binary search on a sorted List, using a user-specified comparison function.
              *
-             * <p>
-             * Note: The GWT implementation differs from the JDK implementation in that it
-             * does not do an iterator-based binary search for Lists that do not implement
-             * RandomAccess.
-             * </p>
+             * <p>Note: The GWT implementation differs from the JDK implementation in that it does not do an
+             * iterator-based binary search for Lists that do not implement RandomAccess.
              *
-             * @param {*} sortedList
-             * List to search
-             * @param {*} key
-             * value to search for
-             * @param {*} comparator
-             * comparision function, <code>null</code> indicates <i>natural
-             * ordering</i> should be used.
-             * @return {number} the index of an element with a matching value, or a negative number
-             * which is the index of the next larger value (or just past the end of
-             * the array if the searched value is larger than all elements in the
-             * array) minus 1 (to ensure error returns are negative)
-             * @throws ClassCastException
-             * if <code>key</code> and <code>sortedList</code>'s elements cannot
-             * be compared by <code>comparator</code>.
+             * @param {*} sortedList List to search
+             * @param {*} key value to search for
+             * @param {*} comparator comparision function, <code>null</code> indicates <i>natural ordering</i>
+             * should be used.
+             * @return {number} the index of an element with a matching value, or a negative number which is the index
+             * of the next larger value (or just past the end of the array if the searched value is larger
+             * than all elements in the array) minus 1 (to ensure error returns are negative)
+             * @throws ClassCastException if <code>key</code> and <code>sortedList</code>'s elements cannot be
+             * compared by <code>comparator</code>.
              */
             Collections.binarySearch = function (sortedList, key, comparator) {
                 if (((sortedList != null && (sortedList.constructor != null && sortedList.constructor["__interfaces"] != null && sortedList.constructor["__interfaces"].indexOf("java.util.List") >= 0)) || sortedList === null) && ((key != null) || key === null) && ((typeof comparator === 'function' && comparator.length === 2) || comparator === null)) {
@@ -24165,16 +24046,13 @@ var javaemul;
             };
             /**
              * Rotates the elements in {@code list} by the distance {@code dist}
-             * <p>
-             * e.g. for a given list with elements [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], calling
-             * rotate(list, 3) or rotate(list, -7) would modify the list to look like this:
-             * [8, 9, 0, 1, 2, 3, 4, 5, 6, 7]
              *
-             * @param {*} lst
-             * the list whose elements are to be rotated.
-             * @param {number} dist
-             * is the distance the list is rotated. This can be any valid
-             * integer. Negative values rotate the list backwards.
+             * <p>e.g. for a given list with elements [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], calling rotate(list, 3)
+             * or rotate(list, -7) would modify the list to look like this: [8, 9, 0, 1, 2, 3, 4, 5, 6, 7]
+             *
+             * @param {*} lst the list whose elements are to be rotated.
+             * @param {number} dist is the distance the list is rotated. This can be any valid integer. Negative values
+             * rotate the list backwards.
              */
             Collections.rotate = function (lst, dist) {
                 javaemul.internal.InternalPreconditions.checkNotNull(lst);
@@ -24341,12 +24219,9 @@ var javaemul;
             /**
              * Replace contents of a list from an array.
              *
-             * @param <T>
-             * element type
-             * @param {*} target
-             * list to replace contents from an array
-             * @param {java.lang.Object[]} x
-             * an Object array which can contain only T instances
+             * @param <T> element type
+             * @param {*} target list to replace contents from an array
+             * @param {java.lang.Object[]} x an Object array which can contain only T instances
              * @private
              */
             Collections.replaceContents = function (target, x) {
@@ -24858,6 +24733,10 @@ var javaemul;
                     this.coll = coll;
                 }
                 /* Default method injected from java.util.Collection */
+                UnmodifiableCollection.prototype.stream = function () {
+                    return (new javaemul.internal.stream.StreamHelper(this));
+                };
+                /* Default method injected from java.util.Collection */
                 UnmodifiableCollection.prototype.removeIf = function (filter) {
                     javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                         return funcInst;
@@ -24878,8 +24757,8 @@ var javaemul;
                     return removed;
                 };
                 /* Default method injected from java.util.Collection */
-                UnmodifiableCollection.prototype.stream = function () {
-                    return (new javaemul.internal.stream.StreamHelper(this));
+                UnmodifiableCollection.prototype.parallelStream = function () {
+                    return this.stream();
                 };
                 /* Default method injected from java.lang.Iterable */
                 UnmodifiableCollection.prototype.forEach = function (action) {
@@ -24895,10 +24774,6 @@ var javaemul;
                     for (var index = this.iterator(); index.hasNext();) {
                         _loop_7(index);
                     }
-                };
-                /* Default method injected from java.util.Collection */
-                UnmodifiableCollection.prototype.parallelStream = function () {
-                    return this.stream();
                 };
                 /**
                  *
@@ -25372,6 +25247,18 @@ var javaemul;
                     this.map = map;
                 }
                 /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.merge = function (key, value, map) {
+                    var old = this.get(key);
+                    var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                    if (next == null) {
+                        this.remove(key);
+                    }
+                    else {
+                        this.put(key, next);
+                    }
+                    return next;
+                };
+                /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.replaceAll = function (__function) {
                     java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                         return funcInst;
@@ -25402,23 +25289,6 @@ var javaemul;
                     }
                 };
                 /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.merge = function (key, value, map) {
-                    var old = this.get(key);
-                    var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                    if (next == null) {
-                        this.remove(key);
-                    }
-                    else {
-                        this.put(key, next);
-                    }
-                    return next;
-                };
-                /* Default method injected from java.util.Map */
-                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
-                    var v;
-                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-                };
-                /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.computeIfAbsent = function (key, mappingFunction) {
                     var result;
                     if ((result = this.get(key)) == null) {
@@ -25427,6 +25297,11 @@ var javaemul;
                             this.put(key, result);
                     }
                     return result;
+                };
+                /* Default method injected from java.util.Map */
+                UnmodifiableMap.prototype.getOrDefault = function (key, defaultValue) {
+                    var v;
+                    return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
                 };
                 /* Default method injected from java.util.Map */
                 UnmodifiableMap.prototype.putIfAbsent = function (key, value) {
@@ -25629,10 +25504,8 @@ var javaemul;
                     /**
                      * Wrap an array of Map.Entries as UnmodifiableEntries.
                      *
-                     * @param {java.lang.Object[]} array
-                     * array to wrap
-                     * @param {number} size
-                     * number of entries to wrap
+                     * @param {java.lang.Object[]} array array to wrap
+                     * @param {number} size number of entries to wrap
                      * @private
                      */
                     UnmodifiableEntrySet.prototype.wrap = function (array, size) {
@@ -26696,14 +26569,11 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Implementation of Map interface based on a hash table.
-         * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun
-         * docs]</a>
+         * Implementation of Map interface based on a hash table. <a
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun docs]</a>
          *
-         * @param <K>
-         * key type
-         * @param <V>
-         * value type
+         * @param <K> key type
+         * @param <V> value type
          * @param {number} ignored
          * @param {number} alsoIgnored
          * @class
@@ -26856,9 +26726,9 @@ var javaemul;
                 return this.hashCodeMap.size() + this.stringMap.getSize();
             };
             /**
-             * Returns the Map.Entry whose key is Object equal to <code>key</code>,
-             * provided that <code>key</code>'s hash code is <code>hashCode</code>; or
-             * <code>null</code> if no such Map.Entry exists at the specified hashCode.
+             * Returns the Map.Entry whose key is Object equal to <code>key</code>, provided that <code>key
+             * </code>'s hash code is <code>hashCode</code>; or <code>null</code> if no such Map.Entry exists
+             * at the specified hashCode.
              * @param {*} key
              * @return {*}
              * @private
@@ -26867,8 +26737,8 @@ var javaemul;
                 return (util.AbstractMap.getEntryValueOrNull(this.hashCodeMap.getEntry(key)));
             };
             /**
-             * Returns the value for the given key in the stringMap. Returns
-             * <code>null</code> if the specified key does not exist.
+             * Returns the value for the given key in the stringMap. Returns <code>null</code> if the
+             * specified key does not exist.
              * @param {string} key
              * @return {*}
              * @private
@@ -26877,9 +26747,8 @@ var javaemul;
                 return key == null ? this.getHashValue(null) : this.stringMap.get(key);
             };
             /**
-             * Returns true if the a key exists in the hashCodeMap that is Object equal
-             * to <code>key</code>, provided that <code>key</code>'s hash code is
-             * <code>hashCode</code>.
+             * Returns true if the a key exists in the hashCodeMap that is Object equal to <code>key</code>,
+             * provided that <code>key</code>'s hash code is <code>hashCode</code>.
              * @param {*} key
              * @return {boolean}
              * @private
@@ -26897,9 +26766,8 @@ var javaemul;
                 return key == null ? this.hasHashValue(null) : this.stringMap.contains(key);
             };
             /**
-             * Sets the specified key to the specified value in the hashCodeMap. Returns
-             * the value previously at that key. Returns <code>null</code> if the
-             * specified key did not exist.
+             * Sets the specified key to the specified value in the hashCodeMap. Returns the value previously
+             * at that key. Returns <code>null</code> if the specified key did not exist.
              * @param {*} key
              * @param {*} value
              * @return {*}
@@ -26909,9 +26777,8 @@ var javaemul;
                 return this.hashCodeMap.put(key, value);
             };
             /**
-             * Sets the specified key to the specified value in the stringMap. Returns
-             * the value previously at that key. Returns <code>null</code> if the
-             * specified key did not exist.
+             * Sets the specified key to the specified value in the stringMap. Returns the value previously at
+             * that key. Returns <code>null</code> if the specified key did not exist.
              * @param {string} key
              * @param {*} value
              * @return {*}
@@ -26921,10 +26788,9 @@ var javaemul;
                 return key == null ? this.putHashValue(null, value) : this.stringMap.put(key, value);
             };
             /**
-             * Removes the pair whose key is Object equal to <code>key</code> from
-             * <code>hashCodeMap</code>, provided that <code>key</code>'s hash code is
-             * <code>hashCode</code>. Returns the value that was associated with the
-             * removed key, or null if no such key existed.
+             * Removes the pair whose key is Object equal to <code>key</code> from <code>hashCodeMap</code>,
+             * provided that <code>key</code>'s hash code is <code>hashCode</code>. Returns the value that was
+             * associated with the removed key, or null if no such key existed.
              * @param {*} key
              * @return {*}
              * @private
@@ -26933,9 +26799,8 @@ var javaemul;
                 return this.hashCodeMap.remove(key);
             };
             /**
-             * Removes the specified key from the stringMap and returns the value that
-             * was previously there. Returns <code>null</code> if the specified key does
-             * not exist.
+             * Removes the specified key from the stringMap and returns the value that was previously there.
+             * Returns <code>null</code> if the specified key does not exist.
              * @param {string} key
              * @return {*}
              * @private
@@ -27094,12 +26959,10 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Linked list implementation.
-         * <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedList.html">
-         * [Sun docs]</a>
+         * Linked list implementation. <a
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedList.html">[Sun docs]</a>
          *
-         * @param <E>
-         * element type.
+         * @param <E> element type.
          * @param {*} c
          * @class
          * @extends java.util.AbstractSequentialList
@@ -27151,6 +27014,27 @@ var javaemul;
                     throw new Error('invalid overload');
                 return _this;
             }
+            /* Default method injected from java.util.List */
+            LinkedList.prototype.sort = function (c) {
+                var a = this.toArray();
+                java.util.Arrays.sort(a, ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
+                    return funcInst;
+                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(c)))));
+                var i = this.listIterator();
+                for (var index = 0; index < a.length; index++) {
+                    var e = a[index];
+                    {
+                        i.next();
+                        i.set(e);
+                    }
+                }
+            };
+            /* Default method injected from java.util.Collection */
+            LinkedList.prototype.stream = function () {
+                return (new javaemul.internal.stream.StreamHelper(this));
+            };
             /* Default method injected from java.util.Collection */
             LinkedList.prototype.removeIf = function (filter) {
                 javaemul.internal.InternalPreconditions.checkNotNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
@@ -27172,8 +27056,8 @@ var javaemul;
                 return removed;
             };
             /* Default method injected from java.util.Collection */
-            LinkedList.prototype.stream = function () {
-                return (new javaemul.internal.stream.StreamHelper(this));
+            LinkedList.prototype.parallelStream = function () {
+                return this.stream();
             };
             /* Default method injected from java.lang.Iterable */
             LinkedList.prototype.forEach = function (action) {
@@ -27188,27 +27072,6 @@ var javaemul;
                 };
                 for (var index = this.iterator(); index.hasNext();) {
                     _loop_10(index);
-                }
-            };
-            /* Default method injected from java.util.Collection */
-            LinkedList.prototype.parallelStream = function () {
-                return this.stream();
-            };
-            /* Default method injected from java.util.List */
-            LinkedList.prototype.sort = function (c) {
-                var a = this.toArray();
-                java.util.Arrays.sort(a, ((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
-                    return funcInst;
-                } return function (a, b) { return (funcInst['compare'] ? funcInst['compare'] : funcInst).call(funcInst, a, b); }; })(c)))));
-                var i = this.listIterator();
-                for (var index = 0; index < a.length; index++) {
-                    var e = a[index];
-                    {
-                        i.next();
-                        i.set(e);
-                    }
                 }
             };
             /**
@@ -27545,10 +27408,8 @@ var javaemul;
             DescendingIteratorImpl["__class"] = "java.util.LinkedList.DescendingIteratorImpl";
             DescendingIteratorImpl["__interfaces"] = ["java.util.Iterator"];
             /**
-             * @param {number} index
-             * from the beginning of the list (0 = first node)
-             * @param {java.util.LinkedList.Node} startNode
-             * the initial current node
+             * @param {number} index from the beginning of the list (0 = first node)
+             * @param {java.util.LinkedList.Node} startNode the initial current node
              * @class
              */
             var ListIteratorImpl2 = /** @class */ (function () {
@@ -27666,8 +27527,7 @@ var javaemul;
             /**
              * Internal class representing a doubly-linked list node.
              *
-             * @param <E>
-             * element type
+             * @param <E> element type
              * @class
              */
             var Node = /** @class */ (function () {
@@ -27694,8 +27554,7 @@ var javaemul;
     (function (util) {
         /**
          * Maintains a last-in, first-out collection of objects. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Stack.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/Stack.html">[Sun docs]</a>
          *
          * @param <E> element type.
          * @class
@@ -27854,20 +27713,14 @@ var javaemul;
                     return (new Collectors.CollectorImpl(function () { return new java.util.StringJoiner(delimiter, prefix, suffix); }, function (instance$StringJoiner, newElement) { return instance$StringJoiner.add(newElement); }, function (instance$StringJoiner, other) { return instance$StringJoiner.merge(other); }));
                 };
                 /**
-                 * Returns a {@code Collector} that concatenates the input elements, separated
-                 * by the specified delimiter, with the specified prefix and suffix, in
-                 * encounter order.
+                 * Returns a {@code Collector} that concatenates the input elements, separated by the specified
+                 * delimiter, with the specified prefix and suffix, in encounter order.
                  *
-                 * @param {*} delimiter
-                 * the delimiter to be used between each element
-                 * @param {*} prefix
-                 * the sequence of characters to be used at the beginning of the
-                 * joined result
-                 * @param {*} suffix
-                 * the sequence of characters to be used at the end of the joined
-                 * result
-                 * @return {*} A {@code Collector} which concatenates CharSequence elements,
-                 * separated by the specified delimiter, in encounter order
+                 * @param {*} delimiter the delimiter to be used between each element
+                 * @param {*} prefix the sequence of characters to be used at the beginning of the joined result
+                 * @param {*} suffix the sequence of characters to be used at the end of the joined result
+                 * @return {*} A {@code Collector} which concatenates CharSequence elements, separated by the
+                 * specified delimiter, in encounter order
                  */
                 Collectors.joining = function (delimiter, prefix, suffix) {
                     if (((delimiter != null && (delimiter.constructor != null && delimiter.constructor["__interfaces"] != null && delimiter.constructor["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || typeof delimiter === "string")) || delimiter === null) && ((prefix != null && (prefix.constructor != null && prefix.constructor["__interfaces"] != null && prefix.constructor["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || typeof prefix === "string")) || prefix === null) && ((suffix != null && (suffix.constructor != null && suffix.constructor["__interfaces"] != null && suffix.constructor["__interfaces"].indexOf("java.lang.CharSequence") >= 0 || typeof suffix === "string")) || suffix === null)) {
@@ -28201,10 +28054,9 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Implements a TreeMap using a red-black tree. This guarantees O(log n)
-         * performance on lookups, inserts, and deletes while maintaining linear
-         * in-order traversal time. Null keys and values are fully supported if the
-         * comparator supports them (the default comparator does not).
+         * Implements a TreeMap using a red-black tree. This guarantees O(log n) performance on lookups,
+         * inserts, and deletes while maintaining linear in-order traversal time. Null keys and values are
+         * fully supported if the comparator supports them (the default comparator does not).
          *
          * @param <K> key type
          * @param <V> value type
@@ -28799,13 +28651,13 @@ var javaemul;
             /**
              * Insert a node into a subtree, collecting state about the insertion.
              *
-             * If the same key already exists, the value of the node is overwritten with
-             * the value from the new node instead.
+             * <p>If the same key already exists, the value of the node is overwritten with the value from the
+             * new node instead.
              *
              * @param {java.util.TreeMap.Node} tree subtree to insert into
              * @param {java.util.TreeMap.Node} newNode new node to insert
-             * @param {java.util.TreeMap.State} state result of the insertion: state.found true if the key already
-             * existed in the tree state.value the old value if the key existed
+             * @param {java.util.TreeMap.State} state result of the insertion: state.found true if the key already existed in the tree
+             * state.value the old value if the key existed
              * @return {java.util.TreeMap.Node} the new subtree root
              * @private
              */
@@ -28841,8 +28693,7 @@ var javaemul;
                 return tree;
             };
             /**
-             * Returns true if <code>node</code> is red. Note that null pointers are
-             * considered black.
+             * Returns true if <code>node</code> is red. Note that null pointers are considered black.
              * @param {java.util.TreeMap.Node} node
              * @return {boolean}
              * @private
@@ -28953,8 +28804,8 @@ var javaemul;
                 return state.found;
             };
             /**
-             * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have
-             * avoided this traversal if each node maintained a parent pointer.
+             * replace 'node' with 'newNode' in the tree rooted at 'head'. Could have avoided this traversal
+             * if each node maintained a parent pointer.
              * @param {java.util.TreeMap.Node} head
              * @param {java.util.TreeMap.Node} node
              * @param {java.util.TreeMap.Node} newNode
@@ -28978,9 +28829,8 @@ var javaemul;
                 node.child[TreeMap.RIGHT] = null;
             };
             /**
-             * Perform a double rotation, first rotating the child which will become the
-             * root in the opposite direction, then rotating the root in the specified
-             * direction.
+             * Perform a double rotation, first rotating the child which will become the root in the opposite
+             * direction, then rotating the root in the specified direction.
              *
              * <pre>
              * A                                               F
@@ -29000,8 +28850,7 @@ var javaemul;
                 return this.rotateSingle(tree, rotateDirection);
             };
             /**
-             * Perform a single rotation, pushing the root of the subtree to the specified
-             * direction.
+             * Perform a single rotation, pushing the root of the subtree to the specified direction.
              *
              * <pre>
              * A                                              B
@@ -29284,13 +29133,11 @@ var javaemul;
             Node["__class"] = "java.util.TreeMap.Node";
             Node["__interfaces"] = ["java.util.Map.Entry"];
             /**
-             * A state object which is passed down the tree for both insert and remove.
-             * All uses make use of the done flag to indicate when no further rebalancing
-             * of the tree is required. Remove methods use the found flag to indicate when
-             * the desired key has been found. value is used both to return the value of a
-             * removed node as well as to pass in a value which must match (used for
-             * entrySet().remove(entry)), and the matchValue flag is used to request this
-             * behavior.
+             * A state object which is passed down the tree for both insert and remove. All uses make use of
+             * the done flag to indicate when no further rebalancing of the tree is required. Remove methods
+             * use the found flag to indicate when the desired key has been found. value is used both to
+             * return the value of a removed node as well as to pass in a value which must match (used for
+             * entrySet().remove(entry)), and the matchValue flag is used to request this behavior.
              *
              * @param <V> value type
              * @class
@@ -29718,8 +29565,7 @@ var javaemul;
     (function (util) {
         /**
          * Map using reference equality on keys. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/IdentityHashMap.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/IdentityHashMap.html">[Sun docs]</a>
          *
          * @param <K> key type
          * @param <V> value type
@@ -29767,6 +29613,18 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
+            /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -29797,23 +29655,6 @@ var javaemul;
                 }
             };
             /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
                 var result;
                 if ((result = this.get(key)) == null) {
@@ -29822,6 +29663,11 @@ var javaemul;
                         this.put(key, result);
                 }
                 return result;
+            };
+            /* Default method injected from java.util.Map */
+            IdentityHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             IdentityHashMap.prototype.putIfAbsent = function (key, value) {
@@ -29909,8 +29755,7 @@ var javaemul;
     (function (util) {
         /**
          * Implementation of Map interface based on a hash table. <a
-         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun
-         * docs]</a>
+         * href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/HashMap.html">[Sun docs]</a>
          *
          * @param <K> key type
          * @param <V> value type
@@ -30181,22 +30026,15 @@ var javaemul;
                     return _this;
                 }
                 /**
-                 * Writes {@code count} bytes from the byte array {@code buffer} starting at
-                 * position {@code offset} to this stream.
+                 * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+                 * offset} to this stream.
                  *
-                 * @param {byte[]} buffer
-                 * the buffer to be written.
-                 * @param {number} offset
-                 * the start position in {@code buffer} from where to get bytes.
-                 * @param {number} count
-                 * the number of bytes from {@code buffer} to write to this
-                 * stream.
-                 * @throws IOException
-                 * if an error occurs while writing to this stream.
-                 * @throws IndexOutOfBoundsException
-                 * if {@code offset < 0} or {@code count < 0}, or if
-                 * {@code offset + count} is bigger than the length of
-                 * {@code buffer}.
+                 * @param {byte[]} buffer the buffer to be written.
+                 * @param {number} offset the start position in {@code buffer} from where to get bytes.
+                 * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+                 * @throws IOException if an error occurs while writing to this stream.
+                 * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+                 * offset + count} is bigger than the length of {@code buffer}.
                  */
                 System$0.prototype.write = function (buffer, offset, count) {
                     if (((buffer != null && buffer instanceof Array && (buffer.length == 0 || buffer[0] == null || (typeof buffer[0] === 'number'))) || buffer === null) && ((typeof offset === 'number') || offset === null) && ((typeof count === 'number') || count === null)) {
@@ -30243,22 +30081,15 @@ var javaemul;
                     return _this;
                 }
                 /**
-                 * Writes {@code count} bytes from the byte array {@code buffer} starting at
-                 * position {@code offset} to this stream.
+                 * Writes {@code count} bytes from the byte array {@code buffer} starting at position {@code
+                 * offset} to this stream.
                  *
-                 * @param {byte[]} buffer
-                 * the buffer to be written.
-                 * @param {number} offset
-                 * the start position in {@code buffer} from where to get bytes.
-                 * @param {number} count
-                 * the number of bytes from {@code buffer} to write to this
-                 * stream.
-                 * @throws IOException
-                 * if an error occurs while writing to this stream.
-                 * @throws IndexOutOfBoundsException
-                 * if {@code offset < 0} or {@code count < 0}, or if
-                 * {@code offset + count} is bigger than the length of
-                 * {@code buffer}.
+                 * @param {byte[]} buffer the buffer to be written.
+                 * @param {number} offset the start position in {@code buffer} from where to get bytes.
+                 * @param {number} count the number of bytes from {@code buffer} to write to this stream.
+                 * @throws IOException if an error occurs while writing to this stream.
+                 * @throws IndexOutOfBoundsException if {@code offset < 0} or {@code count < 0}, or if {@code
+                 * offset + count} is bigger than the length of {@code buffer}.
                  */
                 System$1.prototype.write = function (buffer, offset, count) {
                     if (((buffer != null && buffer instanceof Array && (buffer.length == 0 || buffer[0] == null || (typeof buffer[0] === 'number'))) || buffer === null) && ((typeof offset === 'number') || offset === null) && ((typeof count === 'number') || count === null)) {
@@ -30351,15 +30182,13 @@ var javaemul;
                     return _this;
                 }
                 /**
-                 * Reads up to {@code byteCount} bytes from this stream and stores them in
-                 * the byte array {@code buffer} starting at {@code byteOffset}.
-                 * Returns the number of bytes actually read or -1 if the end of the stream
-                 * has been reached.
+                 * Reads up to {@code byteCount} bytes from this stream and stores them in the byte array {@code
+                 * buffer} starting at {@code byteOffset}. Returns the number of bytes actually read or -1 if the
+                 * end of the stream has been reached.
                  *
-                 * @throws IndexOutOfBoundsException
-                 * if {@code byteOffset < 0 || byteCount < 0 || byteOffset + byteCount > buffer.length}.
-                 * @throws IOException
-                 * if the stream is closed or another IOException occurs.
+                 * @throws IndexOutOfBoundsException if {@code byteOffset < 0 || byteCount < 0 || byteOffset +
+                 * byteCount > buffer.length}.
+                 * @throws IOException if the stream is closed or another IOException occurs.
                  * @param {byte[]} buffer
                  * @param {number} byteOffset
                  * @param {number} byteCount
@@ -30404,15 +30233,11 @@ var javaemul;
     var util;
     (function (util) {
         /**
-         * Hash table implementation of the Map interface with predictable iteration
-         * order. <a href=
-         * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun
-         * docs]</a>
+         * Hash table implementation of the Map interface with predictable iteration order. <a href=
+         * "http://java.sun.com/j2se/1.5.0/docs/api/java/util/LinkedHashMap.html">[Sun docs]</a>
          *
-         * @param <K>
-         * key type.
-         * @param <V>
-         * value type.
+         * @param <K> key type.
+         * @param <V> value type.
          * @param {number} ignored
          * @param {number} alsoIgnored
          * @param {boolean} accessOrder
@@ -30524,6 +30349,18 @@ var javaemul;
                 return _this;
             }
             /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.merge = function (key, value, map) {
+                var old = this.get(key);
+                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
+                if (next == null) {
+                    this.remove(key);
+                }
+                else {
+                    this.put(key, next);
+                }
+                return next;
+            };
+            /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.replaceAll = function (__function) {
                 java.util.Objects.requireNonNull(((function (funcInst) { if (funcInst == null || typeof funcInst == 'function') {
                     return funcInst;
@@ -30554,23 +30391,6 @@ var javaemul;
                 }
             };
             /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.merge = function (key, value, map) {
-                var old = this.get(key);
-                var next = (old == null) ? value : (function (target) { return (typeof target === 'function') ? target(old, value) : target.apply(old, value); })(map);
-                if (next == null) {
-                    this.remove(key);
-                }
-                else {
-                    this.put(key, next);
-                }
-                return next;
-            };
-            /* Default method injected from java.util.Map */
-            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
-                var v;
-                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
-            };
-            /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.computeIfAbsent = function (key, mappingFunction) {
                 var result;
                 if ((result = this.get(key)) == null) {
@@ -30579,6 +30399,11 @@ var javaemul;
                         this.put(key, result);
                 }
                 return result;
+            };
+            /* Default method injected from java.util.Map */
+            LinkedHashMap.prototype.getOrDefault = function (key, defaultValue) {
+                var v;
+                return (((v = this.get(key)) != null) || this.containsKey(key)) ? v : defaultValue;
             };
             /* Default method injected from java.util.Map */
             LinkedHashMap.prototype.putIfAbsent = function (key, value) {
@@ -30713,16 +30538,14 @@ var javaemul;
         LinkedHashMap["__interfaces"] = ["java.lang.Cloneable", "java.util.Map", "java.io.Serializable"];
         (function (LinkedHashMap) {
             /**
-             * The entry we use includes next/prev pointers for a doubly-linked circular
-             * list with a head node. This reduces the special cases we have to deal
-             * with in the list operations.
+             * The entry we use includes next/prev pointers for a doubly-linked circular list with a head
+             * node. This reduces the special cases we have to deal with in the list operations.
              *
-             * Note that we duplicate the key from the underlying hash map so we can
-             * find the eldest entry. The alternative would have been to modify HashMap
-             * so more of the code was directly usable here, but this would have added
-             * some overhead to HashMap, or to reimplement most of the HashMap code here
-             * with small modifications. Paying a small storage cost only if you use
-             * LinkedHashMap and minimizing code size seemed like a better tradeoff
+             * <p>Note that we duplicate the key from the underlying hash map so we can find the eldest entry.
+             * The alternative would have been to modify HashMap so more of the code was directly usable here,
+             * but this would have added some overhead to HashMap, or to reimplement most of the HashMap code
+             * here with small modifications. Paying a small storage cost only if you use LinkedHashMap and
+             * minimizing code size seemed like a better tradeoff
              * @param {*} key
              * @param {*} value
              * @class
@@ -31139,9 +30962,9 @@ var javaemul;
         var logging;
         (function (logging) {
             /**
-             * An emulation of the java.util.logging.Logger class. See
-             * <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">
-             * The Java API doc for details</a>
+             * An emulation of the java.util.logging.Logger class. See <a
+             * href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/logging/Logger.html">The Java API doc for
+             * details</a>
              * @class
              */
             var Logger = /** @class */ (function () {
@@ -31575,8 +31398,8 @@ var javaemul;
             };
             /**
              * Ensures the truth of an expression involving existence of an element.
-             * <p>
-             * For cases where failing fast is pretty important and not failing early could cause bugs that
+             *
+             * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
              * are much harder to debug.
              * @param {boolean} expression
              * @param {*} errorMessage
@@ -31679,8 +31502,8 @@ var javaemul;
             };
             /**
              * Ensures the truth of an expression involving one or more parameters to the calling method.
-             * <p>
-             * For cases where failing fast is pretty important and not failing early could cause bugs that
+             *
+             * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
              * are much harder to debug.
              * @param {boolean} expression
              * @param {string} errorMessageTemplate
@@ -31720,8 +31543,8 @@ var javaemul;
             /**
              * Ensures the truth of an expression involving the state of the calling instance, but not
              * involving any parameters to the calling method.
-             * <p>
-             * For cases where failing fast is pretty important and not failing early could cause bugs that
+             *
+             * <p>For cases where failing fast is pretty important and not failing early could cause bugs that
              * are much harder to debug.
              * @param {boolean} expression
              */
@@ -31964,7 +31787,7 @@ var javaemul;
             };
             /**
              * Substitutes each {@code %s} in {@code template} with an argument. These are matched by
-             * position: the first {@code %s} gets {@code args[0]}, etc.  If there are more arguments than
+             * position: the first {@code %s} gets {@code args[0]}, etc. If there are more arguments than
              * placeholders, the unmatched arguments will be appended to the end of the formatted message in
              * square braces.
              * @param {string} template
