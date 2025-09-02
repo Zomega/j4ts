@@ -1,6 +1,5 @@
 package java.text;
 
-
 // TODO: This class was mostly written by Gemini, needs careful review.
 public class DecimalFormat extends NumberFormat {
 

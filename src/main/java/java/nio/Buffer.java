@@ -1,6 +1,5 @@
 package java.nio;
 
-
 public abstract class Buffer {
   public int _capacity;
   public boolean readOnly;

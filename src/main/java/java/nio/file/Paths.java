@@ -1,6 +1,5 @@
 package java.nio.file;
 
-
 import static jsweet.util.Lang.array;
 import static jsweet.util.Lang.string;
 

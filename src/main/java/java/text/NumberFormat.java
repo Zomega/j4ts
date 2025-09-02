@@ -1,7 +1,6 @@
 package java.text;
 
 import java.util.Locale;
-import java.lang.Number;
 
 class NumberFormat { // extends Format? May not be needed.
   public static final NumberFormat getInstance() {
@@ -48,7 +47,6 @@ class NumberFormat { // extends Format? May not be needed.
   public void setGroupingUsed(boolean newValue) {
     // TODO: Implement
   }
-
 
   // Implement parse method (simplified)
   // TODO: This is nowhere near full featured.
